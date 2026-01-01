@@ -188,6 +188,62 @@
   background: #dc2626;
 }
 
+.inventoryContainer {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.inventoryTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.inventoryTable thead {
+  background: #f3f4f6;
+}
+
+.inventoryTable th {
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid #e5e7eb;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.inventoryTable td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.inventoryTable tr:last-child td {
+  border-bottom: none;
+}
+
+.inventoryInput {
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.inventoryInput:focus {
+  outline: none;
+  border-color: #0070f3;
+}
+
+.inventoryInput[type="number"] {
+  text-align: center;
+}
+
 @media (prefers-color-scheme: dark) {
   .form {
     background: #1a1a1a;
@@ -244,6 +300,30 @@
   }
 
   .listItem input {
+    background: #1a1a1a;
+    border-color: #444;
+    color: #f3f4f6;
+  }
+
+  .inventoryTable {
+    background: #2a2a2a;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .inventoryTable thead {
+    background: #1a1a1a;
+  }
+
+  .inventoryTable th {
+    color: #d1d5db;
+    border-color: #444;
+  }
+
+  .inventoryTable td {
+    border-color: #444;
+  }
+
+  .inventoryInput {
     background: #1a1a1a;
     border-color: #444;
     color: #f3f4f6;

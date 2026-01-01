@@ -81,6 +81,9 @@ model Character {
   // Habilidades (estruturado: nome, nível, custo, dano)
   abilities Json @default("[]")
 
+  // Inventário (estruturado: nome, quantidade, máximo)
+  inventory Json @default("[]")
+
   // Magias (para classes mágicas)
   spells Json @default("[]")
 

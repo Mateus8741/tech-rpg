@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { type Character, type Ability, type Equipment } from '@/lib/api';
+import { type Character, type Ability, type Equipment, type InventoryItem } from '@/lib/api';
 import styles from './CharacterForm.module.css';
 
 interface CharacterFormProps {
@@ -35,6 +35,7 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
 
   const [abilities, setAbilities] = useState<Ability[]>(character?.abilities || []);
   const [equipment, setEquipment] = useState<Equipment[]>(character?.equipment || []);
+  const [inventory, setInventory] = useState<InventoryItem[]>(character?.inventory || []);
   const [saving, setSaving] = useState(false);
 
   const calculateModifier = (value: number) => {
@@ -45,6 +46,7 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
     if (character) {
       setAbilities(character.abilities || []);
       setEquipment(character.equipment || []);
+      setInventory(character.inventory || []);
     }
   }, [character]);
 
@@ -93,11 +95,51 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
     setEquipment(prev => prev.filter((_, i) => i !== index));
   };
 
+  const handleInventoryChange = (index: number, field: keyof InventoryItem, value: string | number) => {
+    setInventory(prev => {
+      const updated = [...prev];
+      const newValue = field === 'name' ? value : (typeof value === 'string' ? parseInt(value) || 0 : value);
+      
+      // Se estiver atualizando o campo, aplica o novo valor temporariamente
+      if (field === 'quantity') {
+        const quantityValue = typeof value === 'string' ? parseInt(value) || 0 : value;
+        const currentMax = updated[index].max;
+        // Garante que quantidade não seja maior que máximo
+        updated[index] = { 
+          ...updated[index], 
+          quantity: Math.min(quantityValue, currentMax),
+          max: currentMax
+        };
+      } else if (field === 'max') {
+        const maxValue = typeof value === 'string' ? parseInt(value) || 0 : value;
+        const currentQuantity = updated[index].quantity;
+        // Se o novo máximo for menor que a quantidade atual, ajusta a quantidade
+        updated[index] = { 
+          ...updated[index], 
+          max: maxValue,
+          quantity: Math.min(currentQuantity, maxValue)
+        };
+      } else {
+        updated[index] = { ...updated[index], [field]: newValue };
+      }
+      
+      return updated;
+    });
+  };
+
+  const addInventoryItem = () => {
+    setInventory(prev => [...prev, { name: '', quantity: 0, max: 0 }]);
+  };
+
+  const removeInventoryItem = (index: number) => {
+    setInventory(prev => prev.filter((_, i) => i !== index));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
     try {
-      await onSubmit({ ...formData, abilities, equipment });
+      await onSubmit({ ...formData, abilities, equipment, inventory });
     } finally {
       setSaving(false);
     }
@@ -406,6 +448,68 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
           ))}
           <button type="button" onClick={addEquipment} className={styles.addButton}>
             ➕ Adicionar Equipamento
+          </button>
+        </div>
+      </div>
+
+      <div className={styles.section}>
+        <h2>🎒 Inventário</h2>
+        <div className={styles.inventoryContainer}>
+          <table className={styles.inventoryTable}>
+            <thead>
+              <tr>
+                <th>ITEM</th>
+                <th>QUANT</th>
+                <th>MAX</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {inventory.map((item, index) => (
+                <tr key={index}>
+                  <td>
+                    <input
+                      type="text"
+                      value={item.name}
+                      onChange={(e) => handleInventoryChange(index, 'name', e.target.value)}
+                      placeholder="Nome do item"
+                      className={styles.inventoryInput}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      value={item.quantity}
+                      onChange={(e) => handleInventoryChange(index, 'quantity', e.target.value)}
+                      min="0"
+                      max={item.max}
+                      className={styles.inventoryInput}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      value={item.max}
+                      onChange={(e) => handleInventoryChange(index, 'max', e.target.value)}
+                      min="0"
+                      className={styles.inventoryInput}
+                    />
+                  </td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => removeInventoryItem(index)}
+                      className={styles.removeButton}
+                    >
+                      🗑️
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <button type="button" onClick={addInventoryItem} className={styles.addButton}>
+            ➕ Adicionar Item ao Inventário
           </button>
         </div>
       </div>

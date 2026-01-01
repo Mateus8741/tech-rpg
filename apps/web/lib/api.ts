@@ -13,6 +13,12 @@ export interface Ability {
   damage: string; // Rolagem de dano, ex: "1d6+3", "2d8", "1d4"
 }
 
+export interface InventoryItem {
+  name: string;
+  quantity: number;
+  max: number;
+}
+
 export interface User {
   id: string;
   username: string;
@@ -52,6 +58,7 @@ export interface Character {
   proficiencies: any[];
   equipment: Equipment[];
   abilities: Ability[];
+  inventory: InventoryItem[];
   spells: any[];
   features: any[];
   notes: string;

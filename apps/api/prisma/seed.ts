@@ -89,6 +89,11 @@ async function main() {
         { name: "Ataque Poderoso", level: 1, cost: 0, damage: "1d8+3" },
         { name: "Segundo Fôlego", level: 2, cost: 0, damage: "1d10+2" },
       ],
+      inventory: [
+        { name: "Poção de Cura", quantity: 3, max: 5 },
+        { name: "Ração", quantity: 10, max: 20 },
+        { name: "Corda", quantity: 1, max: 1 },
+      ],
       spells: [],
       features: [
         "Ataque Extra",
@@ -147,6 +152,11 @@ async function main() {
         { name: "Bola de Fogo", level: 3, cost: 5, damage: "8d6" },
         { name: "Raio Mágico", level: 1, cost: 2, damage: "1d4+3" },
         { name: "Escudo Mágico", level: 1, cost: 3, damage: "0" },
+      ],
+      inventory: [
+        { name: "Componentes Mágicos", quantity: 15, max: 20 },
+        { name: "Pergaminho", quantity: 5, max: 10 },
+        { name: "Poção de Mana", quantity: 2, max: 3 },
       ],
       spells: [
         "Detectar Magia",
@@ -210,6 +220,11 @@ async function main() {
       abilities: [
         { name: "Ataque Furtivo", level: 1, cost: 0, damage: "1d6+3" },
         { name: "Esquiva Ágil", level: 2, cost: 0, damage: "0" },
+      ],
+      inventory: [
+        { name: "Adaga de Reserva", quantity: 2, max: 3 },
+        { name: "Ferramentas de Ladrão", quantity: 1, max: 1 },
+        { name: "Veneno", quantity: 1, max: 2 },
       ],
       spells: [],
       features: [
