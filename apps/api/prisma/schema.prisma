@@ -62,6 +62,10 @@ model Character {
   currentHitPoints Int @default(8)
   temporaryHitPoints Int @default(0)
 
+  // Pontos de Mana
+  maxMana    Int @default(0)
+  currentMana Int @default(0)
+
   // Armadura Classe
   armorClass Int @default(10)
 
@@ -71,8 +75,11 @@ model Character {
   // Proficiências
   proficiencies Json @default("[]")
 
-  // Equipamentos
+  // Equipamentos (estruturado: nome, defesa, ataque)
   equipment Json @default("[]")
+
+  // Habilidades (estruturado: nome, nível, custo, dano)
+  abilities Json @default("[]")
 
   // Magias (para classes mágicas)
   spells Json @default("[]")

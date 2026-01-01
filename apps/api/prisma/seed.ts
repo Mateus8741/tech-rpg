@@ -70,6 +70,8 @@ async function main() {
       maxHitPoints: 45,
       currentHitPoints: 45,
       temporaryHitPoints: 0,
+      maxMana: 0,
+      currentMana: 0,
       armorClass: 18,
       skills: {
         athletics: true,
@@ -78,10 +80,14 @@ async function main() {
       },
       proficiencies: ["Armaduras", "Escudos", "Armas Simples", "Armas Marciais"],
       equipment: [
-        "Espada Longa",
-        "Escudo",
-        "Armadura de Placas",
-        "Machado de Guerra",
+        { name: "Espada Longa", attack: 8, defense: 0 },
+        { name: "Escudo", attack: 0, defense: 2 },
+        { name: "Armadura de Placas", attack: 0, defense: 18 },
+        { name: "Machado de Guerra", attack: 10, defense: 0 },
+      ],
+      abilities: [
+        { name: "Ataque Poderoso", level: 1, cost: 0, damage: "1d8+3" },
+        { name: "Segundo Fôlego", level: 2, cost: 0, damage: "1d10+2" },
       ],
       spells: [],
       features: [
@@ -122,6 +128,8 @@ async function main() {
       maxHitPoints: 24,
       currentHitPoints: 24,
       temporaryHitPoints: 0,
+      maxMana: 30,
+      currentMana: 30,
       armorClass: 12,
       skills: {
         arcana: true,
@@ -131,15 +139,16 @@ async function main() {
       },
       proficiencies: ["Armas Simples", "Bastões", "Dardos"],
       equipment: [
-        "Cajado Arcano",
-        "Livro de Magias",
-        "Componentes Mágicos",
-        "Poção de Cura",
+        { name: "Cajado Arcano", attack: 4, defense: 0 },
+        { name: "Robe Mágica", attack: 0, defense: 3 },
+        { name: "Anel de Proteção", attack: 0, defense: 1 },
+      ],
+      abilities: [
+        { name: "Bola de Fogo", level: 3, cost: 5, damage: "8d6" },
+        { name: "Raio Mágico", level: 1, cost: 2, damage: "1d4+3" },
+        { name: "Escudo Mágico", level: 1, cost: 3, damage: "0" },
       ],
       spells: [
-        "Bola de Fogo",
-        "Raio Mágico",
-        "Escudo Mágico",
         "Detectar Magia",
         "Teletransporte",
       ],
@@ -180,6 +189,8 @@ async function main() {
       maxHitPoints: 21,
       currentHitPoints: 18,
       temporaryHitPoints: 0,
+      maxMana: 0,
+      currentMana: 0,
       armorClass: 15,
       skills: {
         acrobatics: true,
@@ -191,11 +202,14 @@ async function main() {
       },
       proficiencies: ["Armas Simples", "Armas de Disparo", "Armas Leves"],
       equipment: [
-        "Adaga",
-        "Arco Curto",
-        "Armadura de Couro",
-        "Kit de Ladrão",
-        "Corda",
+        { name: "Adaga", attack: 4, defense: 0 },
+        { name: "Arco Curto", attack: 6, defense: 0 },
+        { name: "Armadura de Couro", attack: 0, defense: 11 },
+        { name: "Kit de Ladrão", attack: 0, defense: 0 },
+      ],
+      abilities: [
+        { name: "Ataque Furtivo", level: 1, cost: 0, damage: "1d6+3" },
+        { name: "Esquiva Ágil", level: 2, cost: 0, damage: "0" },
       ],
       spells: [],
       features: [

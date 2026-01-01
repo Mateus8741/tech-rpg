@@ -1,5 +1,18 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
+export interface Equipment {
+  name: string;
+  defense?: number;
+  attack?: number;
+}
+
+export interface Ability {
+  name: string;
+  level: number;
+  cost: number;
+  damage: string; // Rolagem de dano, ex: "1d6+3", "2d8", "1d4"
+}
+
 export interface User {
   id: string;
   username: string;
@@ -32,10 +45,13 @@ export interface Character {
   maxHitPoints: number;
   currentHitPoints: number;
   temporaryHitPoints: number;
+  maxMana: number;
+  currentMana: number;
   armorClass: number;
   skills: Record<string, any>;
   proficiencies: any[];
-  equipment: any[];
+  equipment: Equipment[];
+  abilities: Ability[];
   spells: any[];
   features: any[];
   notes: string;

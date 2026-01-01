@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { type Character } from '@/lib/api';
+import { type Character, type Ability, type Equipment } from '@/lib/api';
 import styles from './CharacterForm.module.css';
 
 interface CharacterFormProps {
@@ -27,21 +27,32 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
     maxHitPoints: character?.maxHitPoints || 8,
     currentHitPoints: character?.currentHitPoints || 8,
     temporaryHitPoints: character?.temporaryHitPoints || 0,
+    maxMana: character?.maxMana || 0,
+    currentMana: character?.currentMana || 0,
     armorClass: character?.armorClass || 10,
     notes: character?.notes || '',
   });
 
+  const [abilities, setAbilities] = useState<Ability[]>(character?.abilities || []);
+  const [equipment, setEquipment] = useState<Equipment[]>(character?.equipment || []);
   const [saving, setSaving] = useState(false);
 
   const calculateModifier = (value: number) => {
     return Math.floor((value - 10) / 2);
   };
 
+  useEffect(() => {
+    if (character) {
+      setAbilities(character.abilities || []);
+      setEquipment(character.equipment || []);
+    }
+  }, [character]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: name.includes('HitPoints') || name.includes('armorClass') || name.includes('level') || name.includes('experience') 
+      [name]: name.includes('HitPoints') || name.includes('Mana') || name.includes('armorClass') || name.includes('level') || name.includes('experience') 
         ? parseInt(value) || 0 
         : name.includes('strength') || name.includes('dexterity') || name.includes('constitution') || 
           name.includes('intelligence') || name.includes('wisdom') || name.includes('charisma')
@@ -50,11 +61,43 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
     }));
   };
 
+  const handleAbilityChange = (index: number, field: keyof Ability, value: string | number) => {
+    setAbilities(prev => {
+      const updated = [...prev];
+      updated[index] = { ...updated[index], [field]: value };
+      return updated;
+    });
+  };
+
+  const addAbility = () => {
+    setAbilities(prev => [...prev, { name: '', level: 1, cost: 0, damage: '' }]);
+  };
+
+  const removeAbility = (index: number) => {
+    setAbilities(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const handleEquipmentChange = (index: number, field: keyof Equipment, value: string | number) => {
+    setEquipment(prev => {
+      const updated = [...prev];
+      updated[index] = { ...updated[index], [field]: value };
+      return updated;
+    });
+  };
+
+  const addEquipment = () => {
+    setEquipment(prev => [...prev, { name: '', defense: 0, attack: 0 }]);
+  };
+
+  const removeEquipment = (index: number) => {
+    setEquipment(prev => prev.filter((_, i) => i !== index));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSaving(true);
     try {
-      await onSubmit(formData);
+      await onSubmit({ ...formData, abilities, equipment });
     } finally {
       setSaving(false);
     }
@@ -229,6 +272,141 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
               min="0"
             />
           </div>
+        </div>
+      </div>
+
+      <div className={styles.section}>
+        <h2>🔮 Pontos de Mana</h2>
+        <div className={styles.grid}>
+          <div className={styles.field}>
+            <label>Mana Máxima</label>
+            <input
+              type="number"
+              name="maxMana"
+              value={formData.maxMana}
+              onChange={handleChange}
+              min="0"
+            />
+          </div>
+          <div className={styles.field}>
+            <label>Mana Atual</label>
+            <input
+              type="number"
+              name="currentMana"
+              value={formData.currentMana}
+              onChange={handleChange}
+              min="0"
+              max={formData.maxMana}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.section}>
+        <h2>⚔️ Habilidades</h2>
+        <div className={styles.listContainer}>
+          {abilities.map((ability, index) => (
+            <div key={index} className={styles.listItem}>
+              <div className={styles.grid}>
+                <div className={styles.field}>
+                  <label>Nome da Habilidade</label>
+                  <input
+                    type="text"
+                    value={ability.name}
+                    onChange={(e) => handleAbilityChange(index, 'name', e.target.value)}
+                    placeholder="Ex: Bola de Fogo"
+                  />
+                </div>
+                <div className={styles.field}>
+                  <label>Nível</label>
+                  <input
+                    type="number"
+                    value={ability.level}
+                    onChange={(e) => handleAbilityChange(index, 'level', parseInt(e.target.value) || 1)}
+                    min="1"
+                    max="20"
+                  />
+                </div>
+                <div className={styles.field}>
+                  <label>Custo de Mana</label>
+                  <input
+                    type="number"
+                    value={ability.cost}
+                    onChange={(e) => handleAbilityChange(index, 'cost', parseInt(e.target.value) || 0)}
+                    min="0"
+                  />
+                </div>
+                <div className={styles.field}>
+                  <label>Rolagem de Dano</label>
+                  <input
+                    type="text"
+                    value={ability.damage}
+                    onChange={(e) => handleAbilityChange(index, 'damage', e.target.value)}
+                    placeholder="Ex: 1d6+3, 2d8, 1d4"
+                  />
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => removeAbility(index)}
+                className={styles.removeButton}
+              >
+                🗑️ Remover
+              </button>
+            </div>
+          ))}
+          <button type="button" onClick={addAbility} className={styles.addButton}>
+            ➕ Adicionar Habilidade
+          </button>
+        </div>
+      </div>
+
+      <div className={styles.section}>
+        <h2>🛡️ Equipamentos</h2>
+        <div className={styles.listContainer}>
+          {equipment.map((item, index) => (
+            <div key={index} className={styles.listItem}>
+              <div className={styles.grid}>
+                <div className={styles.field}>
+                  <label>Nome do Item</label>
+                  <input
+                    type="text"
+                    value={item.name}
+                    onChange={(e) => handleEquipmentChange(index, 'name', e.target.value)}
+                    placeholder="Ex: Espada Longa"
+                  />
+                </div>
+                <div className={styles.field}>
+                  <label>Defesa</label>
+                  <input
+                    type="number"
+                    value={item.defense || 0}
+                    onChange={(e) => handleEquipmentChange(index, 'defense', parseInt(e.target.value) || 0)}
+                    min="0"
+                  />
+                </div>
+                <div className={styles.field}>
+                  <label>Ataque</label>
+                  <input
+                    type="number"
+                    value={item.attack || 0}
+                    onChange={(e) => handleEquipmentChange(index, 'attack', parseInt(e.target.value) || 0)}
+                    min="0"
+                  />
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => removeEquipment(index)}
+                className={styles.removeButton}
+              >
+                🗑️ Remover
+              </button>
+            </div>
+          ))}
+          <button type="button" onClick={addEquipment} className={styles.addButton}>
+            ➕ Adicionar Equipamento
+          </button>
         </div>
       </div>
 
