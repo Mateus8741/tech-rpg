@@ -1,135 +1,180 @@
-# Turborepo starter
+# Sistema de Fichas RPG - D&D
 
-This Turborepo starter is maintained by the Turborepo core team.
+Sistema completo de gerenciamento de fichas de personagens baseado em D&D, construído com Next.js, Prisma e PostgreSQL.
 
-## Using this example
+## 🎯 Funcionalidades
 
-Run the following command:
+- ✅ Sistema de autenticação por nome de usuário
+- ✅ Roles: Jogador e Mestre
+- ✅ Fichas de personagem completas e editáveis
+- ✅ Atributos, pontos de vida, classe de armadura
+- ✅ Sistema de permissões (jogadores veem apenas suas fichas, mestres veem todas)
+- ✅ Interface moderna e responsiva
 
-```sh
-npx create-turbo@latest
+## 📋 Pré-requisitos
+
+- Node.js 18+
+- PostgreSQL
+- pnpm 9.0.0
+
+## 🚀 Configuração
+
+### 1. Instalar dependências
+
+```bash
+pnpm install
 ```
 
-## What's inside?
+### 2. Configurar banco de dados
 
-This Turborepo includes the following packages/apps:
+1. Crie um banco de dados PostgreSQL:
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+```sql
+CREATE DATABASE rpg_db;
 ```
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+2. Configure a variável de ambiente no `apps/api/.env`:
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
+```env
+DATABASE_URL="postgresql://usuario:senha@localhost:5432/rpg_db?schema=public"
 ```
 
-### Develop
+### 3. Configurar Prisma
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+```bash
+cd apps/api
+pnpm db:generate
+pnpm db:push
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+### 4. Configurar API URL no frontend
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
+Crie o arquivo `apps/web/.env.local`:
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+```env
+NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 
-### Remote Caching
+## 🎮 Como Usar
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+### Iniciar os servidores
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+No diretório raiz:
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
+```bash
+pnpm dev
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+Isso iniciará:
+- Frontend (web): http://localhost:3000
+- Backend (API): http://localhost:3001
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### Primeiro Acesso
+
+1. Acesse http://localhost:3000
+2. Digite um nome de usuário
+3. Selecione "Jogador" ou "Mestre"
+4. Clique em "Entrar"
+
+### Criar Personagem
+
+1. Após fazer login, clique em "Novo Personagem"
+2. Preencha as informações básicas (nome, raça, classe, etc.)
+3. Configure os atributos (Força, Destreza, etc.)
+4. Ajuste pontos de vida e classe de armadura
+5. Adicione anotações se desejar
+6. Clique em "Salvar Personagem"
+
+### Editar Personagem
+
+1. Na lista de personagens, clique em "Editar"
+2. Modifique os campos desejados
+3. Clique em "Salvar Personagem"
+
+### Permissões
+
+- **Jogador**: Pode criar, editar e deletar apenas seus próprios personagens
+- **Mestre**: Pode ver, editar e deletar todos os personagens de todos os jogadores
+
+## 📁 Estrutura do Projeto
 
 ```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+rpg/
+├── apps/
+│   ├── api/              # Backend (Next.js API Routes)
+│   │   ├── app/api/      # Rotas da API
+│   │   ├── lib/          # Utilitários (Prisma client)
+│   │   └── prisma/       # Schema do Prisma
+│   └── web/              # Frontend (Next.js)
+│       ├── app/          # Páginas e rotas
+│       ├── components/   # Componentes React
+│       └── lib/          # Utilitários (API client)
+└── packages/             # Pacotes compartilhados
 ```
 
-## Useful Links
+## 🗄️ Modelo de Dados
 
-Learn more about the power of Turborepo:
+### User
+- `id`: ID único
+- `username`: Nome de usuário (único)
+- `role`: PLAYER ou MASTER
+- `characters`: Lista de personagens
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+### Character
+- Informações básicas: nome, raça, classe, nível, antecedente, alinhamento
+- Atributos: Força, Destreza, Constituição, Inteligência, Sabedoria, Carisma
+- Pontos de vida: máximo, atual, temporários
+- Classe de Armadura (CA)
+- Perícias, proficiências, equipamentos, magias (JSON)
+- Anotações do jogador
+
+## 🛠️ Scripts Disponíveis
+
+### API (apps/api)
+- `pnpm dev`: Inicia servidor de desenvolvimento
+- `pnpm db:generate`: Gera Prisma Client
+- `pnpm db:push`: Aplica mudanças no schema ao banco
+- `pnpm db:migrate`: Cria e aplica migrações
+- `pnpm db:studio`: Abre Prisma Studio
+
+### Web (apps/web)
+- `pnpm dev`: Inicia servidor de desenvolvimento
+
+### Raiz
+- `pnpm dev`: Inicia todos os apps em desenvolvimento
+- `pnpm build`: Builda todos os apps
+- `pnpm lint`: Executa linter em todos os apps
+
+## 🔧 Tecnologias
+
+- **Next.js 16**: Framework React
+- **Prisma**: ORM para PostgreSQL
+- **PostgreSQL**: Banco de dados
+- **TypeScript**: Tipagem estática
+- **Turborepo**: Monorepo management
+
+## 📝 Notas
+
+- O sistema usa autenticação simples baseada em nome de usuário (sem senha)
+- Os dados são armazenados localmente no navegador (localStorage) para manter a sessão
+- O mestre tem acesso total a todas as fichas
+- Os modificadores de atributos são calculados automaticamente: `(valor - 10) / 2`
+
+## 🐛 Troubleshooting
+
+### Erro de conexão com banco de dados
+- Verifique se o PostgreSQL está rodando
+- Confirme que a `DATABASE_URL` está correta no `.env`
+- Certifique-se de que o banco de dados foi criado
+
+### Erro ao acessar API
+- Verifique se o servidor da API está rodando na porta 3001
+- Confirme que `NEXT_PUBLIC_API_URL` está configurado no frontend
+
+### Erro de permissão
+- Jogadores só podem acessar suas próprias fichas
+- Mestres podem acessar todas as fichas
+
+## 📄 Licença
+
+Este projeto é de uso livre.

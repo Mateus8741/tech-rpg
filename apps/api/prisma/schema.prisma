@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  PLAYER
+  MASTER
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  role      UserRole @default(PLAYER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  characters Character[]
+}
+
+model Character {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Informações Básicas
+  name         String
+  race         String
+  class        String
+  level        Int      @default(1)
+  background   String?
+  alignment    String?
+  experience   Int      @default(0)
+
+  // Atributos
+  strength     Int      @default(10)
+  dexterity    Int      @default(10)
+  constitution Int      @default(10)
+  intelligence Int      @default(10)
+  wisdom       Int      @default(10)
+  charisma     Int      @default(10)
+
+  // Modificadores (calculados ou customizados)
+  strengthModifier     Int @default(0)
+  dexterityModifier    Int @default(0)
+  constitutionModifier Int @default(0)
+  intelligenceModifier Int @default(0)
+  wisdomModifier       Int @default(0)
+  charismaModifier     Int @default(0)
+
+  // Pontos de Vida
+  maxHitPoints    Int @default(8)
+  currentHitPoints Int @default(8)
+  temporaryHitPoints Int @default(0)
+
+  // Armadura Classe
+  armorClass Int @default(10)
+
+  // Perícias (JSON para flexibilidade)
+  skills Json @default("{}")
+
+  // Proficiências
+  proficiencies Json @default("[]")
+
+  // Equipamentos
+  equipment Json @default("[]")
+
+  // Magias (para classes mágicas)
+  spells Json @default("[]")
+
+  // Características e Traços
+  features Json @default("[]")
+
+  // Anotações do Jogador
+  notes String @default("")
+
+  // Dados Customizados (para flexibilidade)
+  customData Json @default("{}")
+
+  @@index([userId])
+}
+
