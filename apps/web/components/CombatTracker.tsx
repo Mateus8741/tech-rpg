@@ -7,13 +7,15 @@ import styles from './CombatTracker.module.css';
 interface CombatTrackerProps {
   character: Character;
   username: string;
+  userRole: 'PLAYER' | 'MASTER';
   onUpdate: () => void;
 }
 
-export default function CombatTracker({ character, username, onUpdate }: CombatTrackerProps) {
+export default function CombatTracker({ character, username, userRole, onUpdate }: CombatTrackerProps) {
   const [damage, setDamage] = useState<number>(character.combatStatus?.damage || 0);
   const [debuff, setDebuff] = useState<number>(character.combatStatus?.debuff || 0);
   const [turns, setTurns] = useState<number>(character.combatStatus?.turns || 0);
+  const [currentTurn, setCurrentTurn] = useState<number>(character.combatStatus?.currentTurn || 1);
   
   const debuffTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const turnsTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -40,6 +42,7 @@ export default function CombatTracker({ character, username, onUpdate }: CombatT
     setDamage(status.damage || 0);
     setDebuff(status.debuff || 0);
     setTurns(status.turns || 0);
+    setCurrentTurn(status.currentTurn || 1);
   }, [character]);
 
   // Limpa timeouts quando o componente for desmontado
@@ -79,6 +82,7 @@ export default function CombatTracker({ character, username, onUpdate }: CombatT
       damage: 0, // Limpa o dano após aplicar
       debuff: newDebuff,
       turns: newTurns,
+      currentTurn: currentTurn,
     };
 
     try {
@@ -115,6 +119,7 @@ export default function CombatTracker({ character, username, onUpdate }: CombatT
       damage: 0, // Limpa o dano após aplicar
       debuff: newDebuff,
       turns: newTurns,
+      currentTurn: currentTurn,
     };
 
     try {
@@ -151,6 +156,7 @@ export default function CombatTracker({ character, username, onUpdate }: CombatT
       damage: 0, // Limpa o dano após aplicar
       debuff: newDebuff,
       turns: newTurns,
+      currentTurn: currentTurn,
     };
 
     try {
@@ -184,6 +190,7 @@ export default function CombatTracker({ character, username, onUpdate }: CombatT
         damage,
         debuff: newDebuff,
         turns: newTurns,
+        currentTurn: currentTurn,
       };
 
       try {
@@ -215,6 +222,7 @@ export default function CombatTracker({ character, username, onUpdate }: CombatT
         damage,
         debuff: newDebuff,
         turns: newTurns,
+        currentTurn: currentTurn,
       };
 
       try {
@@ -226,11 +234,44 @@ export default function CombatTracker({ character, username, onUpdate }: CombatT
     }, 800);
   };
 
+  const passTurn = async () => {
+    let newTurns = turns;
+    let newDebuff = debuff;
+    
+    // Diminui os turnos do debuff quando passa o turno
+    if (turns > 0) {
+      newTurns = Math.max(0, turns - 1);
+      
+      // Se os turnos chegaram a 0, remove o debuff
+      if (newTurns === 0) {
+        newDebuff = 0;
+      }
+    }
+    
+    const combatStatus: CombatStatus = {
+      damage,
+      debuff: newDebuff,
+      turns: newTurns,
+      currentTurn: currentTurn + 1,
+    };
+
+    try {
+      await updateCharacter(character.id, username, { combatStatus });
+      setTurns(newTurns);
+      setDebuff(newDebuff);
+      setCurrentTurn(currentTurn + 1);
+      onUpdate();
+    } catch (error) {
+      console.error('Erro ao passar turno:', error);
+    }
+  };
+
   const clearCombat = async () => {
     const combatStatus: CombatStatus = {
       damage: 0,
       debuff: 0,
       turns: 0,
+      currentTurn: 1,
     };
 
     try {
@@ -238,6 +279,7 @@ export default function CombatTracker({ character, username, onUpdate }: CombatT
       setDamage(0);
       setDebuff(0);
       setTurns(0);
+      setCurrentTurn(1);
       // Atualiza o personagem localmente sem recarregar a página
       onUpdate();
     } catch (error) {
@@ -247,7 +289,13 @@ export default function CombatTracker({ character, username, onUpdate }: CombatT
 
   return (
     <div className={styles.combatTracker}>
-      <h2>⚔️ Rastreador de Combate</h2>
+      <div className={styles.header}>
+        <h2>⚔️ Rastreador de Combate</h2>
+        <div className={styles.turnDisplay}>
+          <span className={styles.turnLabel}>Turno:</span>
+          <span className={styles.turnNumber}>{currentTurn}</span>
+        </div>
+      </div>
       <div className={styles.combatTable}>
         <div className={styles.combatRow}>
           <div className={styles.combatCell}>
@@ -340,6 +388,11 @@ export default function CombatTracker({ character, username, onUpdate }: CombatT
         </div>
       )}
       <div className={styles.actions}>
+        {userRole === 'MASTER' && (
+          <button type="button" onClick={passTurn} className={styles.passTurnButton}>
+            ⏭️ Passar Turno
+          </button>
+        )}
         <button type="button" onClick={clearCombat} className={styles.clearButton}>
           🧹 Limpar Combate
         </button>

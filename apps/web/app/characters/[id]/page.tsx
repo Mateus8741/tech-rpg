@@ -12,15 +12,18 @@ export default function EditCharacterPage() {
   const router = useRouter();
   const [character, setCharacter] = useState<Character | null>(null);
   const [username, setUsername] = useState('');
+  const [userRole, setUserRole] = useState<'PLAYER' | 'MASTER'>('PLAYER');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const savedUsername = localStorage.getItem('rpg_username');
+    const savedRole = localStorage.getItem('rpg_role') as 'PLAYER' | 'MASTER';
     if (!savedUsername) {
       router.push('/');
       return;
     }
     setUsername(savedUsername);
+    setUserRole(savedRole || 'PLAYER');
     loadCharacter(savedUsername);
   }, [router, params.id]);
 
@@ -74,7 +77,7 @@ export default function EditCharacterPage() {
           ← Voltar
         </Link>
       </div>
-      <CombatTracker character={character} username={username} onUpdate={handleCombatUpdate} />
+      <CombatTracker character={character} username={username} userRole={userRole} onUpdate={handleCombatUpdate} />
       <CharacterForm character={character} onSubmit={handleSubmit} />
     </div>
   );

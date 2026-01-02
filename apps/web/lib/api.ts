@@ -23,6 +23,7 @@ export interface CombatStatus {
   damage?: number; // Dano recebido
   debuff?: number; // Valor do debuff
   turns?: number; // Turnos restantes do debuff
+  currentTurn?: number; // Turno atual do combate
 }
 
 export interface User {
