@@ -84,6 +84,9 @@ model Character {
   // Inventário (estruturado: nome, quantidade, máximo)
   inventory Json @default("[]")
 
+  // Status de Combate (dano, debuff, turnos)
+  combatStatus Json @default("{}")
+
   // Magias (para classes mágicas)
   spells Json @default("[]")
 

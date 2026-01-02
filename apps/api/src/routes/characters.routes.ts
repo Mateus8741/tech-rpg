@@ -98,6 +98,7 @@ router.post("/", async (req: Request, res: Response) => {
  				equipment: characterData.equipment || [],
  				abilities: characterData.abilities || [],
  				inventory: characterData.inventory || [],
+ 				combatStatus: characterData.combatStatus ? (typeof characterData.combatStatus === 'object' ? characterData.combatStatus : {}) : {},
  				spells: characterData.spells || [],
 				features: characterData.features || [],
 				notes: characterData.notes || "",
@@ -190,6 +191,13 @@ router.put("/:id", async (req: Request, res: Response) => {
 			return res.status(403).json({ error: "Acesso negado" });
 		}
 
+		// Garante que combatStatus seja um objeto válido (JSON)
+		if (updateData.combatStatus !== undefined) {
+			if (typeof updateData.combatStatus !== 'object' || updateData.combatStatus === null) {
+				updateData.combatStatus = {};
+			}
+		}
+
 		const character = await prisma.character.update({
 			where: { id },
 			data: updateData,
@@ -198,7 +206,8 @@ router.put("/:id", async (req: Request, res: Response) => {
 		return res.json({ character });
 	} catch (error) {
 		console.error("Erro ao atualizar personagem:", error);
-		return res.status(500).json({ error: "Erro ao atualizar personagem" });
+		const errorMessage = error instanceof Error ? error.message : "Erro ao atualizar personagem";
+		return res.status(500).json({ error: errorMessage });
 	}
 });
 

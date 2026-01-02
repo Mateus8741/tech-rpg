@@ -19,6 +19,12 @@ export interface InventoryItem {
   max: number;
 }
 
+export interface CombatStatus {
+  damage?: number; // Dano recebido
+  debuff?: number; // Valor do debuff
+  turns?: number; // Turnos restantes do debuff
+}
+
 export interface User {
   id: string;
   username: string;
@@ -59,6 +65,7 @@ export interface Character {
   equipment: Equipment[];
   abilities: Ability[];
   inventory: InventoryItem[];
+  combatStatus?: CombatStatus;
   spells: any[];
   features: any[];
   notes: string;
@@ -122,7 +129,11 @@ export async function updateCharacter(id: string, username: string, characterDat
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username, ...characterData }),
   });
-  if (!response.ok) throw new Error('Erro ao atualizar personagem');
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({ error: 'Erro desconhecido' }));
+    console.error('Erro na resposta:', errorData);
+    throw new Error(errorData.error || 'Erro ao atualizar personagem');
+  }
   const data = await response.json();
   return data.character;
 }

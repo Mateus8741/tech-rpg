@@ -5,6 +5,7 @@ import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import { getCharacter, updateCharacter, type Character } from '@/lib/api';
 import CharacterForm from '@/components/CharacterForm';
+import CombatTracker from '@/components/CombatTracker';
 
 export default function EditCharacterPage() {
   const params = useParams();
@@ -47,6 +48,16 @@ export default function EditCharacterPage() {
     }
   };
 
+  const handleCombatUpdate = async () => {
+    // Atualiza apenas o personagem sem recarregar a página inteira
+    try {
+      const data = await getCharacter(params.id as string, username);
+      setCharacter(data);
+    } catch (error) {
+      console.error('Erro ao atualizar personagem:', error);
+    }
+  };
+
   if (loading) {
     return <div style={{ padding: '2rem', textAlign: 'center' }}>Carregando...</div>;
   }
@@ -63,6 +74,7 @@ export default function EditCharacterPage() {
           ← Voltar
         </Link>
       </div>
+      <CombatTracker character={character} username={username} onUpdate={handleCombatUpdate} />
       <CharacterForm character={character} onSubmit={handleSubmit} />
     </div>
   );
