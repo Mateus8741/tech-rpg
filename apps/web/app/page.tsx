@@ -2,8 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { login, getUser, type User } from '@/lib/api';
-import styles from './page.module.css';
+import { Swords } from 'lucide-react';
+import { login } from '@/lib/api';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 export default function Home() {
   const [username, setUsername] = useState('');
@@ -13,11 +22,8 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    // Verifica se já existe um usuário salvo
-    const savedUsername = localStorage.getItem('rpg_username');
-    if (savedUsername) {
-      setUsername(savedUsername);
-    }
+    const saved = localStorage.getItem('rpg_username');
+    if (saved) setUsername(saved);
   }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -26,71 +32,84 @@ export default function Home() {
       setError('Por favor, insira um nome de usuário');
       return;
     }
-
     setLoading(true);
     setError('');
-
     try {
       await login(username.trim(), role);
       localStorage.setItem('rpg_username', username.trim());
       localStorage.setItem('rpg_role', role);
       router.push('/characters');
-    } catch (err) {
+    } catch {
       setError('Erro ao fazer login. Tente novamente.');
-      console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className={styles.loginContainer}>
-      <div className={styles.loginBox}>
-        <h1 className={styles.title}>🎲 Sistema de Fichas RPG</h1>
-        <p className={styles.subtitle}>Gerenciamento de Personagens D&D</p>
+    <div className="min-h-screen bg-[#0f1117] flex items-center justify-center p-4">
+      <div className="w-full max-w-sm bg-[#13151f] border border-[#1e2035] rounded-2xl p-8 shadow-2xl">
+        {/* Logo */}
+        <div className="flex flex-col items-center mb-8">
+          <div className="w-14 h-14 bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] rounded-2xl flex items-center justify-center mb-4">
+            <Swords className="w-7 h-7 text-white" />
+          </div>
+          <h1 className="text-xl font-bold text-[#e2e8f0]">Sistema de Fichas RPG</h1>
+          <p className="text-sm text-[#64748b] mt-1">Gerenciamento de Personagens D&D</p>
+        </div>
 
-        <form onSubmit={handleLogin} className={styles.form}>
-          <div className={styles.formGroup}>
-            <label htmlFor="username">Nome de Usuário</label>
-            <input
-              id="username"
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-[#94a3b8] uppercase tracking-wide">
+              Nome de Usuário
+            </label>
+            <Input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Digite seu nome"
-              className={styles.input}
               disabled={loading}
+              className="bg-[#0f1117] border-[#2d2f45] text-[#e2e8f0] placeholder:text-[#475569] focus-visible:ring-[#6366f1]"
             />
           </div>
 
-          <div className={styles.formGroup}>
-            <label htmlFor="role">Tipo de Usuário</label>
-            <select
-              id="role"
-              value={role}
-              onChange={(e) => setRole(e.target.value as 'PLAYER' | 'MASTER')}
-              className={styles.select}
-              disabled={loading}
-            >
-              <option value="PLAYER">Jogador</option>
-              <option value="MASTER">Mestre</option>
-            </select>
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-[#94a3b8] uppercase tracking-wide">
+              Tipo de Usuário
+            </label>
+            <Select value={role} onValueChange={(v) => setRole(v as 'PLAYER' | 'MASTER')} disabled={loading}>
+              <SelectTrigger className="bg-[#0f1117] border-[#2d2f45] text-[#e2e8f0] focus:ring-[#6366f1]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="bg-[#13151f] border-[#2d2f45]">
+                <SelectItem value="PLAYER" className="text-[#e2e8f0] focus:bg-[#6366f1]/20">Jogador</SelectItem>
+                <SelectItem value="MASTER" className="text-[#e2e8f0] focus:bg-[#6366f1]/20">Mestre</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
-          {error && <div className={styles.error}>{error}</div>}
+          {error && (
+            <p className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-3 py-2">
+              {error}
+            </p>
+          )}
 
-          <button
+          <Button
             type="submit"
-            className={styles.button}
             disabled={loading || !username.trim()}
+            className="w-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] hover:from-[#4f46e5] hover:to-[#7c3aed] text-white border-0 font-semibold mt-2"
           >
             {loading ? 'Entrando...' : 'Entrar'}
-          </button>
+          </Button>
         </form>
 
-        <div className={styles.info}>
-          <p>💡 <strong>Jogador:</strong> Acessa apenas suas próprias fichas</p>
-          <p>👑 <strong>Mestre:</strong> Acessa todas as fichas de todos os jogadores</p>
+        <div className="mt-6 pt-5 border-t border-[#1e2035] space-y-1.5">
+          <p className="text-xs text-[#475569]">
+            <span className="text-[#94a3b8] font-medium">Jogador</span> — acessa apenas suas próprias fichas
+          </p>
+          <p className="text-xs text-[#475569]">
+            <span className="text-[#94a3b8] font-medium">Mestre</span> — acessa todas as fichas dos jogadores
+          </p>
         </div>
       </div>
     </div>
