@@ -54,6 +54,8 @@ export default function CharacterForm({ character, onSubmit, username, userRole,
     return Math.floor((value - 10) / 2);
   };
 
+  const inputClass = "bg-[#0f1117] border-[#2d2f45] text-[#e2e8f0] placeholder:text-[#475569] focus-visible:ring-[#6366f1]";
+
   useEffect(() => {
     if (character) {
       setAbilities(character.abilities || []);
@@ -228,12 +230,123 @@ export default function CharacterForm({ character, onSubmit, username, userRole,
           {/* Tab content lives in the scrollable area below */}
           <div className="flex-1 overflow-y-auto px-6 py-5">
             <TabsContent value="info" className="mt-0">
-              {/* Info tab — filled in Task 7 */}
-              <div className="text-[#64748b] text-sm">Info tab (Task 7)</div>
+              <div className="grid grid-cols-2 gap-4">
+                <FormField label="Nome do Personagem">
+                  <Input
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className={inputClass}
+                    placeholder="Ex: Thorin Ferropunho"
+                  />
+                </FormField>
+                <FormField label="Raça">
+                  <Select name="race" value={formData.race} onValueChange={(v) => setFormData(p => ({ ...p, race: v }))}>
+                    <SelectTrigger className={inputClass}><SelectValue /></SelectTrigger>
+                    <SelectContent className="bg-[#13151f] border-[#2d2f45]">
+                      {['Humano','Elfo','Anão','Halfling','Meio-Elfo','Meio-Orc','Tiefling','Dragonborn','Gnomo'].map(r => (
+                        <SelectItem key={r} value={r} className="text-[#e2e8f0] focus:bg-[#6366f1]/20">{r}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormField>
+                <FormField label="Classe">
+                  <Select name="class" value={formData.class} onValueChange={(v) => setFormData(p => ({ ...p, class: v }))}>
+                    <SelectTrigger className={inputClass}><SelectValue /></SelectTrigger>
+                    <SelectContent className="bg-[#13151f] border-[#2d2f45]">
+                      {['Guerreiro','Mago','Ladino','Clérigo','Ranger','Paladino','Bárbaro','Bardo','Druida','Monge','Bruxo','Feiticeiro'].map(c => (
+                        <SelectItem key={c} value={c} className="text-[#e2e8f0] focus:bg-[#6366f1]/20">{c}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormField>
+                <FormField label="Nível">
+                  <Input type="number" name="level" value={formData.level} onChange={handleChange} min="1" max="20" className={inputClass} />
+                </FormField>
+                <FormField label="Antecedente">
+                  <Input name="background" value={formData.background} onChange={handleChange} placeholder="Ex: Soldado, Erudito..." className={inputClass} />
+                </FormField>
+                <FormField label="Alinhamento">
+                  <Select name="alignment" value={formData.alignment || ''} onValueChange={(v) => setFormData(p => ({ ...p, alignment: v }))}>
+                    <SelectTrigger className={inputClass}><SelectValue placeholder="-" /></SelectTrigger>
+                    <SelectContent className="bg-[#13151f] border-[#2d2f45]">
+                      {['Leal e Bom','Neutro e Bom','Caótico e Bom','Leal e Neutro','Neutro','Caótico e Neutro','Leal e Mau','Neutro e Mau','Caótico e Mau'].map(a => (
+                        <SelectItem key={a} value={a} className="text-[#e2e8f0] focus:bg-[#6366f1]/20">{a}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </FormField>
+                <FormField label="Experiência">
+                  <Input type="number" name="experience" value={formData.experience} onChange={handleChange} min="0" className={inputClass} />
+                </FormField>
+              </div>
             </TabsContent>
-            <TabsContent value="atributos" className="mt-0">
-              {/* Atributos tab — filled in Task 7 */}
-              <div className="text-[#64748b] text-sm">Atributos tab (Task 7)</div>
+            <TabsContent value="atributos" className="mt-0 space-y-4">
+              {/* Attribute grid */}
+              <SectionCard title="Atributos">
+                <div className="grid grid-cols-6 gap-3">
+                  {[
+                    { key: 'strength', abbr: 'FOR' },
+                    { key: 'dexterity', abbr: 'DES' },
+                    { key: 'constitution', abbr: 'CON' },
+                    { key: 'intelligence', abbr: 'INT' },
+                    { key: 'wisdom', abbr: 'SAB' },
+                    { key: 'charisma', abbr: 'CAR' },
+                  ].map(({ key, abbr }) => {
+                    const val = formData[key as keyof typeof formData] as number;
+                    const mod = calculateModifier(val);
+                    const modColor = mod > 0 ? 'text-[#a78bfa] bg-[#6366f1]/15' : mod < 0 ? 'text-[#f87171] bg-red-500/10' : 'text-[#64748b] bg-white/5';
+                    return (
+                      <div key={key} className="bg-[#0f1117] border border-[#2d2f45] rounded-xl p-3 text-center">
+                        <p className="text-[9px] font-semibold text-[#475569] uppercase tracking-widest mb-2">{abbr}</p>
+                        <input
+                          type="number"
+                          name={key}
+                          value={val}
+                          onChange={handleChange}
+                          min="1"
+                          max="30"
+                          className="bg-transparent w-full text-center text-lg font-bold text-[#e2e8f0] outline-none border-0 p-0 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        />
+                        <div className={cn('mt-2 rounded-full py-0.5 text-xs font-semibold', modColor)}>
+                          {mod >= 0 ? '+' : ''}{mod}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </SectionCard>
+
+              {/* HP + Mana */}
+              <div className="grid grid-cols-2 gap-4">
+                <SectionCard title="Pontos de Vida">
+                  <div className="grid grid-cols-3 gap-3">
+                    <FormField label="Máximo">
+                      <Input type="number" name="maxHitPoints" value={formData.maxHitPoints} onChange={handleChange} min="1" className={inputClass} />
+                    </FormField>
+                    <FormField label="Atual">
+                      <Input type="number" name="currentHitPoints" value={formData.currentHitPoints} onChange={handleChange} min="0" className="bg-[#0f1117] border-red-500/30 text-[#f87171] focus-visible:ring-red-500" />
+                    </FormField>
+                    <FormField label="Temporário">
+                      <Input type="number" name="temporaryHitPoints" value={formData.temporaryHitPoints} onChange={handleChange} min="0" className={inputClass} />
+                    </FormField>
+                  </div>
+                </SectionCard>
+                <SectionCard title="Mana + Armadura">
+                  <div className="grid grid-cols-3 gap-3">
+                    <FormField label="Mana Máx">
+                      <Input type="number" name="maxMana" value={formData.maxMana} onChange={handleChange} min="0" className={inputClass} />
+                    </FormField>
+                    <FormField label="Mana Atual">
+                      <Input type="number" name="currentMana" value={formData.currentMana} onChange={handleChange} min="0" className="bg-[#0f1117] border-[#818cf8]/30 text-[#818cf8] focus-visible:ring-[#818cf8]" />
+                    </FormField>
+                    <FormField label="CA">
+                      <Input type="number" name="armorClass" value={formData.armorClass} onChange={handleChange} min="0" className={inputClass} />
+                    </FormField>
+                  </div>
+                </SectionCard>
+              </div>
             </TabsContent>
             <TabsContent value="habilidades" className="mt-0">
               {/* Habilidades tab — filled in Task 8 */}
@@ -261,6 +374,24 @@ function StatPill({ label, value, colorClass }: { label: string; value: string; 
     <div className={cn('flex items-center gap-2 border rounded-lg px-3 py-1.5', colorClass)}>
       <span className="text-[10px] uppercase tracking-wide opacity-60">{label}</span>
       <span className="text-sm font-bold">{value}</span>
+    </div>
+  );
+}
+
+function FormField({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="space-y-1.5">
+      <label className="text-xs font-medium text-[#94a3b8] uppercase tracking-wide">{label}</label>
+      {children}
+    </div>
+  );
+}
+
+function SectionCard({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="bg-[#13151f] border border-[#1e2035] rounded-xl p-5">
+      <p className="text-xs font-semibold text-[#64748b] uppercase tracking-widest mb-4">{title}</p>
+      {children}
     </div>
   );
 }
