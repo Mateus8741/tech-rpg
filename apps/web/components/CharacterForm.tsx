@@ -402,10 +402,10 @@ export default function CharacterForm({ character, onSubmit, username, userRole,
                           </FormField>
                         </div>
                         <FormField label="Defesa">
-                          <Input type="number" value={item.defense || 0} onChange={(e) => handleEquipmentChange(index, 'defense', parseInt(e.target.value) || 0)} min="0" className={inputClass} />
+                          <Input type="number" value={item.defense ?? 0} onChange={(e) => handleEquipmentChange(index, 'defense', parseInt(e.target.value) || 0)} min="0" className={inputClass} />
                         </FormField>
                         <FormField label="Ataque">
-                          <Input type="number" value={item.attack || 0} onChange={(e) => handleEquipmentChange(index, 'attack', parseInt(e.target.value) || 0)} min="0" className={inputClass} />
+                          <Input type="number" value={item.attack ?? 0} onChange={(e) => handleEquipmentChange(index, 'attack', parseInt(e.target.value) || 0)} min="0" className={inputClass} />
                         </FormField>
                       </div>
                       <div className="flex justify-end mt-3">
