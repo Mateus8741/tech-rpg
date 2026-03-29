@@ -60,10 +60,11 @@ export default function Home() {
 
         <form onSubmit={handleLogin} className="space-y-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-medium text-[#94a3b8] uppercase tracking-wide">
+            <label htmlFor="username" className="text-xs font-medium text-[#94a3b8] uppercase tracking-wide">
               Nome de Usuário
             </label>
             <Input
+              id="username"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -74,11 +75,11 @@ export default function Home() {
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-medium text-[#94a3b8] uppercase tracking-wide">
+            <label htmlFor="role" className="text-xs font-medium text-[#94a3b8] uppercase tracking-wide">
               Tipo de Usuário
             </label>
             <Select value={role} onValueChange={(v) => setRole(v as 'PLAYER' | 'MASTER')} disabled={loading}>
-              <SelectTrigger className="bg-[#0f1117] border-[#2d2f45] text-[#e2e8f0] focus:ring-[#6366f1]">
+              <SelectTrigger id="role" className="bg-[#0f1117] border-[#2d2f45] text-[#e2e8f0] focus:ring-[#6366f1]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="bg-[#13151f] border-[#2d2f45]">
