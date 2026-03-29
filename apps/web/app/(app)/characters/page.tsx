@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Plus, LogOut, Trash2, Pencil, Users } from 'lucide-react';
+import { Plus, LogOut, Trash2, Pencil, Users, User } from 'lucide-react';
 import { getCharacters, deleteCharacter, type Character } from '@/lib/api';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -28,16 +28,7 @@ export default function CharactersPage() {
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const router = useRouter();
 
-  useEffect(() => {
-    const savedUsername = localStorage.getItem('rpg_username');
-    const savedRole = localStorage.getItem('rpg_role') as 'PLAYER' | 'MASTER';
-    if (!savedUsername) { router.push('/'); return; }
-    setUsername(savedUsername);
-    setUserRole(savedRole || 'PLAYER');
-    loadCharacters(savedUsername);
-  }, [router]);
-
-  const loadCharacters = async (user: string) => {
+  const loadCharacters = useCallback(async (user: string) => {
     try {
       setLoading(true);
       const data = await getCharacters(user);
@@ -47,7 +38,16 @@ export default function CharactersPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const savedUsername = localStorage.getItem('rpg_username');
+    const savedRole = localStorage.getItem('rpg_role') as 'PLAYER' | 'MASTER';
+    if (!savedUsername) { router.push('/'); return; }
+    setUsername(savedUsername);
+    setUserRole(savedRole || 'PLAYER');
+    loadCharacters(savedUsername);
+  }, [router, loadCharacters]);
 
   const confirmDelete = async () => {
     if (!deleteId) return;
@@ -82,7 +82,7 @@ export default function CharactersPage() {
       <div className="h-[52px] border-b border-[#1e2035] px-6 flex items-center justify-between flex-shrink-0">
         <div>
           <p className="text-sm font-semibold text-[#e2e8f0]">Personagens</p>
-          <p className="text-xs text-[#475569]">{characters.length} personagen{characters.length !== 1 ? 's' : ''}</p>
+          <p className="text-xs text-[#475569]">{characters.length} {characters.length !== 1 ? 'personagens' : 'personagem'}</p>
         </div>
         <div className="flex items-center gap-2">
           <Button
@@ -199,15 +199,16 @@ function CharacterCard({
         </div>
 
         {userRole === 'MASTER' && character.user && (
-          <p className="text-[10px] text-[#475569] mb-2">
-            👤 {character.user.username}
+          <p className="text-[10px] text-[#475569] mb-2 flex items-center gap-1">
+            <User className="w-3 h-3" />
+            {character.user.username}
           </p>
         )}
 
         {/* Stats row */}
         <div className="flex gap-1.5 mb-3">
           {[
-            { label: 'HP', value: `${character.currentHitPoints}`, color: 'text-[#f87171] bg-red-500/10 border-red-500/20' },
+            { label: 'HP', value: `${character.currentHitPoints}/${character.maxHitPoints}`, color: 'text-[#f87171] bg-red-500/10 border-red-500/20' },
             { label: 'CA', value: `${character.armorClass}`, color: 'text-[#94a3b8] bg-white/5 border-[#1e2035]' },
             { label: 'MP', value: `${character.currentMana}`, color: 'text-[#818cf8] bg-[#818cf8]/10 border-[#818cf8]/20' },
           ].map(({ label, value, color }) => (
