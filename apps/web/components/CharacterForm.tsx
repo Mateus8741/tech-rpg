@@ -349,12 +349,128 @@ export default function CharacterForm({ character, onSubmit, username, userRole,
               </div>
             </TabsContent>
             <TabsContent value="habilidades" className="mt-0">
-              {/* Habilidades tab — filled in Task 8 */}
-              <div className="text-[#64748b] text-sm">Habilidades tab (Task 8)</div>
+              <SectionCard title="Habilidades">
+                <div className="space-y-3 mb-4">
+                  {abilities.map((ability, index) => (
+                    <div key={index} className="bg-[#0f1117] border border-[#2d2f45] rounded-xl p-4">
+                      <div className="grid grid-cols-4 gap-3 mb-3">
+                        <div className="col-span-2">
+                          <FormField label="Nome da Habilidade">
+                            <Input
+                              value={ability.name}
+                              onChange={(e) => handleAbilityChange(index, 'name', e.target.value)}
+                              placeholder="Ex: Bola de Fogo"
+                              className={inputClass}
+                            />
+                          </FormField>
+                        </div>
+                        <FormField label="Nível">
+                          <Input type="number" value={ability.level} onChange={(e) => handleAbilityChange(index, 'level', parseInt(e.target.value) || 1)} min="1" max="20" className={inputClass} />
+                        </FormField>
+                        <FormField label="Custo Mana">
+                          <Input type="number" value={ability.cost} onChange={(e) => handleAbilityChange(index, 'cost', parseInt(e.target.value) || 0)} min="0" className={inputClass} />
+                        </FormField>
+                      </div>
+                      <div className="flex items-end gap-3">
+                        <div className="flex-1">
+                          <FormField label="Rolagem de Dano">
+                            <Input value={ability.damage} onChange={(e) => handleAbilityChange(index, 'damage', e.target.value)} placeholder="Ex: 1d6+3, 2d8" className={inputClass} />
+                          </FormField>
+                        </div>
+                        <Button type="button" onClick={() => removeAbility(index)} variant="outline" size="sm" className="border-red-500/20 text-red-400 hover:bg-red-500/10 h-9">
+                          Remover
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <Button type="button" onClick={addAbility} variant="outline" className="w-full border-dashed border-[#2d2f45] text-[#64748b] hover:text-[#a78bfa] hover:border-[#6366f1]/40 hover:bg-[#6366f1]/5">
+                  + Adicionar Habilidade
+                </Button>
+              </SectionCard>
             </TabsContent>
-            <TabsContent value="inventario" className="mt-0">
-              {/* Inventário tab — filled in Task 8 */}
-              <div className="text-[#64748b] text-sm">Inventário tab (Task 8)</div>
+            <TabsContent value="inventario" className="mt-0 space-y-4">
+              {/* Equipment */}
+              <SectionCard title="Equipamentos">
+                <div className="space-y-3 mb-4">
+                  {equipment.map((item, index) => (
+                    <div key={index} className="bg-[#0f1117] border border-[#2d2f45] rounded-xl p-4">
+                      <div className="grid grid-cols-4 gap-3 items-end">
+                        <div className="col-span-2">
+                          <FormField label="Nome do Item">
+                            <Input value={item.name} onChange={(e) => handleEquipmentChange(index, 'name', e.target.value)} placeholder="Ex: Espada Longa" className={inputClass} />
+                          </FormField>
+                        </div>
+                        <FormField label="Defesa">
+                          <Input type="number" value={item.defense || 0} onChange={(e) => handleEquipmentChange(index, 'defense', parseInt(e.target.value) || 0)} min="0" className={inputClass} />
+                        </FormField>
+                        <FormField label="Ataque">
+                          <Input type="number" value={item.attack || 0} onChange={(e) => handleEquipmentChange(index, 'attack', parseInt(e.target.value) || 0)} min="0" className={inputClass} />
+                        </FormField>
+                      </div>
+                      <div className="flex justify-end mt-3">
+                        <Button type="button" onClick={() => removeEquipment(index)} variant="outline" size="sm" className="border-red-500/20 text-red-400 hover:bg-red-500/10">
+                          Remover
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <Button type="button" onClick={addEquipment} variant="outline" className="w-full border-dashed border-[#2d2f45] text-[#64748b] hover:text-[#a78bfa] hover:border-[#6366f1]/40 hover:bg-[#6366f1]/5">
+                  + Adicionar Equipamento
+                </Button>
+              </SectionCard>
+
+              {/* Inventory table */}
+              <SectionCard title="Inventário">
+                {inventory.length > 0 && (
+                  <table className="w-full mb-4 text-sm">
+                    <thead>
+                      <tr className="border-b border-[#1e2035]">
+                        <th className="text-left py-2 text-[10px] font-semibold text-[#475569] uppercase tracking-widest">Item</th>
+                        <th className="text-center py-2 text-[10px] font-semibold text-[#475569] uppercase tracking-widest w-20">Qtd</th>
+                        <th className="text-center py-2 text-[10px] font-semibold text-[#475569] uppercase tracking-widest w-20">Máx</th>
+                        <th className="w-10" />
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {inventory.map((item, index) => (
+                        <tr key={index} className="border-b border-[#1e2035]/50">
+                          <td className="py-2 pr-3">
+                            <Input value={item.name} onChange={(e) => handleInventoryChange(index, 'name', e.target.value)} placeholder="Nome do item" className={cn(inputClass, 'h-8 text-sm')} />
+                          </td>
+                          <td className="py-2 px-1">
+                            <Input type="number" value={item.quantity} onChange={(e) => handleInventoryChange(index, 'quantity', e.target.value)} min="0" max={item.max} className={cn(inputClass, 'h-8 text-sm text-center')} />
+                          </td>
+                          <td className="py-2 px-1">
+                            <Input type="number" value={item.max} onChange={(e) => handleInventoryChange(index, 'max', e.target.value)} min="0" className={cn(inputClass, 'h-8 text-sm text-center')} />
+                          </td>
+                          <td className="py-2 pl-1">
+                            <Button type="button" onClick={() => removeInventoryItem(index)} variant="ghost" size="sm" className="h-8 w-8 p-0 text-[#475569] hover:text-red-400 hover:bg-red-500/10">
+                              ×
+                            </Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+                <Button type="button" onClick={addInventoryItem} variant="outline" className="w-full border-dashed border-[#2d2f45] text-[#64748b] hover:text-[#a78bfa] hover:border-[#6366f1]/40 hover:bg-[#6366f1]/5">
+                  + Adicionar Item
+                </Button>
+              </SectionCard>
+
+              {/* Notes */}
+              <SectionCard title="Anotações">
+                <textarea
+                  name="notes"
+                  value={formData.notes}
+                  onChange={handleChange}
+                  rows={6}
+                  placeholder="Anotações sobre o personagem, história, características especiais..."
+                  className={cn(inputClass, 'w-full rounded-md border px-3 py-2 text-sm resize-none')}
+                />
+              </SectionCard>
             </TabsContent>
             {character && (
               <TabsContent value="combate" className="mt-0">
