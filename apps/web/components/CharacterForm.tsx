@@ -474,8 +474,16 @@ export default function CharacterForm({ character, onSubmit, username, userRole,
             </TabsContent>
             {character && (
               <TabsContent value="combate" className="mt-0">
-                {/* Combate tab — filled in Task 9 */}
-                <div className="text-[#64748b] text-sm">Combate tab (Task 9)</div>
+                {username && userRole && onCombatUpdate ? (
+                  <CombatTracker
+                    character={character}
+                    username={username}
+                    userRole={userRole}
+                    onUpdate={onCombatUpdate}
+                  />
+                ) : (
+                  <p className="text-[#64748b] text-sm">Combate disponível apenas no modo de edição.</p>
+                )}
               </TabsContent>
             )}
           </div>
