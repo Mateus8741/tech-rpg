@@ -1,15 +1,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { type Character, type Ability, type Equipment, type InventoryItem } from '@/lib/api';
-import styles from './CharacterForm.module.css';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { cn } from '@/lib/utils';
+import CombatTracker from '@/components/CombatTracker';
 
 interface CharacterFormProps {
   character?: Character;
   onSubmit: (data: Partial<Character>) => Promise<void>;
+  // Required on edit page for the Combate tab:
+  username?: string;
+  userRole?: 'PLAYER' | 'MASTER';
+  onCombatUpdate?: () => void;
 }
 
-export default function CharacterForm({ character, onSubmit }: CharacterFormProps) {
+export default function CharacterForm({ character, onSubmit, username, userRole, onCombatUpdate }: CharacterFormProps) {
   const [formData, setFormData] = useState({
     name: character?.name || '',
     race: character?.race || 'Humano',
@@ -37,6 +47,8 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
   const [equipment, setEquipment] = useState<Equipment[]>(character?.equipment || []);
   const [inventory, setInventory] = useState<InventoryItem[]>(character?.inventory || []);
   const [saving, setSaving] = useState(false);
+  const [activeTab, setActiveTab] = useState('info');
+  const router = useRouter();
 
   const calculateModifier = (value: number) => {
     return Math.floor((value - 10) / 2);
@@ -54,9 +66,9 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: name.includes('HitPoints') || name.includes('Mana') || name.includes('armorClass') || name.includes('level') || name.includes('experience') 
-        ? parseInt(value) || 0 
-        : name.includes('strength') || name.includes('dexterity') || name.includes('constitution') || 
+      [name]: name.includes('HitPoints') || name.includes('Mana') || name.includes('armorClass') || name.includes('level') || name.includes('experience')
+        ? parseInt(value) || 0
+        : name.includes('strength') || name.includes('dexterity') || name.includes('constitution') ||
           name.includes('intelligence') || name.includes('wisdom') || name.includes('charisma')
         ? parseInt(value) || 10
         : value,
@@ -66,7 +78,7 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
   const handleAbilityChange = (index: number, field: keyof Ability, value: string | number) => {
     setAbilities(prev => {
       const updated = [...prev];
-      updated[index] = { ...updated[index], [field]: value };
+      updated[index] = { ...updated[index], [field]: value } as Ability;
       return updated;
     });
   };
@@ -82,7 +94,7 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
   const handleEquipmentChange = (index: number, field: keyof Equipment, value: string | number) => {
     setEquipment(prev => {
       const updated = [...prev];
-      updated[index] = { ...updated[index], [field]: value };
+      updated[index] = { ...updated[index], [field]: value } as Equipment;
       return updated;
     });
   };
@@ -99,30 +111,30 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
     setInventory(prev => {
       const updated = [...prev];
       const newValue = field === 'name' ? value : (typeof value === 'string' ? parseInt(value) || 0 : value);
-      
+
       // Se estiver atualizando o campo, aplica o novo valor temporariamente
       if (field === 'quantity') {
         const quantityValue = typeof value === 'string' ? parseInt(value) || 0 : value;
-        const currentMax = updated[index].max;
+        const currentMax = updated[index]!.max;
         // Garante que quantidade não seja maior que máximo
-        updated[index] = { 
-          ...updated[index], 
+        updated[index] = {
+          ...updated[index]!,
           quantity: Math.min(quantityValue, currentMax),
           max: currentMax
         };
       } else if (field === 'max') {
         const maxValue = typeof value === 'string' ? parseInt(value) || 0 : value;
-        const currentQuantity = updated[index].quantity;
+        const currentQuantity = updated[index]!.quantity;
         // Se o novo máximo for menor que a quantidade atual, ajusta a quantidade
-        updated[index] = { 
-          ...updated[index], 
+        updated[index] = {
+          ...updated[index]!,
           max: maxValue,
           quantity: Math.min(currentQuantity, maxValue)
         };
       } else {
-        updated[index] = { ...updated[index], [field]: newValue };
+        updated[index] = { ...updated[index], [field]: newValue } as InventoryItem;
       }
-      
+
       return updated;
     });
   };
@@ -146,392 +158,109 @@ export default function CharacterForm({ character, onSubmit }: CharacterFormProp
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
-      <div className={styles.section}>
-        <h2>📋 Informações Básicas</h2>
-        <div className={styles.grid}>
-          <div className={styles.field}>
-            <label>Nome do Personagem *</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className={styles.field}>
-            <label>Raça</label>
-            <select name="race" value={formData.race} onChange={handleChange}>
-              <option>Humano</option>
-              <option>Elfo</option>
-              <option>Anão</option>
-              <option>Halfling</option>
-              <option>Meio-Elfo</option>
-              <option>Meio-Orc</option>
-              <option>Tiefling</option>
-              <option>Dragonborn</option>
-              <option>Gnomo</option>
-            </select>
-          </div>
-          <div className={styles.field}>
-            <label>Classe</label>
-            <select name="class" value={formData.class} onChange={handleChange}>
-              <option>Guerreiro</option>
-              <option>Mago</option>
-              <option>Ladino</option>
-              <option>Clérigo</option>
-              <option>Ranger</option>
-              <option>Paladino</option>
-              <option>Bárbaro</option>
-              <option>Bardo</option>
-              <option>Druida</option>
-              <option>Monge</option>
-              <option>Bruxo</option>
-              <option>Feiticeiro</option>
-            </select>
-          </div>
-          <div className={styles.field}>
-            <label>Nível</label>
-            <input
-              type="number"
-              name="level"
-              value={formData.level}
-              onChange={handleChange}
-              min="1"
-              max="20"
-            />
-          </div>
-          <div className={styles.field}>
-            <label>Antecedente</label>
-            <input
-              type="text"
-              name="background"
-              value={formData.background}
-              onChange={handleChange}
-              placeholder="Ex: Soldado, Erudito..."
-            />
-          </div>
-          <div className={styles.field}>
-            <label>Alinhamento</label>
-            <select name="alignment" value={formData.alignment} onChange={handleChange}>
-              <option value="">-</option>
-              <option>Leal e Bom</option>
-              <option>Neutro e Bom</option>
-              <option>Caótico e Bom</option>
-              <option>Leal e Neutro</option>
-              <option>Neutro</option>
-              <option>Caótico e Neutro</option>
-              <option>Leal e Mau</option>
-              <option>Neutro e Mau</option>
-              <option>Caótico e Mau</option>
-            </select>
-          </div>
-          <div className={styles.field}>
-            <label>Experiência</label>
-            <input
-              type="number"
-              name="experience"
-              value={formData.experience}
-              onChange={handleChange}
-              min="0"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.section}>
-        <h2>💪 Atributos</h2>
-        <div className={styles.attributesGrid}>
-          {[
-            { key: 'strength', label: 'Força', abbr: 'FOR' },
-            { key: 'dexterity', label: 'Destreza', abbr: 'DES' },
-            { key: 'constitution', label: 'Constituição', abbr: 'CON' },
-            { key: 'intelligence', label: 'Inteligência', abbr: 'INT' },
-            { key: 'wisdom', label: 'Sabedoria', abbr: 'SAB' },
-            { key: 'charisma', label: 'Carisma', abbr: 'CAR' },
-          ].map((attr) => (
-            <div key={attr.key} className={styles.attribute}>
-              <label>{attr.label} ({attr.abbr})</label>
-              <input
-                type="number"
-                name={attr.key}
-                value={formData[attr.key as keyof typeof formData] as number}
-                onChange={handleChange}
-                min="1"
-                max="30"
-              />
-              <div className={styles.modifier}>
-                Mod: {calculateModifier(formData[attr.key as keyof typeof formData] as number) >= 0 ? '+' : ''}
-                {calculateModifier(formData[attr.key as keyof typeof formData] as number)}
-              </div>
+    <form onSubmit={handleSubmit} className="flex flex-col">
+      {/* Sticky header */}
+      <div className="sticky top-0 z-10 bg-[#0a0c14] border-b border-[#1e2035] px-6 pb-0 pt-4">
+        {/* Name + back + save row */}
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => router.push('/characters')}
+              className="text-[#64748b] hover:text-[#e2e8f0] text-xs flex items-center gap-1 transition-colors"
+            >
+              ← Voltar
+            </button>
+            <div>
+              <p className="text-base font-bold text-[#e2e8f0] leading-none">
+                {formData.name || 'Novo Personagem'}
+              </p>
+              {character && (
+                <p className="text-xs text-[#64748b] mt-0.5">
+                  {formData.race} • {formData.class} • Nível {formData.level}
+                </p>
+              )}
             </div>
-          ))}
+          </div>
+          <Button
+            type="submit"
+            disabled={saving}
+            size="sm"
+            className="bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] hover:from-[#4f46e5] hover:to-[#7c3aed] text-white border-0 font-semibold"
+          >
+            {saving ? 'Salvando...' : 'Salvar'}
+          </Button>
         </div>
-      </div>
 
-      <div className={styles.section}>
-        <h2>❤️ Pontos de Vida e Armadura</h2>
-        <div className={styles.grid}>
-          <div className={styles.field}>
-            <label>PV Máximo</label>
-            <input
-              type="number"
-              name="maxHitPoints"
-              value={formData.maxHitPoints}
-              onChange={handleChange}
-              min="1"
-            />
+        {/* Stat pills */}
+        {character && (
+          <div className="flex gap-2 mb-3 flex-wrap">
+            <StatPill label="HP" value={`${formData.currentHitPoints} / ${formData.maxHitPoints}`} colorClass="text-[#f87171] bg-red-500/10 border-red-500/20" />
+            <StatPill label="CA" value={`${formData.armorClass}`} colorClass="text-[#94a3b8] bg-white/5 border-[#1e2035]" />
+            <StatPill label="Mana" value={`${formData.currentMana} / ${formData.maxMana}`} colorClass="text-[#818cf8] bg-[#818cf8]/10 border-[#818cf8]/20" />
+            <StatPill label="XP" value={`${formData.experience}`} colorClass="text-[#fbbf24] bg-amber-500/10 border-amber-500/20" />
           </div>
-          <div className={styles.field}>
-            <label>PV Atuais</label>
-            <input
-              type="number"
-              name="currentHitPoints"
-              value={formData.currentHitPoints}
-              onChange={handleChange}
-              min="0"
-              max={formData.maxHitPoints}
-            />
-          </div>
-          <div className={styles.field}>
-            <label>PV Temporários</label>
-            <input
-              type="number"
-              name="temporaryHitPoints"
-              value={formData.temporaryHitPoints}
-              onChange={handleChange}
-              min="0"
-            />
-          </div>
-          <div className={styles.field}>
-            <label>Classe de Armadura (CA)</label>
-            <input
-              type="number"
-              name="armorClass"
-              value={formData.armorClass}
-              onChange={handleChange}
-              min="0"
-            />
-          </div>
-        </div>
-      </div>
+        )}
 
-      <div className={styles.section}>
-        <h2>🔮 Pontos de Mana</h2>
-        <div className={styles.grid}>
-          <div className={styles.field}>
-            <label>Mana Máxima</label>
-            <input
-              type="number"
-              name="maxMana"
-              value={formData.maxMana}
-              onChange={handleChange}
-              min="0"
-            />
-          </div>
-          <div className={styles.field}>
-            <label>Mana Atual</label>
-            <input
-              type="number"
-              name="currentMana"
-              value={formData.currentMana}
-              onChange={handleChange}
-              min="0"
-              max={formData.maxMana}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.section}>
-        <h2>⚔️ Habilidades</h2>
-        <div className={styles.listContainer}>
-          {abilities.map((ability, index) => (
-            <div key={index} className={styles.listItem}>
-              <div className={styles.grid}>
-                <div className={styles.field}>
-                  <label>Nome da Habilidade</label>
-                  <input
-                    type="text"
-                    value={ability.name}
-                    onChange={(e) => handleAbilityChange(index, 'name', e.target.value)}
-                    placeholder="Ex: Bola de Fogo"
-                  />
-                </div>
-                <div className={styles.field}>
-                  <label>Nível</label>
-                  <input
-                    type="number"
-                    value={ability.level}
-                    onChange={(e) => handleAbilityChange(index, 'level', parseInt(e.target.value) || 1)}
-                    min="1"
-                    max="20"
-                  />
-                </div>
-                <div className={styles.field}>
-                  <label>Custo de Mana</label>
-                  <input
-                    type="number"
-                    value={ability.cost}
-                    onChange={(e) => handleAbilityChange(index, 'cost', parseInt(e.target.value) || 0)}
-                    min="0"
-                  />
-                </div>
-                <div className={styles.field}>
-                  <label>Rolagem de Dano</label>
-                  <input
-                    type="text"
-                    value={ability.damage}
-                    onChange={(e) => handleAbilityChange(index, 'damage', e.target.value)}
-                    placeholder="Ex: 1d6+3, 2d8, 1d4"
-                  />
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => removeAbility(index)}
-                className={styles.removeButton}
+        {/* Tab bar */}
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <TabsList className="bg-transparent border-b-0 gap-0 h-auto p-0 rounded-none">
+            {[
+              { value: 'info', label: 'Info' },
+              { value: 'atributos', label: 'Atributos' },
+              { value: 'habilidades', label: 'Habilidades' },
+              { value: 'inventario', label: 'Inventário' },
+              ...(character ? [{ value: 'combate', label: 'Combate' }] : []),
+            ].map((tab) => (
+              <TabsTrigger
+                key={tab.value}
+                value={tab.value}
+                className={cn(
+                  'rounded-none border-b-2 border-transparent px-4 py-2.5 text-xs font-medium transition-colors data-[state=active]:border-[#8b5cf6] data-[state=active]:text-[#a78bfa] data-[state=inactive]:text-[#64748b] hover:text-[#94a3b8] bg-transparent shadow-none',
+                  tab.value === 'combate' && 'data-[state=active]:border-red-500 data-[state=active]:text-red-400'
+                )}
               >
-                🗑️ Remover
-              </button>
-            </div>
-          ))}
-          <button type="button" onClick={addAbility} className={styles.addButton}>
-            ➕ Adicionar Habilidade
-          </button>
-        </div>
-      </div>
+                {tab.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
-      <div className={styles.section}>
-        <h2>🛡️ Equipamentos</h2>
-        <div className={styles.listContainer}>
-          {equipment.map((item, index) => (
-            <div key={index} className={styles.listItem}>
-              <div className={styles.grid}>
-                <div className={styles.field}>
-                  <label>Nome do Item</label>
-                  <input
-                    type="text"
-                    value={item.name}
-                    onChange={(e) => handleEquipmentChange(index, 'name', e.target.value)}
-                    placeholder="Ex: Espada Longa"
-                  />
-                </div>
-                <div className={styles.field}>
-                  <label>Defesa</label>
-                  <input
-                    type="number"
-                    value={item.defense || 0}
-                    onChange={(e) => handleEquipmentChange(index, 'defense', parseInt(e.target.value) || 0)}
-                    min="0"
-                  />
-                </div>
-                <div className={styles.field}>
-                  <label>Ataque</label>
-                  <input
-                    type="number"
-                    value={item.attack || 0}
-                    onChange={(e) => handleEquipmentChange(index, 'attack', parseInt(e.target.value) || 0)}
-                    min="0"
-                  />
-                </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => removeEquipment(index)}
-                className={styles.removeButton}
-              >
-                🗑️ Remover
-              </button>
-            </div>
-          ))}
-          <button type="button" onClick={addEquipment} className={styles.addButton}>
-            ➕ Adicionar Equipamento
-          </button>
-        </div>
-      </div>
-
-      <div className={styles.section}>
-        <h2>🎒 Inventário</h2>
-        <div className={styles.inventoryContainer}>
-          <table className={styles.inventoryTable}>
-            <thead>
-              <tr>
-                <th>ITEM</th>
-                <th>QUANT</th>
-                <th>MAX</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {inventory.map((item, index) => (
-                <tr key={index}>
-                  <td>
-                    <input
-                      type="text"
-                      value={item.name}
-                      onChange={(e) => handleInventoryChange(index, 'name', e.target.value)}
-                      placeholder="Nome do item"
-                      className={styles.inventoryInput}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      value={item.quantity}
-                      onChange={(e) => handleInventoryChange(index, 'quantity', e.target.value)}
-                      min="0"
-                      max={item.max}
-                      className={styles.inventoryInput}
-                    />
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      value={item.max}
-                      onChange={(e) => handleInventoryChange(index, 'max', e.target.value)}
-                      min="0"
-                      className={styles.inventoryInput}
-                    />
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      onClick={() => removeInventoryItem(index)}
-                      className={styles.removeButton}
-                    >
-                      🗑️
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <button type="button" onClick={addInventoryItem} className={styles.addButton}>
-            ➕ Adicionar Item ao Inventário
-          </button>
-        </div>
-      </div>
-
-      <div className={styles.section}>
-        <h2>📝 Anotações</h2>
-        <textarea
-          name="notes"
-          value={formData.notes}
-          onChange={handleChange}
-          rows={8}
-          placeholder="Anotações sobre o personagem, história, características especiais..."
-          className={styles.textarea}
-        />
-      </div>
-
-      <div className={styles.actions}>
-        <button type="submit" disabled={saving} className={styles.saveButton}>
-          {saving ? 'Salvando...' : '💾 Salvar Personagem'}
-        </button>
+          {/* Tab content lives in the scrollable area below */}
+          <div className="flex-1 overflow-y-auto px-6 py-5">
+            <TabsContent value="info" className="mt-0">
+              {/* Info tab — filled in Task 7 */}
+              <div className="text-[#64748b] text-sm">Info tab (Task 7)</div>
+            </TabsContent>
+            <TabsContent value="atributos" className="mt-0">
+              {/* Atributos tab — filled in Task 7 */}
+              <div className="text-[#64748b] text-sm">Atributos tab (Task 7)</div>
+            </TabsContent>
+            <TabsContent value="habilidades" className="mt-0">
+              {/* Habilidades tab — filled in Task 8 */}
+              <div className="text-[#64748b] text-sm">Habilidades tab (Task 8)</div>
+            </TabsContent>
+            <TabsContent value="inventario" className="mt-0">
+              {/* Inventário tab — filled in Task 8 */}
+              <div className="text-[#64748b] text-sm">Inventário tab (Task 8)</div>
+            </TabsContent>
+            {character && (
+              <TabsContent value="combate" className="mt-0">
+                {/* Combate tab — filled in Task 9 */}
+                <div className="text-[#64748b] text-sm">Combate tab (Task 9)</div>
+              </TabsContent>
+            )}
+          </div>
+        </Tabs>
       </div>
     </form>
   );
 }
 
+function StatPill({ label, value, colorClass }: { label: string; value: string; colorClass: string }) {
+  return (
+    <div className={cn('flex items-center gap-2 border rounded-lg px-3 py-1.5', colorClass)}>
+      <span className="text-[10px] uppercase tracking-wide opacity-60">{label}</span>
+      <span className="text-sm font-bold">{value}</span>
+    </div>
+  );
+}

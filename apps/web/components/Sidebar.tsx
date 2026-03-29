@@ -16,7 +16,7 @@ export default function Sidebar() {
 
   useEffect(() => {
     const username = (localStorage.getItem('rpg_username') || '').trim() || '?';
-    setInitial(username[0].toUpperCase());
+    setInitial((username[0] ?? '?').toUpperCase());
   }, []);
 
   return (
