@@ -1,42 +1,32 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createCharacter, type Character } from '@/lib/api';
 import CharacterForm from '@/components/CharacterForm';
+import { toast } from 'sonner';
 
 export default function NewCharacterPage() {
-  const [username, setUsername] = useState('');
   const router = useRouter();
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
-    const savedUsername = localStorage.getItem('rpg_username');
-    if (!savedUsername) {
-      router.push('/');
-      return;
-    }
-    setUsername(savedUsername);
+    const saved = localStorage.getItem('rpg_username');
+    if (!saved) { router.push('/'); return; }
+    setUsername(saved);
   }, [router]);
 
   const handleSubmit = async (characterData: Partial<Character>) => {
     try {
       await createCharacter(username, characterData);
+      toast.success('Personagem criado!');
       router.push('/characters');
-    } catch (error) {
-      console.error('Erro ao criar personagem:', error);
-      alert('Erro ao criar personagem. Tente novamente.');
+    } catch {
+      toast.error('Erro ao criar personagem. Tente novamente.');
     }
   };
 
-  if (!username) {
-    return <div>Carregando...</div>;
-  }
+  if (!username) return null;
 
-  return (
-    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <h1 style={{ marginBottom: '2rem' }}>➕ Criar Novo Personagem</h1>
-      <CharacterForm onSubmit={handleSubmit} />
-    </div>
-  );
+  return <CharacterForm onSubmit={handleSubmit} />;
 }
-

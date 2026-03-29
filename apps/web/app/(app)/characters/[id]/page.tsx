@@ -2,10 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import Link from 'next/link';
 import { getCharacter, updateCharacter, type Character } from '@/lib/api';
 import CharacterForm from '@/components/CharacterForm';
-import CombatTracker from '@/components/CombatTracker';
+import { toast } from 'sonner';
 
 export default function EditCharacterPage() {
   const params = useParams();
@@ -18,10 +17,7 @@ export default function EditCharacterPage() {
   useEffect(() => {
     const savedUsername = localStorage.getItem('rpg_username');
     const savedRole = localStorage.getItem('rpg_role') as 'PLAYER' | 'MASTER';
-    if (!savedUsername) {
-      router.push('/');
-      return;
-    }
+    if (!savedUsername) { router.push('/'); return; }
     setUsername(savedUsername);
     setUserRole(savedRole || 'PLAYER');
     loadCharacter(savedUsername);
@@ -32,9 +28,8 @@ export default function EditCharacterPage() {
       setLoading(true);
       const data = await getCharacter(params.id as string, user);
       setCharacter(data);
-    } catch (error) {
-      console.error('Erro ao carregar personagem:', error);
-      alert('Erro ao carregar personagem. Você pode não ter permissão para acessá-lo.');
+    } catch {
+      toast.error('Erro ao carregar personagem. Verifique suas permissões.');
       router.push('/characters');
     } finally {
       setLoading(false);
@@ -44,42 +39,37 @@ export default function EditCharacterPage() {
   const handleSubmit = async (characterData: Partial<Character>) => {
     try {
       await updateCharacter(params.id as string, username, characterData);
+      toast.success('Personagem salvo!');
       router.push('/characters');
-    } catch (error) {
-      console.error('Erro ao atualizar personagem:', error);
-      alert('Erro ao atualizar personagem. Tente novamente.');
+    } catch {
+      toast.error('Erro ao salvar personagem. Tente novamente.');
     }
   };
 
   const handleCombatUpdate = async () => {
-    // Atualiza apenas o personagem sem recarregar a página inteira
     try {
       const data = await getCharacter(params.id as string, username);
       setCharacter(data);
-    } catch (error) {
-      console.error('Erro ao atualizar personagem:', error);
+    } catch {
+      console.error('Erro ao recarregar personagem');
     }
   };
 
   if (loading) {
-    return <div style={{ padding: '2rem', textAlign: 'center' }}>Carregando...</div>;
+    return <div className="flex items-center justify-center h-full text-[#64748b]">Carregando...</div>;
   }
 
   if (!character) {
-    return <div style={{ padding: '2rem', textAlign: 'center' }}>Personagem não encontrado</div>;
+    return <div className="flex items-center justify-center h-full text-[#64748b]">Personagem não encontrado</div>;
   }
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <div style={{ marginBottom: '2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1>✏️ Editar Personagem: {character.name}</h1>
-        <Link href="/characters" style={{ padding: '0.5rem 1rem', background: '#666', color: 'white', borderRadius: '6px', textDecoration: 'none' }}>
-          ← Voltar
-        </Link>
-      </div>
-      <CombatTracker character={character} username={username} userRole={userRole} onUpdate={handleCombatUpdate} />
-      <CharacterForm character={character} onSubmit={handleSubmit} />
-    </div>
+    <CharacterForm
+      character={character}
+      onSubmit={handleSubmit}
+      username={username}
+      userRole={userRole}
+      onCombatUpdate={handleCombatUpdate}
+    />
   );
 }
-
