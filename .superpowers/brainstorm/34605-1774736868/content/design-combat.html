@@ -1,0 +1,133 @@
+<h2>Design do Rastreador de Combate</h2>
+<p class="subtitle">Aba "Combate" dentro da ficha. Interface focada em agilidade durante a sessão de jogo.</p>
+
+<div class="mockup">
+  <div class="mockup-header">Aba Combate — visão do Mestre</div>
+  <div class="mockup-body" style="padding: 0; background: #0f1117; min-height: 460px; display: flex; font-family: system-ui, sans-serif;">
+
+    <!-- Sidebar stub -->
+    <div style="width: 60px; background: #0a0c14; border-right: 1px solid #1e2035; flex-shrink: 0;"></div>
+
+    <!-- Main content -->
+    <div style="flex: 1; display: flex; flex-direction: column; overflow: hidden;">
+
+      <!-- Character header -->
+      <div style="background: #0a0c14; border-bottom: 1px solid #1e2035; padding: 14px 24px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+          <div>
+            <div style="color: #e2e8f0; font-size: 15px; font-weight: 700;">Thorin Ferropunho</div>
+            <div style="color: #64748b; font-size: 11px;">Anão • Guerreiro • Nível 8</div>
+          </div>
+          <!-- Turn badge -->
+          <div style="background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.3); border-radius: 8px; padding: 5px 12px; display: flex; gap: 8px; align-items: center;">
+            <span style="color: #fbbf24; font-size: 11px; font-weight: 600;">⚡ Turno 3</span>
+          </div>
+        </div>
+        <!-- Stat pills -->
+        <div style="display: flex; gap: 8px;">
+          <div style="background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.25); border-radius: 8px; padding: 5px 12px; display: flex; gap: 8px; align-items: center;">
+            <span style="color: #64748b; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;">HP</span>
+            <span style="color: #f87171; font-size: 13px; font-weight: 700;">64 / 80</span>
+          </div>
+          <div style="background: rgba(148,163,184,0.08); border: 1px solid rgba(148,163,184,0.15); border-radius: 8px; padding: 5px 12px; display: flex; gap: 8px; align-items: center;">
+            <span style="color: #64748b; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;">DEF</span>
+            <span style="color: #94a3b8; font-size: 13px; font-weight: 700;">5</span>
+          </div>
+        </div>
+        <!-- Tabs -->
+        <div style="display: flex; gap: 0; margin-top: 12px; border-bottom: 1px solid #1e2035; margin-bottom: -1px;">
+          <div style="color: #64748b; font-size: 12px; padding: 8px 14px; border-bottom: 2px solid transparent;">Info</div>
+          <div style="color: #64748b; font-size: 12px; padding: 8px 14px; border-bottom: 2px solid transparent;">Atributos</div>
+          <div style="color: #64748b; font-size: 12px; padding: 8px 14px; border-bottom: 2px solid transparent;">Habilidades</div>
+          <div style="color: #64748b; font-size: 12px; padding: 8px 14px; border-bottom: 2px solid transparent;">Inventário</div>
+          <div style="color: #f87171; font-size: 12px; padding: 8px 14px; border-bottom: 2px solid #ef4444; font-weight: 600;">Combate</div>
+        </div>
+      </div>
+
+      <!-- Combat content -->
+      <div style="flex: 1; padding: 20px 24px; overflow-y: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-content: start;">
+
+        <!-- Damage calculator -->
+        <div style="background: #13151f; border: 1px solid #1e2035; border-radius: 12px; padding: 16px; grid-column: 1 / -1;">
+          <div style="color: #64748b; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;">Calculadora de Dano</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px;">
+            <div>
+              <div style="color: #475569; font-size: 9px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Dano</div>
+              <input style="background: #0f1117; border: 1px solid rgba(239,68,68,0.4); border-radius: 8px; color: #f87171; font-size: 18px; font-weight: 700; text-align: center; width: 100%; padding: 8px 0; outline: none;" placeholder="0" value="15" />
+            </div>
+            <div>
+              <div style="color: #475569; font-size: 9px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Debuff</div>
+              <input style="background: #0f1117; border: 1px solid #2d2f45; border-radius: 8px; color: #94a3b8; font-size: 18px; font-weight: 700; text-align: center; width: 100%; padding: 8px 0; outline: none;" placeholder="0" value="3" />
+            </div>
+            <div>
+              <div style="color: #475569; font-size: 9px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Turnos</div>
+              <input style="background: #0f1117; border: 1px solid #2d2f45; border-radius: 8px; color: #94a3b8; font-size: 18px; font-weight: 700; text-align: center; width: 100%; padding: 8px 0; outline: none;" placeholder="0" value="2" />
+            </div>
+          </div>
+          <!-- Calculated results -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px;">
+            <div style="background: #0f1117; border: 1px solid rgba(99,102,241,0.2); border-radius: 8px; padding: 8px; text-align: center;">
+              <div style="color: #475569; font-size: 9px; margin-bottom: 3px;">Defensivo</div>
+              <div style="color: #a78bfa; font-size: 16px; font-weight: 700;">54</div>
+              <div style="color: #374151; font-size: 9px;">HP − (dmg − def)</div>
+            </div>
+            <div style="background: #0f1117; border: 1px solid rgba(99,102,241,0.2); border-radius: 8px; padding: 8px; text-align: center;">
+              <div style="color: #475569; font-size: 9px; margin-bottom: 3px;">Direto</div>
+              <div style="color: #a78bfa; font-size: 16px; font-weight: 700;">49</div>
+              <div style="color: #374151; font-size: 9px;">HP − dmg</div>
+            </div>
+            <div style="background: #0f1117; border: 1px solid rgba(239,68,68,0.2); border-radius: 8px; padding: 8px; text-align: center;">
+              <div style="color: #475569; font-size: 9px; margin-bottom: 3px;">c/ Debuff</div>
+              <div style="color: #f87171; font-size: 16px; font-weight: 700;">46</div>
+              <div style="color: #374151; font-size: 9px;">HP − (dmg + deb)</div>
+            </div>
+          </div>
+          <!-- Apply buttons -->
+          <div style="display: flex; gap: 8px;">
+            <button style="flex: 1; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); color: #a78bfa; border-radius: 8px; padding: 8px; font-size: 11px; font-weight: 600; cursor: pointer;">Aplicar Defensivo</button>
+            <button style="flex: 1; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); color: #a78bfa; border-radius: 8px; padding: 8px; font-size: 11px; font-weight: 600; cursor: pointer;">Aplicar Direto</button>
+            <button style="flex: 1; background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3); color: #f87171; border-radius: 8px; padding: 8px; font-size: 11px; font-weight: 600; cursor: pointer;">Aplicar c/ Debuff</button>
+          </div>
+        </div>
+
+        <!-- Active debuffs -->
+        <div style="background: #13151f; border: 1px solid #1e2035; border-radius: 12px; padding: 16px;">
+          <div style="color: #64748b; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Debuffs Ativos</div>
+          <div style="background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.25); border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="color: #fbbf24; font-size: 12px; font-weight: 600;">−3 dano</div>
+              <div style="color: #64748b; font-size: 10px;">2 turnos restantes</div>
+            </div>
+            <div style="background: rgba(251,191,36,0.15); color: #fbbf24; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px;">2T</div>
+          </div>
+          <div style="color: #2d3748; font-size: 10px; text-align: center; margin-top: 8px; padding: 8px; border: 1px dashed #1e2035; border-radius: 8px;">Sem outros debuffs</div>
+        </div>
+
+        <!-- Actions -->
+        <div style="background: #13151f; border: 1px solid #1e2035; border-radius: 12px; padding: 16px;">
+          <div style="color: #64748b; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Ações</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <button style="background: rgba(99,102,241,0.1); border: 1px solid rgba(99,102,241,0.2); color: #a78bfa; border-radius: 8px; padding: 9px 14px; font-size: 12px; font-weight: 600; cursor: pointer; text-align: left;">⚡ Passar Turno</button>
+            <button style="background: rgba(148,163,184,0.06); border: 1px solid #1e2035; color: #64748b; border-radius: 8px; padding: 9px 14px; font-size: 12px; cursor: pointer; text-align: left;">🔄 Limpar Combate</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<p style="color: #94a3b8; font-size: 13px; margin-top: 16px;">
+  <strong style="color: #e2e8f0;">Destaques:</strong> Aba "Combate" com borda vermelha quando ativa, calculadora com 3 modos lado a lado, resultados calculados com cor por tipo, debuffs ativos com badge de turnos, ações do Mestre separadas.
+</p>
+
+<div style="display: flex; gap: 12px; margin-top: 8px;">
+  <div class="option" data-choice="approve" onclick="toggleSelect(this)" style="flex: 1;">
+    <div class="letter">✓</div>
+    <div class="content"><h3>Aprovado</h3><p>Design completo aprovado</p></div>
+  </div>
+  <div class="option" data-choice="tweak" onclick="toggleSelect(this)" style="flex: 1;">
+    <div class="letter">↻</div>
+    <div class="content"><h3>Ajustar</h3><p>Quero mudar algo</p></div>
+  </div>
+</div>

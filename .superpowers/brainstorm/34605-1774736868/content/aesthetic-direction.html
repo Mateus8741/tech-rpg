@@ -1,0 +1,85 @@
+<h2>Qual direção visual você quer para o sistema?</h2>
+<p class="subtitle">O app é um gerenciador de fichas de RPG (D&D). Escolha a estética que mais combina com a sua visão.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="dark-fantasy" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(135deg, #0d0d1a 0%, #1a0a2e 50%, #2d1b4e 100%); padding: 20px; min-height: 140px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="color: #c9a227; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">⚔️ Dark Fantasy</div>
+      <div style="background: rgba(201,162,39,0.15); border: 1px solid rgba(201,162,39,0.4); border-radius: 8px; padding: 12px; color: #e8d5a3; font-size: 12px;">
+        <div style="color: #c9a227; font-weight: 600; margin-bottom: 6px;">Thorin Escudeiro de Ferro</div>
+        <div style="display: flex; gap: 16px; font-size: 11px; color: #a89060;">
+          <span>Anão • Guerreiro • Nv 8</span>
+        </div>
+        <div style="display: flex; gap: 8px; margin-top: 8px;">
+          <span style="background: rgba(180,30,30,0.4); border: 1px solid #b41e1e; padding: 2px 8px; border-radius: 4px; font-size: 10px; color: #ff6b6b;">❤️ 64/80</span>
+          <span style="background: rgba(201,162,39,0.2); border: 1px solid #c9a227; padding: 2px 8px; border-radius: 4px; font-size: 10px; color: #c9a227;">🛡️ CA 18</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 6px;">
+        <div style="background: rgba(201,162,39,0.15); border: 1px solid rgba(201,162,39,0.3); border-radius: 6px; padding: 6px 10px; text-align: center; flex: 1;">
+          <div style="color: #c9a227; font-size: 14px; font-weight: 700;">+3</div>
+          <div style="color: #6b5a30; font-size: 9px; text-transform: uppercase; letter-spacing: 1px;">FOR</div>
+        </div>
+        <div style="background: rgba(201,162,39,0.15); border: 1px solid rgba(201,162,39,0.3); border-radius: 6px; padding: 6px 10px; text-align: center; flex: 1;">
+          <div style="color: #c9a227; font-size: 14px; font-weight: 700;">+1</div>
+          <div style="color: #6b5a30; font-size: 9px; text-transform: uppercase; letter-spacing: 1px;">DES</div>
+        </div>
+        <div style="background: rgba(201,162,39,0.15); border: 1px solid rgba(201,162,39,0.3); border-radius: 6px; padding: 6px 10px; text-align: center; flex: 1;">
+          <div style="color: #c9a227; font-size: 14px; font-weight: 700;">+4</div>
+          <div style="color: #6b5a30; font-size: 9px; text-transform: uppercase; letter-spacing: 1px;">CON</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Dark Fantasy</h3>
+      <p>Tons escuros, dourado envelhecido, sensação de livro antigo. Visual imersivo temático de RPG.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="modern-clean" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #f8fafc; padding: 20px; min-height: 140px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid #e2e8f0;">
+      <div style="color: #6366f1; font-size: 13px; font-weight: 700; letter-spacing: 1px;">PERSONAGENS</div>
+      <div style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08);">
+        <div style="color: #1e293b; font-weight: 600; font-size: 13px; margin-bottom: 4px;">Thorin Escudeiro de Ferro</div>
+        <div style="color: #94a3b8; font-size: 11px; margin-bottom: 8px;">Anão • Guerreiro • Nível 8</div>
+        <div style="display: flex; gap: 6px;">
+          <span style="background: #fef2f2; color: #ef4444; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600;">HP 64</span>
+          <span style="background: #f0f9ff; color: #3b82f6; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600;">CA 18</span>
+          <span style="background: #f5f3ff; color: #8b5cf6; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600;">Nv 8</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 6px;">
+        <button style="background: #6366f1; color: white; border: none; border-radius: 8px; padding: 6px 14px; font-size: 11px; font-weight: 600; flex: 1;">Editar</button>
+        <button style="background: #f1f5f9; color: #64748b; border: none; border-radius: 8px; padding: 6px 14px; font-size: 11px; font-weight: 600; flex: 1;">Combate</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Moderno & Clean</h3>
+      <p>Fundo claro, bordas suaves, tipografia moderna. Parece um app profissional tipo Linear ou Notion.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="dark-modern" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #0f1117; padding: 20px; min-height: 140px; display: flex; flex-direction: column; gap: 10px;">
+      <div style="color: #a78bfa; font-size: 13px; font-weight: 600; letter-spacing: 1px;">⚡ PERSONAGENS</div>
+      <div style="background: #1a1d2e; border: 1px solid #2d2f45; border-radius: 12px; padding: 12px;">
+        <div style="color: #e2e8f0; font-weight: 600; font-size: 13px; margin-bottom: 4px;">Thorin Escudeiro de Ferro</div>
+        <div style="color: #64748b; font-size: 11px; margin-bottom: 8px;">Anão • Guerreiro • Nível 8</div>
+        <div style="display: flex; gap: 6px;">
+          <span style="background: rgba(239,68,68,0.15); color: #f87171; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600; border: 1px solid rgba(239,68,68,0.3);">HP 64</span>
+          <span style="background: rgba(167,139,250,0.15); color: #a78bfa; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 600; border: 1px solid rgba(167,139,250,0.3);">CA 18</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 6px;">
+        <button style="background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; border: none; border-radius: 8px; padding: 6px 14px; font-size: 11px; font-weight: 600; flex: 1;">Editar</button>
+        <button style="background: #1a1d2e; color: #94a3b8; border: 1px solid #2d2f45; border-radius: 8px; padding: 6px 14px; font-size: 11px; font-weight: 600; flex: 1;">Combate</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Dark & Moderno</h3>
+      <p>Dark mode premium com roxo/violeta. Parece um app de gaming moderno tipo Steam ou Discord.</p>
+    </div>
+  </div>
+
+</div>

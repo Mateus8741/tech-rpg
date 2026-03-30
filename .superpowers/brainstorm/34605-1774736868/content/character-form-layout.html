@@ -1,0 +1,111 @@
+<h2>Como organizar a ficha do personagem?</h2>
+<p class="subtitle">A ficha tem muitas seções (atributos, habilidades, inventário, combate...). Como você quer navegar por ela?</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="tabs" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #0f1117; padding: 0; min-height: 180px; display: flex; flex-direction: column; overflow: hidden; border-radius: 8px 8px 0 0;">
+      <!-- Header da ficha -->
+      <div style="padding: 12px 14px 0; background: #0f1117;">
+        <div style="color: #e2e8f0; font-size: 12px; font-weight: 700; margin-bottom: 8px;">Thorin Escudeiro de Ferro</div>
+        <!-- Tabs -->
+        <div style="display: flex; gap: 0; border-bottom: 1px solid #1e2035;">
+          <div style="color: #a78bfa; font-size: 10px; padding: 5px 10px; border-bottom: 2px solid #a78bfa; font-weight: 600;">Info</div>
+          <div style="color: #64748b; font-size: 10px; padding: 5px 10px;">Atributos</div>
+          <div style="color: #64748b; font-size: 10px; padding: 5px 10px;">Combate</div>
+          <div style="color: #64748b; font-size: 10px; padding: 5px 10px;">Inventário</div>
+        </div>
+      </div>
+      <!-- Tab content -->
+      <div style="flex: 1; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+          <div>
+            <div style="color: #64748b; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;">Raça</div>
+            <div style="background: #1a1d2e; border: 1px solid #2d2f45; border-radius: 6px; padding: 6px 8px; color: #e2e8f0; font-size: 10px;">Anão</div>
+          </div>
+          <div>
+            <div style="color: #64748b; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;">Classe</div>
+            <div style="background: #1a1d2e; border: 1px solid #2d2f45; border-radius: 6px; padding: 6px 8px; color: #e2e8f0; font-size: 10px;">Guerreiro</div>
+          </div>
+        </div>
+        <div>
+          <div style="color: #64748b; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px;">Histórico</div>
+          <div style="background: #1a1d2e; border: 1px solid #2d2f45; border-radius: 6px; padding: 6px 8px; color: #e2e8f0; font-size: 10px;">Soldado</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Abas por seção</h3>
+      <p>Cada seção em uma aba separada. Formulário dividido, sem scroll longo. Organizado e fácil de navegar.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="scroll" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #0f1117; padding: 14px; min-height: 180px; display: flex; flex-direction: column; gap: 8px; border-radius: 8px 8px 0 0; overflow: hidden;">
+      <!-- Section 1 -->
+      <div style="background: #1a1d2e; border: 1px solid #2d2f45; border-radius: 10px; padding: 10px;">
+        <div style="color: #a78bfa; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;">📋 Informações Básicas</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
+          <div style="background: #0f1117; border: 1px solid #2d2f45; border-radius: 4px; padding: 4px 6px; color: #94a3b8; font-size: 9px;">Anão</div>
+          <div style="background: #0f1117; border: 1px solid #2d2f45; border-radius: 4px; padding: 4px 6px; color: #94a3b8; font-size: 9px;">Guerreiro</div>
+        </div>
+      </div>
+      <!-- Section 2 -->
+      <div style="background: #1a1d2e; border: 1px solid #2d2f45; border-radius: 10px; padding: 10px;">
+        <div style="color: #a78bfa; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;">💪 Atributos</div>
+        <div style="display: flex; gap: 4px;">
+          <div style="background: #0f1117; border: 1px solid #2d2f45; border-radius: 6px; padding: 4px 6px; text-align: center; flex: 1;">
+            <div style="color: #a78bfa; font-size: 11px; font-weight: 700;">18</div>
+            <div style="color: #475569; font-size: 8px;">FOR</div>
+          </div>
+          <div style="background: #0f1117; border: 1px solid #2d2f45; border-radius: 6px; padding: 4px 6px; text-align: center; flex: 1; opacity: 0.5;">
+            <div style="color: #a78bfa; font-size: 11px; font-weight: 700;">12</div>
+            <div style="color: #475569; font-size: 8px;">DES</div>
+          </div>
+          <div style="background: #0f1117; border: 1px solid #2d2f45; border-radius: 6px; padding: 4px 6px; text-align: center; flex: 1; opacity: 0.3;">
+            <div style="color: #a78bfa; font-size: 11px; font-weight: 700;">16</div>
+            <div style="color: #475569; font-size: 8px;">CON</div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; color: #2d2f45; font-size: 9px;">↓ continua...</div>
+    </div>
+    <div class="card-body">
+      <h3>Scroll único por seções</h3>
+      <p>Tudo numa página só, seções bem delimitadas com cards visuais. Rola para baixo sem perder contexto.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="split" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #0f1117; padding: 0; min-height: 180px; display: flex; overflow: hidden; border-radius: 8px 8px 0 0;">
+      <!-- Left panel - character summary -->
+      <div style="width: 90px; background: #0d0f1a; border-right: 1px solid #1e2035; padding: 10px 8px; display: flex; flex-direction: column; gap: 6px;">
+        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; margin: 0 auto 4px;">⚔️</div>
+        <div style="color: #e2e8f0; font-size: 9px; font-weight: 700; text-align: center; line-height: 1.2;">Thorin</div>
+        <div style="background: #1a1d2e; border-radius: 6px; padding: 4px 6px; text-align: center;">
+          <div style="color: #f87171; font-size: 10px; font-weight: 700;">64</div>
+          <div style="color: #475569; font-size: 8px;">HP</div>
+        </div>
+        <div style="background: #1a1d2e; border-radius: 6px; padding: 4px 6px; text-align: center;">
+          <div style="color: #a78bfa; font-size: 10px; font-weight: 700;">18</div>
+          <div style="color: #475569; font-size: 8px;">CA</div>
+        </div>
+        <div style="color: #a78bfa; font-size: 8px; text-align: center; margin-top: 4px; opacity: 0.7;">Info</div>
+        <div style="color: #475569; font-size: 8px; text-align: center;">Stats</div>
+        <div style="color: #475569; font-size: 8px; text-align: center;">Items</div>
+      </div>
+      <!-- Right panel - main edit area -->
+      <div style="flex: 1; padding: 10px; display: flex; flex-direction: column; gap: 6px;">
+        <div style="color: #a78bfa; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Informações Básicas</div>
+        <div style="background: #1a1d2e; border: 1px solid #2d2f45; border-radius: 6px; padding: 6px 8px; color: #94a3b8; font-size: 9px;">Raça: Anão</div>
+        <div style="background: #1a1d2e; border: 1px solid #2d2f45; border-radius: 6px; padding: 6px 8px; color: #94a3b8; font-size: 9px;">Classe: Guerreiro</div>
+        <div style="background: #1a1d2e; border: 1px solid #2d2f45; border-radius: 6px; padding: 6px 8px; color: #94a3b8; font-size: 9px;">Nível: 8</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>Split: resumo + edição</h3>
+      <p>Painel esquerdo com HP/CA/stats sempre visíveis, painel direito para editar seções. Como uma ficha de papel digital.</p>
+    </div>
+  </div>
+
+</div>
