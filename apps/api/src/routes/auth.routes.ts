@@ -1,7 +1,7 @@
 import { type Request, type Response, Router } from "express";
 import { prisma } from "../lib/prisma.js";
 
-const router = Router();
+const router: Router = Router();
 
 // POST - Criar ou buscar usuário
 router.post("/", async (req: Request, res: Response) => {
