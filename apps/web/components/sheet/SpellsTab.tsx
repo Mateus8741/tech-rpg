@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ABILITIES, abilityModifier, getClass, getSpell, spellsForClass, type Spell } from '@repo/rules';
+import { ABILITIES, abilityModifier, getClass, getRace, getSpell, spellsForClass, type Spell } from '@repo/rules';
 import { BookPlus, Check, Minus, Plus, Sparkles, X } from 'lucide-react';
 import { derivedStats, getSheet, scoreOf } from '@/lib/sheet';
 import { SpellRow } from '@/components/spells/SpellRow';
@@ -46,7 +46,11 @@ export default function SpellsTab({ api }: { api: CharacterApi }) {
   const cantrips = known.filter((s) => s.level === 0);
   const leveled = known.filter((s) => s.level > 0);
   const preparedCount = leveled.filter((s) => sheet.spellsPrepared.includes(s.id)).length;
-  const cantripMax = sc.cantripsKnown?.[Math.min(c.level, 20) - 1];
+  const race = getRace(sheet.raceId);
+  const racialTraits = [...(race?.traits ?? []), ...(race?.subraces.find((s) => s.id === sheet.subraceId)?.traits ?? [])];
+  const racialCantrips = racialTraits.filter((t) => /você (conhece|possui) (o|um) truque/i.test(t.description)).length;
+  const classCantrips = sc.cantripsKnown?.[Math.min(c.level, 20) - 1];
+  const cantripMax = classCantrips === undefined ? undefined : classCantrips + racialCantrips;
 
   const toggleSlot = (lvlIdx: number, total: number, spent: boolean) => {
     const used = [...sheet.spellSlotsUsed];
