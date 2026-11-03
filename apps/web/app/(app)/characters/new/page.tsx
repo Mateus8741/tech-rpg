@@ -2,9 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createCharacter, type Character } from '@/lib/api';
-import CharacterForm from '@/components/CharacterForm';
-import { toast } from 'sonner';
+import CharacterWizard from '@/components/wizard/CharacterWizard';
 
 export default function NewCharacterPage() {
   const router = useRouter();
@@ -16,17 +14,7 @@ export default function NewCharacterPage() {
     setUsername(saved);
   }, [router]);
 
-  const handleSubmit = async (characterData: Partial<Character>) => {
-    try {
-      await createCharacter(username, characterData);
-      toast.success('Personagem criado!');
-      router.push('/characters');
-    } catch {
-      toast.error('Erro ao criar personagem. Tente novamente.');
-    }
-  };
-
   if (!username) return null;
 
-  return <CharacterForm onSubmit={handleSubmit} />;
+  return <CharacterWizard username={username} />;
 }

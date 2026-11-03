@@ -1,24 +1,22 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Plus, LogOut, Trash2, Pencil, Users, User } from 'lucide-react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { Plus, LogOut, Trash2, Users, User, Search, Shield, Heart } from 'lucide-react';
+import { CLASSES, getClass, getRace } from '@repo/rules';
 import { getCharacters, deleteCharacter, type Character } from '@/lib/api';
+import { getSheet } from '@/lib/sheet';
+import { classStyle } from '@/components/sheet/class-style';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
+  AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
+  AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import { toast } from 'sonner';
-import { cn } from '@/lib/utils';
+
+const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
 export default function CharactersPage() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -26,13 +24,14 @@ export default function CharactersPage() {
   const [username, setUsername] = useState('');
   const [userRole, setUserRole] = useState<'PLAYER' | 'MASTER'>('PLAYER');
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [query, setQuery] = useState('');
+  const [classFilter, setClassFilter] = useState('all');
   const router = useRouter();
 
-  const loadCharacters = useCallback(async (user: string) => {
+  const load = useCallback(async (user: string) => {
     try {
       setLoading(true);
-      const data = await getCharacters(user);
-      setCharacters(data);
+      setCharacters(await getCharacters(user));
     } catch {
       toast.error('Erro ao carregar personagens');
     } finally {
@@ -41,19 +40,19 @@ export default function CharactersPage() {
   }, []);
 
   useEffect(() => {
-    const savedUsername = localStorage.getItem('rpg_username');
-    const savedRole = localStorage.getItem('rpg_role') as 'PLAYER' | 'MASTER';
-    if (!savedUsername) { router.push('/'); return; }
-    setUsername(savedUsername);
-    setUserRole(savedRole || 'PLAYER');
-    loadCharacters(savedUsername);
-  }, [router, loadCharacters]);
+    const u = localStorage.getItem('rpg_username');
+    const r = localStorage.getItem('rpg_role') as 'PLAYER' | 'MASTER' | null;
+    if (!u) { router.push('/'); return; }
+    setUsername(u);
+    setUserRole(r || 'PLAYER');
+    load(u);
+  }, [router, load]);
 
   const confirmDelete = async () => {
     if (!deleteId) return;
     try {
       await deleteCharacter(deleteId, username);
-      await loadCharacters(username);
+      setCharacters((cs) => cs.filter((c) => c.id !== deleteId));
       toast.success('Personagem excluído');
     } catch {
       toast.error('Erro ao excluir personagem');
@@ -62,91 +61,93 @@ export default function CharactersPage() {
     }
   };
 
-  const handleLogout = () => {
+  const logout = () => {
     localStorage.removeItem('rpg_username');
     localStorage.removeItem('rpg_role');
     router.push('/');
   };
 
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center h-full text-[#64748b]">
-        Carregando...
-      </div>
-    );
-  }
+  const classIdOf = (c: Character) => {
+    const sid = getSheet(c).classId;
+    if (sid) return sid;
+    return CLASSES.find((k) => norm(k.name) === norm(c.class || ''))?.id ?? '';
+  };
+
+  const filtered = useMemo(
+    () => characters.filter((c) => {
+      if (classFilter !== 'all' && classIdOf(c) !== classFilter) return false;
+      const q = norm(query.trim());
+      return !q || norm(`${c.name} ${c.race} ${c.class}`).includes(q);
+    }),
+    [characters, query, classFilter],
+  );
+
+  const usedClasses = useMemo(
+    () => CLASSES.filter((k) => characters.some((c) => classIdOf(c) === k.id)),
+    [characters],
+  );
 
   return (
     <>
-      {/* Top bar */}
-      <div className="h-[52px] border-b border-[#1e2035] px-6 flex items-center justify-between flex-shrink-0">
+      <div className="flex h-[52px] flex-shrink-0 items-center justify-between border-b border-[#1e2035] px-6">
         <div>
           <p className="text-sm font-semibold text-[#e2e8f0]">Personagens</p>
-          <p className="text-xs text-[#475569]">{characters.length} {characters.length !== 1 ? 'personagens' : 'personagem'}</p>
+          <p className="text-xs text-[#475569]">{characters.length} {characters.length === 1 ? 'personagem' : 'personagens'}</p>
         </div>
         <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleLogout}
-            className="text-[#64748b] hover:text-[#e2e8f0] hover:bg-white/5"
-          >
-            <LogOut className="w-4 h-4 mr-1.5" />
-            Sair
+          <Button variant="ghost" size="sm" onClick={logout} className="text-[#64748b] hover:bg-white/5 hover:text-[#e2e8f0]">
+            <LogOut className="mr-1.5 h-4 w-4" />Sair
           </Button>
           <Link href="/characters/new">
-            <Button
-              size="sm"
-              className="bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] hover:from-[#4f46e5] hover:to-[#7c3aed] text-white border-0"
-            >
-              <Plus className="w-4 h-4 mr-1.5" />
-              Novo Personagem
+            <Button size="sm" className="border-0 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white hover:from-[#4f46e5] hover:to-[#7c3aed]">
+              <Plus className="mr-1.5 h-4 w-4" />Novo personagem
             </Button>
           </Link>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="flex-1 p-6 overflow-y-auto">
-        {characters.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full gap-4 text-center">
-            <div className="w-16 h-16 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-2xl flex items-center justify-center">
-              <Users className="w-7 h-7 text-[#6366f1]/60" />
-            </div>
-            <p className="text-[#475569]">Nenhum personagem criado ainda.</p>
-            <Link href="/characters/new">
-              <Button className="bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white border-0">
-                <Plus className="w-4 h-4 mr-1.5" />
-                Criar Primeiro Personagem
-              </Button>
-            </Link>
-          </div>
+      <div className="flex-1 overflow-y-auto p-6">
+        {loading ? (
+          <div className="flex h-full items-center justify-center text-[#64748b]">Carregando...</div>
+        ) : characters.length === 0 ? (
+          <EmptyState />
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {characters.map((character) => (
-              <CharacterCard
-                key={character.id}
-                character={character}
-                userRole={userRole}
-                onDelete={() => setDeleteId(character.id)}
-              />
-            ))}
-            {/* Add new card */}
-            <Link href="/characters/new" className="group">
-              <div className="h-full min-h-[160px] border-2 border-dashed border-[#1e2035] rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition-colors hover:border-[#6366f1]/40">
-                <div className="w-8 h-8 bg-[#6366f1]/10 border border-[#6366f1]/20 rounded-lg flex items-center justify-center group-hover:bg-[#6366f1]/20 transition-colors">
-                  <Plus className="w-4 h-4 text-[#6366f1]/70" />
-                </div>
-                <span className="text-xs text-[#475569]">Criar personagem</span>
+          <>
+            <div className="mb-5 flex flex-wrap gap-3">
+              <div className="relative min-w-[220px] flex-1 sm:max-w-sm">
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#475569]" />
+                <input
+                  value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar por nome, raça ou classe..."
+                  aria-label="Buscar personagens"
+                  className="w-full rounded-lg border border-[#1e2035] bg-[#0f1117] py-2 pl-9 pr-3 text-sm text-[#e2e8f0] placeholder:text-[#475569] focus:border-[#6366f1]/60 focus:outline-none"
+                />
               </div>
-            </Link>
-          </div>
+              <select
+                value={classFilter} onChange={(e) => setClassFilter(e.target.value)} aria-label="Filtrar por classe"
+                className="rounded-lg border border-[#1e2035] bg-[#0f1117] px-3 py-2 text-sm text-[#e2e8f0] focus:border-[#6366f1]/60 focus:outline-none"
+              >
+                <option value="all">Todas as classes</option>
+                {usedClasses.map((k) => <option key={k.id} value={k.id}>{k.name}</option>)}
+              </select>
+            </div>
+
+            {filtered.length === 0 ? (
+              <p className="py-16 text-center text-sm text-[#64748b]">Nenhum personagem corresponde à busca.</p>
+            ) : (
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <AnimatePresence mode="popLayout">
+                  {filtered.map((c, i) => (
+                    <CharacterCard key={c.id} character={c} index={i} showOwner={userRole === 'MASTER'} onDelete={() => setDeleteId(c.id)} />
+                  ))}
+                </AnimatePresence>
+              </div>
+            )}
+          </>
         )}
       </div>
 
-      {/* Delete confirm dialog */}
-      <AlertDialog open={!!deleteId} onOpenChange={(open) => !open && setDeleteId(null)}>
-        <AlertDialogContent className="bg-[#13151f] border-[#2d2f45]">
+      <AlertDialog open={!!deleteId} onOpenChange={(o) => !o && setDeleteId(null)}>
+        <AlertDialogContent className="border-[#2d2f45] bg-[#13151f]">
           <AlertDialogHeader>
             <AlertDialogTitle className="text-[#e2e8f0]">Excluir personagem?</AlertDialogTitle>
             <AlertDialogDescription className="text-[#64748b]">
@@ -154,15 +155,8 @@ export default function CharactersPage() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="bg-transparent border-[#2d2f45] text-[#94a3b8] hover:bg-white/5">
-              Cancelar
-            </AlertDialogCancel>
-            <AlertDialogAction
-              onClick={confirmDelete}
-              className="bg-red-600 hover:bg-red-700 text-white border-0"
-            >
-              Excluir
-            </AlertDialogAction>
+            <AlertDialogCancel className="border-[#2d2f45] bg-transparent text-[#94a3b8] hover:bg-white/5">Cancelar</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmDelete} className="border-0 bg-red-600 text-white hover:bg-red-700">Excluir</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
@@ -170,78 +164,90 @@ export default function CharactersPage() {
   );
 }
 
-function CharacterCard({
-  character,
-  userRole,
-  onDelete,
-}: {
-  character: Character;
-  userRole: 'PLAYER' | 'MASTER';
-  onDelete: () => void;
-}) {
+function EmptyState() {
+  const reduce = useReducedMotion();
   return (
-    <div className="bg-[#13151f] border border-[#1e2035] rounded-xl overflow-hidden hover:border-[#2d2f45] transition-colors">
-      {/* Top accent bar */}
-      <div className="h-[3px] bg-gradient-to-r from-[#6366f1] to-[#8b5cf6]" />
-
-      <div className="p-4">
-        <div className="flex items-start justify-between mb-3 mt-1">
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-bold text-[#e2e8f0] truncate">{character.name}</p>
-            <p className="text-xs text-[#64748b] truncate">{character.race} • {character.class}</p>
-          </div>
-          <Badge
-            variant="outline"
-            className="ml-2 border-[#6366f1]/30 text-[#a78bfa] bg-[#6366f1]/10 text-[10px] flex-shrink-0"
-          >
-            Nv {character.level}
-          </Badge>
-        </div>
-
-        {userRole === 'MASTER' && character.user && (
-          <p className="text-[10px] text-[#475569] mb-2 flex items-center gap-1">
-            <User className="w-3 h-3" />
-            {character.user.username}
-          </p>
-        )}
-
-        {/* Stats row */}
-        <div className="flex gap-1.5 mb-3">
-          {[
-            { label: 'HP', value: `${character.currentHitPoints}/${character.maxHitPoints}`, color: 'text-[#f87171] bg-red-500/10 border-red-500/20' },
-            { label: 'CA', value: `${character.armorClass}`, color: 'text-[#94a3b8] bg-white/5 border-[#1e2035]' },
-            { label: 'MP', value: `${character.currentMana}`, color: 'text-[#818cf8] bg-[#818cf8]/10 border-[#818cf8]/20' },
-          ].map(({ label, value, color }) => (
-            <div key={label} className={cn('flex-1 rounded-lg border px-2 py-1.5 text-center', color)}>
-              <p className="text-[13px] font-bold leading-none">{value}</p>
-              <p className="text-[9px] uppercase tracking-wide mt-0.5 opacity-60">{label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Actions */}
-        <div className="flex gap-1.5">
-          <Link href={`/characters/${character.id}`} className="flex-1">
-            <Button
-              size="sm"
-              variant="outline"
-              className="w-full h-7 text-[11px] border-[#6366f1]/20 text-[#a78bfa] bg-[#6366f1]/8 hover:bg-[#6366f1]/15 hover:border-[#6366f1]/40"
-            >
-              <Pencil className="w-3 h-3 mr-1" />
-              Editar
-            </Button>
-          </Link>
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={onDelete}
-            className="flex-1 h-7 text-[11px] border-red-500/20 text-red-400 bg-red-500/8 hover:bg-red-500/15 hover:border-red-500/40"
-          >
-            <Trash2 className="w-3 h-3 mr-1" />
-            Excluir
-          </Button>
-        </div>
+    <motion.div
+      initial={reduce ? false : { opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
+      className="flex h-full flex-col items-center justify-center gap-4 text-center"
+    >
+      <motion.div
+        animate={reduce ? undefined : { y: [0, -6, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+        className="flex h-20 w-20 items-center justify-center rounded-3xl border border-[#6366f1]/30 bg-gradient-to-br from-[#6366f1]/20 to-[#8b5cf6]/10"
+      >
+        <Users className="h-9 w-9 text-[#a5b4fc]" />
+      </motion.div>
+      <div>
+        <p className="text-lg font-semibold text-[#e2e8f0]">Sua jornada começa aqui</p>
+        <p className="mt-1 text-sm text-[#64748b]">Nenhum personagem criado ainda. Escolha raça, classe e antecedente para dar vida a um herói.</p>
       </div>
-    </div>
+      <Link href="/characters/new">
+        <Button className="border-0 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white">
+          <Plus className="mr-1.5 h-4 w-4" />Criar primeiro personagem
+        </Button>
+      </Link>
+    </motion.div>
+  );
+}
+
+function CharacterCard({ character: c, index, showOwner, onDelete }: {
+  character: Character; index: number; showOwner: boolean; onDelete: () => void;
+}) {
+  const reduce = useReducedMotion();
+  const sheet = getSheet(c);
+  const cls = getClass(sheet.classId) ?? CLASSES.find((k) => norm(k.name) === norm(c.class || ''));
+  const race = getRace(sheet.raceId);
+  const style = classStyle(cls?.id);
+  const pct = c.maxHitPoints > 0 ? Math.min(100, (c.currentHitPoints / c.maxHitPoints) * 100) : 0;
+  const hpColor = pct > 50 ? '#22c55e' : pct > 25 ? '#f5c451' : '#ef4444';
+
+  return (
+    <motion.div
+      layout={!reduce}
+      initial={reduce ? false : { opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0, transition: { delay: reduce ? 0 : Math.min(index, 12) * 0.05 } }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      whileHover={reduce ? undefined : { y: -3 }}
+      className="group relative overflow-hidden rounded-xl border border-[#1e2035] bg-[#0f1117] transition-colors hover:border-[#2d2f45]"
+    >
+      <div className="h-[3px]" style={{ background: `linear-gradient(90deg, ${style.color}, transparent)` }} />
+      <Link href={`/characters/${c.id}`} className="block p-4" aria-label={`Abrir ficha de ${c.name}`}>
+        <div className="flex items-start gap-3">
+          <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border" style={{ borderColor: `${style.color}55`, background: `${style.color}1a`, color: style.color }}>
+            <style.icon className="h-6 w-6" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm font-bold text-[#e2e8f0]">{c.name}</p>
+            <p className="truncate text-xs text-[#94a3b8]">{race?.name ?? c.race} · {cls?.name ?? c.class}</p>
+            {showOwner && c.user && (
+              <p className="mt-0.5 flex items-center gap-1 text-[10px] text-[#475569]"><User className="h-3 w-3" />{c.user.username}</p>
+            )}
+          </div>
+          <span className="rounded-full border border-[#f5c451]/30 bg-[#f5c451]/10 px-2 py-0.5 text-[10px] font-semibold text-[#f5c451]">Nv {c.level}</span>
+        </div>
+
+        <div className="mt-4">
+          <div className="mb-1 flex items-center justify-between text-[11px] text-[#64748b]">
+            <span className="flex items-center gap-1"><Heart className="h-3 w-3 text-red-400" />PV</span>
+            <span className="tabular-nums text-[#94a3b8]">{c.currentHitPoints}/{c.maxHitPoints}</span>
+          </div>
+          <div className="h-1.5 overflow-hidden rounded-full bg-[#1e2035]">
+            <motion.div
+              className="h-full rounded-full" style={{ backgroundColor: hpColor }}
+              initial={reduce ? false : { width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: reduce ? 0 : 0.7, delay: reduce ? 0 : 0.2 + index * 0.05 }}
+            />
+          </div>
+        </div>
+        <div className="mt-3 flex items-center gap-1.5 text-xs text-[#94a3b8]">
+          <Shield className="h-3.5 w-3.5 text-[#6366f1]" />CA <span className="font-semibold text-[#e2e8f0]">{c.armorClass}</span>
+        </div>
+      </Link>
+      <button
+        type="button" onClick={onDelete} aria-label={`Excluir ${c.name}`}
+        className="absolute bottom-3 right-3 rounded-md p-1.5 text-[#475569] opacity-0 transition hover:bg-red-500/10 hover:text-red-400 focus:opacity-100 group-hover:opacity-100"
+      >
+        <Trash2 className="h-4 w-4" />
+      </button>
+    </motion.div>
   );
 }

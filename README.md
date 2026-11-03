@@ -96,6 +96,26 @@ Isso iniciará:
 - **Jogador**: Pode criar, editar e deletar apenas seus próprios personagens
 - **Mestre**: Pode ver, editar e deletar todos os personagens de todos os jogadores
 
+## 📚 Regras e Compêndio
+
+O sistema segue as regras de D&D 5e em PT-BR, centralizadas no pacote `packages/rules` (`@repo/rules`):
+
+- Dados: `RACES`, `CLASSES`, `BACKGROUNDS`, `SPELLS`, armas/armaduras, condições e seções de regras.
+- Helpers: `abilityModifier`, `proficiencyBonus`, `spellSlotsFor`, `levelForXp`, `rollDice`, `getRace/getClass/getBackground/getSpell`.
+- A ficha estruturada fica em `Character.customData.sheet` (contrato em `apps/web/lib/sheet.ts`); as colunas fixas do Prisma guardam atributos finais, PV, CA etc.
+
+Rotas do frontend:
+
+| Rota | Conteúdo |
+| --- | --- |
+| `/compendio` | Raças, classes, antecedentes, equipamento |
+| `/magias` | Busca e filtro de magias (classe, nível, escola) |
+| `/regras` | Regras básicas e condições |
+| `/dados` | Rolador de dados |
+| Wizard de criação | Criação guiada de personagem (raça, classe, antecedente, atributos, magias) |
+
+A API valida personagens (nível 1–20, atributos 1–30) e o `PUT /api/characters/:id` aceita apenas campos conhecidos do modelo (incluindo `customData`). O seed (`pnpm --filter api db:seed`) cria 6 personagens de exemplo calculados a partir do `@repo/rules`.
+
 ## 📁 Estrutura do Projeto
 
 ```
