@@ -2,6 +2,13 @@
 
 Sistema completo de gerenciamento de fichas de personagens baseado em D&D, construído com Next.js, Prisma e PostgreSQL.
 
+## 🌐 Produção
+
+- **Web:** https://rpg.codewaveds.com.br
+- **API:** https://rpg-api.codewaveds.com.br
+
+Deploy via Coolify no VPS Hostinger (`main`). Detalhes em `.coolify/site.json`.
+
 ## 🎯 Funcionalidades
 
 - ✅ Sistema de autenticação por nome de usuário
