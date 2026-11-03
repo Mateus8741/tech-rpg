@@ -15,7 +15,9 @@ COPY packages/typescript-config/package.json ./packages/typescript-config/
 RUN pnpm install --frozen-lockfile
 
 FROM base AS build
-ENV NODE_ENV=development
+# next build must run with NODE_ENV=production (development breaks prerender: useContext null).
+# Deps were already installed with devDependencies in the deps stage.
+ENV NODE_ENV=production
 COPY --from=deps /app /app
 COPY apps/web ./apps/web
 COPY packages ./packages
