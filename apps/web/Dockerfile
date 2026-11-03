@@ -3,6 +3,8 @@ WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
 
 FROM base AS deps
+# Coolify may inject NODE_ENV=production as a build arg; force full install.
+ENV NODE_ENV=development
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json .npmrc ./
 COPY apps/web/package.json ./apps/web/
 COPY apps/api/package.json ./apps/api/
@@ -13,6 +15,7 @@ COPY packages/typescript-config/package.json ./packages/typescript-config/
 RUN pnpm install --frozen-lockfile
 
 FROM base AS build
+ENV NODE_ENV=development
 COPY --from=deps /app /app
 COPY apps/web ./apps/web
 COPY packages ./packages
@@ -21,7 +24,6 @@ COPY turbo.json package.json pnpm-workspace.yaml ./
 ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 ENV NEXT_TELEMETRY_DISABLED=1
-ENV NODE_ENV=production
 
 RUN pnpm --filter web build
 

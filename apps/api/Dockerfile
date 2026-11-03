@@ -3,6 +3,9 @@ WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
 
 FROM base AS deps
+# Coolify may inject NODE_ENV=production as a build arg; force full install
+# so prisma + typescript (devDependencies) are available for the build stage.
+ENV NODE_ENV=development
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json .npmrc ./
 COPY apps/api/package.json ./apps/api/
 COPY apps/web/package.json ./apps/web/
@@ -13,6 +16,7 @@ COPY packages/typescript-config/package.json ./packages/typescript-config/
 RUN pnpm install --frozen-lockfile
 
 FROM base AS build
+ENV NODE_ENV=development
 COPY --from=deps /app /app
 COPY apps/api ./apps/api
 COPY packages ./packages
