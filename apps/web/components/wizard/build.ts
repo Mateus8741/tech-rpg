@@ -62,6 +62,7 @@ export function baseScores(s: WizardState): AbMap<number> {
     let v: number | null | undefined;
     if (s.abilityMode === "standard") v = s.standard[a.key];
     else if (s.abilityMode === "pointbuy") v = s.pointBuy[a.key];
+    else if (s.abilityMode === "manual") v = s.manual[a.key];
     else { const i = s.rollAssign[a.key]; v = i == null || !s.rolls[i] ? null : rollTotal(s.rolls[i]); }
     out[a.key] = v ?? 10;
   }
@@ -79,6 +80,7 @@ export function abilitiesComplete(s: WizardState): boolean {
     const vals = ABILITIES.map((a) => s.standard[a.key]);
     return vals.every((v) => v != null) && new Set(vals).size === STANDARD_ARRAY.length;
   }
+  if (s.abilityMode === "manual") return true;
   if (s.abilityMode === "pointbuy") return pointBuySpent(s.pointBuy) <= POINT_BUY_BUDGET;
   const idx = ABILITIES.map((a) => s.rollAssign[a.key]);
   return s.rolls.length === 6 && idx.every((i) => i != null) && new Set(idx).size === 6;

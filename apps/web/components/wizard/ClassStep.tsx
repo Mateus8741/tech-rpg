@@ -2,8 +2,7 @@
 
 import { CLASSES, SKILLS, type SkillKey } from "@repo/rules";
 import { AlertTriangle } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Chip, Counter, OptionCard, Panel, StepTitle, Tag, TraitList, inputCls, selectCls, toggleIn } from "./ui";
+import { Chip, Counter, NumberField, OptionCard, Panel, StepTitle, Tag, TraitList, inputCls, selectCls, toggleIn } from "./ui";
 import {
   ABILITY_NAME, classEquipmentLines, classOf, skillsTakenOutside, subclassLevel, subclassOf, subclassRequired,
 } from "./build";
@@ -49,12 +48,12 @@ export default function ClassStep({ state, update }: Props) {
 
           <Panel title="Nível inicial">
             <div className="flex flex-wrap items-center gap-3">
-              <Input type="number" min={1} max={20} value={state.level}
-                onChange={(e) => {
-                  const lv = Math.min(20, Math.max(1, parseInt(e.target.value, 10) || 1));
+              <NumberField label="Nível inicial" value={state.level} min={1} max={20}
+                onCommit={(lv) => {
+                  if (lv === state.level) return;
                   update({ level: lv, ...(subLv !== undefined && lv < subLv ? { subclassId: "" } : {}), cantrips: [], spells: [], prepared: [] });
                 }}
-                className={`w-24 ${inputCls}`} aria-label="Nível inicial" />
+                className={`h-10 w-24 rounded-md border px-3 text-sm focus-visible:outline-none focus-visible:ring-2 ${inputCls}`} />
               <span className="text-xs text-[#64748b]">1 a 20 · XP inicial: o mínimo do nível</span>
             </div>
             {state.level > 1 && (

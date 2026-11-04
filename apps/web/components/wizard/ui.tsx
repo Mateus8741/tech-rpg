@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 export function StepTitle({ title, hint }: { title: string; hint?: string }) {
@@ -64,7 +64,7 @@ export function Chip({
   return (
     <button
       type="button"
-      disabled={disabled}
+      disabled={disabled && !selected}
       title={title}
       onClick={onClick}
       aria-pressed={selected}
@@ -131,6 +131,30 @@ export function Counter({ value, max }: { value: number; max: number }) {
 }
 
 /** Alterna item em lista respeitando um limite. */
+/** Input numérico que permite apagar/digitar livremente; confirma o valor (limitado a min..max) ao sair do campo. */
+export function NumberField({ value, onCommit, min, max, className, label }: {
+  value: number; onCommit: (n: number) => void; min: number; max: number; className?: string; label: string;
+}) {
+  const [draft, setDraft] = useState<string | null>(null);
+  const commit = (raw: string) => {
+    const n = parseInt(raw, 10);
+    if (!Number.isNaN(n)) onCommit(Math.min(max, Math.max(min, n)));
+  };
+  return (
+    <input
+      type="number" inputMode="numeric" min={min} max={max} aria-label={label} className={className}
+      value={draft ?? String(value)}
+      onFocus={(e) => e.currentTarget.select()}
+      onChange={(e) => {
+        setDraft(e.target.value);
+        const n = parseInt(e.target.value, 10);
+        if (!Number.isNaN(n) && n >= min && n <= max) onCommit(n);
+      }}
+      onBlur={(e) => { commit(e.target.value); setDraft(null); }}
+    />
+  );
+}
+
 export function toggleIn<T>(list: T[], item: T, max: number): T[] {
   if (list.includes(item)) return list.filter((x) => x !== item);
   return list.length >= max ? list : [...list, item];
