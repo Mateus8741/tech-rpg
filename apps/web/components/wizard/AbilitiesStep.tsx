@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ABILITIES, POINT_BUY_BUDGET, POINT_BUY_COST, STANDARD_ARRAY, abilityModifier, formatModifier } from "@repo/rules";
 import { Dices, Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Panel, StepTitle, selectCls } from "./ui";
+import { NumberField, Panel, StepTitle, selectCls } from "./ui";
 import { baseScores, finalScores, pointBuySpent, racialBonuses, rollTotal } from "./build";
 import type { AbilityMode, WizardState } from "./state";
 import { cn } from "@/lib/utils";
@@ -16,6 +16,7 @@ const MODES: { id: AbilityMode; label: string; hint: string }[] = [
   { id: "standard", label: "Array Padrão", hint: "15, 14, 13, 12, 10, 8" },
   { id: "pointbuy", label: "Compra de Pontos", hint: `${POINT_BUY_BUDGET} pontos` },
   { id: "roll", label: "Rolagem 4d6", hint: "descarta o menor" },
+  { id: "manual", label: "Manual", hint: "digite os valores (1 a 20)" },
 ];
 
 const d6 = () => 1 + Math.floor(Math.random() * 6);
@@ -52,7 +53,7 @@ export default function AbilitiesStep({ state, update }: Props) {
   return (
     <div>
       <StepTitle title="Distribua seus atributos" hint="Os bônus raciais são somados automaticamente ao valor base." />
-      <div className="mb-5 grid gap-2 sm:grid-cols-3">
+      <div className="mb-5 grid gap-2 sm:grid-cols-4">
         {MODES.map((m) => (
           <button key={m.id} type="button" onClick={() => update({ abilityMode: m.id })} aria-pressed={state.abilityMode === m.id}
             className={cn("rounded-xl border p-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1]",
@@ -129,6 +130,11 @@ export default function AbilitiesStep({ state, update }: Props) {
                           onClick={() => update({ pointBuy: { ...state.pointBuy, [k]: state.pointBuy[k] + 1 } })}><Plus className="h-3 w-3" /></Button>
                         <span className="text-[11px] text-[#64748b]">custo {POINT_BUY_COST[state.pointBuy[k]]}</span>
                       </div>
+                    )}
+                    {state.abilityMode === "manual" && (
+                      <NumberField label={`Valor de ${a.name}`} value={state.manual[k]} min={1} max={20}
+                        onCommit={(n) => update({ manual: { ...state.manual, [k]: n } })}
+                        className="h-8 w-20 rounded-md border border-[#1e2035] bg-[#0a0c14] px-2 text-center text-sm tabular-nums text-[#e2e8f0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1]" />
                     )}
                     {state.abilityMode === "roll" && (
                       <select className={selectCls} aria-label={`Rolagem de ${a.name}`} disabled={!state.rolls.length || rolling} value={state.rollAssign[k] ?? ""}

@@ -1,6 +1,6 @@
 import type { AbilityKey, SkillKey } from "@repo/rules";
 
-export type AbilityMode = "standard" | "pointbuy" | "roll";
+export type AbilityMode = "standard" | "pointbuy" | "roll" | "manual";
 export type AbMap<T> = Record<AbilityKey, T>;
 export type StepId = "race" | "class" | "background" | "abilities" | "spells" | "details";
 
@@ -26,6 +26,7 @@ export interface WizardState {
   abilityMode: AbilityMode;
   standard: AbMap<number | null>;
   pointBuy: AbMap<number>;
+  manual: AbMap<number>; // valores digitados livremente
   rolls: number[][]; // 6 conjuntos de 4 dados
   rollAssign: AbMap<number | null>; // índice do conjunto
   // 5. Magias
@@ -47,6 +48,7 @@ export const initialState = (): WizardState => ({
   backgroundId: "", bgLanguages: [], personality: { traits: "", ideals: "", bonds: "", flaws: "" },
   abilityMode: "standard", standard: nulls(),
   pointBuy: { str: 8, dex: 8, con: 8, int: 8, wis: 8, cha: 8 },
+  manual: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
   rolls: [], rollAssign: nulls(),
   cantrips: [], spells: [], prepared: [],
   name: "", alignment: "", appearance: "", backstory: "",
