@@ -11,11 +11,11 @@ export default function DadosPage() {
           <Dices className="h-5 w-5 text-white" />
         </div>
         <div>
-          <h1 className="text-2xl font-bold text-[#e2e8f0]">Dados</h1>
-          <p className="text-sm text-[#64748b]">Role d4 a d100 ou digite uma expressão como 2d6+3.</p>
+          <h1 className="text-2xl font-bold text-ink">Dados</h1>
+          <p className="text-sm text-ink-muted">Role d4 a d100 ou digite uma expressão como 2d6+3.</p>
         </div>
       </header>
-      <div className="rounded-2xl border border-[#1e2035] bg-[#0a0c14] p-5">
+      <div className="rounded-2xl border border-line bg-base p-5">
         <DicePanel />
       </div>
     </div>

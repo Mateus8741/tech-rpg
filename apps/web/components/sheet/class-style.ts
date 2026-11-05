@@ -4,6 +4,10 @@ import {
 
 export interface ClassStyle { icon: LucideIcon; color: string }
 
+/** Cor de acento usada como texto/ícone: escurece no tema claro (var --accent-mix) para manter contraste. */
+export const accentText = (color: string): string =>
+  `color-mix(in srgb, ${color} calc(100% - var(--accent-darken, 0%)), #000)`;
+
 const STYLES: Record<string, ClassStyle> = {
   barbaro: { icon: Axe, color: '#f87171' },
   bardo: { icon: Music, color: '#f472b6' },

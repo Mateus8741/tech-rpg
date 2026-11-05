@@ -8,8 +8,8 @@ const KIND: Record<string, string> = { full: "Completo", half: "Meio-conjurador"
 
 function Row({ k, v }: { k: string; v: string }) {
   return (
-    <div className="flex justify-between gap-4 border-b border-[#1e2035] py-2 text-sm last:border-0">
-      <span className="shrink-0 text-[#64748b]">{k}</span><span className="text-right text-[#e2e8f0]">{v}</span>
+    <div className="flex justify-between gap-4 border-b border-line py-2 text-sm last:border-0">
+      <span className="shrink-0 text-ink-muted">{k}</span><span className="text-right text-ink">{v}</span>
     </div>
   );
 }
@@ -17,7 +17,7 @@ function Row({ k, v }: { k: string; v: string }) {
 function Timeline({ features }: { features: ClassFeature[] }) {
   const reduce = useReducedMotion();
   return (
-    <ol className="relative space-y-5 border-l border-[#1e2035] pl-6">
+    <ol className="relative space-y-5 border-l border-line pl-6">
       {features.map((f, i) => (
         <motion.li
           key={`${f.level}-${f.name}-${i}`}
@@ -27,12 +27,12 @@ function Timeline({ features }: { features: ClassFeature[] }) {
           transition={{ duration: 0.3 }}
           className="relative"
         >
-          <span className="absolute -left-[31px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-[#6366f1] bg-[#0a0c14]">
+          <span className="absolute -left-[31px] top-0.5 flex h-4 w-4 items-center justify-center rounded-full border border-[#6366f1] bg-base">
             <span className="h-1.5 w-1.5 rounded-full bg-[#8b5cf6]" />
           </span>
           <div className="flex items-center gap-2">
             <Chip tone="gold">Nível {f.level}</Chip>
-            <h3 className="text-sm font-semibold text-[#e2e8f0]">{f.name}</h3>
+            <h3 className="text-sm font-semibold text-ink">{f.name}</h3>
           </div>
           <RuleText text={f.description} className="mt-1.5" />
         </motion.li>
@@ -50,9 +50,9 @@ export default function ClassDetail({ cls: c }: { cls: ClassDef }) {
   const maxSlotLevel = sc && sc.kind !== "pact" ? Math.max(...Array.from({ length: 20 }, (_, i) => spellSlotsFor(sc.kind, i + 1).length), 0) : 0;
 
   const progression = (
-    <div className="overflow-x-auto rounded-xl border border-[#1e2035]">
+    <div className="overflow-x-auto rounded-xl border border-line">
       <table className="w-full min-w-[640px] text-left text-sm">
-        <thead className="bg-[#151826] text-[11px] uppercase tracking-wider text-[#64748b]">
+        <thead className="bg-surface text-[11px] uppercase tracking-wider text-ink-muted">
           <tr>
             <th className="px-3 py-2.5">Nível</th>
             <th className="px-3 py-2.5">Prof.</th>
@@ -67,14 +67,14 @@ export default function ClassDetail({ cls: c }: { cls: ClassDef }) {
           {Array.from({ length: 20 }, (_, i) => i + 1).map((lv) => {
             const slots = sc && slotCols ? spellSlotsFor(sc.kind, lv) : [];
             return (
-              <tr key={lv} className="border-t border-[#1e2035] transition-colors hover:bg-white/[0.02]">
-                <td className="px-3 py-2 font-semibold text-[#f5c451]">{lv}</td>
-                <td className="px-3 py-2 text-[#a5b4fc]">{formatModifier(proficiencyBonus(lv))}</td>
-                <td className="px-3 py-2 text-[#cbd5e1]">{featuresAt(lv)}</td>
-                {cols.map((col) => <td key={col.label} className="px-3 py-2 text-[#cbd5e1]">{col.values[lv - 1] ?? "—"}</td>)}
-                {sc?.cantripsKnown && <td className="px-3 py-2 text-[#cbd5e1]">{sc.cantripsKnown[lv - 1] ?? "—"}</td>}
-                {sc?.spellsKnown && <td className="px-3 py-2 text-[#cbd5e1]">{sc.spellsKnown[lv - 1] ?? "—"}</td>}
-                {Array.from({ length: maxSlotLevel }, (_, i) => <td key={i} className="px-2 py-2 text-center text-[#cbd5e1]">{slots[i] ?? "—"}</td>)}
+              <tr key={lv} className="border-t border-line transition-colors hover:bg-white/[0.02]">
+                <td className="px-3 py-2 font-semibold text-gold-ink">{lv}</td>
+                <td className="px-3 py-2 text-indigo-ink">{formatModifier(proficiencyBonus(lv))}</td>
+                <td className="px-3 py-2 text-ink-body">{featuresAt(lv)}</td>
+                {cols.map((col) => <td key={col.label} className="px-3 py-2 text-ink-body">{col.values[lv - 1] ?? "—"}</td>)}
+                {sc?.cantripsKnown && <td className="px-3 py-2 text-ink-body">{sc.cantripsKnown[lv - 1] ?? "—"}</td>}
+                {sc?.spellsKnown && <td className="px-3 py-2 text-ink-body">{sc.spellsKnown[lv - 1] ?? "—"}</td>}
+                {Array.from({ length: maxSlotLevel }, (_, i) => <td key={i} className="px-2 py-2 text-center text-ink-body">{slots[i] ?? "—"}</td>)}
               </tr>
             );
           })}
@@ -129,7 +129,7 @@ export default function ClassDetail({ cls: c }: { cls: ClassDef }) {
           <Row k="Perícias" v={`Escolha ${c.skillChoices.count}: ${c.skillChoices.from === "any" ? "quaisquer" : c.skillChoices.from.map(skillName).join(", ")}`} />
         </Panel>
         <Panel title="Equipamento Inicial">
-          <ul className="list-disc space-y-1.5 pl-5 text-sm text-[#cbd5e1] marker:text-[#6366f1]">
+          <ul className="list-disc space-y-1.5 pl-5 text-sm text-ink-body marker:text-indigo-ink">
             {c.startingEquipment.map((e, i) => <li key={i}>{e}</li>)}
           </ul>
         </Panel>

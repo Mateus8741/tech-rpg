@@ -16,8 +16,8 @@ export default function BackgroundList() {
         <CardGrid key={q}>
           {list.map((b) => (
             <LiftCard key={b.id} href={`/compendio/antecedentes/${b.id}`}>
-              <h2 className="text-lg font-semibold text-[#e2e8f0]">{b.name}</h2>
-              <p className="mt-1 line-clamp-3 text-sm text-[#64748b]">{b.summary}</p>
+              <h2 className="text-lg font-semibold text-ink">{b.name}</h2>
+              <p className="mt-1 line-clamp-3 text-sm text-ink-muted">{b.summary}</p>
               <div className="mt-4 flex flex-wrap gap-1.5">{b.skills.map((s) => <Chip key={s} tone="accent">{skillName(s)}</Chip>)}</div>
             </LiftCard>
           ))}

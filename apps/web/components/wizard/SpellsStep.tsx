@@ -10,7 +10,7 @@ import type { WizardState } from "./state";
 
 interface Props { state: WizardState; update: (p: Partial<WizardState>) => void }
 
-function Picker({ title, list, selected, max, onChange, hint }: {
+export function Picker({ title, list, selected, max, onChange, hint }: {
   title: string; list: Spell[]; selected: string[]; max: number; onChange: (ids: string[]) => void; hint?: string;
 }) {
   const [q, setQ] = useState("");
@@ -19,9 +19,9 @@ function Picker({ title, list, selected, max, onChange, hint }: {
   const shown = list.filter((s) => (lv === "all" || s.level === Number(lv)) && s.name.toLowerCase().includes(q.toLowerCase()));
   return (
     <Panel title={title} aside={<Counter value={selected.length} max={Math.min(max, list.length)} />}>
-      {hint && <p className="mb-3 text-xs text-[#64748b]">{hint}</p>}
+      {hint && <p className="mb-3 text-xs text-ink-muted">{hint}</p>}
       <div className="mb-3 flex gap-2">
-        <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Buscar magia…" className={inputCls} />
+        <Input aria-label="Buscar magia" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Buscar magia…" className={inputCls} />
         {levels.length > 1 && (
           <select className={selectCls} value={lv} onChange={(e) => setLv(e.target.value)} aria-label="Filtrar por nível">
             <option value="all">Todos</option>
@@ -34,7 +34,7 @@ function Picker({ title, list, selected, max, onChange, hint }: {
           <SpellPickItem key={s.id} spell={s} selected={selected.includes(s.id)} disabled={selected.length >= max}
             onToggle={() => onChange(toggleIn(selected, s.id, max))} />
         ))}
-        {!shown.length && <p className="py-4 text-center text-xs text-[#64748b]">Nenhuma magia encontrada.</p>}
+        {!shown.length && <p className="py-4 text-center text-xs text-ink-muted">Nenhuma magia encontrada.</p>}
       </div>
     </Panel>
   );

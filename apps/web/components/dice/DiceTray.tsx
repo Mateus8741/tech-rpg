@@ -20,11 +20,11 @@ export function DiceTray() {
             animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
             exit={reduce ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.95 }}
             transition={{ duration: 0.18 }}
-            className="max-h-[80vh] w-[min(22rem,calc(100vw-2rem))] overflow-y-auto rounded-2xl border border-[#1e2035] bg-[#0f1117] p-4 shadow-2xl"
+            className="max-h-[80vh] w-[min(22rem,calc(100vw-2rem))] overflow-y-auto rounded-2xl border border-line bg-canvas p-4 shadow-2xl"
           >
             <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-sm font-semibold text-[#e2e8f0]">Rolagem rápida</h2>
-              <button type="button" aria-label="Fechar" onClick={() => setOpen(false)} className="rounded p-1 text-[#64748b] hover:text-[#e2e8f0]">
+              <h2 className="text-sm font-semibold text-ink">Rolagem rápida</h2>
+              <button type="button" aria-label="Fechar" onClick={() => setOpen(false)} className="rounded p-1 text-ink-muted hover:text-ink">
                 <X className="h-4 w-4" />
               </button>
             </div>

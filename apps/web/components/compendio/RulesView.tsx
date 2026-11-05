@@ -10,7 +10,7 @@ export default function RulesView() {
   return (
     <Page>
       <Header eyebrow="Referência" title="Regras" subtitle="Regras-chave do jogo e condições." />
-      <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#f5c451]">Regras-chave</h2>
+      <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-gold-ink">Regras-chave</h2>
       <div className="mb-10 space-y-2">
         {RULE_SECTIONS.map((s) => (
           <Accordion key={s.id} title={s.title}>
@@ -19,7 +19,7 @@ export default function RulesView() {
         ))}
       </div>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-[#f5c451]">Condições ({CONDITIONS.length})</h2>
+        <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-gold-ink">Condições ({CONDITIONS.length})</h2>
         <SearchBox value={q} onChange={setQ} placeholder="Buscar condição..." />
       </div>
       {conds.length === 0 ? <Empty text="Nenhuma condição encontrada." /> : (

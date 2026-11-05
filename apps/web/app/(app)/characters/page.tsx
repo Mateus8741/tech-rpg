@@ -1,14 +1,15 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { Plus, LogOut, Trash2, Users, User, Search, Shield, Heart } from 'lucide-react';
+import { Plus, LogOut, Trash2, Users, User, Search, Shield, Heart, Upload } from 'lucide-react';
 import { CLASSES, getClass, getRace } from '@repo/rules';
-import { getCharacters, deleteCharacter, type Character } from '@/lib/api';
+import { getCharacters, deleteCharacter, createCharacter, type Character } from '@/lib/api';
+import { parseCharacterFile, type ExportedCharacter } from '@/lib/character-io';
 import { getSheet } from '@/lib/sheet';
-import { classStyle } from '@/components/sheet/class-style';
+import { classStyle, accentText } from '@/components/sheet/class-style';
 import { Button } from '@/components/ui/button';
 import {
   AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
@@ -26,6 +27,9 @@ export default function CharactersPage() {
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [query, setQuery] = useState('');
   const [classFilter, setClassFilter] = useState('all');
+  const [importing, setImporting] = useState<ExportedCharacter | null>(null);
+  const [importBusy, setImportBusy] = useState(false);
+  const fileRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   const load = useCallback(async (user: string) => {
@@ -61,6 +65,32 @@ export default function CharactersPage() {
     }
   };
 
+  // Lê o arquivo escolhido e abre a confirmação
+  const onPickFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+    if (file.size > 2_000_000) { toast.error('Arquivo grande demais'); return; }
+    const res = parseCharacterFile(await file.text());
+    if (!res.ok) { toast.error(res.error); return; }
+    setImporting(res.character);
+  };
+
+  const confirmImport = async () => {
+    if (!importing) return;
+    setImportBusy(true);
+    try {
+      const created = await createCharacter(username, importing);
+      setCharacters((cs) => [created, ...cs]);
+      toast.success(`${created.name} importado`);
+      setImporting(null);
+    } catch {
+      toast.error('Erro ao importar ficha');
+    } finally {
+      setImportBusy(false);
+    }
+  };
+
   const logout = () => {
     localStorage.removeItem('rpg_username');
     localStorage.removeItem('rpg_role');
@@ -89,14 +119,18 @@ export default function CharactersPage() {
 
   return (
     <>
-      <div className="flex h-[52px] flex-shrink-0 items-center justify-between border-b border-[#1e2035] px-6">
+      <div className="flex h-[52px] flex-shrink-0 items-center justify-between border-b border-line px-6">
         <div>
-          <p className="text-sm font-semibold text-[#e2e8f0]">Personagens</p>
-          <p className="text-xs text-[#475569]">{characters.length} {characters.length === 1 ? 'personagem' : 'personagens'}</p>
+          <p className="text-sm font-semibold text-ink">Personagens</p>
+          <p className="text-xs text-ink-faint">{characters.length} {characters.length === 1 ? 'personagem' : 'personagens'}</p>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" onClick={logout} className="text-[#64748b] hover:bg-white/5 hover:text-[#e2e8f0]">
+          <Button variant="ghost" size="sm" onClick={logout} className="text-ink-muted hover:bg-ink/5 hover:text-ink">
             <LogOut className="mr-1.5 h-4 w-4" />Sair
+          </Button>
+          <input ref={fileRef} type="file" accept=".json,application/json" className="hidden" onChange={onPickFile} aria-label="Arquivo de ficha para importar" />
+          <Button variant="ghost" size="sm" onClick={() => fileRef.current?.click()} className="text-ink-soft hover:bg-ink/5 hover:text-ink">
+            <Upload className="mr-1.5 h-4 w-4" />Importar ficha
           </Button>
           <Link href="/characters/new">
             <Button size="sm" className="border-0 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white hover:from-[#4f46e5] hover:to-[#7c3aed]">
@@ -108,23 +142,23 @@ export default function CharactersPage() {
 
       <div className="flex-1 overflow-y-auto p-6">
         {loading ? (
-          <div className="flex h-full items-center justify-center text-[#64748b]">Carregando...</div>
+          <div className="flex h-full items-center justify-center text-ink-muted">Carregando...</div>
         ) : characters.length === 0 ? (
           <EmptyState />
         ) : (
           <>
             <div className="mb-5 flex flex-wrap gap-3">
               <div className="relative min-w-[220px] flex-1 sm:max-w-sm">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#475569]" />
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-faint" />
                 <input
                   value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar por nome, raça ou classe..."
                   aria-label="Buscar personagens"
-                  className="w-full rounded-lg border border-[#1e2035] bg-[#0f1117] py-2 pl-9 pr-3 text-sm text-[#e2e8f0] placeholder:text-[#475569] focus:border-[#6366f1]/60 focus:outline-none"
+                  className="w-full rounded-lg border border-line bg-canvas py-2 pl-9 pr-3 text-sm text-ink placeholder:text-ink-faint focus:border-[#6366f1]/60 focus:outline-none"
                 />
               </div>
               <select
                 value={classFilter} onChange={(e) => setClassFilter(e.target.value)} aria-label="Filtrar por classe"
-                className="rounded-lg border border-[#1e2035] bg-[#0f1117] px-3 py-2 text-sm text-[#e2e8f0] focus:border-[#6366f1]/60 focus:outline-none"
+                className="rounded-lg border border-line bg-canvas px-3 py-2 text-sm text-ink focus:border-[#6366f1]/60 focus:outline-none"
               >
                 <option value="all">Todas as classes</option>
                 {usedClasses.map((k) => <option key={k.id} value={k.id}>{k.name}</option>)}
@@ -132,7 +166,7 @@ export default function CharactersPage() {
             </div>
 
             {filtered.length === 0 ? (
-              <p className="py-16 text-center text-sm text-[#64748b]">Nenhum personagem corresponde à busca.</p>
+              <p className="py-16 text-center text-sm text-ink-muted">Nenhum personagem corresponde à busca.</p>
             ) : (
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 <AnimatePresence mode="popLayout">
@@ -146,16 +180,33 @@ export default function CharactersPage() {
         )}
       </div>
 
-      <AlertDialog open={!!deleteId} onOpenChange={(o) => !o && setDeleteId(null)}>
-        <AlertDialogContent className="border-[#2d2f45] bg-[#13151f]">
+      <AlertDialog open={!!importing} onOpenChange={(o) => !o && !importBusy && setImporting(null)}>
+        <AlertDialogContent className="border-line-strong bg-surface">
           <AlertDialogHeader>
-            <AlertDialogTitle className="text-[#e2e8f0]">Excluir personagem?</AlertDialogTitle>
-            <AlertDialogDescription className="text-[#64748b]">
+            <AlertDialogTitle className="text-ink">Importar ficha?</AlertDialogTitle>
+            <AlertDialogDescription className="text-ink-muted">
+              {importing && `${importing.name} — ${importing.race ?? '?'} · ${importing.class ?? '?'} · Nível ${importing.level ?? 1}. Será criado um novo personagem na sua conta.`}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={importBusy} className="border-line-strong bg-transparent text-ink-soft hover:bg-ink/5">Cancelar</AlertDialogCancel>
+            <AlertDialogAction disabled={importBusy} onClick={(e) => { e.preventDefault(); confirmImport(); }} className="border-0 bg-[#6366f1] text-white hover:bg-[#4f46e5]">
+              {importBusy ? 'Importando...' : 'Importar'}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog open={!!deleteId} onOpenChange={(o) => !o && setDeleteId(null)}>
+        <AlertDialogContent className="border-line-strong bg-surface">
+          <AlertDialogHeader>
+            <AlertDialogTitle className="text-ink">Excluir personagem?</AlertDialogTitle>
+            <AlertDialogDescription className="text-ink-muted">
               Esta ação não pode ser desfeita. O personagem será excluído permanentemente.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel className="border-[#2d2f45] bg-transparent text-[#94a3b8] hover:bg-white/5">Cancelar</AlertDialogCancel>
+            <AlertDialogCancel className="border-line-strong bg-transparent text-ink-soft hover:bg-ink/5">Cancelar</AlertDialogCancel>
             <AlertDialogAction onClick={confirmDelete} className="border-0 bg-red-600 text-white hover:bg-red-700">Excluir</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -175,11 +226,11 @@ function EmptyState() {
         animate={reduce ? undefined : { y: [0, -6, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
         className="flex h-20 w-20 items-center justify-center rounded-3xl border border-[#6366f1]/30 bg-gradient-to-br from-[#6366f1]/20 to-[#8b5cf6]/10"
       >
-        <Users className="h-9 w-9 text-[#a5b4fc]" />
+        <Users className="h-9 w-9 text-indigo-ink" />
       </motion.div>
       <div>
-        <p className="text-lg font-semibold text-[#e2e8f0]">Sua jornada começa aqui</p>
-        <p className="mt-1 text-sm text-[#64748b]">Nenhum personagem criado ainda. Escolha raça, classe e antecedente para dar vida a um herói.</p>
+        <p className="text-lg font-semibold text-ink">Sua jornada começa aqui</p>
+        <p className="mt-1 text-sm text-ink-muted">Nenhum personagem criado ainda. Escolha raça, classe e antecedente para dar vida a um herói.</p>
       </div>
       <Link href="/characters/new">
         <Button className="border-0 bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] text-white">
@@ -208,43 +259,43 @@ function CharacterCard({ character: c, index, showOwner, onDelete }: {
       animate={{ opacity: 1, y: 0, transition: { delay: reduce ? 0 : Math.min(index, 12) * 0.05 } }}
       exit={{ opacity: 0, scale: 0.95 }}
       whileHover={reduce ? undefined : { y: -3 }}
-      className="group relative overflow-hidden rounded-xl border border-[#1e2035] bg-[#0f1117] transition-colors hover:border-[#2d2f45]"
+      className="group relative overflow-hidden rounded-xl border border-line bg-canvas transition-colors hover:border-line-strong"
     >
       <div className="h-[3px]" style={{ background: `linear-gradient(90deg, ${style.color}, transparent)` }} />
       <Link href={`/characters/${c.id}`} className="block p-4" aria-label={`Abrir ficha de ${c.name}`}>
         <div className="flex items-start gap-3">
-          <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border" style={{ borderColor: `${style.color}55`, background: `${style.color}1a`, color: style.color }}>
+          <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border" style={{ borderColor: `${style.color}55`, background: `${style.color}1a`, color: accentText(style.color) }}>
             <style.icon className="h-6 w-6" />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-bold text-[#e2e8f0]">{c.name}</p>
-            <p className="truncate text-xs text-[#94a3b8]">{race?.name ?? c.race} · {cls?.name ?? c.class}</p>
+            <p className="truncate text-sm font-bold text-ink">{c.name}</p>
+            <p className="truncate text-xs text-ink-soft">{race?.name ?? c.race} · {cls?.name ?? c.class}</p>
             {showOwner && c.user && (
-              <p className="mt-0.5 flex items-center gap-1 text-[10px] text-[#475569]"><User className="h-3 w-3" />{c.user.username}</p>
+              <p className="mt-0.5 flex items-center gap-1 text-[10px] text-ink-faint"><User className="h-3 w-3" />{c.user.username}</p>
             )}
           </div>
-          <span className="rounded-full border border-[#f5c451]/30 bg-[#f5c451]/10 px-2 py-0.5 text-[10px] font-semibold text-[#f5c451]">Nv {c.level}</span>
+          <span className="rounded-full border border-[#f5c451]/30 bg-[#f5c451]/10 px-2 py-0.5 text-[10px] font-semibold text-gold-ink">Nv {c.level}</span>
         </div>
 
         <div className="mt-4">
-          <div className="mb-1 flex items-center justify-between text-[11px] text-[#64748b]">
+          <div className="mb-1 flex items-center justify-between text-[11px] text-ink-muted">
             <span className="flex items-center gap-1"><Heart className="h-3 w-3 text-red-400" />PV</span>
-            <span className="tabular-nums text-[#94a3b8]">{c.currentHitPoints}/{c.maxHitPoints}</span>
+            <span className="tabular-nums text-ink-soft">{c.currentHitPoints}/{c.maxHitPoints}</span>
           </div>
-          <div className="h-1.5 overflow-hidden rounded-full bg-[#1e2035]">
+          <div className="h-1.5 overflow-hidden rounded-full bg-surface-3">
             <motion.div
               className="h-full rounded-full" style={{ backgroundColor: hpColor }}
               initial={reduce ? false : { width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: reduce ? 0 : 0.7, delay: reduce ? 0 : 0.2 + index * 0.05 }}
             />
           </div>
         </div>
-        <div className="mt-3 flex items-center gap-1.5 text-xs text-[#94a3b8]">
-          <Shield className="h-3.5 w-3.5 text-[#6366f1]" />CA <span className="font-semibold text-[#e2e8f0]">{c.armorClass}</span>
+        <div className="mt-3 flex items-center gap-1.5 text-xs text-ink-soft">
+          <Shield className="h-3.5 w-3.5 text-indigo-ink" />CA <span className="font-semibold text-ink">{c.armorClass}</span>
         </div>
       </Link>
       <button
         type="button" onClick={onDelete} aria-label={`Excluir ${c.name}`}
-        className="absolute bottom-3 right-3 rounded-md p-1.5 text-[#475569] opacity-0 transition hover:bg-red-500/10 hover:text-red-400 focus:opacity-100 group-hover:opacity-100"
+        className="absolute bottom-3 right-3 rounded-md p-1.5 text-ink-faint opacity-0 transition hover:bg-red-500/10 hover:text-red-400 focus:opacity-100 group-hover:opacity-100"
       >
         <Trash2 className="h-4 w-4" />
       </button>

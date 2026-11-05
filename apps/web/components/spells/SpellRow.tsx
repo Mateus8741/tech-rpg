@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import type { Spell } from "@repo/rules";
 import { cn } from "@/lib/utils";
 import { SPELL_SCHOOL_COLORS, spellLevelLabel, spellLevelShort } from "./spell-utils";
+import { accentText } from "@/components/sheet/class-style";
 
 export interface SpellRowProps {
   spell: Spell;
@@ -19,8 +20,8 @@ export function SpellRow({ spell, onClick, action, selected, className }: SpellR
   return (
     <div
       className={cn(
-        "group flex items-center gap-3 rounded-xl border bg-[#0f1117] px-3 py-2.5 transition-colors",
-        selected ? "border-[#6366f1] bg-[#6366f1]/10" : "border-[#1e2035] hover:border-[#6366f1]/50 hover:bg-[#13152a]",
+        "group flex items-center gap-3 rounded-xl border bg-canvas px-3 py-2.5 transition-colors",
+        selected ? "border-[#6366f1] bg-[#6366f1]/10" : "border-line hover:border-[#6366f1]/50 hover:bg-surface",
         className,
       )}
     >
@@ -31,23 +32,23 @@ export function SpellRow({ spell, onClick, action, selected, className }: SpellR
       >
         <span
           className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border text-sm font-bold"
-          style={{ borderColor: `${color.hex}66`, background: `${color.hex}1a`, color: color.hex }}
+          style={{ borderColor: `${color.hex}66`, background: `${color.hex}1a`, color: accentText(color.hex) }}
           title={spellLevelLabel(spell.level)}
         >
           {spellLevelShort(spell.level)}
         </span>
         <span className="min-w-0 flex-1">
           <span className="flex items-center gap-1.5">
-            <span className="truncate text-sm font-medium text-[#e2e8f0]">{spell.name}</span>
+            <span className="truncate text-sm font-medium text-ink">{spell.name}</span>
             {spell.concentration && (
-              <span className="rounded border border-[#8b5cf6]/40 px-1 text-[10px] font-semibold text-[#a78bfa]" title="Concentração">C</span>
+              <span className="rounded border border-[#8b5cf6]/40 px-1 text-[10px] font-semibold text-violet-ink" title="Concentração">C</span>
             )}
             {spell.ritual && (
-              <span className="rounded border border-[#f5c451]/40 px-1 text-[10px] font-semibold text-[#f5c451]" title="Ritual">R</span>
+              <span className="rounded border border-[#f5c451]/40 px-1 text-[10px] font-semibold text-gold-ink" title="Ritual">R</span>
             )}
           </span>
-          <span className="block truncate text-xs text-[#64748b]">
-            <span style={{ color: color.hex }}>{spell.school}</span> · {spell.castingTime} · {spell.range}
+          <span className="block truncate text-xs text-ink-muted">
+            <span style={{ color: accentText(color.hex) }}>{spell.school}</span> · {spell.castingTime} · {spell.range}
           </span>
         </span>
       </button>

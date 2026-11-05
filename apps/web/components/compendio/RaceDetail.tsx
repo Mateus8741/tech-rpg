@@ -5,12 +5,12 @@ import { AnimatedTabs, Chip, Header, Page, Panel, RuleText } from "./kit";
 import { bonusLabel } from "./RaceList";
 
 function Traits({ traits }: { traits: Trait[] }) {
-  if (!traits.length) return <p className="text-sm text-[#64748b]">Sem traços adicionais.</p>;
+  if (!traits.length) return <p className="text-sm text-ink-muted">Sem traços adicionais.</p>;
   return (
     <div className="space-y-4">
       {traits.map((t) => (
         <div key={t.name}>
-          <h3 className="text-sm font-semibold text-[#e2e8f0]">{t.name}</h3>
+          <h3 className="text-sm font-semibold text-ink">{t.name}</h3>
           <RuleText text={t.description} className="mt-1" />
         </div>
       ))}
@@ -20,8 +20,8 @@ function Traits({ traits }: { traits: Trait[] }) {
 
 function Row({ k, v }: { k: string; v: string }) {
   return (
-    <div className="flex justify-between gap-4 border-b border-[#1e2035] py-2 text-sm last:border-0">
-      <span className="text-[#64748b]">{k}</span><span className="text-right text-[#e2e8f0]">{v}</span>
+    <div className="flex justify-between gap-4 border-b border-line py-2 text-sm last:border-0">
+      <span className="text-ink-muted">{k}</span><span className="text-right text-ink">{v}</span>
     </div>
   );
 }
@@ -57,7 +57,7 @@ export default function RaceDetail({ race: r }: { race: Race }) {
       </div>
       {r.subraces.length > 0 && (
         <div className="mt-8">
-          <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-[#f5c451]">Sub-raças</h2>
+          <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-gold-ink">Sub-raças</h2>
           <AnimatedTabs
             tabs={r.subraces.map((s) => ({
               label: s.name,

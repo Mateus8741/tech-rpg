@@ -34,7 +34,7 @@ export function DicePanel({ compact = false, showHistory = true }: { compact?: b
     <div className="space-y-4">
       <RollResult roll={last} />
 
-      <div className="flex justify-center gap-1 rounded-lg border border-[#1e2035] bg-[#0a0c14] p-1">
+      <div className="flex justify-center gap-1 rounded-lg border border-line bg-base p-1">
         {MODES.map((m) => (
           <button
             key={m.id}
@@ -43,14 +43,14 @@ export function DicePanel({ compact = false, showHistory = true }: { compact?: b
             aria-pressed={mode === m.id}
             className={cn(
               "flex-1 rounded-md px-2 py-1 text-xs font-medium transition-colors",
-              mode === m.id ? "bg-[#6366f1] text-white" : "text-[#64748b] hover:text-[#e2e8f0]",
+              mode === m.id ? "bg-[#6366f1] text-white" : "text-ink-muted hover:text-ink",
             )}
           >
             {m.label}
           </button>
         ))}
       </div>
-      {mode !== "normal" && <p className="-mt-2 text-center text-[10px] text-[#64748b]">Vale apenas para o d20.</p>}
+      {mode !== "normal" && <p className="-mt-2 text-center text-[10px] text-ink-muted">Vale apenas para o d20.</p>}
 
       <div className={cn("grid gap-2", compact ? "grid-cols-4" : "grid-cols-4 sm:grid-cols-7")}>
         {DICE.map((d) => (
@@ -63,8 +63,8 @@ export function DicePanel({ compact = false, showHistory = true }: { compact?: b
             className={cn(
               "rounded-xl border py-3 text-sm font-bold transition-colors",
               d === 20
-                ? "border-[#f5c451]/50 bg-[#f5c451]/10 text-[#f5c451] hover:bg-[#f5c451]/20"
-                : "border-[#1e2035] bg-[#0f1117] text-[#e2e8f0] hover:border-[#6366f1]",
+                ? "border-[#f5c451]/50 bg-[#f5c451]/10 text-gold-ink hover:bg-[#f5c451]/20"
+                : "border-line bg-canvas text-ink hover:border-[#6366f1]",
             )}
           >
             d{d}
@@ -79,37 +79,37 @@ export function DicePanel({ compact = false, showHistory = true }: { compact?: b
             onChange={(e) => setExpr(e.target.value)}
             placeholder="2d6+3"
             aria-label="Expressão de dados"
-            className="h-10 min-w-0 flex-1 rounded-lg border border-[#1e2035] bg-[#0f1117] px-3 text-sm text-[#e2e8f0] placeholder:text-[#64748b] focus:border-[#6366f1] focus:outline-none"
+            className="h-10 min-w-0 flex-1 rounded-lg border border-line bg-canvas px-3 text-sm text-ink placeholder:text-ink-muted focus:border-[#6366f1] focus:outline-none"
           />
           <button type="submit" className="h-10 rounded-lg bg-gradient-to-r from-[#6366f1] to-[#8b5cf6] px-4 text-sm font-semibold text-white hover:opacity-90">
             Rolar
           </button>
         </div>
-        {error && <p className="text-xs text-[#ef4444]">{error}</p>}
+        {error && <p role="alert" className="text-xs text-danger">{error}</p>}
       </form>
 
       {showHistory && (
         <div>
           <div className="mb-2 flex items-center justify-between">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-[#64748b]">Histórico</h3>
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-ink-muted">Histórico</h3>
             {history.length > 0 && (
-              <button type="button" onClick={clear} className="flex items-center gap-1 text-xs text-[#64748b] hover:text-[#ef4444]">
+              <button type="button" onClick={clear} className="flex items-center gap-1 text-xs text-ink-muted hover:text-danger">
                 <Trash2 className="h-3 w-3" /> Limpar
               </button>
             )}
           </div>
           {history.length === 0 ? (
-            <p className="py-3 text-center text-xs text-[#64748b]">Nenhuma rolagem ainda.</p>
+            <p className="py-3 text-center text-xs text-ink-muted">Nenhuma rolagem ainda.</p>
           ) : (
             <ul className={cn("space-y-1 overflow-y-auto pr-1", compact ? "max-h-40" : "max-h-72")}>
               {history.map((h) => (
-                <li key={h.id} className="flex items-center justify-between rounded-lg border border-[#1e2035] bg-[#0f1117] px-3 py-1.5 text-xs">
-                  <span className="text-[#64748b]">
-                    <span className="font-medium text-[#e2e8f0]">{h.expr}</span>
-                    {h.mode !== "normal" && <span className="text-[#8b5cf6]"> {h.mode === "advantage" ? "vant." : "desv."}</span>}
+                <li key={h.id} className="flex items-center justify-between rounded-lg border border-line bg-canvas px-3 py-1.5 text-xs">
+                  <span className="text-ink-muted">
+                    <span className="font-medium text-ink">{h.expr}</span>
+                    {h.mode !== "normal" && <span className="text-violet-ink"> {h.mode === "advantage" ? "vant." : "desv."}</span>}
                     {" "}[{h.rolls.join(", ")}]
                   </span>
-                  <span className={cn("text-base font-bold tabular-nums", h.crit === "max" ? "text-[#f5c451]" : h.crit === "min" ? "text-[#ef4444]" : "text-[#e2e8f0]")}>
+                  <span className={cn("text-base font-bold tabular-nums", h.crit === "max" ? "text-gold-ink" : h.crit === "min" ? "text-danger" : "text-ink")}>
                     {h.total}
                   </span>
                 </li>

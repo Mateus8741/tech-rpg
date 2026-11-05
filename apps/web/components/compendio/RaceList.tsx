@@ -20,8 +20,8 @@ export default function RaceList() {
         <CardGrid key={q}>
           {list.map((r) => (
             <LiftCard key={r.id} href={`/compendio/racas/${r.id}`}>
-              <h2 className="text-lg font-semibold text-[#e2e8f0]">{r.name}</h2>
-              <p className="mt-1 line-clamp-3 text-sm text-[#64748b]">{r.summary}</p>
+              <h2 className="text-lg font-semibold text-ink">{r.name}</h2>
+              <p className="mt-1 line-clamp-3 text-sm text-ink-muted">{r.summary}</p>
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {bonusLabel(r.abilityBonuses).map((b) => <Chip key={b} tone="accent">{b}</Chip>)}
                 {r.abilityChoice && <Chip tone="accent">+{r.abilityChoice.amount} x{r.abilityChoice.count}</Chip>}

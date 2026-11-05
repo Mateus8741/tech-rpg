@@ -47,13 +47,13 @@ export default function BackgroundStep({ state, update }: Props) {
       {bg && (
         <div className="mt-6 space-y-4">
           <Panel title={`${bg.name} — resumo`}>
-            <p className="text-sm leading-relaxed text-[#94a3b8]">{bg.summary}</p>
+            <p className="text-sm leading-relaxed text-ink-soft">{bg.summary}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               <Tag tone="gold">Perícias: {bg.skills.map((k) => SKILLS.find((s) => s.key === k)!.name).join(", ")}</Tag>
               {bg.tools.length > 0 && <Tag tone="indigo">Ferramentas: {bg.tools.join(", ")}</Tag>}
               {bg.languages > 0 && <Tag>Idiomas à escolha: {bg.languages}</Tag>}
             </div>
-            <ul className="mt-3 list-disc space-y-0.5 pl-5 text-xs text-[#64748b]">
+            <ul className="mt-3 list-disc space-y-0.5 pl-5 text-xs text-ink-muted">
               {bg.equipment.map((e) => <li key={e}>{e}</li>)}
             </ul>
           </Panel>
@@ -72,7 +72,7 @@ export default function BackgroundStep({ state, update }: Props) {
           <Panel title="Característica do antecedente"><TraitList traits={[bg.feature]} /></Panel>
 
           <Panel title="Personalidade" aside={
-            <Button type="button" size="sm" variant="outline" onClick={rollAll} className="h-7 gap-1 border-[#1e2035] bg-transparent text-xs text-[#a5b4fc] hover:bg-[#6366f1]/10">
+            <Button type="button" size="sm" variant="outline" onClick={rollAll} className="h-7 gap-1 border-line bg-transparent text-xs text-indigo-ink hover:bg-[#6366f1]/10">
               <Dices className="h-3.5 w-3.5" /> Sortear tudo
             </Button>
           }>
@@ -80,12 +80,12 @@ export default function BackgroundStep({ state, update }: Props) {
               {FIELDS.map((f) => (
                 <div key={f.key}>
                   <div className="mb-1 flex items-center justify-between">
-                    <span className="text-xs font-medium text-[#94a3b8]">{f.label}</span>
-                    <button type="button" onClick={() => roll(f.key)} className="flex items-center gap-1 text-[11px] text-[#8b5cf6] hover:text-[#a78bfa]">
+                    <span className="text-xs font-medium text-ink-soft">{f.label}</span>
+                    <button type="button" onClick={() => roll(f.key)} className="flex items-center gap-1 text-[11px] text-violet-ink hover:text-violet-ink">
                       <Dices className="h-3 w-3" /> Sortear
                     </button>
                   </div>
-                  <textarea rows={2} value={state.personality[f.key]}
+                  <textarea rows={2} aria-label={f.label} value={state.personality[f.key]}
                     onChange={(e) => update({ personality: { ...state.personality, [f.key]: e.target.value } })}
                     className={`w-full resize-none rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 ${inputCls}`} />
                 </div>

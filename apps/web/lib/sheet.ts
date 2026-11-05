@@ -7,6 +7,16 @@ import {
 } from "@repo/rules";
 import type { Character } from "@/lib/api";
 
+export interface ResourceDef {
+  id: string;
+  name: string;                                 // "Fúria", "Pontos de Ki"...
+  max: number;
+  used: number;
+  recharge: "short" | "long" | "manual";        // quando volta no descanso
+}
+
+export interface Coins { pp: number; gp: number; ep: number; sp: number; cp: number }
+
 export interface SheetData {
   raceId: string;
   subraceId?: string;
@@ -29,6 +39,12 @@ export interface SheetData {
   appearance: string;
   backstory: string;
   chosenFeatures: string[];                     // escolhas livres (estilo de luta, etc.)
+  concentratingOn: string | null;               // id da magia em concentração
+  conditions: string[];                         // ids de CONDITIONS de @repo/rules
+  exhaustion: number;                           // 0-6
+  resources: ResourceDef[];                     // fúria, ki, usos por descanso...
+  coins: Coins;
+  spellsFavorite: string[];                     // ids de magia favoritas
 }
 
 export const emptySheet = (): SheetData => ({
@@ -40,6 +56,8 @@ export const emptySheet = (): SheetData => ({
   spellsKnown: [], spellsPrepared: [], spellSlotsUsed: [],
   personality: { traits: "", ideals: "", bonds: "", flaws: "" },
   appearance: "", backstory: "", chosenFeatures: [],
+  concentratingOn: null, conditions: [], exhaustion: 0, resources: [],
+  coins: { pp: 0, gp: 0, ep: 0, sp: 0, cp: 0 }, spellsFavorite: [],
 });
 
 export const getSheet = (c: Pick<Character, "customData">): SheetData =>

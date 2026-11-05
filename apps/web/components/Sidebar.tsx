@@ -2,10 +2,12 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Users, Library, Sparkles, ScrollText, Dices, Swords, LogOut } from 'lucide-react';
+import { Users, Library, Sparkles, ScrollText, Dices, Swords, LogOut, Search } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { LayoutGroup, motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { openSearch } from '@/components/search/store';
+import ThemeToggle from '@/components/ThemeToggle';
 
 const navItems = [
   { href: '/characters', icon: Users, label: 'Personagens' },
@@ -59,7 +61,7 @@ export default function Sidebar() {
                 href={href}
                 aria-label={label}
                 aria-current={isActive ? 'page' : undefined}
-                className="group relative flex h-10 w-10 items-center justify-center rounded-xl outline-none transition-colors hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-indigo/60"
+                className="group relative flex h-10 w-10 items-center justify-center rounded-xl outline-none transition-colors hover:bg-ink/5 focus-visible:ring-2 focus-visible:ring-indigo/60"
               >
                 {isActive && (
                   <>
@@ -90,10 +92,23 @@ export default function Sidebar() {
 
       <div className="flex-1" />
 
+      <button
+        type="button"
+        onClick={openSearch}
+        aria-label="Buscar (Ctrl K)"
+        aria-keyshortcuts="Control+K Meta+K"
+        className="group relative mb-2 flex h-9 w-9 items-center justify-center rounded-xl text-ink-muted outline-none transition-colors hover:bg-ink/5 hover:text-ink focus-visible:ring-2 focus-visible:ring-indigo/60"
+      >
+        <Search className="h-4 w-4" />
+        <Tooltip>Buscar (Ctrl K)</Tooltip>
+      </button>
+
+      <ThemeToggle tooltip={(label) => <Tooltip>{label}</Tooltip>} />
+
       <Link
         href="/"
         aria-label="Sair"
-        className="group relative mb-2 flex h-9 w-9 items-center justify-center rounded-xl text-ink-muted outline-none transition-colors hover:bg-white/5 hover:text-ink focus-visible:ring-2 focus-visible:ring-indigo/60"
+        className="group relative mb-2 flex h-9 w-9 items-center justify-center rounded-xl text-ink-muted outline-none transition-colors hover:bg-ink/5 hover:text-ink focus-visible:ring-2 focus-visible:ring-indigo/60"
       >
         <LogOut className="h-4 w-4" />
         <Tooltip>Sair</Tooltip>

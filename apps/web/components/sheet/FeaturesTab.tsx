@@ -44,7 +44,7 @@ export default function FeaturesTab({ api }: { api: CharacterApi }) {
     <div className="space-y-4">
       {cls && cls.subclasses.length > 0 && (
         <Panel title={cls.subclassLabel}>
-          {needsSubclass && <p className="mb-2 text-xs text-[#f5c451]">Você já pode escolher sua especialização.</p>}
+          {needsSubclass && <p className="mb-2 text-xs text-gold-ink">Você já pode escolher sua especialização.</p>}
           <select
             value={sheet.subclassId ?? ''} aria-label={cls.subclassLabel} className={selectCls}
             onChange={(e) => api.patchSheet({ subclassId: e.target.value || undefined }, { immediate: true })}
@@ -52,7 +52,7 @@ export default function FeaturesTab({ api }: { api: CharacterApi }) {
             <option value="">Nenhum</option>
             {cls.subclasses.map((s) => <option key={s.id} value={s.id}>{s.name} (nível {s.level})</option>)}
           </select>
-          {sub && <p className="mt-2 text-[13px] text-[#94a3b8]">{sub.description}</p>}
+          {sub && <p className="mt-2 text-[13px] text-ink-soft">{sub.description}</p>}
         </Panel>
       )}
 
@@ -62,7 +62,7 @@ export default function FeaturesTab({ api }: { api: CharacterApi }) {
             {g.items.map((it, i) => (
               <Collapsible
                 key={`${it.name}-${i}`} title={it.name}
-                badge={it.tag ? <span className="rounded bg-[#6366f1]/10 px-1.5 py-0.5 text-[10px] text-[#a5b4fc]">{it.tag}</span> : undefined}
+                badge={it.tag ? <span className="rounded bg-[#6366f1]/10 px-1.5 py-0.5 text-[10px] text-indigo-ink">{it.tag}</span> : undefined}
               >
                 {it.description || 'Sem descrição.'}
               </Collapsible>
@@ -79,7 +79,7 @@ export default function FeaturesTab({ api }: { api: CharacterApi }) {
             ['Ferramentas', [...(cls?.toolProficiencies ?? []), ...sheet.toolProficiencies]],
             ['Idiomas', [...(race?.languages ?? []), ...sheet.languages]],
           ] as [string, string[] | undefined][]).map(([k, v]) => v && v.length > 0 && (
-            <div key={k} className="flex gap-3"><dt className="w-24 shrink-0 text-[#64748b]">{k}</dt><dd className="text-[#cbd5e1]">{[...new Set(v)].join(', ')}</dd></div>
+            <div key={k} className="flex gap-3"><dt className="w-24 shrink-0 text-ink-muted">{k}</dt><dd className="text-ink-body">{[...new Set(v)].join(', ')}</dd></div>
           ))}
         </dl>
       </Panel>

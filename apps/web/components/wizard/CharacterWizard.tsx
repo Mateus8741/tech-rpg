@@ -61,8 +61,8 @@ export default function CharacterWizard({ username }: { username: string }) {
   return (
     <div className="mx-auto w-full max-w-6xl p-4 sm:p-6">
       <header className="mb-5">
-        <h1 className="flex items-center gap-2 text-2xl font-bold text-[#e2e8f0]"><Sparkles className="h-5 w-5 text-[#f5c451]" /> Novo personagem</h1>
-        <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-[#1e2035]" role="progressbar" aria-valuemin={1} aria-valuemax={steps.length} aria-valuenow={idx + 1}>
+        <h1 className="flex items-center gap-2 text-2xl font-bold text-ink"><Sparkles className="h-5 w-5 text-gold-ink" /> Novo personagem</h1>
+        <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-surface-3" role="progressbar" aria-valuemin={1} aria-valuemax={steps.length} aria-valuenow={idx + 1}>
           <motion.div className="h-full rounded-full bg-gradient-to-r from-[#6366f1] to-[#8b5cf6]" initial={false}
             animate={{ width: `${((idx + 1) / steps.length) * 100}%` }} transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 120, damping: 20 }} />
         </div>
@@ -72,7 +72,7 @@ export default function CharacterWizard({ username }: { username: string }) {
             return (
               <button key={s} type="button" disabled={!reachable} onClick={() => go(i)} aria-current={i === idx ? "step" : undefined}
                 className={cn("rounded-full border px-3 py-1 text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1]",
-                  i === idx ? "border-[#6366f1] bg-[#6366f1]/20 text-[#c7d2fe]" : reachable ? "border-[#1e2035] text-[#94a3b8] hover:border-[#6366f1]/50" : "cursor-not-allowed border-[#1e2035] text-[#334155]")}>
+                  i === idx ? "border-[#6366f1] bg-[#6366f1]/20 text-indigo-ink-soft" : reachable ? "border-line text-ink-soft hover:border-[#6366f1]/50" : "cursor-not-allowed border-line text-ink-faint")}>
                 {i + 1}. {STEP_LABELS[s]}
               </button>
             );
@@ -93,15 +93,15 @@ export default function CharacterWizard({ username }: { username: string }) {
             </motion.div>
           </AnimatePresence>
 
-          <div className="mt-6 border-t border-[#1e2035] pt-4">
+          <div className="mt-6 border-t border-line pt-4">
             {errors.length > 0 && (
-              <ul className="mb-3 space-y-0.5 text-xs text-[#f5c451]" role="status">
+              <ul className="mb-3 space-y-0.5 text-xs text-gold-ink" role="status">
                 {errors.map((e) => <li key={e}>• {e}</li>)}
               </ul>
             )}
             <div className="flex items-center justify-between">
               <Button type="button" variant="outline" disabled={idx === 0 || saving} onClick={() => go(idx - 1)}
-                className="gap-2 border-[#1e2035] bg-transparent text-[#94a3b8] hover:bg-[#1e2035]/50 hover:text-[#e2e8f0]">
+                className="gap-2 border-line bg-transparent text-ink-soft hover:bg-surface-3/50 hover:text-ink">
                 <ArrowLeft className="h-4 w-4" /> Voltar
               </Button>
               {last ? (

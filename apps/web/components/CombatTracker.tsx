@@ -132,25 +132,25 @@ export default function CombatTracker({ character, username, userRole, onUpdate 
       )}
 
       {/* Damage calculator */}
-      <div className="bg-[#13151f] border border-[#1e2035] rounded-xl p-5">
-        <p className="text-[10px] font-semibold text-[#475569] uppercase tracking-widest mb-4">Calculadora de Dano</p>
+      <div className="bg-surface border border-line rounded-xl p-5">
+        <p className="text-[10px] font-semibold text-ink-faint uppercase tracking-widest mb-4">Calculadora de Dano</p>
         <div className="grid grid-cols-3 gap-3 mb-4">
-          <CombatInput label="Dano" value={damage} onChange={(v) => setDamage(v)} colorClass="border-red-500/40 text-[#f87171]" />
-          <CombatInput label="Debuff" value={debuff} onChange={handleDebuffChange} colorClass="border-[#2d2f45] text-[#94a3b8]" />
-          <CombatInput label="Turnos" value={turns} onChange={handleTurnsChange} colorClass="border-[#2d2f45] text-[#94a3b8]" />
+          <CombatInput label="Dano" value={damage} onChange={(v) => setDamage(v)} colorClass="border-red-500/40 text-danger" />
+          <CombatInput label="Debuff" value={debuff} onChange={handleDebuffChange} colorClass="border-line-strong text-ink-soft" />
+          <CombatInput label="Turnos" value={turns} onChange={handleTurnsChange} colorClass="border-line-strong text-ink-soft" />
         </div>
 
         {/* Calculated results */}
         <div className="grid grid-cols-3 gap-3 mb-4">
           {[
-            { label: 'Defensivo', value: defensiveDamage, formula: 'HP − (dmg − def)', color: 'text-[#a78bfa] border-[#6366f1]/20' },
-            { label: 'Direto', value: directDamage, formula: 'HP − dmg', color: 'text-[#a78bfa] border-[#6366f1]/20' },
-            { label: 'c/ Debuff', value: damageWithDebuff, formula: 'HP − (dmg + deb)', color: 'text-[#f87171] border-red-500/20' },
+            { label: 'Defensivo', value: defensiveDamage, formula: 'HP − (dmg − def)', color: 'text-violet-ink border-[#6366f1]/20' },
+            { label: 'Direto', value: directDamage, formula: 'HP − dmg', color: 'text-violet-ink border-[#6366f1]/20' },
+            { label: 'c/ Debuff', value: damageWithDebuff, formula: 'HP − (dmg + deb)', color: 'text-danger border-red-500/20' },
           ].map(({ label, value, formula, color }) => (
-            <div key={label} className={cn('bg-[#0f1117] border rounded-lg p-3 text-center', color)}>
-              <p className="text-[#475569] text-[10px] mb-1.5">{label}</p>
+            <div key={label} className={cn('bg-canvas border rounded-lg p-3 text-center', color)}>
+              <p className="text-ink-faint text-[10px] mb-1.5">{label}</p>
               <p className={cn('text-lg font-bold', color.split(' ')[0])}>{value}</p>
-              <p className="text-[#374151] text-[9px] mt-1">{formula}</p>
+              <p className="text-ink-faint text-[9px] mt-1">{formula}</p>
             </div>
           ))}
         </div>
@@ -158,14 +158,14 @@ export default function CombatTracker({ character, username, userRole, onUpdate 
         {/* Apply buttons */}
         {damage > 0 && (
           <div className="flex gap-2">
-            <Button type="button" onClick={applyDefensiveDamage} variant="outline" size="sm" className="flex-1 border-[#6366f1]/25 text-[#a78bfa] hover:bg-[#6366f1]/10">
+            <Button type="button" onClick={applyDefensiveDamage} variant="outline" size="sm" className="flex-1 border-[#6366f1]/25 text-violet-ink hover:bg-[#6366f1]/10">
               Aplicar Defensivo
             </Button>
-            <Button type="button" onClick={applyDirectDamage} variant="outline" size="sm" className="flex-1 border-[#6366f1]/25 text-[#a78bfa] hover:bg-[#6366f1]/10">
+            <Button type="button" onClick={applyDirectDamage} variant="outline" size="sm" className="flex-1 border-[#6366f1]/25 text-violet-ink hover:bg-[#6366f1]/10">
               Aplicar Direto
             </Button>
             {debuff > 0 && (
-              <Button type="button" onClick={applyDamageWithDebuff} variant="outline" size="sm" className="flex-1 border-red-500/25 text-[#f87171] hover:bg-red-500/10">
+              <Button type="button" onClick={applyDamageWithDebuff} variant="outline" size="sm" className="flex-1 border-red-500/25 text-danger hover:bg-red-500/10">
                 Aplicar c/ Debuff
               </Button>
             )}
@@ -174,15 +174,15 @@ export default function CombatTracker({ character, username, userRole, onUpdate 
       </div>
 
       {/* Actions */}
-      <div className="bg-[#13151f] border border-[#1e2035] rounded-xl p-5">
-        <p className="text-[10px] font-semibold text-[#475569] uppercase tracking-widest mb-3">Ações</p>
+      <div className="bg-surface border border-line rounded-xl p-5">
+        <p className="text-[10px] font-semibold text-ink-faint uppercase tracking-widest mb-3">Ações</p>
         <div className="flex gap-2">
           {userRole === 'MASTER' && (
-            <Button type="button" onClick={passTurn} variant="outline" className="flex-1 border-[#6366f1]/20 text-[#a78bfa] hover:bg-[#6366f1]/10">
+            <Button type="button" onClick={passTurn} variant="outline" className="flex-1 border-[#6366f1]/20 text-violet-ink hover:bg-[#6366f1]/10">
               ⚡ Passar Turno
             </Button>
           )}
-          <Button type="button" onClick={clearCombat} variant="outline" className="flex-1 border-[#1e2035] text-[#64748b] hover:bg-white/5">
+          <Button type="button" onClick={clearCombat} variant="outline" className="flex-1 border-line text-ink-muted hover:bg-ink/5">
             Limpar Combate
           </Button>
         </div>
@@ -194,14 +194,15 @@ export default function CombatTracker({ character, username, userRole, onUpdate 
 function CombatInput({ label, value, onChange, colorClass }: { label: string; value: number; onChange: (v: number) => void; colorClass: string }) {
   return (
     <div>
-      <p className="text-[#475569] text-[10px] uppercase tracking-wide mb-1.5">{label}</p>
+      <p className="text-ink-faint text-[10px] uppercase tracking-wide mb-1.5">{label}</p>
       <input
         type="number"
+        aria-label={label}
         value={value}
         onChange={(e) => onChange(parseInt(e.target.value) || 0)}
         min="0"
         className={cn(
-          'w-full bg-[#0f1117] border rounded-lg text-center text-xl font-bold py-2 outline-none focus:ring-1 focus:ring-[#6366f1] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none',
+          'w-full bg-canvas border rounded-lg text-center text-xl font-bold py-2 outline-none focus:ring-1 focus:ring-[#6366f1] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none',
           colorClass
         )}
       />

@@ -1,12 +1,15 @@
 'use client';
 
+import { tablistKeyDown } from '@/lib/a11y';
 import { useState } from 'react';
 import Link from 'next/link';
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'framer-motion';
-import { ArrowLeft, BookOpen, Backpack, Check, FileText, Loader2, ScrollText, Swords, User, Wand2 } from 'lucide-react';
+import { ArrowLeft, BookOpen, Backpack, ScrollText, Swords, User, Wand2 } from 'lucide-react';
 import { getSheet } from '@/lib/sheet';
 import CombatTracker from '@/components/CombatTracker';
-import { useCharacter, type SaveState } from './useCharacter';
+import { useCharacter } from './useCharacter';
+import UndoControls from './UndoControls';
+import ExportMenu from './ExportMenu';
 import { RollProvider } from './ui';
 import SheetTab from './SheetTab';
 import FeaturesTab from './FeaturesTab';
@@ -26,29 +29,17 @@ const TABS = [
 ] as const;
 type TabId = (typeof TABS)[number]['id'];
 
-function SaveBadge({ state }: { state: SaveState }) {
-  if (state === 'idle') return null;
-  const map = {
-    pending: { t: 'Alterações pendentes', i: <FileText className="h-3 w-3" />, c: 'text-[#64748b]' },
-    saving: { t: 'Salvando...', i: <Loader2 className="h-3 w-3 animate-spin" />, c: 'text-[#a5b4fc]' },
-    saved: { t: 'Salvo', i: <Check className="h-3 w-3" />, c: 'text-green-400' },
-    error: { t: 'Erro ao salvar', i: <FileText className="h-3 w-3" />, c: 'text-red-400' },
-  } as const;
-  const m = map[state];
-  return <span className={cn('flex items-center gap-1 text-xs', m.c)}>{m.i}{m.t}</span>;
-}
-
 export default function CharacterSheet({ id }: { id: string }) {
   const api = useCharacter(id);
   const [tab, setTab] = useState<TabId>('ficha');
   const reduce = useReducedMotion();
 
-  if (api.loading) return <div className="flex h-full items-center justify-center text-[#64748b]">Carregando...</div>;
+  if (api.loading) return <div className="flex h-full items-center justify-center text-ink-muted">Carregando...</div>;
   if (!api.character) {
     return (
-      <div className="flex h-full flex-col items-center justify-center gap-3 text-[#64748b]">
+      <div className="flex h-full flex-col items-center justify-center gap-3 text-ink-muted">
         <p>Personagem não encontrado ou sem permissão.</p>
-        <Link href="/characters" className="text-sm text-[#a5b4fc] hover:underline">Voltar à lista</Link>
+        <Link href="/characters" className="text-sm text-indigo-ink hover:underline">Voltar à lista</Link>
       </div>
     );
   }
@@ -59,22 +50,23 @@ export default function CharacterSheet({ id }: { id: string }) {
   return (
     <RollProvider>
       <div className="flex h-full flex-col">
-        <header className="flex min-h-[52px] flex-shrink-0 items-center gap-3 border-b border-[#1e2035] px-4 sm:px-6">
-          <Link href="/characters" aria-label="Voltar" className="text-[#64748b] hover:text-[#e2e8f0]"><ArrowLeft className="h-4 w-4" /></Link>
-          <p className="min-w-0 flex-1 truncate text-sm font-semibold text-[#e2e8f0]">{c.name}</p>
-          {api.userRole === 'MASTER' && c.user && <span className="hidden text-xs text-[#475569] sm:inline">Jogador: {c.user.username}</span>}
-          <SaveBadge state={api.saveState} />
+        <header className="flex min-h-[52px] flex-shrink-0 items-center gap-3 border-b border-line px-4 sm:px-6">
+          <Link href="/characters" aria-label="Voltar para personagens" className="rounded-md text-ink-muted outline-none hover:text-ink focus-visible:ring-2 focus-visible:ring-indigo/70"><ArrowLeft className="h-4 w-4" /></Link>
+          <p className="min-w-0 flex-1 truncate text-sm font-semibold text-ink">{c.name}</p>
+          {api.userRole === 'MASTER' && c.user && <span className="hidden text-xs text-ink-faint sm:inline">Jogador: {c.user.username}</span>}
+          <UndoControls api={api} />
+          <ExportMenu character={c} />
         </header>
 
-        <nav className="flex-shrink-0 overflow-x-auto border-b border-[#1e2035] px-2 sm:px-4" aria-label="Seções da ficha">
+        <nav className="flex-shrink-0 overflow-x-auto border-b border-line px-2 sm:px-4" aria-label="Navegação da ficha">
           <LayoutGroup>
-            <div role="tablist" className="flex gap-1">
+            <div role="tablist" aria-label="Seções da ficha" onKeyDown={tablistKeyDown} className="flex gap-1">
               {TABS.filter((t) => t.id !== 'magias' || hasSpells).map((t) => {
                 const active = tab === t.id;
                 return (
                   <button
-                    key={t.id} role="tab" aria-selected={active} type="button" onClick={() => setTab(t.id)}
-                    className={cn('relative flex items-center gap-1.5 whitespace-nowrap px-3 py-3 text-sm transition-colors', active ? 'text-[#e2e8f0]' : 'text-[#64748b] hover:text-[#94a3b8]')}
+                    key={t.id} role="tab" id={`tab-${t.id}`} aria-selected={active} aria-controls="painel-ficha" tabIndex={active ? 0 : -1} type="button" onClick={() => setTab(t.id)}
+                    className={cn('relative flex rounded-md outline-none focus-visible:ring-2 focus-visible:ring-indigo/70 items-center gap-1.5 whitespace-nowrap px-3 py-3 text-sm transition-colors', active ? 'text-ink' : 'text-ink-muted hover:text-ink-soft')}
                   >
                     <t.icon className="h-3.5 w-3.5" />
                     {t.label}
@@ -98,6 +90,11 @@ export default function CharacterSheet({ id }: { id: string }) {
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={tab}
+                role="tabpanel"
+                id="painel-ficha"
+                aria-labelledby={`tab-${tab}`}
+                tabIndex={-1}
+                className="outline-none"
                 initial={reduce ? false : { opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={reduce ? { opacity: 0 } : { opacity: 0, y: -6 }}

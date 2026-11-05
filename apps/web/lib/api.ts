@@ -4,6 +4,9 @@ export interface Equipment {
   name: string;
   defense?: number;
   attack?: number;
+  weight?: number;     // kg por unidade
+  quantity?: number;   // padrão 1
+  equipped?: boolean;  // armadura/escudo/arma em uso
 }
 
 export interface Ability {
@@ -17,6 +20,7 @@ export interface InventoryItem {
   name: string;
   quantity: number;
   max: number;
+  weight?: number;     // kg por unidade
 }
 
 export interface CombatStatus {
