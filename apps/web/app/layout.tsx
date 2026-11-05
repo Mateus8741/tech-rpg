@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Cinzel } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
@@ -19,16 +20,18 @@ const cinzel = Cinzel({
 });
 
 export const metadata: Metadata = {
-  title: "Sistema de Fichas RPG - D&D",
+  title: { default: "Sistema de Fichas RPG - D&D", template: "%s · Fichas RPG" },
   description: "Sistema completo de gerenciamento de fichas de personagens D&D",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} ${cinzel.variable}`}>
-        {children}
-        <Toaster theme="dark" richColors position="bottom-right" />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          {children}
+          <Toaster richColors position="bottom-right" />
+        </ThemeProvider>
       </body>
     </html>
   );

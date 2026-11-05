@@ -1,0 +1,43 @@
+/* Ficha imprimível: tema claro independente do app. Tudo escopado em .ps-root / body.ps-print. */
+.ps-root { background: #fff; color: #111827; font-family: Georgia, "Times New Roman", serif; font-size: 11px; line-height: 1.35; color-scheme: light; }
+.ps-root * { box-sizing: border-box; }
+.ps-page { width: 210mm; min-height: 297mm; margin: 0 auto; padding: 10mm; background: #fff; }
+.ps-toolbar { position: sticky; top: 0; z-index: 10; display: flex; gap: 8px; justify-content: center; padding: 10px; background: #f3f4f6; border-bottom: 1px solid #d1d5db; font-family: system-ui, sans-serif; }
+.ps-toolbar button, .ps-toolbar a { border: 1px solid #9ca3af; background: #fff; color: #111827; padding: 6px 14px; border-radius: 6px; font-size: 13px; cursor: pointer; text-decoration: none; }
+.ps-toolbar button.primary { background: #111827; color: #fff; border-color: #111827; }
+.ps-h1 { font-size: 22px; font-weight: 700; margin: 0; }
+.ps-head { display: flex; justify-content: space-between; gap: 12px; border-bottom: 2px solid #111827; padding-bottom: 6px; margin-bottom: 8px; }
+.ps-meta { display: grid; grid-template-columns: repeat(3, auto); gap: 2px 14px; font-size: 11px; text-align: right; }
+.ps-meta b, .ps-label { font-family: system-ui, sans-serif; font-size: 8px; text-transform: uppercase; letter-spacing: .06em; color: #6b7280; font-weight: 600; display: block; }
+.ps-grid { display: grid; gap: 8px; }
+.ps-cols3 { grid-template-columns: 1.05fr 1.3fr 1.4fr; }
+.ps-box { border: 1px solid #111827; border-radius: 4px; padding: 5px 7px; break-inside: avoid; }
+.ps-box h3 { margin: 0 0 4px; font-family: system-ui, sans-serif; font-size: 9px; text-transform: uppercase; letter-spacing: .08em; border-bottom: 1px solid #d1d5db; padding-bottom: 2px; }
+.ps-ability { display: flex; align-items: center; justify-content: space-between; border: 1px solid #111827; border-radius: 4px; padding: 3px 8px; margin-bottom: 4px; }
+.ps-ability .mod { font-size: 18px; font-weight: 700; }
+.ps-ability .sc { font-size: 11px; color: #374151; }
+.ps-row { display: flex; align-items: center; gap: 5px; padding: 1px 0; }
+.ps-dot { width: 8px; height: 8px; border: 1px solid #111827; border-radius: 50%; flex: none; }
+.ps-dot.on { background: #111827; }
+.ps-dot.ex { background: #111827; box-shadow: 0 0 0 2px #fff, 0 0 0 3px #111827; }
+.ps-val { width: 22px; text-align: right; font-weight: 700; flex: none; }
+.ps-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 8px; }
+.ps-stat { border: 1px solid #111827; border-radius: 4px; text-align: center; padding: 4px; }
+.ps-stat .v { font-size: 18px; font-weight: 700; }
+.ps-table { width: 100%; border-collapse: collapse; }
+.ps-table th, .ps-table td { text-align: left; padding: 1px 4px; border-bottom: 1px solid #e5e7eb; }
+.ps-table th { font-family: system-ui, sans-serif; font-size: 8px; text-transform: uppercase; color: #6b7280; }
+.ps-p { white-space: pre-wrap; margin: 0 0 3px; }
+.ps-muted { color: #6b7280; }
+.ps-pagebreak { break-before: page; }
+.ps-chips { display: flex; flex-wrap: wrap; gap: 2px 8px; }
+
+@media print {
+  @page { size: A4; margin: 0; }
+  body.ps-print aside, body.ps-print .fixed, body.ps-print .ps-toolbar { display: none !important; }
+  body.ps-print, body.ps-print > div, body.ps-print .h-screen, body.ps-print main {
+    height: auto !important; overflow: visible !important; background: #fff !important; display: block !important;
+  }
+  body.ps-print .ps-page { width: 210mm; min-height: auto; margin: 0; padding: 9mm; }
+  body.ps-print * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

@@ -12,10 +12,10 @@ export function Panel({ title, action, children, className }: {
   title?: string; action?: ReactNode; children: ReactNode; className?: string;
 }) {
   return (
-    <section className={cn('bg-[#0f1117] border border-[#1e2035] rounded-xl p-4', className)}>
+    <section className={cn('bg-canvas border border-line rounded-xl p-4', className)}>
       {(title || action) && (
         <div className="flex items-center justify-between mb-3">
-          {title && <h3 className="text-[10px] font-semibold uppercase tracking-widest text-[#64748b]">{title}</h3>}
+          {title && <h3 className="text-[10px] font-semibold uppercase tracking-widest text-ink-muted">{title}</h3>}
           {action}
         </div>
       )}
@@ -25,14 +25,14 @@ export function Panel({ title, action, children, className }: {
 }
 
 export const inputCls =
-  'w-full rounded-md bg-[#0a0c14] border border-[#1e2035] px-2.5 py-1.5 text-sm text-[#e2e8f0] placeholder:text-[#475569] focus:outline-none focus:border-[#6366f1]/60 focus:ring-1 focus:ring-[#6366f1]/30 transition-colors';
+  'w-full rounded-md bg-base border border-line px-2.5 py-1.5 text-sm text-ink placeholder:text-ink-faint focus:outline-none focus:border-[#6366f1]/60 focus:ring-1 focus:ring-[#6366f1]/30 transition-colors';
 
 export const selectCls = cn(inputCls, 'appearance-none pr-7');
 
 export function Field({ label, children, className }: { label: string; children: ReactNode; className?: string }) {
   return (
     <label className={cn('block', className)}>
-      <span className="block text-[10px] uppercase tracking-widest text-[#64748b] mb-1">{label}</span>
+      <span className="block text-[10px] uppercase tracking-widest text-ink-muted mb-1">{label}</span>
       {children}
     </label>
   );
@@ -44,7 +44,7 @@ export function GhostButton({ className, ...p }: React.ButtonHTMLAttributes<HTML
       type="button"
       {...p}
       className={cn(
-        'inline-flex items-center justify-center gap-1.5 rounded-md border border-[#1e2035] bg-white/[0.02] px-2.5 py-1.5 text-xs text-[#94a3b8] transition-colors hover:border-[#6366f1]/40 hover:bg-[#6366f1]/10 hover:text-[#c7d2fe] disabled:opacity-40 disabled:pointer-events-none',
+        'inline-flex items-center justify-center gap-1.5 rounded-md border border-line bg-white/[0.02] px-2.5 py-1.5 text-xs text-ink-soft transition-colors hover:border-[#6366f1]/40 hover:bg-[#6366f1]/10 hover:text-indigo-ink-soft disabled:opacity-40 disabled:pointer-events-none',
         className,
       )}
     />
@@ -58,14 +58,14 @@ export function Collapsible({ title, subtitle, badge, children, defaultOpen = fa
   const [open, setOpen] = useState(defaultOpen);
   const reduce = useReducedMotion();
   return (
-    <div className="rounded-lg border border-[#1e2035] bg-[#0a0c14]/60">
+    <div className="rounded-lg border border-line bg-base/60">
       <button type="button" onClick={() => setOpen((o) => !o)} className="flex w-full items-center gap-2 px-3 py-2.5 text-left">
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium text-[#e2e8f0] truncate">{title}</p>
-          {subtitle && <p className="text-[11px] text-[#64748b] truncate">{subtitle}</p>}
+          <p className="text-sm font-medium text-ink truncate">{title}</p>
+          {subtitle && <p className="text-[11px] text-ink-muted truncate">{subtitle}</p>}
         </div>
         {badge}
-        <ChevronDown className={cn('h-4 w-4 text-[#64748b] transition-transform', open && 'rotate-180')} />
+        <ChevronDown className={cn('h-4 w-4 text-ink-muted transition-transform', open && 'rotate-180')} />
       </button>
       <AnimatePresence initial={false}>
         {open && (
@@ -76,7 +76,7 @@ export function Collapsible({ title, subtitle, badge, children, defaultOpen = fa
             transition={{ duration: reduce ? 0 : 0.22, ease: 'easeOut' }}
             className="overflow-hidden"
           >
-            <div className="border-t border-[#1e2035] px-3 py-3 text-[13px] leading-relaxed text-[#94a3b8] whitespace-pre-line">
+            <div className="border-t border-line px-3 py-3 text-[13px] leading-relaxed text-ink-soft whitespace-pre-line">
               {children}
             </div>
           </motion.div>
@@ -136,19 +136,22 @@ export function RollProvider({ children }: { children: ReactNode }) {
   return (
     <RollCtx.Provider value={roll}>
       {children}
+      <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {res
+          ? `${res.label}${res.mode === 'adv' ? ', vantagem' : res.mode === 'dis' ? ', desvantagem' : ''}: d20 ${res.rolls[0] ?? 0}, total ${res.total}${res.crit === 'max' ? '. Sucesso crítico!' : res.crit === 'min' ? '. Falha crítica!' : ''}`
+          : ''}
+      </div>
       <div className="pointer-events-none fixed bottom-5 left-1/2 z-50 -translate-x-1/2 px-4">
         <AnimatePresence mode="wait">
           {res && (
             <motion.div
               key={res.id}
-              role="status"
-              aria-live="polite"
               initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 12 }}
               transition={{ type: 'spring', stiffness: 380, damping: 26 }}
               className={cn(
-                'pointer-events-auto flex items-center gap-4 rounded-2xl border bg-[#0f1117]/95 px-5 py-3 shadow-2xl shadow-black/60 backdrop-blur',
+                'pointer-events-auto flex items-center gap-4 rounded-2xl border bg-canvas/95 px-5 py-3 shadow-2xl shadow-black/60 backdrop-blur',
                 res.crit === 'max' ? 'border-[#f5c451]/60' : res.crit === 'min' ? 'border-red-500/50' : 'border-[#6366f1]/40',
               )}
             >
@@ -157,21 +160,21 @@ export function RollProvider({ children }: { children: ReactNode }) {
                 animate={{ rotate: 0, scale: 1 }}
                 transition={{ type: 'spring', stiffness: 220, damping: 14 }}
                 className={cn('grid h-12 w-12 place-items-center rounded-xl border',
-                  res.crit === 'max' ? 'border-[#f5c451]/50 bg-[#f5c451]/10 text-[#f5c451]'
+                  res.crit === 'max' ? 'border-[#f5c451]/50 bg-[#f5c451]/10 text-gold-ink'
                     : res.crit === 'min' ? 'border-red-500/40 bg-red-500/10 text-red-400'
-                      : 'border-[#6366f1]/40 bg-[#6366f1]/10 text-[#a5b4fc]')}
+                      : 'border-[#6366f1]/40 bg-[#6366f1]/10 text-indigo-ink')}
               >
                 <span className="text-xl font-bold tabular-nums">{(res.rolls[0] ?? 0)}</span>
               </motion.div>
               <div>
-                <p className="text-[11px] uppercase tracking-widest text-[#64748b]">
+                <p className="text-[11px] uppercase tracking-widest text-ink-muted">
                   {res.label}{res.mode === 'adv' ? ' · vantagem' : res.mode === 'dis' ? ' · desvantagem' : ''}
                 </p>
-                <p className="text-sm text-[#94a3b8] tabular-nums">
-                  d20 ({(res.rolls[0] ?? 0)}){res.discarded !== undefined && <span className="text-[#475569]"> [{res.discarded}]</span>} {formatModifier(res.bonus)}
+                <p className="text-sm text-ink-soft tabular-nums">
+                  d20 ({(res.rolls[0] ?? 0)}){res.discarded !== undefined && <span className="text-ink-faint"> [{res.discarded}]</span>} {formatModifier(res.bonus)}
                 </p>
                 {res.crit && (
-                  <p className={cn('text-[11px] font-semibold', res.crit === 'max' ? 'text-[#f5c451]' : 'text-red-400')}>
+                  <p className={cn('text-[11px] font-semibold', res.crit === 'max' ? 'text-gold-ink' : 'text-red-400')}>
                     {res.crit === 'max' ? 'Sucesso crítico!' : 'Falha crítica!'}
                   </p>
                 )}
@@ -180,11 +183,11 @@ export function RollProvider({ children }: { children: ReactNode }) {
                 key={res.total}
                 initial={reduce ? false : { scale: 1.6, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="text-4xl font-bold tabular-nums text-[#e2e8f0]"
+                className="text-4xl font-bold tabular-nums text-ink"
               >
                 {res.total}
               </motion.p>
-              <button type="button" onClick={() => setRes(null)} aria-label="Fechar" className="text-[#475569] hover:text-[#e2e8f0]">
+              <button type="button" onClick={() => setRes(null)} aria-label="Fechar resultado" className="rounded text-ink-faint outline-none hover:text-ink focus-visible:ring-2 focus-visible:ring-indigo/70">
                 <X className="h-4 w-4" />
               </button>
             </motion.div>

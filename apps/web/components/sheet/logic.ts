@@ -1,6 +1,7 @@
 import { ARMOR, abilityModifier, getClass, levelForXp, rollDice, type ClassDef } from '@repo/rules';
 import type { Character } from '@/lib/api';
 import { getSheet, type SheetData } from '@/lib/sheet';
+import { isEquipped } from './equipment-logic';
 
 export const hitDieAverage = (die: number) => Math.floor(die / 2) + 1;
 
@@ -53,6 +54,10 @@ export function longRestPatch(c: Character, sheet: SheetData) {
       spellSlotsUsed: [],
       hitDiceUsed: Math.max(0, sheet.hitDiceUsed - recovered),
       deathSaves: { successes: 0, failures: 0 },
+      // recursos de descanso curto/longo voltam; "manual" fica como está
+      resources: sheet.resources.map((r) => (r.recharge === 'manual' ? r : { ...r, used: 0 })),
+      concentratingOn: null,
+      exhaustion: Math.max(0, sheet.exhaustion - 1),
     } as Partial<SheetData>,
   };
 }
@@ -75,10 +80,11 @@ export function preparedLimit(cls: ClassDef | undefined, level: number, abilityM
 
 export interface AcBreakdown { total: number; parts: string[] }
 
-/** Calcula a CA com base nos equipamentos (casando nomes com a tabela de armaduras). */
+/** Calcula a CA com base nos itens equipados (casando nomes com a tabela de armaduras). */
 export function computeArmorClass(c: Character, classId: string): AcBreakdown {
   const dex = abilityModifier(c.dexterity);
-  const items = c.equipment ?? [];
+  const all = c.equipment ?? [];
+  const items = all.filter((it) => isEquipped(all, it));
   const parts: string[] = [];
   let body: { name: string; base: number; dex: boolean; cap?: number } | null = null;
   let shield = 0;

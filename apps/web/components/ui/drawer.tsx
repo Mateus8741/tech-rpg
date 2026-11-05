@@ -77,7 +77,7 @@ export function Drawer({
                 type="button"
                 onClick={onClose}
                 aria-label="Fechar"
-                className="rounded-lg p-1.5 text-ink-muted transition-colors hover:bg-white/5 hover:text-ink"
+                className="rounded-lg p-1.5 text-ink-muted transition-colors hover:bg-ink/5 hover:text-ink"
               >
                 <X className="h-4 w-4" />
               </button>

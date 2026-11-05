@@ -35,7 +35,7 @@ export default function RaceStep({ state, update }: Props) {
       {race && (
         <div className="mt-6 space-y-4">
           <Panel title={`${race.name} — resumo`}>
-            <p className="text-sm leading-relaxed text-[#94a3b8]">{race.summary}</p>
+            <p className="text-sm leading-relaxed text-ink-soft">{race.summary}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               <Tag tone="gold">{bonusText({ ...race.abilityBonuses, ...(sub?.abilityBonuses ?? {}) }) || "Sem bônus fixo"}</Tag>
               <Tag>Tamanho: {race.size}</Tag>

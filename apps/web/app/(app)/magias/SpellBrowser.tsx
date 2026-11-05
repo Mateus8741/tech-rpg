@@ -3,12 +3,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Search, X, BookOpen } from "lucide-react";
+import { Search, X, BookOpen, Star } from "lucide-react";
 import { CLASSES, SPELLS } from "@repo/rules";
 import { cn } from "@/lib/utils";
+import { accentText } from "@/components/sheet/class-style";
 import {
   SPELL_SCHOOLS, SPELL_SCHOOL_COLORS, SpellDetail, SpellRow, normalizeText, spellLevelLabel,
 } from "@/components/spells";
+import { useSpellFavorites } from "@/components/spells/useSpellFavorites";
 
 type SortKey = "nome" | "nivel" | "escola";
 const PAGE = 60;
@@ -35,9 +37,9 @@ function Chip({
       aria-pressed={active}
       className={cn(
         "rounded-full border px-3 py-1 text-xs font-medium transition-colors",
-        active ? "border-[#6366f1] bg-[#6366f1]/20 text-[#e2e8f0]" : "border-[#1e2035] bg-[#0f1117] text-[#64748b] hover:text-[#e2e8f0]",
+        active ? "border-[#6366f1] bg-[#6366f1]/20 text-ink" : "border-line bg-canvas text-ink-muted hover:text-ink",
       )}
-      style={active && color ? { borderColor: color, background: `${color}26`, color } : undefined}
+      style={active && color ? { borderColor: color, background: `${color}26`, color: accentText(color) } : undefined}
     >
       {children}
     </motion.button>
@@ -47,7 +49,7 @@ function Chip({
 function FilterGroup({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-wrap items-center gap-1.5">
-      <span className="mr-1 w-14 shrink-0 text-[10px] font-semibold uppercase tracking-wider text-[#64748b]">{label}</span>
+      <span className="mr-1 w-14 shrink-0 text-[10px] font-semibold uppercase tracking-wider text-ink-muted">{label}</span>
       {children}
     </div>
   );
@@ -65,6 +67,9 @@ export function SpellBrowser() {
   const [schools, setSchools] = useState<Set<string>>(() => new Set(params.get("escola")?.split(",").filter(Boolean)));
   const [concentration, setConcentration] = useState(params.get("concentracao") === "1");
   const [ritual, setRitual] = useState(params.get("ritual") === "1");
+  const [comps, setComps] = useState<Set<"v" | "s" | "m">>(() => new Set(params.get("comp")?.split(",").filter((c): c is "v" | "s" | "m" => c === "v" || c === "s" || c === "m")));
+  const [onlyFav, setOnlyFav] = useState(params.get("favoritas") === "1");
+  const { favorites, toggle: toggleFav } = useSpellFavorites();
   const [source, setSource] = useState(params.get("fonte") ?? "");
   const [sort, setSort] = useState<SortKey>((params.get("ordem") as SortKey) || "nome");
   const [selectedId, setSelectedId] = useState<string | null>(params.get("magia"));
@@ -80,12 +85,14 @@ export function SpellBrowser() {
     if (schools.size) p.set("escola", [...schools].join(","));
     if (concentration) p.set("concentracao", "1");
     if (ritual) p.set("ritual", "1");
+    if (comps.size) p.set("comp", [...comps].join(","));
+    if (onlyFav) p.set("favoritas", "1");
     if (source) p.set("fonte", source);
     if (sort !== "nome") p.set("ordem", sort);
     if (selectedId) p.set("magia", selectedId);
     const qs = p.toString();
     window.history.replaceState(null, "", qs ? `?${qs}` : window.location.pathname);
-  }, [q, classes, levels, schools, concentration, ritual, source, sort, selectedId]);
+  }, [q, classes, levels, schools, concentration, ritual, comps, onlyFav, source, sort, selectedId]);
 
   const filtered = useMemo(() => {
     const nq = normalizeText(q.trim());
@@ -96,6 +103,8 @@ export function SpellBrowser() {
       if (schools.size && !schools.has(s.school)) return false;
       if (concentration && !s.concentration) return false;
       if (ritual && !s.ritual) return false;
+      for (const c of comps) if (c === "m" ? !s.components.m : !s.components[c]) return false;
+      if (onlyFav && !favorites.includes(s.id)) return false;
       if (source && s.source !== source) return false;
       return true;
     });
@@ -106,7 +115,7 @@ export function SpellBrowser() {
       return byName(a.name, b.name);
     });
     return list;
-  }, [q, classes, levels, schools, concentration, ritual, source, sort]);
+  }, [q, classes, levels, schools, concentration, ritual, comps, onlyFav, favorites, source, sort]);
 
   // Reinicia a paginação quando os filtros mudam.
   useEffect(() => setLimit(PAGE), [filtered]);
@@ -133,11 +142,11 @@ export function SpellBrowser() {
   const selected = selectedId ? SPELLS.find((s) => s.id === selectedId) : undefined;
   const visible = filtered.slice(0, limit);
   const activeCount =
-    classes.size + levels.size + schools.size + (concentration ? 1 : 0) + (ritual ? 1 : 0) + (source ? 1 : 0);
+    classes.size + levels.size + schools.size + (concentration ? 1 : 0) + (ritual ? 1 : 0) + comps.size + (onlyFav ? 1 : 0) + (source ? 1 : 0);
 
   const clearAll = () => {
     setQ(""); setClasses(new Set()); setLevels(new Set()); setSchools(new Set());
-    setConcentration(false); setRitual(false); setSource("");
+    setConcentration(false); setRitual(false); setComps(new Set()); setOnlyFav(false); setSource("");
   };
 
   const spellcasters = CLASSES.filter((c) => SPELLS.some((s) => s.classes.includes(c.id)));
@@ -149,22 +158,23 @@ export function SpellBrowser() {
           <BookOpen className="h-5 w-5 text-white" />
         </div>
         <div>
-          <h1 className="text-2xl font-bold text-[#e2e8f0]">Grimório</h1>
-          <p className="text-sm text-[#64748b]">{SPELLS.length} magias de D&amp;D 5e em português</p>
+          <h1 className="text-2xl font-bold text-ink">Grimório</h1>
+          <p className="text-sm text-ink-muted">{SPELLS.length} magias de D&amp;D 5e em português</p>
         </div>
       </header>
 
-      <div className="space-y-3 rounded-2xl border border-[#1e2035] bg-[#0a0c14] p-4">
+      <div className="space-y-3 rounded-2xl border border-line bg-base p-4">
         <div className="relative">
-          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#64748b]" />
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted" />
           <input
+            aria-label="Buscar magia pelo nome"
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Buscar magia pelo nome…"
-            className="h-10 w-full rounded-lg border border-[#1e2035] bg-[#0f1117] pl-9 pr-9 text-sm text-[#e2e8f0] placeholder:text-[#64748b] focus:border-[#6366f1] focus:outline-none"
+            className="h-10 w-full rounded-lg border border-line bg-canvas pl-9 pr-9 text-sm text-ink placeholder:text-ink-muted focus:border-[#6366f1] focus:outline-none"
           />
           {q && (
-            <button type="button" aria-label="Limpar busca" onClick={() => setQ("")} className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-[#64748b] hover:text-[#e2e8f0]">
+            <button type="button" aria-label="Limpar busca" onClick={() => setQ("")} className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-ink-muted hover:text-ink">
               <X className="h-4 w-4" />
             </button>
           )}
@@ -190,22 +200,26 @@ export function SpellBrowser() {
         <FilterGroup label="Outros">
           <Chip active={concentration} onClick={() => setConcentration(!concentration)} color="#a78bfa">Concentração</Chip>
           <Chip active={ritual} onClick={() => setRitual(!ritual)} color="#f5c451">Ritual</Chip>
+          {(["v", "s", "m"] as const).map((c) => (
+            <Chip key={c} active={comps.has(c)} onClick={() => setComps(toggle(comps, c))} color="#22d3ee">{c.toUpperCase()}</Chip>
+          ))}
+          <Chip active={onlyFav} onClick={() => setOnlyFav(!onlyFav)} color="#f5c451">Favoritas</Chip>
           <select
             value={source}
             onChange={(e) => setSource(e.target.value)}
             aria-label="Fonte"
-            className="h-7 max-w-[220px] rounded-full border border-[#1e2035] bg-[#0f1117] px-3 text-xs text-[#e2e8f0] focus:border-[#6366f1] focus:outline-none"
+            className="h-7 max-w-[220px] rounded-full border border-line bg-canvas px-3 text-xs text-ink focus:border-[#6366f1] focus:outline-none"
           >
             <option value="">Todas as fontes</option>
             {SOURCES.map((s) => <option key={s} value={s}>{s}</option>)}
           </select>
         </FilterGroup>
 
-        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#1e2035] pt-3 text-xs text-[#64748b]">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-line pt-3 text-xs text-ink-muted">
           <span>
-            <strong className="text-[#e2e8f0]">{filtered.length}</strong> resultado{filtered.length === 1 ? "" : "s"}
+            <strong className="text-ink">{filtered.length}</strong> resultado{filtered.length === 1 ? "" : "s"}
             {activeCount > 0 && (
-              <button type="button" onClick={clearAll} className="ml-3 text-[#8b5cf6] hover:underline">Limpar filtros ({activeCount})</button>
+              <button type="button" onClick={clearAll} className="ml-3 text-violet-ink hover:underline">Limpar filtros ({activeCount})</button>
             )}
           </span>
           <label className="flex items-center gap-2">
@@ -213,7 +227,7 @@ export function SpellBrowser() {
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
-              className="h-7 rounded-md border border-[#1e2035] bg-[#0f1117] px-2 text-xs text-[#e2e8f0] focus:border-[#6366f1] focus:outline-none"
+              className="h-7 rounded-md border border-line bg-canvas px-2 text-xs text-ink focus:border-[#6366f1] focus:outline-none"
             >
               <option value="nome">Nome</option>
               <option value="nivel">Nível</option>
@@ -224,7 +238,7 @@ export function SpellBrowser() {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-[#1e2035] py-16 text-center text-sm text-[#64748b]">
+        <div className="rounded-2xl border border-dashed border-line py-16 text-center text-sm text-ink-muted">
           Nenhuma magia encontrada. Tente afrouxar os filtros.
         </div>
       ) : (
@@ -236,12 +250,23 @@ export function SpellBrowser() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2, delay: reduce ? 0 : Math.min(i % PAGE, 12) * 0.015 }}
             >
-              <SpellRow spell={s} selected={s.id === selectedId} onClick={() => setSelectedId(s.id)} />
+              <SpellRow
+                spell={s} selected={s.id === selectedId} onClick={() => setSelectedId(s.id)}
+                action={
+                  <button
+                    type="button" aria-pressed={favorites.includes(s.id)} aria-label={`Favoritar ${s.name}`}
+                    onClick={() => toggleFav(s.id)}
+                    className={cn("rounded p-1", favorites.includes(s.id) ? "text-gold-ink" : "text-ink-faint hover:text-gold-ink")}
+                  >
+                    <Star className={cn("h-4 w-4", favorites.includes(s.id) && "fill-current")} />
+                  </button>
+                }
+              />
             </motion.div>
           ))}
           <div ref={sentinel} className="h-8" />
           {visible.length < filtered.length && (
-            <p className="text-center text-xs text-[#64748b]">Carregando mais…</p>
+            <p className="text-center text-xs text-ink-muted">Carregando mais…</p>
           )}
         </div>
       )}
@@ -261,15 +286,15 @@ export function SpellBrowser() {
               key="panel"
               role="dialog"
               aria-label={selected.name}
-              className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col border-l border-[#1e2035] bg-[#0f1117] shadow-2xl"
+              className="fixed inset-y-0 right-0 z-50 flex w-full max-w-md flex-col border-l border-line bg-canvas shadow-2xl"
               initial={reduce ? { opacity: 0 } : { x: "100%" }}
               animate={reduce ? { opacity: 1 } : { x: 0 }}
               exit={reduce ? { opacity: 0 } : { x: "100%" }}
               transition={{ type: "spring", damping: 32, stiffness: 320 }}
             >
-              <div className="flex items-center justify-between border-b border-[#1e2035] px-5 py-3">
-                <span className="text-xs font-semibold uppercase tracking-wider text-[#64748b]">{spellLevelLabel(selected.level)}</span>
-                <button type="button" aria-label="Fechar" onClick={() => setSelectedId(null)} className="rounded-md p-1.5 text-[#64748b] hover:bg-[#1e2035] hover:text-[#e2e8f0]">
+              <div className="flex items-center justify-between border-b border-line px-5 py-3">
+                <span className="text-xs font-semibold uppercase tracking-wider text-ink-muted">{spellLevelLabel(selected.level)}</span>
+                <button type="button" aria-label="Fechar" onClick={() => setSelectedId(null)} className="rounded-md p-1.5 text-ink-muted hover:bg-surface-3 hover:text-ink">
                   <X className="h-4 w-4" />
                 </button>
               </div>

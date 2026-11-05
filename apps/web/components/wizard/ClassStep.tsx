@@ -35,7 +35,7 @@ export default function ClassStep({ state, update }: Props) {
       {cls && (
         <div className="mt-6 space-y-4">
           <Panel title={`${cls.name} — resumo`}>
-            <p className="text-sm leading-relaxed text-[#94a3b8]">{cls.summary}</p>
+            <p className="text-sm leading-relaxed text-ink-soft">{cls.summary}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               <Tag tone="gold">Dado de vida: d{cls.hitDie}</Tag>
               <Tag tone="indigo">Salvaguardas: {cls.savingThrows.map((k) => ABILITY_NAME[k]).join(", ")}</Tag>
@@ -54,10 +54,10 @@ export default function ClassStep({ state, update }: Props) {
                   update({ level: lv, ...(subLv !== undefined && lv < subLv ? { subclassId: "" } : {}), cantrips: [], spells: [], prepared: [] });
                 }}
                 className={`h-10 w-24 rounded-md border px-3 text-sm focus-visible:outline-none focus-visible:ring-2 ${inputCls}`} />
-              <span className="text-xs text-[#64748b]">1 a 20 · XP inicial: o mínimo do nível</span>
+              <span className="text-xs text-ink-muted">1 a 20 · XP inicial: o mínimo do nível</span>
             </div>
             {state.level > 1 && (
-              <p className="mt-3 flex items-start gap-2 rounded-lg border border-[#f5c451]/30 bg-[#f5c451]/5 p-3 text-xs text-[#f5c451]">
+              <p className="mt-3 flex items-start gap-2 rounded-lg border border-[#f5c451]/30 bg-[#f5c451]/5 p-3 text-xs text-gold-ink">
                 <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
                 Começar acima do nível 1 aplica todas as características até o nível {state.level}, com PV pela média do dado de vida. Combine com seu Mestre.
               </p>
@@ -81,7 +81,7 @@ export default function ClassStep({ state, update }: Props) {
           {subLv !== undefined && (
             <Panel title={cls.subclassLabel}>
               {!subclassRequired(state) ? (
-                <p className="text-sm text-[#64748b]">
+                <p className="text-sm text-ink-muted">
                   {cls.name} escolhe {cls.subclassLabel.toLowerCase()} no nível {subLv}. Com nível inicial {state.level}, ainda não se aplica — você poderá escolher ao subir de nível.
                 </p>
               ) : (
@@ -118,7 +118,7 @@ export default function ClassStep({ state, update }: Props) {
                         ))}
                       </div>
                     ) : (
-                      <p className="text-sm text-[#94a3b8]">• {p.fixed}</p>
+                      <p className="text-sm text-ink-soft">• {p.fixed}</p>
                     )}
                     {slotText?.slot && (
                       <select className={selectCls} aria-label="Escolha a arma"

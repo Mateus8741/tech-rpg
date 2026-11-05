@@ -57,22 +57,22 @@ export default function AbilitiesStep({ state, update }: Props) {
         {MODES.map((m) => (
           <button key={m.id} type="button" onClick={() => update({ abilityMode: m.id })} aria-pressed={state.abilityMode === m.id}
             className={cn("rounded-xl border p-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1]",
-              state.abilityMode === m.id ? "border-[#6366f1] bg-[#6366f1]/10" : "border-[#1e2035] bg-[#0f1117] hover:border-[#6366f1]/50")}>
-            <div className="text-sm font-semibold text-[#e2e8f0]">{m.label}</div>
-            <div className="text-xs text-[#64748b]">{m.hint}</div>
+              state.abilityMode === m.id ? "border-[#6366f1] bg-[#6366f1]/10" : "border-line bg-canvas hover:border-[#6366f1]/50")}>
+            <div className="text-sm font-semibold text-ink">{m.label}</div>
+            <div className="text-xs text-ink-muted">{m.hint}</div>
           </button>
         ))}
       </div>
 
       {state.abilityMode === "pointbuy" && (
-        <p className="mb-3 text-sm text-[#94a3b8]">
-          Pontos restantes: <span className={cn("font-semibold tabular-nums", spent > POINT_BUY_BUDGET ? "text-red-400" : "text-[#f5c451]")}>{POINT_BUY_BUDGET - spent}</span> / {POINT_BUY_BUDGET}
+        <p className="mb-3 text-sm text-ink-soft">
+          Pontos restantes: <span className={cn("font-semibold tabular-nums", spent > POINT_BUY_BUDGET ? "text-red-400" : "text-gold-ink")}>{POINT_BUY_BUDGET - spent}</span> / {POINT_BUY_BUDGET}
         </p>
       )}
       {state.abilityMode === "roll" && (
-        <div className="mb-4 rounded-xl border border-[#1e2035] bg-[#0f1117] p-4">
+        <div className="mb-4 rounded-xl border border-line bg-canvas p-4">
           <div className="flex items-center justify-between gap-3">
-            <p className="text-sm text-[#94a3b8]">Role 4d6 seis vezes; o menor dado de cada rolagem é descartado.</p>
+            <p className="text-sm text-ink-soft">Role 4d6 seis vezes; o menor dado de cada rolagem é descartado.</p>
             <Button type="button" onClick={rollAll} disabled={rolling} className="shrink-0 gap-2 bg-[#6366f1] text-white hover:bg-[#5558e6]">
               <Dices className="h-4 w-4" /> {state.rolls.length ? "Rolar de novo" : "Rolar"}
             </Button>
@@ -83,14 +83,14 @@ export default function AbilitiesStep({ state, update }: Props) {
                 const min = set.indexOf(Math.min(...set));
                 return (
                   <motion.div key={i} animate={rolling && !reduce ? { rotate: [-2, 2, -2] } : { rotate: 0 }} transition={{ duration: 0.2, repeat: rolling ? Infinity : 0 }}
-                    className="rounded-lg border border-[#1e2035] bg-[#0a0c14] p-2 text-center">
+                    className="rounded-lg border border-line bg-base p-2 text-center">
                     <div className="flex justify-center gap-1">
                       {set.map((v, j) => (
                         <span key={j} className={cn("flex h-6 w-6 items-center justify-center rounded text-xs font-semibold tabular-nums",
-                          j === min && !rolling ? "bg-[#1e2035] text-[#475569] line-through" : "bg-[#6366f1]/20 text-[#c7d2fe]")}>{v}</span>
+                          j === min && !rolling ? "bg-surface-3 text-ink-faint line-through" : "bg-[#6366f1]/20 text-indigo-ink-soft")}>{v}</span>
                       ))}
                     </div>
-                    <div className="mt-1 text-lg font-bold tabular-nums text-[#f5c451]">{rollTotal(set)}</div>
+                    <div className="mt-1 text-lg font-bold tabular-nums text-gold-ink">{rollTotal(set)}</div>
                   </motion.div>
                 );
               })}
@@ -101,17 +101,17 @@ export default function AbilitiesStep({ state, update }: Props) {
 
       <Panel>
         <div className="grid grid-cols-[1fr_auto_auto_auto_auto] items-center gap-x-3 gap-y-2 text-sm">
-          <span className="text-xs text-[#64748b]">Atributo</span>
-          <span className="text-center text-xs text-[#64748b]">Base</span>
-          <span className="text-center text-xs text-[#64748b]">Racial</span>
-          <span className="text-center text-xs text-[#64748b]">Final</span>
-          <span className="text-center text-xs text-[#64748b]">Mod.</span>
+          <span className="text-xs text-ink-muted">Atributo</span>
+          <span className="text-center text-xs text-ink-muted">Base</span>
+          <span className="text-center text-xs text-ink-muted">Racial</span>
+          <span className="text-center text-xs text-ink-muted">Final</span>
+          <span className="text-center text-xs text-ink-muted">Mod.</span>
           {ABILITIES.map((a) => {
             const k = a.key;
             return (
               <div key={k} className="contents">
                 <div>
-                  <div className="font-medium text-[#e2e8f0]">{a.name}</div>
+                  <div className="font-medium text-ink">{a.name}</div>
                   <div className="mt-1">
                     {state.abilityMode === "standard" && (
                       <select className={selectCls} aria-label={`Valor de ${a.name}`} value={state.standard[k] ?? ""}
@@ -122,19 +122,19 @@ export default function AbilitiesStep({ state, update }: Props) {
                     )}
                     {state.abilityMode === "pointbuy" && (
                       <div className="flex items-center gap-2">
-                        <Button type="button" size="icon" variant="outline" className="h-7 w-7 border-[#1e2035] bg-transparent" aria-label={`Diminuir ${a.name}`}
+                        <Button type="button" size="icon" variant="outline" className="h-7 w-7 border-line bg-transparent" aria-label={`Diminuir ${a.name}`}
                           disabled={state.pointBuy[k] <= 8} onClick={() => update({ pointBuy: { ...state.pointBuy, [k]: state.pointBuy[k] - 1 } })}><Minus className="h-3 w-3" /></Button>
-                        <span className="w-6 text-center tabular-nums text-[#e2e8f0]">{state.pointBuy[k]}</span>
-                        <Button type="button" size="icon" variant="outline" className="h-7 w-7 border-[#1e2035] bg-transparent" aria-label={`Aumentar ${a.name}`}
+                        <span className="w-6 text-center tabular-nums text-ink">{state.pointBuy[k]}</span>
+                        <Button type="button" size="icon" variant="outline" className="h-7 w-7 border-line bg-transparent" aria-label={`Aumentar ${a.name}`}
                           disabled={state.pointBuy[k] >= 15 || spent - (POINT_BUY_COST[state.pointBuy[k]] ?? 0) + (POINT_BUY_COST[state.pointBuy[k] + 1] ?? 99) > POINT_BUY_BUDGET}
                           onClick={() => update({ pointBuy: { ...state.pointBuy, [k]: state.pointBuy[k] + 1 } })}><Plus className="h-3 w-3" /></Button>
-                        <span className="text-[11px] text-[#64748b]">custo {POINT_BUY_COST[state.pointBuy[k]]}</span>
+                        <span className="text-[11px] text-ink-muted">custo {POINT_BUY_COST[state.pointBuy[k]]}</span>
                       </div>
                     )}
                     {state.abilityMode === "manual" && (
                       <NumberField label={`Valor de ${a.name}`} value={state.manual[k]} min={1} max={20}
                         onCommit={(n) => update({ manual: { ...state.manual, [k]: n } })}
-                        className="h-8 w-20 rounded-md border border-[#1e2035] bg-[#0a0c14] px-2 text-center text-sm tabular-nums text-[#e2e8f0] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1]" />
+                        className="h-8 w-20 rounded-md border border-line bg-base px-2 text-center text-sm tabular-nums text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6366f1]" />
                     )}
                     {state.abilityMode === "roll" && (
                       <select className={selectCls} aria-label={`Rolagem de ${a.name}`} disabled={!state.rolls.length || rolling} value={state.rollAssign[k] ?? ""}
@@ -145,10 +145,10 @@ export default function AbilitiesStep({ state, update }: Props) {
                     )}
                   </div>
                 </div>
-                <span className="text-center tabular-nums text-[#94a3b8]">{base[k]}</span>
-                <span className={cn("text-center tabular-nums", bonus[k] ? "text-[#f5c451]" : "text-[#475569]")}>{bonus[k] ? `+${bonus[k]}` : "—"}</span>
-                <span className="text-center text-lg font-bold tabular-nums text-[#e2e8f0]">{final[k]}</span>
-                <span className="text-center font-semibold tabular-nums text-[#a5b4fc]">{formatModifier(abilityModifier(final[k]))}</span>
+                <span className="text-center tabular-nums text-ink-soft">{base[k]}</span>
+                <span className={cn("text-center tabular-nums", bonus[k] ? "text-gold-ink" : "text-ink-faint")}>{bonus[k] ? `+${bonus[k]}` : "—"}</span>
+                <span className="text-center text-lg font-bold tabular-nums text-ink">{final[k]}</span>
+                <span className="text-center font-semibold tabular-nums text-indigo-ink">{formatModifier(abilityModifier(final[k]))}</span>
               </div>
             );
           })}

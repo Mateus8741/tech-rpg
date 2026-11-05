@@ -9,13 +9,13 @@ function Th({ children }: { children?: React.ReactNode }) {
 }
 function Wrap({ children }: { children: React.ReactNode }) {
   return (
-    <div className="overflow-x-auto rounded-xl border border-[#1e2035]">
+    <div className="overflow-x-auto rounded-xl border border-line">
       <table className="w-full min-w-[640px] text-left text-sm">{children}</table>
     </div>
   );
 }
-const head = "bg-[#151826] text-[11px] uppercase tracking-wider text-[#64748b]";
-const tr = "border-t border-[#1e2035] transition-colors hover:bg-white/[0.02]";
+const head = "bg-surface text-[11px] uppercase tracking-wider text-ink-muted";
+const tr = "border-t border-line transition-colors hover:bg-white/[0.02]";
 
 function Weapons({ q }: { q: string }) {
   const [cat, setCat] = useState("Todas");
@@ -35,11 +35,11 @@ function Weapons({ q }: { q: string }) {
           <tbody>
             {list.map((w) => (
               <tr key={w.name} className={tr}>
-                <td className="px-3 py-2 font-medium text-[#e2e8f0]">{w.name}</td>
-                <td className="px-3 py-2 text-[#94a3b8]">{w.category} · {w.kind}</td>
-                <td className="px-3 py-2 text-[#f5c451]">{w.damage}</td>
-                <td className="px-3 py-2 text-[#cbd5e1]">{w.cost}</td>
-                <td className="px-3 py-2 text-[#cbd5e1]">{w.weight}</td>
+                <td className="px-3 py-2 font-medium text-ink">{w.name}</td>
+                <td className="px-3 py-2 text-ink-soft">{w.category} · {w.kind}</td>
+                <td className="px-3 py-2 text-gold-ink">{w.damage}</td>
+                <td className="px-3 py-2 text-ink-body">{w.cost}</td>
+                <td className="px-3 py-2 text-ink-body">{w.weight}</td>
                 <td className="px-3 py-2"><div className="flex flex-wrap gap-1">{w.properties.map((p) => <Chip key={p}>{p}</Chip>)}</div></td>
               </tr>
             ))}
@@ -62,13 +62,13 @@ function Armors({ q }: { q: string }) {
           <tbody>
             {list.map((a) => (
               <tr key={a.name} className={tr}>
-                <td className="px-3 py-2 font-medium text-[#e2e8f0]">{a.name}</td>
-                <td className="px-3 py-2 text-[#94a3b8]">{a.category}</td>
-                <td className="px-3 py-2 text-[#f5c451]">{a.ac}</td>
-                <td className="px-3 py-2 text-[#cbd5e1]">{a.strengthReq ? `For ${a.strengthReq}` : "—"}</td>
-                <td className="px-3 py-2 text-[#cbd5e1]">{a.stealthDisadvantage ? "Desvantagem" : "—"}</td>
-                <td className="px-3 py-2 text-[#cbd5e1]">{a.cost}</td>
-                <td className="px-3 py-2 text-[#cbd5e1]">{a.weight}</td>
+                <td className="px-3 py-2 font-medium text-ink">{a.name}</td>
+                <td className="px-3 py-2 text-ink-soft">{a.category}</td>
+                <td className="px-3 py-2 text-gold-ink">{a.ac}</td>
+                <td className="px-3 py-2 text-ink-body">{a.strengthReq ? `For ${a.strengthReq}` : "—"}</td>
+                <td className="px-3 py-2 text-ink-body">{a.stealthDisadvantage ? "Desvantagem" : "—"}</td>
+                <td className="px-3 py-2 text-ink-body">{a.cost}</td>
+                <td className="px-3 py-2 text-ink-body">{a.weight}</td>
               </tr>
             ))}
           </tbody>
@@ -91,10 +91,10 @@ function Gear({ q }: { q: string }) {
           <tbody>
             {list.map((g) => (
               <tr key={g.name} className={tr}>
-                <td className="px-3 py-2 font-medium text-[#e2e8f0]">{g.name}</td>
-                <td className="px-3 py-2 text-[#94a3b8]">{g.category}</td>
-                <td className="px-3 py-2 text-[#cbd5e1]">{g.cost}</td>
-                <td className="px-3 py-2 text-[#cbd5e1]">{g.weight}</td>
+                <td className="px-3 py-2 font-medium text-ink">{g.name}</td>
+                <td className="px-3 py-2 text-ink-soft">{g.category}</td>
+                <td className="px-3 py-2 text-ink-body">{g.cost}</td>
+                <td className="px-3 py-2 text-ink-body">{g.weight}</td>
               </tr>
             ))}
           </tbody>

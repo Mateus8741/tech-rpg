@@ -42,10 +42,10 @@ export default function LegacyBanner({ api }: { api: CharacterApi }) {
   return (
     <div className="rounded-xl border border-[#f5c451]/30 bg-[#f5c451]/5 p-4">
       <div className="mb-3 flex items-start gap-2.5">
-        <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-[#f5c451]" />
+        <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-gold-ink" />
         <div>
-          <p className="text-sm font-semibold text-[#f5c451]">Ficha antiga</p>
-          <p className="text-xs text-[#94a3b8]">
+          <p className="text-sm font-semibold text-gold-ink">Ficha antiga</p>
+          <p className="text-xs text-ink-soft">
             Este personagem foi criado sem vínculo com as regras (raça: “{c.race || '—'}”, classe: “{c.class || '—'}”). Vincule raça, classe e antecedente para liberar características, magias e bônus automáticos.
           </p>
         </div>
