@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ABILITIES, abilityModifier, getClass, getRace, getSpell, rollDice, spellsForClass, type Spell } from '@repo/rules';
+import { ABILITIES, abilityModifier, getClass, getRace, getSpell, rollDice, spellsForClass, type ClassDef, type Spell } from '@repo/rules';
 import { BookPlus, Check, Dices, Minus, Plus, Shield, Sparkles, Star, X } from 'lucide-react';
-import { derivedStats, getSheet, scoreOf } from '@/lib/sheet';
+import { activeSpellcasting, derivedStats, getSheet, scoreOf, spellListClassId } from '@/lib/sheet';
 import { SpellRow } from '@/components/spells/SpellRow';
 import { SpellDetail } from '@/components/spells/SpellDetail';
 import { normalizeText } from '@/components/spells/spell-utils';
@@ -15,12 +15,21 @@ import { GhostButton, Panel, inputCls, selectCls, useRoll } from './ui';
 import { pactSlots, preparedLimit } from './logic';
 import { cn } from '@/lib/utils';
 
+/** Explica por que não há magias; classes com arquétipo conjurador indicam qual escolher. */
+function noCasterMessage(cls: ClassDef | undefined, subclassId?: string) {
+  if (!cls) return 'Vincule uma classe para ver as magias.';
+  const caster = cls.subclasses.find((s) => 'spellcasting' in s && s.spellcasting);
+  if (!caster) return `${cls.name} não é conjurador.`;
+  if (subclassId === caster.id) return `${caster.name} conjura magias a partir do nível ${caster.level}.`;
+  return `${cls.name} só conjura com o arquétipo ${caster.name} (nível ${caster.level}). Escolha em Características.`;
+}
+
 export default function SpellsTab({ api }: { api: CharacterApi }) {
   const c = api.character!;
   const sheet = getSheet(c);
   const d = derivedStats(c);
   const cls = getClass(sheet.classId);
-  const sc = cls?.spellcasting;
+  const sc = activeSpellcasting(sheet, c.level);
   const reduce = useReducedMotion();
   const roll = useRoll();
   const [open, setOpen] = useState<string | null>(null);
@@ -42,7 +51,7 @@ export default function SpellsTab({ api }: { api: CharacterApi }) {
     return (
       <Panel title="Magias">
         <p className="py-6 text-center text-sm text-ink-muted">
-          {cls ? `${cls.name} não é conjurador.` : 'Vincule uma classe para ver as magias.'}
+          {noCasterMessage(cls, sheet.subclassId)}
         </p>
       </Panel>
     );
@@ -289,7 +298,7 @@ export default function SpellsTab({ api }: { api: CharacterApi }) {
       <AnimatePresence initial={false}>
         {adding && (
           <motion.div initial={reduce ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-            <SpellPicker classId={sheet.classId} maxLevel={maxSpellLevel} knownIds={sheet.spellsKnown} onAdd={addSpell} onRemove={removeSpell} />
+            <SpellPicker classId={spellListClassId(sheet)} maxLevel={maxSpellLevel} knownIds={sheet.spellsKnown} onAdd={addSpell} onRemove={removeSpell} />
           </motion.div>
         )}
       </AnimatePresence>

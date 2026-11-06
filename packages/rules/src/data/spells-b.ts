@@ -1037,7 +1037,7 @@ export const SPELLS_B: Spell[] = [
     name: "Compulsão",
     level: 4,
     school: "Encantamento",
-    castingTime: "1 ação bônus",
+    castingTime: "1 ação",
     range: "9 metros (6 quadrados)",
     components: { v: true, s: true },
     duration: "Concentração, dura até 1 minuto",

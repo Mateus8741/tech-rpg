@@ -4,7 +4,7 @@ import { tablistKeyDown } from '@/lib/a11y';
 import { useState } from 'react';
 import Link from 'next/link';
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'framer-motion';
-import { ArrowLeft, BookOpen, Backpack, ScrollText, Swords, User, Wand2 } from 'lucide-react';
+import { ArrowLeft, BookOpen, Backpack, ScrollText, Swords, User, Wand2, Zap } from 'lucide-react';
 import { getSheet } from '@/lib/sheet';
 import CombatTracker from '@/components/CombatTracker';
 import { useCharacter } from './useCharacter';
@@ -12,6 +12,7 @@ import UndoControls from './UndoControls';
 import ExportMenu from './ExportMenu';
 import { RollProvider } from './ui';
 import SheetTab from './SheetTab';
+import ActionsTab from './ActionsTab';
 import FeaturesTab from './FeaturesTab';
 import SpellsTab from './SpellsTab';
 import EquipmentTab from './EquipmentTab';
@@ -21,6 +22,7 @@ import { cn } from '@/lib/utils';
 
 const TABS = [
   { id: 'ficha', label: 'Ficha', icon: User },
+  { id: 'acoes', label: 'Ações', icon: Zap },
   { id: 'caracteristicas', label: 'Características', icon: ScrollText },
   { id: 'magias', label: 'Magias', icon: Wand2 },
   { id: 'equipamento', label: 'Equipamento', icon: Backpack },
@@ -101,6 +103,7 @@ export default function CharacterSheet({ id }: { id: string }) {
                 transition={{ duration: reduce ? 0 : 0.18 }}
               >
                 {tab === 'ficha' && <SheetTab api={api} />}
+                {tab === 'acoes' && <ActionsTab api={api} />}
                 {tab === 'caracteristicas' && <FeaturesTab api={api} />}
                 {tab === 'magias' && <SpellsTab api={api} />}
                 {tab === 'equipamento' && <EquipmentTab api={api} />}

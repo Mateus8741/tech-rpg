@@ -3,7 +3,9 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ARMOR, WEAPONS, formatModifier, getClass, rollDice } from '@repo/rules';
-import { Plus, Trash2, Calculator, Swords, Shield, AlertTriangle, Weight } from 'lucide-react';
+import { Plus, Trash2, Calculator, Swords, Shield, AlertTriangle, Weight, Info } from 'lucide-react';
+import { useEntry } from '@/components/entries';
+import { itemRef } from '@/components/entries/resolve';
 import { toast } from 'sonner';
 import { getSheet } from '@/lib/sheet';
 import type { Equipment, InventoryItem } from '@/lib/api';
@@ -17,8 +19,8 @@ import {
 } from './equipment-logic';
 import { cn } from '@/lib/utils';
 
-const EQ_GRID = 'grid grid-cols-[28px_minmax(120px,1fr)_52px_64px_52px_52px_28px] items-center gap-2 min-w-[520px]';
-const INV_GRID = 'grid grid-cols-[minmax(120px,1fr)_56px_56px_64px_28px] items-center gap-2 min-w-[420px]';
+const EQ_GRID = 'grid grid-cols-[28px_minmax(120px,1fr)_52px_64px_52px_52px_28px_28px] items-center gap-2 min-w-[556px]';
+const INV_GRID = 'grid grid-cols-[minmax(120px,1fr)_56px_56px_64px_28px_28px] items-center gap-2 min-w-[456px]';
 const hint = 'text-[10px] uppercase tracking-widest text-ink-faint';
 const numKg = (v: string) => Math.max(0, Number(v.replace(',', '.')) || 0);
 
@@ -28,6 +30,7 @@ export default function EquipmentTab({ api }: { api: CharacterApi }) {
   const cls = getClass(sheet.classId);
   const reduce = useReducedMotion();
   const roll = useRoll();
+  const openEntry = useEntry();
   const equipment: Equipment[] = c.equipment ?? [];
   const inventory: InventoryItem[] = c.inventory ?? [];
   const ac = computeArmorClass(c, sheet.classId);
@@ -132,7 +135,7 @@ export default function EquipmentTab({ api }: { api: CharacterApi }) {
               <div key={i} className="flex flex-wrap items-center gap-2 rounded-lg border border-line bg-base/60 px-3 py-2">
                 <Swords className="h-4 w-4 text-indigo-ink" />
                 <div className="min-w-[120px] flex-1">
-                  <p className="text-sm font-medium text-ink">{a.name}</p>
+                  <button type="button" aria-haspopup="dialog" onClick={() => openEntry(itemRef(it.name))} className="rounded text-sm font-medium text-ink underline decoration-dotted decoration-ink-faint underline-offset-2 outline-none hover:text-indigo-ink focus-visible:ring-2 focus-visible:ring-indigo/70">{a.name}</button>
                   <p className="text-[11px] text-ink-muted">
                     {a.ability ? `${a.ability}${a.proficient ? ' + prof.' : ' (sem prof.)'}` : 'bônus manual'}
                     {a.damageExpr ? ` · ${a.damageExpr} ${a.damageLabel}` : ''}
@@ -150,7 +153,6 @@ export default function EquipmentTab({ api }: { api: CharacterApi }) {
                     <GhostButton onClick={() => rollDamage(`Dano: ${a.name}`, a.damageExpr!, true)}>Crítico</GhostButton>
                   </>
                 )}
-                <span className="sr-only">{it.name}</span>
               </div>
             ))}
           </div>
@@ -190,7 +192,7 @@ export default function EquipmentTab({ api }: { api: CharacterApi }) {
               <p className={cn(EQ_GRID, hint)}>
                 <span title="Equipado"><Shield className="mx-auto h-3 w-3" /></span><span>Item</span>
                 <span className="text-center">Qtd</span><span className="text-center">Peso kg</span>
-                <span className="text-center">Defesa</span><span className="text-center">Ataque</span><span />
+                <span className="text-center">Defesa</span><span className="text-center">Ataque</span><span /><span />
               </p>
             )}
             <AnimatePresence initial={false}>
@@ -206,6 +208,7 @@ export default function EquipmentTab({ api }: { api: CharacterApi }) {
                   <input type="number" min={0} step={0.1} className={cn(inputCls, 'text-center')} title="Peso por unidade (kg)" aria-label="Peso por unidade (kg)" value={it.weight ?? ''} placeholder="—" onChange={(e) => updEq(i, { weight: e.target.value === '' ? undefined : numKg(e.target.value) })} />
                   <input type="number" className={cn(inputCls, 'text-center')} title="Defesa (bônus fixo de CA)" aria-label="Defesa (bônus fixo de CA)" value={it.defense ?? 0} onChange={(e) => updEq(i, { defense: Number(e.target.value) || 0 })} />
                   <input type="number" className={cn(inputCls, 'text-center')} title="Ataque (bônus mágico/manual)" aria-label="Ataque (bônus mágico/manual)" value={it.attack ?? 0} onChange={(e) => updEq(i, { attack: Number(e.target.value) || 0 })} />
+                  <button type="button" aria-label={`Detalhes de ${it.name || 'item'}`} aria-haspopup="dialog" disabled={!it.name.trim()} onClick={() => openEntry(itemRef(it.name))} className="text-ink-faint hover:text-indigo-ink disabled:opacity-30 disabled:hover:text-ink-faint"><Info className="h-4 w-4" /></button>
                   <button type="button" aria-label="Remover" onClick={() => setEq(equipment.filter((_, j) => j !== i))} className="text-ink-faint hover:text-red-400"><Trash2 className="h-4 w-4" /></button>
                 </motion.div>
               ))}
@@ -218,7 +221,7 @@ export default function EquipmentTab({ api }: { api: CharacterApi }) {
       <Panel title="Inventário" action={<span className="text-xs text-ink-muted">{fmtKg(wInv)}</span>}>
         <div className="overflow-x-auto">
           <div className="space-y-2">
-            {inventory.length > 0 && <p className={cn(INV_GRID, hint)}><span>Item</span><span className="text-center">Qtd</span><span className="text-center">Máx</span><span className="text-center">Peso kg</span><span /></p>}
+            {inventory.length > 0 && <p className={cn(INV_GRID, hint)}><span>Item</span><span className="text-center">Qtd</span><span className="text-center">Máx</span><span className="text-center">Peso kg</span><span /><span /></p>}
             <AnimatePresence initial={false}>
               {inventory.map((it, i) => (
                 <motion.div
@@ -230,6 +233,7 @@ export default function EquipmentTab({ api }: { api: CharacterApi }) {
                   <input type="number" aria-label="Quantidade" min={0} className={cn(inputCls, 'text-center')} value={it.quantity} onChange={(e) => updInv(i, { quantity: Math.max(0, Number(e.target.value) || 0) })} />
                   <input type="number" aria-label="Máximo" min={0} className={cn(inputCls, 'text-center')} value={it.max} onChange={(e) => updInv(i, { max: Math.max(0, Number(e.target.value) || 0) })} />
                   <input type="number" min={0} step={0.1} className={cn(inputCls, 'text-center')} title="Peso por unidade (kg)" aria-label="Peso por unidade (kg)" value={it.weight ?? ''} placeholder="—" onChange={(e) => updInv(i, { weight: e.target.value === '' ? undefined : numKg(e.target.value) })} />
+                  <button type="button" aria-label={`Detalhes de ${it.name || 'item'}`} aria-haspopup="dialog" disabled={!it.name.trim()} onClick={() => openEntry(itemRef(it.name))} className="text-ink-faint hover:text-indigo-ink disabled:opacity-30 disabled:hover:text-ink-faint"><Info className="h-4 w-4" /></button>
                   <button type="button" aria-label="Remover" onClick={() => setInv(inventory.filter((_, j) => j !== i))} className="text-ink-faint hover:text-red-400"><Trash2 className="h-4 w-4" /></button>
                 </motion.div>
               ))}

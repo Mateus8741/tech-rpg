@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
 import { CONDITIONS } from '@repo/rules';
-import { AlertTriangle, Minus, Plus } from 'lucide-react';
+import { AlertTriangle, Info, Minus, Plus } from 'lucide-react';
+import { useEntry } from '@/components/entries';
 import { getSheet } from '@/lib/sheet';
 import { cn } from '@/lib/utils';
 import type { CharacterApi } from './useCharacter';
@@ -12,10 +12,9 @@ import { EXHAUSTION_EFFECTS, effectWarnings } from './effects';
 /** Condições (chips com descrição da regra), exaustão 0-6 e avisos de efeitos automáticos. */
 export default function ConditionsPanel({ api }: { api: CharacterApi }) {
   const sheet = getSheet(api.character!);
-  const [openId, setOpenId] = useState<string | null>(null);
+  const openEntry = useEntry();
   const imm = { immediate: true };
   const list = CONDITIONS.filter((x) => x.id !== 'exaustao');
-  const opened = CONDITIONS.find((x) => x.id === openId);
   const warnings = effectWarnings(sheet);
 
   const toggle = (id: string) => {
@@ -35,21 +34,14 @@ export default function ConditionsPanel({ api }: { api: CharacterApi }) {
               on ? 'border-amber-400/60 bg-amber-400/10 text-amber-200' : 'border-line text-ink-soft')}>
               <button type="button" aria-pressed={on} onClick={() => toggle(cond.id)} className="py-1 pl-2.5 pr-1.5 hover:text-ink">{cond.name}</button>
               <button
-                type="button" aria-label={`Regra: ${cond.name}`} aria-expanded={openId === cond.id}
-                onClick={() => setOpenId(openId === cond.id ? null : cond.id)}
-                className="border-l border-current/20 px-1.5 py-1 text-[10px] opacity-70 hover:opacity-100"
-              >i</button>
+                type="button" aria-label={`Regra: ${cond.name}`} aria-haspopup="dialog"
+                onClick={() => openEntry({ kind: 'condition', id: cond.id })}
+                className="border-l border-current/20 px-1.5 py-1 opacity-70 hover:opacity-100"
+              ><Info className="h-3 w-3" aria-hidden /></button>
             </span>
           );
         })}
       </div>
-
-      {opened && (
-        <div className="mt-2 space-y-1 rounded-lg border border-line bg-base p-3 text-[12px] leading-relaxed text-ink-soft">
-          <p className="font-semibold text-ink">{opened.name}</p>
-          {opened.description.map((p, i) => <p key={i}>{p}</p>)}
-        </div>
-      )}
 
       <div className="mt-4 flex items-center gap-3">
         <span className="text-xs text-ink-soft">Exaustão</span>

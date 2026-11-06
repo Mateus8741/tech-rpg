@@ -8,6 +8,7 @@ import {
   type AbilityKey,
 } from '@repo/rules';
 import { ArrowUpCircle, BedDouble, Coffee, Heart, Minus, Plus, Shield, Skull, Sparkles, Star, Footprints, Zap, Eye, Dices } from 'lucide-react';
+import { useEntry, type EntryRef } from '@/components/entries';
 import { derivedStats, getSheet, SCORE_FIELDS, scoreOf } from '@/lib/sheet';
 import { cn } from '@/lib/utils';
 import type { CharacterApi } from './useCharacter';
@@ -41,6 +42,19 @@ function RollButton({ api, label, bonus, kind = 'check', className, children }: 
   );
 }
 
+/** Nome tocável que abre o painel de detalhes. */
+function EntryLink({ entry, children }: { entry: EntryRef; children: React.ReactNode }) {
+  const openEntry = useEntry();
+  return (
+    <button
+      type="button" onClick={() => openEntry(entry)} aria-haspopup="dialog"
+      className="rounded underline decoration-dotted decoration-ink-faint underline-offset-2 outline-none transition-colors hover:text-indigo-ink focus-visible:ring-2 focus-visible:ring-indigo/70"
+    >
+      {children}
+    </button>
+  );
+}
+
 export default function SheetTab({ api }: Props) {
   const c = api.character!;
   const sheet = getSheet(c);
@@ -64,9 +78,21 @@ export default function SheetTab({ api }: Props) {
           <div className="min-w-0 flex-1">
             <h2 className="truncate text-xl font-bold text-ink">{c.name}</h2>
             <p className="text-sm text-ink-soft">
-              {race ? `${race.name}${subrace ? ` (${subrace.name})` : ''}` : c.race || '—'} ·{' '}
-              {cls ? `${cls.name}${sub ? ` (${sub.name})` : ''}` : c.class || '—'}
-              {(bg?.name || c.background) && <span className="text-ink-muted"> · {bg?.name ?? c.background}</span>}
+              {race ? (
+                <>
+                  <EntryLink entry={{ kind: 'race', id: race.id }}>{race.name}</EntryLink>
+                  {subrace && <> (<EntryLink entry={{ kind: 'subrace', raceId: race.id, id: subrace.id }}>{subrace.name}</EntryLink>)</>}
+                </>
+              ) : c.race || '—'} ·{' '}
+              {cls ? (
+                <>
+                  <EntryLink entry={{ kind: 'class', id: cls.id }}>{cls.name}</EntryLink>
+                  {sub && <> (<EntryLink entry={{ kind: 'subclass', classId: cls.id, id: sub.id }}>{sub.name}</EntryLink>)</>}
+                </>
+              ) : c.class || '—'}
+              {(bg?.name || c.background) && (
+                <span className="text-ink-muted"> · {bg ? <EntryLink entry={{ kind: 'background', id: bg.id }}>{bg.name}</EntryLink> : c.background}</span>
+              )}
             </p>
           </div>
           <div className="text-right">
