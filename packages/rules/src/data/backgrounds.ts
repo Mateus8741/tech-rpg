@@ -743,6 +743,52 @@ export const BACKGROUNDS: Background[] = [
   },
 ];
 
+// Variantes do livro como antecedentes selecionáveis: herdam tudo do antecedente base, exceto o que mudam.
+const variante = (baseId: string, patch: Partial<Background> & Pick<Background, "id" | "name" | "summary">): Background => {
+  const base = BACKGROUNDS.find((b) => b.id === baseId);
+  if (!base) throw new Error(`Antecedente base desconhecido: ${baseId}`);
+  return { ...base, ...patch };
+};
+
+BACKGROUNDS.push(
+  variante("artesao-de-guilda", {
+    id: "comerciante-de-guilda",
+    name: "Comerciante de Guilda",
+    summary: "Variante de Artesão de Guilda: em vez de fabricar, você vive de comprar e vender, ligado a uma guilda mercante, a mestres de caravana ou a lojistas.",
+    tools: ["Ferramentas de navegação ou um idioma adicional"],
+    equipment: ["Uma mula e uma carroça (em vez de ferramentas de artesão)", "Uma carta de apresentação da sua guilda", "Um conjunto de roupas de viagem", "Uma algibeira contendo 15 peças de ouro"],
+  }),
+  variante("artista", {
+    id: "gladiador",
+    name: "Gladiador",
+    summary: "Variante de Artista: sua apresentação é o combate transformado em espetáculo para o público. Pela Demanda Popular vale em qualquer lugar com arena ou lutas.",
+    equipment: ["Uma arma barata incomum, como rede ou tridente (em vez do instrumento musical)", "Um item de um admirador (carta de amor, mecha de cabelo ou bugiganga)", "Uma algibeira contendo 15 peças de ouro"],
+  }),
+  variante("criminoso", {
+    id: "espiao",
+    name: "Espião",
+    summary: "Variante de Criminoso: mesmas habilidades, aprendidas como agente de espionagem, seja a serviço da coroa ou vendendo segredos a quem pagar mais.",
+  }),
+  variante("marinheiro", {
+    id: "pirata",
+    name: "Pirata",
+    summary: "Variante de Marinheiro: você aprendeu o ofício sob um pirata infame, participou de saques e tem má fama em várias cidades portuárias.",
+    feature: {
+      name: "Má Reputação",
+      description: "Substitui Passagem de Navio. Seu nome assusta as pessoas: em locais civilizados, você comete pequenos delitos (como não pagar a conta da taverna ou arrombar a porta de uma loja) e a maioria não denuncia às autoridades.",
+    },
+  }),
+  variante("nobre", {
+    id: "cavaleiro",
+    name: "Cavaleiro",
+    summary: "Variante de Nobre: você detém um título de cavalaria, um dos mais baixos da nobreza, e pode ascender a partir dele. Inclua entre seus pertences o estandarte ou símbolo de quem jurou honrar.",
+    feature: {
+      name: "Servos",
+      description: "Chamada de Retentores no Livro do Jogador. Substitui Posição de Privilégio. Três servos leais à família servem você: um escudeiro nobre (em troca de treinamento) e dois plebeus, como cavalariço e servo. Fazem tarefas comuns, mas não lutam por você, não o seguem a lugares claramente perigosos e vão embora se forem expostos a perigo ou abuso com frequência.",
+    },
+  }),
+);
+
 export function getBackground(id: string): Background | undefined {
   return BACKGROUNDS.find((b) => b.id === id);
 }

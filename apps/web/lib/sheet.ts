@@ -3,7 +3,7 @@
 // strength..charisma (valores base + racial já aplicados), maxHitPoints, currentHitPoints, armorClass etc.
 import {
   ABILITIES, SKILLS, abilityModifier, proficiencyBonus, getClass, getRace, spellSlotsFor,
-  type AbilityKey, type SkillKey,
+  type AbilityKey, type SkillKey, type SpellcastingInfo, type Subclass,
 } from "@repo/rules";
 import type { Character } from "@/lib/api";
 
@@ -69,6 +69,21 @@ const SCORE_FIELD: Record<AbilityKey, "strength" | "dexterity" | "constitution" 
 export const scoreOf = (c: Character, k: AbilityKey) => c[SCORE_FIELD[k]];
 export const SCORE_FIELDS = SCORE_FIELD;
 
+/**
+ * Conjuração ativa do personagem: da classe ou da subclasse (Trapaceiro Arcano e Cavaleiro Arcano
+ * ganham conjuração pelo arquétipo, a partir do nível dele).
+ */
+export function activeSpellcasting(sheet: Pick<SheetData, "classId" | "subclassId">, level: number): SpellcastingInfo | undefined {
+  const cls = getClass(sheet.classId);
+  if (cls?.spellcasting) return cls.spellcasting;
+  const sub = cls?.subclasses.find((s) => s.id === sheet.subclassId) as (Subclass & { spellcasting?: SpellcastingInfo }) | undefined;
+  return sub?.spellcasting && level >= sub.level ? sub.spellcasting : undefined;
+}
+
+/** Lista de magias usada: arquétipos conjuradores usam a lista de mago. */
+export const spellListClassId = (sheet: Pick<SheetData, "classId">) =>
+  getClass(sheet.classId)?.spellcasting ? sheet.classId : "mago";
+
 export function derivedStats(c: Character) {
   const sheet = getSheet(c);
   const pb = proficiencyBonus(c.level);
@@ -83,7 +98,7 @@ export function derivedStats(c: Character) {
   });
   const cls = getClass(sheet.classId);
   const race = getRace(sheet.raceId);
-  const sc = cls?.spellcasting;
+  const sc = activeSpellcasting(sheet, c.level);
   const spell = sc ? {
     ability: sc.ability, dc: 8 + pb + mod(sc.ability), attack: pb + mod(sc.ability),
     slots: spellSlotsFor(sc.kind, c.level),

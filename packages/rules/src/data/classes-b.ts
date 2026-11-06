@@ -115,6 +115,21 @@ const mestreDeBatalha: Subclass = {
   ],
 };
 
+// Arquétipo do Compêndio de Classes (Guia do Aventureiro da Costa da Espada).
+const dragaoPurpura: Subclass = {
+  id: "cavaleiro-do-dragao-purpura",
+  name: "Cavaleiro do Dragão Púrpura",
+  level: 3,
+  description:
+    "Líder de campo que fortalece os aliados pelo exemplo em batalha. Nos Reinos Esquecidos é uma ordem de cavalaria de Cormyr; em outros cenários, use o nome genérico Marechal.",
+  features: [
+    { level: 3, name: "Grito Animador", description: "Ao usar Retomar o Fôlego, escolha até três aliados a até 18 metros que possam ver e ouvir você. Cada um recupera PV iguais ao seu nível de guerreiro." },
+    { level: 7, name: "Emissário Real", description: "Você ganha proficiência em Persuasão; se já a tiver, escolha proficiência em Adestrar Animais, Atuação, Intimidação ou Intuição. Seu bônus de proficiência é dobrado em todo teste de habilidade com Persuasão, independentemente de qual proficiência tenha ganhado aqui." },
+    { level: 10, name: "Surto de Inspiração", description: "Ao usar Surto de Ação, escolha um aliado a até 18 metros que possa ver ou ouvir você: ele pode usar a reação para fazer um ataque com arma, corpo a corpo ou à distância. A partir do 17º nível, são dois aliados." },
+    { level: 15, name: "Baluarte", description: "Ao usar Indomável para repetir um teste de resistência de Inteligência, Sabedoria ou Carisma, sem estar incapacitado, escolha um aliado a até 18 metros que tenha falhado contra o mesmo efeito e possa ver ou ouvir você. Ele repete o teste e fica obrigado a usar o novo resultado." },
+  ],
+};
+
 const GUERREIRO: ClassDef = {
   id: "guerreiro",
   name: "Guerreiro",
@@ -162,7 +177,7 @@ const GUERREIRO: ClassDef = {
     { level: 20, name: "Ataque Extra (3)", description: "Você pode atacar quatro vezes, ao invés de uma, quando usar a ação Atacar durante o seu turno." },
   ],
   subclassLabel: "Arquétipo Marcial",
-  subclasses: [campeao, cavaleiroArcano, mestreDeBatalha],
+  subclasses: [campeao, cavaleiroArcano, mestreDeBatalha, dragaoPurpura],
   progressionColumns: [
     {
       label: "Ataques por Ação",
@@ -348,6 +363,37 @@ const trapaceiroArcano: CasterSubclass = {
   ],
 };
 
+// Arquétipos do Compêndio de Classes (Guia do Aventureiro da Costa da Espada).
+const manipulador: Subclass = {
+  id: "manipulador",
+  name: "Manipulador",
+  level: 3,
+  description:
+    "Especialista em pessoas, influência e segredos, comum entre espiões, cortesãos e conspiradores. Usa palavras tanto quanto lâminas.",
+  features: [
+    { level: 3, name: "Mestre da Intriga", description: "Você ganha proficiência com kit de disfarce, kit de falsificação e um tipo de jogo à sua escolha, e aprende dois idiomas à sua escolha. Depois de ouvir uma criatura falar por pelo menos 1 minuto, consegue imitar perfeitamente sua fala e sotaque, passando-se por nativo de uma região cujo idioma conheça." },
+    { level: 3, name: "Mestre de Estratégias", description: "Você pode usar a ação de Ajudar como ação bônus. Ao ajudar um aliado a atacar, o alvo pode estar a até 9 metros de você (em vez de 1,5 metro), desde que o alvo possa ver ou ouvir você." },
+    { level: 9, name: "Manipulador Perspicaz", description: "Após observar ou interagir com uma criatura por pelo menos 1 minuto fora de combate, escolha duas destas características: Inteligência, Sabedoria, Carisma ou níveis de classe (se houver). O Mestre diz se a criatura é igual, superior ou inferior a você em cada uma. A critério do Mestre, você também descobre algo da história dela ou um traço de personalidade." },
+    { level: 13, name: "Desorientação", description: "Reação: quando você for alvo de um ataque e uma criatura a até 1,5 metro estiver lhe dando cobertura contra ele, o ataque passa a ter essa criatura como alvo." },
+    { level: 17, name: "Alma Enganadora", description: "Telepatia e meios semelhantes só leem seus pensamentos se você permitir; você pode apresentar pensamentos falsos com um teste de Carisma (Enganação) resistido por Sabedoria (Intuição) do leitor. Magia que verifique se você diz a verdade indica sinceridade se você quiser, e magia não pode forçá-lo a dizer a verdade." },
+  ],
+};
+
+const espadachim: Subclass = {
+  id: "espadachim",
+  name: "Espadachim",
+  level: 3,
+  description:
+    "Duelista que combina velocidade, elegância e charme. Destaca-se em combate singular e consegue atacar com duas armas e sair de perto do inimigo em segurança.",
+  features: [
+    { level: 3, name: "Sapateado", description: "No seu turno, depois de fazer um ataque corpo a corpo contra uma criatura, ela não pode fazer ataques de oportunidade contra você até o fim do turno." },
+    { level: 3, name: "Audácia Dissoluta", description: "Some seu modificador de Carisma às rolagens de iniciativa. Além disso, você pode usar Ataque Furtivo sem vantagem se nenhuma outra criatura além do alvo estiver a até 1,5 metro de você; as demais regras do Ataque Furtivo continuam valendo." },
+    { level: 9, name: "Fanfarronada", description: "Ação: faça um teste de Carisma (Persuasão) resistido por Sabedoria (Intuição) de uma criatura que possa ouvir você e compartilhe um idioma. Se vencer contra criatura hostil: ela tem desvantagem em ataques contra outros alvos e não pode fazer ataques de oportunidade contra outros alvos, por 1 minuto ou até um companheiro seu atacá-la ou afetá-la com magia, ou até vocês ficarem a mais de 18 metros. Se vencer contra criatura não hostil: fica enfeitiçada por 1 minuto e o considera um conhecido amigável; termina se você ou seus companheiros a prejudicarem." },
+    { level: 13, name: "Manobra Elegante", description: "Ação bônus no seu turno: ganha vantagem no próximo teste de Destreza (Acrobacia) ou Força (Atletismo) feito neste turno." },
+    { level: 17, name: "Mestre Duelista", description: "Ao errar uma jogada de ataque, você pode rolá-la novamente com vantagem. Depois de usar, só volta após um descanso curto ou longo." },
+  ],
+};
+
 const LADINO: ClassDef = {
   id: "ladino",
   name: "Ladino",
@@ -391,7 +437,7 @@ const LADINO: ClassDef = {
     { level: 20, name: "Golpe de Sorte", description: "No 20º nível, você adquire um dom incrível para ter sucesso nos momentos em que mais precisa. Se um ataque seu falhar contra um alvo ao seu alcance, você pode transformar essa falha em um acerto. Ou se falhar em um teste qualquer, você pode tratar a jogada desse mesmo teste como 20 natural.\nUma vez que você use essa característica, você não pode fazê-lo de novo até terminar um descanso curto ou longo." },
   ],
   subclassLabel: "Arquétipo de Ladino",
-  subclasses: [assassino, ladrao, trapaceiroArcano],
+  subclasses: [assassino, ladrao, trapaceiroArcano, manipulador, espadachim],
   progressionColumns: [
     {
       label: "Ataque Furtivo",
@@ -526,6 +572,22 @@ const transmutacao: Subclass = {
   ],
 };
 
+// Tradição do Compêndio de Classes (Guia do Aventureiro da Costa da Espada).
+const trovaDaLamina: Subclass = {
+  id: "trova-da-lamina",
+  name: "Trova da Lâmina",
+  level: 2,
+  description:
+    "Magos que unem esgrima e magia arcana em uma dança de combate. Nos Reinos Esquecidos é restrita a elfos e meio-elfos, mas o Mestre pode ignorar a restrição.",
+  features: [
+    { level: 2, name: "Treinamento em Guerra e Canção", description: "Você ganha proficiência em armadura leve, em um tipo de arma corpo a corpo de uma mão à sua escolha e em Atuação, se ainda não a tiver." },
+    { level: 2, name: "Canção da Lâmina", description: "Ação bônus, duas vezes por descanso curto ou longo, sem armadura média ou pesada nem escudo. Dura 1 minuto; termina se ficar incapacitado, vestir armadura média ou pesada ou escudo, ou atacar com arma usando as duas mãos, e você pode encerrá-la quando quiser, sem gastar ação. Enquanto ativa: CA +Inteligência (mínimo +1); deslocamento de caminhada +3 metros; vantagem em Destreza (Acrobacia); +Inteligência (mínimo +1) em testes de resistência de Constituição para manter concentração." },
+    { level: 6, name: "Ataque Extra", description: "Você faz dois ataques, em vez de um, ao usar a ação de Ataque no seu turno." },
+    { level: 10, name: "Canção de Defesa", description: "Com a Canção da Lâmina ativa, ao sofrer dano, use a reação e gaste um espaço de magia para reduzir o dano em 5 × o nível do espaço." },
+    { level: 14, name: "Canção da Vitória", description: "Com a Canção da Lâmina ativa, some Inteligência (mínimo +1) ao dano dos seus ataques corpo a corpo com arma." },
+  ],
+};
+
 const MAGO: ClassDef = {
   id: "mago",
   name: "Mago",
@@ -562,7 +624,7 @@ const MAGO: ClassDef = {
     { level: 20, name: "Assinatura Mágica", description: "Quando alcançar o 20º nível, você adquire domínio completo de duas poderosas magias e pode conjurá-las sem muito esforço. Escolha duas magias de mago de 3º nível em seu grimório como sua assinatura mágica. Você sempre tem essas magias preparadas e elas não contam como magias preparadas em sua lista, além de você poder conjurar cada uma das magias escolhidas, uma vez ao dia, como magias de 3º nível, sem gastar nenhum espaço. Quando o fizer, você não poderá fazê-lo de novo antes de terminar um descanso curto ou longo.\nSe você quiser conjurar essas magias com espaços de níveis superiores, a magia gastará espaços de magia, como normalmente se faz." },
   ],
   subclassLabel: "Tradição Arcana",
-  subclasses: [abjuracao, adivinhacao, conjuracao, encantamento, evocacao, ilusao, necromancia, transmutacao],
+  subclasses: [abjuracao, adivinhacao, conjuracao, encantamento, evocacao, ilusao, necromancia, transmutacao, trovaDaLamina],
   spellcasting: {
     ability: "int",
     kind: "full",
@@ -655,6 +717,35 @@ const quatroElementos: Subclass = {
   ],
 };
 
+// Tradições do Compêndio de Classes (Guia do Aventureiro da Costa da Espada).
+const morteAmpla: Subclass = {
+  id: "morte-ampla",
+  name: "Caminho da Morte Ampla",
+  level: 3,
+  description:
+    "Monges obcecados pelos mecanismos da morte, que estudam o instante do falecimento das criaturas e aplicam esse conhecimento em um estilo de luta letal.",
+  features: [
+    { level: 3, name: "Toque da Morte", description: "Ao reduzir a 0 PV uma criatura a até 1,5 metro, você ganha PV temporários iguais a Sabedoria + nível de monge (mínimo 1)." },
+    { level: 6, name: "Hora de Ceifar", description: "Ação: cada criatura a até 9 metros que possa ver você faz um teste de resistência de Sabedoria; se falhar, fica amedrontada por você até o fim do seu próximo turno." },
+    { level: 11, name: "Maestria da Morte", description: "Ao cair a 0 PV, você pode gastar 1 ponto de chi (sem ação) para ficar com 1 PV." },
+    { level: 17, name: "Toque da Morte Ampla", description: "Ação: toque uma criatura a até 1,5 metro e gaste de 1 a 10 pontos de chi. Ela faz um teste de resistência de Constituição: sofre 2d10 de dano necrótico por ponto de chi gasto se falhar, ou metade se passar." },
+  ],
+};
+
+const almaSolar: Subclass = {
+  id: "alma-solar",
+  name: "Caminho da Alma Solar",
+  level: 3,
+  description:
+    "Monges que canalizam a própria energia vital em rajadas de luz ardente, acreditando que a meditação libera a luz presente na alma de todo ser vivo.",
+  features: [
+    { level: 3, name: "Rajada Solar Radiante", description: "Você ganha um ataque à distância com magia, usável com a ação de Ataque: alcance 9 metros, com proficiência, usando Destreza no ataque e no dano. Causa dano radiante, com dado d4 que acompanha a coluna Artes Marciais. Ao atacar assim com a ação de Ataque, você pode gastar 1 ponto de chi para fazer dois ataques adicionais com ele, como ação bônus." },
+    { level: 6, name: "Golpe em Arco Ardente", description: "Logo após usar a ação de Ataque, gaste 2 pontos de chi para conjurar mãos flamejantes como ação bônus. Cada ponto de chi adicional aumenta o nível da magia em 1. O total máximo de chi gasto é metade do nível de monge (arredondado para baixo)." },
+    { level: 11, name: "Explosão Solar Ardente", description: "Ação: crie um orbe e lance-o em um ponto a até 45 metros. Cada criatura em uma esfera de 6 metros de raio faz um teste de resistência de Constituição ou sofre 2d6 de dano radiante; quem está atrás de cobertura total opaca não faz o teste. Cada ponto de chi gasto (máximo 3) aumenta o dano em 2d6." },
+    { level: 17, name: "Escudo Solar", description: "Você emite luz plena em 9 metros de raio e penumbra por mais 9 metros; apaga ou reacende com uma ação bônus. Enquanto brilha, ao ser atingido por ataque corpo a corpo, pode usar a reação para causar ao atacante dano radiante igual a 5 + Sabedoria." },
+  ],
+};
+
 const MONGE: ClassDef = {
   id: "monge",
   name: "Monge",
@@ -699,7 +790,7 @@ const MONGE: ClassDef = {
     { level: 20, name: "Auto Aperfeiçoamento", description: "No 20º nível, quando você rolar iniciativa e não tiver nenhum ponto de chi restante, você recupera 4 pontos de chi." },
   ],
   subclassLabel: "Tradição Monástica",
-  subclasses: [maoAberta, sombra, quatroElementos],
+  subclasses: [maoAberta, sombra, quatroElementos, morteAmpla, almaSolar],
   progressionColumns: [
     {
       label: "Artes Marciais",
@@ -767,6 +858,23 @@ const vinganca: Subclass = {
   ],
 };
 
+// Juramento do Compêndio de Classes (Guia do Aventureiro da Costa da Espada).
+const coroa: Subclass = {
+  id: "coroa",
+  name: "Juramento da Coroa",
+  level: 3,
+  description:
+    "Devotos da civilização, de uma nação, de um soberano ou de uma divindade da ordem, dedicados às leis justas que mantêm a sociedade unida. Dogmas: Lei, Lealdade, Coragem e Responsabilidade.",
+  features: [
+    { level: 3, name: "Magias de Juramento", description: "Magias concedidas por nível de paladino. 3º: comando, duelo forçado. 5º: vínculo protetor, zona da verdade. 9º: aura de vitalidade, guardiões espirituais. 13º: banimento, guardião da fé. 17º: círculo do poder, missão." },
+    { level: 3, name: "Canalizar Divindade: Desafio do Campeão", description: "Cada criatura à sua escolha a até 9 metros que possa ver você faz um teste de resistência de Sabedoria. Se falhar, não pode se afastar voluntariamente a mais de 9 metros de você. O efeito termina se você ficar incapacitado ou morrer, ou se a criatura for movida para mais de 9 metros." },
+    { level: 3, name: "Canalizar Divindade: Virar o Jogo", description: "Ação bônus: cada criatura à sua escolha a até 9 metros que possa ouvir você e esteja com metade ou menos do máximo de PV recupera 1d6 + Carisma (mínimo 1) PV." },
+    { level: 7, name: "Obediência Divina", description: "Reação: quando uma criatura a até 1,5 metro sofrer dano, você assume esse dano no lugar dela. O dano não pode ser reduzido nem prevenido de nenhuma forma." },
+    { level: 15, name: "Espírito Obstinado", description: "Você tem vantagem em testes de resistência para evitar ser paralisado ou atordoado." },
+    { level: 20, name: "Campeão Enaltecido", description: "Ação, uma vez por descanso longo, por 1 hora (termina antes se ficar incapacitado ou morrer): resistência a dano de concussão, cortante e perfurante de armas não mágicas; aliados a até 9 metros têm vantagem em testes de resistência contra a morte; você e aliados a até 9 metros têm vantagem em testes de resistência de Sabedoria." },
+  ],
+};
+
 const PALADINO: ClassDef = {
   id: "paladino",
   name: "Paladino",
@@ -806,7 +914,7 @@ const PALADINO: ClassDef = {
     asi(19),
   ],
   subclassLabel: "Juramento Sagrado",
-  subclasses: [devocao, ancioes, vinganca],
+  subclasses: [devocao, ancioes, vinganca, coroa],
   spellcasting: {
     ability: "cha",
     kind: "half",

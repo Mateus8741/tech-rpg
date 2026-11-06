@@ -78,6 +78,7 @@ export const ARMOR: ArmorItem[] = [
   { name: "Brunea", category: "Média", ac: `14 ${DES2}`, stealthDisadvantage: true, cost: "50 po", weight: "22,5 kg" },
   { name: "Peitoral", category: "Média", ac: `14 ${DES2}`, stealthDisadvantage: false, cost: "400 po", weight: "10 kg" },
   { name: "Meia-Armadura", category: "Média", ac: `15 ${DES2}`, stealthDisadvantage: true, cost: "750 po", weight: "20 kg" },
+  { name: "Armadura com Cravos", category: "Média", ac: `14 ${DES2}`, stealthDisadvantage: true, cost: "75 po", weight: "15 kg" },
   // Armadura pesada
   { name: "Cota de Anéis", category: "Pesada", ac: "14", stealthDisadvantage: true, cost: "30 po", weight: "20 kg" },
   { name: "Cota de Malha", category: "Pesada", ac: "16", strengthReq: 13, stealthDisadvantage: true, cost: "75 po", weight: "27,5 kg" },
