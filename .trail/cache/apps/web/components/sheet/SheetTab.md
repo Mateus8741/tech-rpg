@@ -1,0 +1,20 @@
+# apps/web/components/sheet/SheetTab.tsx
+
+- Props · type · L26-L26 — type Props = { api: CharacterApi };
+- RollButton · function · L29-L43 — function RollButton({ api, label, bonus, kind = 'check', className, children }: { api: CharacterApi; label: string; bonus: number; kind?: RollKind; className?: string; children: React.ReactNode; })
+- EntryLink · function · L46-L56 — function EntryLink({ entry, children }: { entry: EntryRef; children: React.ReactNode })
+- SheetTab · function · L58-L140 — function SheetTab({ api }: Props)
+- Stat · function · L142-L152 — function Stat({ icon: Icon, label, children, interactive }: { icon: React.ComponentType<{ className?: string }>; label: string; children: React.ReactNode; interactive?: boolean; })
+- XpBar · function · L156-L202 — function XpBar({ api }: Props)
+- Abilities · function · L206-L259 — function Abilities({ api }: Props)
+- setScore · function · L212-L216 — setScore = (k: AbilityKey, v: number)
+- HitPoints · function · L263-L314 — function HitPoints({ api }: Props)
+- RestPanel · function · L318-L341 — function RestPanel({ api }: Props)
+- InspirationDeath · function · L345-L412 — function InspirationDeath({ api }: Props)
+- setDS · function · L352-L355 — setDS = (kind: 'successes' | 'failures', i: number)
+- rollDeath · function · L358-L366 — rollDeath = ()
+- pips · function · L368-L383 — pips = (kind: 'successes' | 'failures', n: number, good: boolean)
+- SavesSkills · function · L416-L476 — function SavesSkills({ api }: Props)
+- toggleSave · function · L421-L424 — toggleSave = (k: AbilityKey)
+- cycleSkill · function · L426-L432 — cycleSkill = (k: (typeof d.skills)[number])
+- abbr · function · L434-L434 — abbr = (key: AbilityKey)

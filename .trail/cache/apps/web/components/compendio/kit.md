@@ -1,0 +1,17 @@
+# apps/web/components/compendio/kit.tsx
+
+- abilityAbbr · function · L11-L11 — abilityAbbr = (k: AbilityKey)
+- abilityName · function · L12-L12 — abilityName = (k: AbilityKey)
+- norm · function · L14-L16 — function norm(s: string)
+- Header · function · L18-L31 — function Header({ title, subtitle, back, eyebrow }: { title: string; subtitle?: string; back?: { href: string; label: string }; eyebrow?: string })
+- Page · function · L33-L45 — function Page({ children }: { children: ReactNode })
+- SearchBox · function · L47-L60 — function SearchBox({ value, onChange, placeholder }: { value: string; onChange: (v: string) => void; placeholder: string })
+- Chip · function · L62-L75 — function Chip({ children, tone = "muted" }: { children: ReactNode; tone?: "muted" | "accent" | "gold" })
+- FilterChips · function · L77-L94 — function FilterChips<T extends string>({ options, value, onChange }: { options: T[]; value: T; onChange: (v: T) => void })
+- RuleText · function · L97-L99 — function RuleText({ text, className }: { text: string; className?: string })
+- Panel · function · L101-L108 — function Panel({ title, children, className }: { title?: string; children: ReactNode; className?: string })
+- AnimatedTabs · function · L111-L155 — function AnimatedTabs({ tabs, initial = 0 }: { tabs: { label: string; content: ReactNode }[]; initial?: number })
+- CardGrid · function · L158-L170 — function CardGrid({ children, className }: { children: ReactNode[] | ReactNode; className?: string })
+- LiftCard · function · L172-L185 — function LiftCard({ href, children, className }: { href?: string; children: ReactNode; className?: string })
+- Empty · function · L187-L189 — function Empty({ text }: { text: string })
+- Accordion · function · L191-L215 — function Accordion({ title, children, defaultOpen = false, badge }: { title: string; children: ReactNode; defaultOpen?: boolean; badge?: ReactNode })

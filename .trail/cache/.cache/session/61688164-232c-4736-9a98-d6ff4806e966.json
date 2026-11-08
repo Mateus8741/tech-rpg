@@ -1,0 +1,11 @@
+{
+  "graftReads": 2,
+  "sourceReads": 12,
+  "savedTokens": 0,
+  "injectedPointers": [],
+  "nudges": 2,
+  "promptAsks": 2,
+  "host": "cursor",
+  "turnUsedGraft": false,
+  "summarized": true
+}

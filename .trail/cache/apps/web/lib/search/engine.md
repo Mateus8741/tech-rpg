@@ -1,0 +1,48 @@
+# apps/web/lib/search/engine.ts
+
+- SearchGroup · type · L7-L8 — type SearchGroup = | 'Páginas' | 'Fichas' | 'Magias' | 'Características' | 'Classes' | 'Raças' | 'Antecedentes' | 'Equipamento' | 'Regras';
+- DocFacets · interface · L11-L22 — interface DocFacets
+- DocTarget · type · L24-L24 — type DocTarget = { entry: EntryRef } | { href: string };
+- DocInput · interface · L26-L36 — interface DocInput
+- SearchDoc · interface · L38-L49 — interface SearchDoc extends DocInput
+- SearchVocab · interface · L51-L54 — interface SearchVocab
+- SearchIndex · interface · L56-L61 — interface SearchIndex
+- QueryFilter · type · L63-L73 — type QueryFilter = | { type: 'level'; value: number; spellOnly: boolean } | { type: 'class'; value: string } | { type: 'school'; value: string } | { type: 'cost'; value: ActionCost } | { type: 'concentration' } | { type: 'ritual' } | { type: 'damage'; value: string } | { type: 'heal' } | { type: 'deals' } | { type: 'spell' };
+- ActiveFilter · interface · L75-L81 — interface ActiveFilter
+- ParsedQuery · interface · L83-L92 — interface ParsedQuery
+- SearchResult · interface · L94-L99 — interface SearchResult
+- SearchOutcome · interface · L101-L108 — interface SearchOutcome
+- norm · function · L112-L112 — norm = (s: string)
+- tokenize · function · L113-L113 — tokenize = (s: string)
+- stem · function · L116-L126 — function stem(t: string): string
+- boundedDistance · function · L129-L148 — function boundedDistance(a: string, b: string, max: number): number
+- damageIn · function · L172-L172 — damageIn = (bodyNorm: string)
+- healsIn · function · L173-L173 — healsIn = (bodyNorm: string)
+- numberOf · function · L187-L190 — numberOf = (t: string)
+- isLevelWord · function · L191-L191 — isLevelWord = (t: string)
+- isSpellLevelWord · function · L192-L192 — isSpellLevelWord = (t: string)
+- parseQuery · function · L194-L256 — function parseQuery(raw: string, vocab: SearchVocab): ParsedQuery
+- add · function · L200-L203 — add = (key: string, label: string, filter: QueryFilter, ...tokenIdx: number[])
+- levelLabel · function · L204-L204 — levelLabel = (n: number, spellOnly: boolean)
+- removeFilterTokens · function · L259-L261 — function removeFilterTokens(rawTokens: string[], f: Pick<ActiveFilter, 'tokenIdx'>): string
+- passes · function · L263-L278 — function passes(doc: SearchDoc, { filter: f }: ActiveFilter): boolean
+- prepareDoc · function · L282-L301 — function prepareDoc(d: DocInput): SearchDoc
+- createIndex · function · L303-L310 — function createIndex(docs: SearchDoc[], vocab: SearchVocab): SearchIndex
+- Field · type · L315-L315 — type Field = (typeof Field)[keyof typeof Field];
+- Term · interface · L317-L322 — interface Term
+- TermHit · interface · L324-L324 — interface TermHit
+- fuzzyBudget · function · L326-L331 — function fuzzyBudget(len: number, multiTerm: boolean): number
+- makeTerm · function · L333-L347 — function makeTerm(raw: string, vocab: string[], multiTerm: boolean): Term
+- matchIn · function · L349-L353 — function matchIn(tokens: string[], stems: Set<string>, t: Term, exact: number, prefix: number, minPrefix: number): number
+- bestFuzzy · function · L355-L362 — function bestFuzzy(tokens: string[], t: Term): number | undefined
+- matchTerm · function · L364-L380 — function matchTerm(doc: SearchDoc, t: Term): TermHit | null
+- byRank · function · L383-L384 — byRank = (a: SearchResult, b: SearchResult)
+- hasPhrase · function · L386-L386 — hasPhrase = (hay: string, phrase: string)
+- phraseBonus · function · L388-L397 — function phraseBonus(doc: SearchDoc, phrase: string): number
+- isLiteralTitle · function · L400-L405 — function isLiteralTitle(doc: SearchDoc, terms: Term[]): boolean
+- RunOptions · interface · L407-L407 — interface RunOptions
+- run · function · L409-L444 — function run(index: SearchIndex, o: RunOptions): { results: SearchResult[]; passed: number }
+- search · function · L446-L476 — function search(index: SearchIndex, raw: string): SearchOutcome
+- highlightOf · function · L452-L452 — highlightOf = (terms: string[])
+- free · function · L453-L453 — free = ()
+- snippetFor · function · L479-L493 — function snippetFor(doc: Pick<SearchDoc, 'body' | 'bodyNorm'>, terms: string[], width = 110): string | undefined

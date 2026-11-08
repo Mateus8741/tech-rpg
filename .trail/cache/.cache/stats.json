@@ -1,0 +1,16 @@
+{
+  "nodeCount": 810,
+  "edgeCount": 1979,
+  "languages": [
+    "javascript",
+    "tsx",
+    "typescript"
+  ],
+  "totalCount": 810,
+  "readyCount": 0,
+  "staleCount": 0,
+  "dirty": false,
+  "syncing": false,
+  "syncedAt": "2026-11-06T02:46:10.453Z",
+  "lastFile": "spell-aliases.ts"
+}

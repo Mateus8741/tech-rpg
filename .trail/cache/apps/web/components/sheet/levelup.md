@@ -1,0 +1,21 @@
+# apps/web/components/sheet/levelup.ts
+
+- HpMode · type · L12-L12 — type HpMode = 'average' | 'roll';
+- AsiMode · type · L13-L13 — type AsiMode = 'plus2' | 'plus1' | 'feat';
+- AsiChoice · interface · L15-L15 — interface AsiChoice
+- LevelUpDraft · interface · L17-L25 — interface LevelUpDraft
+- emptyDraft · function · L27-L30 — emptyDraft = (): LevelUpDraft
+- asiLevels · function · L38-L41 — function asiLevels(classId: string): number[]
+- grantsAsi · function · L42-L42 — grantsAsi = (classId: string, level: number)
+- classSubclassLevel · function · L45-L45 — classSubclassLevel = (subs: Subclass[])
+- asiIncrements · function · L48-L55 — function asiIncrements(asi: AsiChoice): Partial<Record<AbilityKey, number>>
+- asiValid · function · L58-L64 — function asiValid(scores: Record<AbilityKey, number>, asi: AsiChoice): boolean
+- scoresOf · function · L66-L68 — function scoresOf(c: Character): Record<AbilityKey, number>
+- planFor · function · L71-L73 — function planFor(classId: string, subclassId: string, level: number, scores: Record<AbilityKey, number>): SpellPlan | null
+- slotsFor · function · L75-L76 — slotsFor = (plan: SpellPlan | null, level: number): number[]
+- SpellChoices · interface · L78-L87 — interface SpellChoices
+- spellChoices · function · L89-L109 — function spellChoices(c: Character, draft: LevelUpDraft): SpellChoices
+- delta · function · L98-L98 — delta = (k: 'cantrips' | 'known' | 'prepared')
+- applyScores · function · L111-L116 — function applyScores(base: Record<AbilityKey, number>, draft: LevelUpDraft, newLevel: number, classId: string)
+- LevelUpResult · interface · L118-L138 — interface LevelUpResult
+- computeLevelUp · function · L140-L216 — function computeLevelUp(c: Character, draft: LevelUpDraft): LevelUpResult

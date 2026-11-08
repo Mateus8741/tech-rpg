@@ -1,0 +1,15 @@
+# apps/web/components/sheet/SpellsTab.tsx
+
+- noCasterMessage · function · L19-L25 — function noCasterMessage(cls: ClassDef | undefined, subclassId?: string)
+- SpellsTab · function · L27-L307 — function SpellsTab({ api }: { api: CharacterApi })
+- passes · function · L63-L64 — passes = (s: Spell)
+- toggleSlot · function · L75-L80 — toggleSlot = (lvlIdx: number, total: number, spent: boolean)
+- slotsAfterCast · function · L81-L86 — slotsAfterCast = (lvl: number)
+- toggleFavorite · function · L88-L89 — toggleFavorite = (id: string)
+- cast · function · L92-L108 — cast = (s: Spell, lvl: number)
+- concentrationCheck · function · L109-L117 — concentrationCheck = (ev: React.MouseEvent)
+- addSpell · function · L119-L119 — addSpell = (id: string)
+- removeSpell · function · L120-L121 — removeSpell = (id: string)
+- togglePrepared · function · L122-L123 — togglePrepared = (id: string)
+- renderList · function · L125-L194 — renderList = (list: Spell[], showPrep: boolean)
+- SpellPicker · function · L309-L344 — function SpellPicker({ classId, maxLevel, knownIds, onAdd, onRemove }: { classId: string; maxLevel: number; knownIds: string[]; onAdd: (id: string) => void; onRemove: (id: string) => void; })

@@ -1,0 +1,40 @@
+# apps/web/components/wizard/build.ts
+
+- raceOf · function · L25-L25 — raceOf = (s: WizardState): Race | undefined
+- subraceOf · function · L26-L26 — subraceOf = (s: WizardState): Subrace | undefined
+- classOf · function · L27-L27 — classOf = (s: WizardState): ClassDef | undefined
+- subclassOf · function · L28-L29 — subclassOf = (s: WizardState): Subclass | undefined
+- backgroundOf · function · L30-L30 — backgroundOf = (s: WizardState): Background | undefined
+- subclassLevel · function · L33-L33 — subclassLevel = (c?: ClassDef)
+- subclassRequired · function · L34-L37 — subclassRequired = (s: WizardState)
+- extraLanguageCount · function · L39-L42 — function extraLanguageCount(race?: Race, sub?: Subrace)
+- raceSkillPickCount · function · L43-L43 — raceSkillPickCount = (race?: Race)
+- racialBonuses · function · L45-L53 — function racialBonuses(s: WizardState): Partial<Record<AbilityKey, number>>
+- add · function · L48-L48 — add = (k: AbilityKey, n: number)
+- pointBuySpent · function · L56-L56 — pointBuySpent = (pb: AbMap<number>)
+- rollTotal · function · L57-L57 — rollTotal = (dice: number[])
+- baseScores · function · L59-L70 — function baseScores(s: WizardState): AbMap<number>
+- finalScores · function · L72-L76 — function finalScores(s: WizardState): AbMap<number>
+- abilitiesComplete · function · L78-L87 — function abilitiesComplete(s: WizardState): boolean
+- fixedSkills · function · L90-L95 — function fixedSkills(s: WizardState): SkillKey[]
+- allSkills · function · L96-L102 — function allSkills(s: WizardState): SkillKey[]
+- skillsTakenOutside · function · L104-L106 — function skillsTakenOutside(s: WizardState, source: "race" | "class"): SkillKey[]
+- allLanguages · function · L108-L111 — function allLanguages(s: WizardState): string[]
+- allTools · function · L113-L118 — function allTools(s: WizardState): string[]
+- SpellPlan · interface · L121-L132 — interface SpellPlan
+- spellPlan · function · L134-L157 — function spellPlan(s: WizardState): SpellPlan | null
+- resolvedSpells · function · L160-L168 — function resolvedSpells(s: WizardState)
+- ResolvedLine · interface · L171-L171 — interface ResolvedLine
+- classEquipmentLines · function · L173-L182 — function classEquipmentLines(s: WizardState): ResolvedLine[]
+- startingItems · function · L184-L194 — function startingItems(s: WizardState): Item[]
+- computeArmorClass · function · L196-L213 — function computeArmorClass(s: WizardState, items: Item[], scores: AbMap<number>): number
+- hitPointsFor · function · L216-L223 — function hitPointsFor(s: WizardState, scores: AbMap<number>): number
+- FeatureOut · interface · L226-L226 — interface FeatureOut
+- featuresFor · function · L228-L240 — function featuresFor(s: WizardState): FeatureOut[]
+- activeSteps · function · L243-L248 — function activeSteps(s: WizardState): StepId[]
+- stepErrors · function · L250-L291 — function stepErrors(s: WizardState, step: StepId): string[]
+- proficiencyStrings · function · L299-L310 — function proficiencyStrings(s: WizardState): string[]
+- BuiltCharacter · interface · L312-L314 — interface BuiltCharacter extends Partial<Character>
+- buildCharacterPayload · function · L316-L372 — function buildCharacterPayload(s: WizardState): BuiltCharacter
+- speedOf · function · L374-L374 — speedOf = (s: WizardState)
+- bonusText · function · L376-L377 — bonusText = (b: Partial<Record<AbilityKey, number>>)

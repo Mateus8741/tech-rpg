@@ -1,0 +1,17 @@
+{
+  "graftReads": 0,
+  "sourceReads": 1,
+  "savedTokens": 0,
+  "injectedPointers": [
+    "packages/rules/src/data/classes-a.ts",
+    "packages/rules/src/types.ts",
+    "apps/web/lib/api.ts:L83-L92"
+  ],
+  "nudges": 2,
+  "promptAsks": 3,
+  "host": "claude-code",
+  "lastBillingUuid": "11461de6-7777-4f62-ac03-21f63f662d21",
+  "inputCostMicros": 536798,
+  "inputTokensBilled": 1819445,
+  "summarized": true
+}

@@ -1,0 +1,20 @@
+{
+  "graftReads": 1,
+  "sourceReads": 7,
+  "savedTokens": 0,
+  "injectedPointers": [
+    "apps/web/components/wizard/ui.tsx:L139-L142",
+    "apps/web/components/dice/useDiceRoller.ts:L45-L53",
+    "apps/web/lib/utils.ts:L4-L6"
+  ],
+  "nudges": 2,
+  "promptAsks": 4,
+  "turnUsedGraft": false,
+  "host": "claude-code",
+  "lastBillingUuid": "d7efa88a-1a5c-4b74-af26-d5ada2cf004d",
+  "inputCostMicros": 1072624,
+  "inputTokensBilled": 3955882,
+  "graftTurns": 1,
+  "lastTallyUuid": "0331faf3-8f56-4119-bd45-fd6d2ff75655",
+  "summarized": true
+}

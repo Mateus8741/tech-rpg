@@ -1,0 +1,26 @@
+# apps/web/components/sheet/equipment-logic.ts
+
+- normName · function · L7-L8 — normName = (s: string)
+- parseKg · function · L11-L15 — function parseKg(s: string | undefined): number | undefined
+- Lookup · type · L17-L20 — type Lookup = | { kind: 'armor'; armor: ArmorItem; weight?: number } | { kind: 'weapon'; weapon: Weapon; weight?: number } | { kind: 'gear'; weight?: number };
+- lookupItem · function · L22-L32 — function lookupItem(name: string): Lookup | null
+- knownItemNames · function · L34-L36 — knownItemNames = (): string[]
+- fmtKg · function · L38-L38 — fmtKg = (n: number)
+- isBody · function · L42-L45 — isBody = (it: Equipment)
+- isShield · function · L46-L49 — isShield = (it: Equipment)
+- isEquipped · function · L55-L58 — function isEquipped(items: Equipment[], it: Equipment): boolean
+- toggleEquipped · function · L61-L71 — function toggleEquipped(items: Equipment[], i: number): Equipment[]
+- carryCapacity · function · L75-L75 — carryCapacity = (str: number)
+- encumbrance · function · L77-L81 — function encumbrance(total: number, str: number): { label: string; tone: 'ok' | 'warn' | 'bad' }
+- coinWeight · function · L84-L84 — coinWeight = (c: Coins)
+- itemsWeight · function · L86-L88 — function itemsWeight(items: { weight?: number; quantity?: number }[])
+- CoinKey · type · L92-L92 — type CoinKey = keyof Coins;
+- totalInGold · function · L98-L98 — totalInGold = (c: Coins)
+- exchangeCoins · function · L101-L108 — function exchangeCoins(c: Coins, from: CoinKey, to: CoinKey, amount: number): { coins: Coins; got: number; spent: number } | null
+- singular · function · L112-L112 — singular = (s: string)
+- armorProficient · function · L114-L121 — function armorProficient(cls: ClassDef | undefined, a: ArmorItem): boolean
+- weaponProficient · function · L123-L130 — function weaponProficient(cls: ClassDef | undefined, w: Weapon): boolean
+- AttackInfo · interface · L134-L143 — interface AttackInfo
+- weaponAttack · function · L145-L171 — function weaponAttack(c: Character, cls: ClassDef | undefined, it: Equipment): AttackInfo | null
+- critExpr · function · L174-L176 — function critExpr(expr: string): string
+- equipWarnings · function · L180-L194 — function equipWarnings(c: Character, cls: ClassDef | undefined, items: Equipment[]): string[]
