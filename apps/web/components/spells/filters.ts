@@ -1,5 +1,5 @@
 import type { Spell } from '@repo/rules';
-import { normalizeText } from './spell-utils';
+import { parseQuery, scoreSpell } from './smart-search';
 
 export type SpellComponent = 'v' | 's' | 'm';
 
@@ -25,7 +25,7 @@ export function toggleSet<T>(set: Set<T>, v: T): Set<T> {
 
 /** Aplica os filtros comuns (busca, concentração, ritual, componentes, escola, nível, favoritas). */
 export function matchesFilters(s: Spell, f: SpellFilterState, favorites: readonly string[]): boolean {
-  if (f.q && !normalizeText(s.name).includes(normalizeText(f.q.trim()))) return false;
+  if (f.q.trim() && scoreSpell(s, parseQuery(f.q)) < 0) return false;
   if (f.concentration && !s.concentration) return false;
   if (f.ritual && !s.ritual) return false;
   for (const c of f.components) {

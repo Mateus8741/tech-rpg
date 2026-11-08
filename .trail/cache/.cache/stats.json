@@ -1,16 +1,17 @@
 {
-  "nodeCount": 810,
-  "edgeCount": 1979,
+  "nodeCount": 844,
+  "edgeCount": 2055,
   "languages": [
     "javascript",
+    "python",
     "tsx",
     "typescript"
   ],
-  "totalCount": 810,
+  "totalCount": 844,
   "readyCount": 0,
   "staleCount": 0,
   "dirty": false,
   "syncing": false,
-  "syncedAt": "2026-11-06T02:46:10.453Z",
-  "lastFile": "spell-aliases.ts"
+  "syncedAt": "2026-11-08T23:42:11.219Z",
+  "lastFile": "smart-search.ts"
 }

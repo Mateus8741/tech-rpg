@@ -1,0 +1,484 @@
+# Tema da arte de cada carta, em inglês (as ferramentas de imagem entendem melhor).
+# Formato: <nome do arquivo>: <tema>. Edite à vontade e rode `node docs/card-art/build-prompts.mjs`.
+# Linhas com "#" são comentários. Magias sem tema aqui usam o nome da magia como tema.
+
+## Ações básicas
+atacar: a warrior mid-swing with a longsword, sparks flying from a parried blow
+conjurar: a robed spellcaster raising a glowing hand, arcane runes swirling around fingers
+disparada: an adventurer sprinting across a battlefield, dust trailing behind, motion blur
+desengajar: a rogue stepping back out of an enemy's reach, shield raised defensively
+esquivar: a nimble fighter twisting aside as an arrow streaks past their face
+ajudar: two adventurers clasping forearms, one helping the other to their feet
+esconder: a hooded figure crouching in deep shadow behind a stone pillar
+preparar: an archer holding a drawn bow perfectly still, waiting, focused eyes
+procurar: an explorer holding a lantern, searching a dusty crypt for clues
+usar-objeto: a gloved hand uncorking a glowing potion vial
+agarrar: a muscular brawler grappling an enemy in a headlock
+empurrar: a warrior shoving an orc off balance with a shield bash
+duas-armas: a duelist wielding two short blades in a crossing strike
+ataque-de-oportunidade: a fighter slashing at a fleeing enemy's back as it turns to run
+reacao-preparada: a crossbow trigger being pulled at the exact moment a door bursts open
+
+## Truques
+amigos: a charming bard whispering, faint pink mist around their lips
+arte-dos-druidas: a druid's hand coaxing a flower to bloom, tiny leaves swirling
+ataque-certeiro: a glowing eye focusing through a crosshair of light on a distant target
+atracao-chocante: crackling lightning leaping from a palm to a metal-armored foe
+bordao-mistico: a wooden quarterstaff glowing with green nature magic
+chama-sagrada: radiant golden fire descending from the sky onto a fiend
+chicote-de-espinhos: a thorny vine whip lashing out from a druid's hand
+consertar: a broken ceramic vase reassembling itself, golden seams of light
+controlar-chamas: a campfire flaring upward into the shape of a beast
+criar-chamas: a small flame dancing in an open palm
+criar-fogueira: a magical bonfire erupting from bare ground at night
+espirro-acido: a bubbling green acid orb splashing two goblins
+globos-de-luz: four floating orbs of soft light drifting in a dark corridor
+guia: a cleric touching an ally's shoulder, a faint holy glow passing between them
+ilusao-menor: an illusory goldfish swimming through the air above a dark hand
+infestacao: a cloud of mites and fleas swarming over a writhing victim
+lamina-da-chama-esverdeada: a sword wreathed in green fire, flames leaping to a second foe
+lamina-estrondosa: a blade striking a foe with a shockwave of thunderous force
+liga-desliga: a wizard snapping fingers as lanterns flick on and off
+lufada: a gust of wind blowing papers and leaves out of a wizard's hand
+luz: a glowing gemstone on a staff lighting up a dungeon
+mao-do-esplendor: a hand radiating brilliant white light that sears a shadow creature
+maos-magicas: a spectral floating hand picking up a key from a table
+mensagem: a whisper traveling as a glowing thread of light between two people
+moldar-agua: a column of water twisting into a spiral shape
+moldar-terra: earth and stones rising and reshaping under a druid's gesture
+pedagio-aos-mortos: a tolling ghostly bell above a wounded creature, necrotic mist
+pedra-encantada: three pebbles glowing with magic in a sling
+picada-congelante: icy shards stinging a creature, frost spreading on its skin
+poupar-os-mortos: a glowing hand resting on the chest of a fallen warrior, soft green light
+prestidigitacao: a showman wizard producing sparkles, small flames and colored smoke
+protecao-contra-laminas: a shimmering barrier deflecting a sword strike
+raio-de-fogo: a streak of fire hurled from a fingertip, igniting the air
+raio-de-gelo: a frigid blue-white beam freezing a running creature
+rajada-de-veneno: a puff of toxic green gas exhaled at a choking foe
+rajada-mistica: a crackling beam of purple eldritch energy from a warlock's hand
+resistencia: a faint protective aura shimmering around a soldier
+rompante-de-espadas: spectral blades spinning in a circle around a caster
+selvageria-primal: a person's hands turning into feral claws, slashing
+taumaturgia: a priest's voice booming, the ground trembling and candles flaring
+toque-chocante: blue lightning arcing from a fist into an armored knight
+toque-macabro: a ghostly skeletal hand grasping a victim's chest
+trovoada: a thunderclap burst exploding outward from a caster
+virtude: a holy light filling a soldier with protective vigor
+zombaria-malevola: a bard laughing cruelly as purple psychic waves strike a hulking beast
+
+## 1º círculo
+absorver-elementos: a mage absorbing a blast of fire into a glowing hand
+acesso-remoto: a hand reaching through a glowing portal to touch a distant machine
+alarme: an invisible ward chiming as an intruder crosses a doorway
+amizade-animal: a druid calmly petting a wild wolf
+area-escorregadia: a pool of grease making soldiers slip and fall
+armadura-arcana: a translucent arcane armor of light forming around a wizard
+armadura-de-agathys: frost armor of jagged ice covering a warlock
+astucia-selvagem: a ranger with eyes glowing like a hunting animal
+ataque-constritor: vines snaking up a weapon and entangling a foe
+ataque-do-zefiro: a warrior moving in a blur of wind between enemies
+auxilio-divino: a paladin's sword glowing with divine radiance
+bencao: three warriors bathed in a soft golden blessing from above
+bom-fruto: a druid holding glowing magical berries
+bracos-de-hadar: dark tentacles bursting from a warlock's body
+bruxaria: a warlock cursing a target, purple sigil glowing over their head
+catapulta: a heavy stone launched through the air by unseen force
+causar-medo: a terrified soldier fleeing from a looming shadow
+cerimonia: a cleric performing a ritual with holy water and candles
+comando: a cleric shouting a single word that forces an enemy to kneel
+compreender-idiomas: ancient runes rearranging into readable script
+constricao: magical bands of force wrapping tightly around a struggling victim
+coro-sobrenatural: ghostly voices whispering around a warlock
+criar-ou-destruir-agua: rain falling from a magical cloud in a desert
+curar-ferimentos: warm healing light closing a sword wound
+despertar-subito: a sleeping soldier jolting awake with glowing eyes
+detectar-bem-e-mal: a paladin sensing a hidden fiend through a wall, glowing silhouette
+detectar-magia: a wizard seeing glowing auras around magical items
+detectar-veneno-e-doenca: a cleric revealing poison glowing green in a goblet
+disco-flutuante-de-tenser: a floating disc of force carrying treasure chests
+disfarcar-se: a face shifting into another person's face, mask-like magic
+duelo-forcado: a paladin and an enemy bound by a glowing chain of challenge
+elixir-de-cura: a glowing red healing potion in an alchemist's hand
+encontrar-familiar: a spectral owl materializing from smoke beside a wizard
+enfeiticar-pessoa: a noble gazing dreamily under a charm spell, pink glow
+escrita-ilusoria: a scroll whose words shimmer and change
+escudo-arcano: an invisible hexagonal shield of force stopping an arrow
+escudo-de-fe: a shimmering field of holy light around a cleric
+faca-de-gelo: a dagger of ice exploding into frozen shards
+falar-com-animais: a ranger conversing with a crow on their arm
+fogo-das-fadas: glowing violet faerie fire outlining hidden creatures
+heroismo: a warrior radiating courage with a golden aura
+identificacao: a magical item revealing glowing runes under a wizard's lens
+imagem-silenciosa: an illusory dragon formed of colored light
+infligir-ferimentos: a cleric's necrotic touch withering a foe's flesh
+laco: a magical snare of light springing around an ankle
+leque-cromatico: a fan of rainbow colors blinding goblins
+mao-guiadora: a glowing hand pointing the way through a forest
+maos-flamejantes: a sheet of flames fanning out from spread fingers
+marca-do-cacador: a ranger's glowing mark floating above a fleeing prey
+marionete: a puppeteer-like caster controlling a victim with glowing strings
+misseis-magicos: three glowing darts of force streaking toward a target
+nevoa-obscurecente: thick magical fog filling a forest clearing
+onda-trovejante: a wave of thunder blasting enemies backward
+orbe-cromatica: a glowing multicolored orb hurled at a foe
+palavra-de-cura: a priest speaking a word of light that heals a distant ally
+passo-largo: an adventurer taking long swift strides, wind at their feet
+perdicao: three enemies weakened under a dark curse sigil
+protecao-contra-bem-e-mal: a holy circle protecting a cleric from fiends
+punicao-ardente: a sword strike that sets an enemy ablaze with searing fire
+punicao-colerica: a paladin's blow that fills a foe with dread
+punicao-trovejante: a sword strike exploding with thunder, knocking a foe away
+purificar-comida-e-bebida: a cleric purifying a rotten loaf with light
+queda-suave: adventurers floating gently down a cliff like feathers
+raio-da-bruxa: a crackling arc of blue lightning binding a target
+raio-debilitante: a sickly gray ray sapping a warrior's strength
+raio-do-caos: a chaotic beam shifting colors and bouncing between foes
+raio-guiador: a bolt of radiant light striking a foe, marking it with glow
+recuo-acelerado: a caster dashing away in a streak of speed
+repreensao-infernal: hellish flames engulfing an attacker
+riso-histerico-de-tasha: a noble collapsing in uncontrollable laughter
+salto: an adventurer leaping across a chasm with magical boost
+santuario: a holy ward of light protecting a kneeling cleric
+saraivada-de-espinhos: an arrow bursting into a shower of thorns
+sentir-emocao: a caster sensing colorful emotional auras around people
+servo-invisivel: an invisible servant carrying a tray, only the tray visible
+sono: a group of goblins falling asleep under drifting golden sand
+sussurros-dissonantes: a victim clutching their head as dark whispers surround them
+transmissao-infalivel: a glowing message bird flying across a city
+tremor-de-terra: the ground cracking and shaking under enemies
+vinculo-com-a-besta: a ranger and a hawk linked by a glowing bond
+vitalidade-falsa: a necromancer surrounded by a ghostly protective aura
+
+## 2º círculo
+abraco-terrestre-de-maximilian: a giant hand of earth rising to grab an enemy
+acalmar-emocoes: a crowd of angry rioters calming under a soft blue light
+agarrao-da-terra: rocky earth fingers erupting to seize a foe
+ajuda: three allies glowing with renewed vitality
+alterar-se: a person's arm transforming into a scaled, aquatic limb
+aprimorar-habilidade: a warrior glowing with an animal spirit's strength
+arma-espiritual: a floating spectral warhammer attacking a foe
+arma-magica: a sword shimmering with arcane enchantment
+arrombar: a locked iron door bursting open with a loud knock of magic
+augurio: a cleric casting rune stones that glow with omens
+aumentar-reduzir: a warrior growing to giant size beside a shrinking foe
+aura-magica-de-nystul: a wizard cloaking an item in a false magical aura
+boca-encantada: a magic mouth speaking from a stone wall
+cativar: a bard enthralling a crowd with mesmerizing song
+cegueira-surdez: a warrior blinded by a dark veil over the eyes
+chama-continua: an eternal flame burning in a torch that never consumes
+chuva-de-bolas-de-neve-de-snilloc: a barrage of magical snowballs exploding on foes
+cordao-de-flechas: arrows hovering in a ring around a ranger
+coroa-da-loucura: a twisted crown of thorns over a maddened warrior
+crescer-espinhos: a field of sharp thorns sprouting from the ground
+despedacar: a ringing burst of sound shattering stone and glass
+detectar-pensamentos: a mind-reading caster seeing glowing thoughts
+diabo-da-poeira: a small whirlwind of dust and sand
+encontrar-armadilhas: hidden traps glowing on a dungeon floor
+encontrar-montaria: a spectral warhorse summoned for a paladin
+encontrar-veiculo: a magical carriage appearing from light
+escrita-celeste: glowing words written in the clouds
+escuridao: a sphere of magical darkness swallowing a room
+esfera-flamejante: a rolling ball of fire chasing enemies
+esquentar-metal: a knight's armor glowing red hot
+fantasma-digital: a ghostly projection on a magical screen
+flecha-acida-de-melf: a shimmering green acid arrow splashing on a foe
+forca-fantasmagorica: a victim terrified by an illusory monster
+hacker-arcano: a mage with arcane runes floating like code
+imobilizar-pessoa: a person frozen mid-step by a binding spell
+invisibilidade: a figure fading into invisibility, outline barely visible
+lamina-flamejante: a scimitar made of pure fire in a druid's hand
+levitacao: a person levitating above the ground
+localizar-animais-ou-plantas: a druid sensing a rare plant in the forest
+localizar-objeto: a glowing trail leading to a lost amulet
+lufada-de-vento: a powerful line of wind blowing enemies back
+marca-da-punicao: a glowing mark burning on an enemy after a paladin's strike
+mensageiro-animal: a squirrel carrying a tiny scroll through the woods
+nublar: a warrior's form blurring into multiple shadows
+nuvem-de-adagas: a whirling cloud of spectral daggers
+passo-das-brumas: a figure vanishing in silver mist and reappearing nearby
+passos-sem-pegadas: a group moving silently with footprints vanishing
+patas-de-aranha: an adventurer walking up a wall like a spider
+pele-de-arvore: skin turning into rough tree bark
+pirotecnia: fireworks of colorful sparks bursting from a torch
+prece-da-cura: a cleric praying as allies heal around them
+protecao-contra-veneno: a glowing green ward neutralizing poison
+queimadura-de-aganazzar: a line of fire scorching the ground
+raio-ardente: three rays of fire shooting from a caster
+raio-do-enfraquecimento: a weakening dark ray draining strength
+raio-lunar: a silver beam of moonlight descending on a creature
+reflexos: three illusory duplicates of a wizard
+repouso-tranquilo: a corpse preserved in a peaceful sheen
+restauracao-menor: a cleric curing a sick ally with light
+sentido-bestial: seeing through the eyes of a wolf
+silencio: a sphere of absolute silence around a caster
+sugestao: a hypnotic whisper bending a guard's will
+teia: a thick sticky web trapping adventurers
+tranca-arcana: a door sealed with glowing arcane runes
+truque-de-corda: a rope rising into the air into an extradimensional space
+vento-protetor: a swirling wind shield deflecting arrows
+ver-o-invisivel: a caster's eyes glowing, seeing an invisible creature
+vinculo-protetor: two people linked by a protective golden thread
+visao-no-escuro: eyes glowing in pitch darkness
+zona-da-verdade: a glowing circle where liars feel compelled to truth
+
+## 3º círculo
+ampliar-plantas: an overgrown forest exploding with lush growth
+andar-na-agua: adventurers walking on the surface of a lake
+animar-os-mortos: skeletons rising from graves under necrotic light
+arma-elemental: a sword infused with crackling elemental energy
+aura-de-vitalidade: a paladin surrounded by a healing aura
+bola-de-fogo: a massive fireball exploding in a crowd of enemies
+caos-na-fiacao: sparks and arcane chaos erupting from magical machinery
+circulo-magico: a glowing summoning circle binding a demon
+clarividencia: a floating spectral eye watching a distant place
+conjurar-animais: spectral wolves materializing to aid a ranger
+conjurar-demonio-menor: small demons crawling from a fiery portal
+conjurar-rajada: a volley of arrows multiplying in mid-air
+contramagica: a spell unraveling in mid-air, broken runes scattering
+convocar-relampagos: a storm cloud calling down lightning bolts
+criar-comida-e-agua: a banquet of food and water appearing on a table
+dissipar-magia: magical auras dissolving into fading sparks
+enviar-mensagem: a message traveling as light across a vast distance
+erupcao-de-terra: the ground erupting in a burst of stone and dust
+falar-com-mortos: a cleric speaking to a skull with glowing eyes
+falar-com-plantas: a druid listening to a talking tree
+farol-de-esperanca: a cleric radiating a beacon of hope over allies
+flecha-relampejante: an arrow transforming into a bolt of lightning
+flechas-flamejantes: a quiver of arrows burning with fire
+fome-de-hadar: a sphere of freezing darkness filled with tentacles
+forjar-morte: a necromancer forging a ghostly creature
+forma-gasosa: a wizard transforming into misty vapor
+guardioes-espirituais: spectral angelic guardians circling a cleric
+idiomas: glowing letters flowing from mouth to ear
+imagem-maior: a realistic illusory dragon with sound and heat
+indetectavel: a figure hidden from scrying eyes
+invisibilidade-para-cameras: a figure fading from a magical mirror's reflection
+lentidao: enemies moving in slow motion, warped time
+luz-do-dia: a sphere of bright sunlight piercing darkness
+manto-do-cruzado: a paladin cloaked in a radiant crusader's mantle
+maremoto: a towering wave crashing down on enemies
+medo: soldiers fleeing in terror from a spectral horror
+mesclar-se-a-rocha: a person melding into a stone wall
+meteoros-momentaneos-de-melf: tiny meteors orbiting a wizard
+montaria-fantasmagorica: a ghostly horse galloping across a field
+muralha-de-agua: a wall of rushing water blocking a path
+muralha-de-areia: a towering wall of swirling sand
+muralha-de-vento: a roaring wall of wind deflecting arrows
+nevasca: a magical sleet storm covering a battlefield in ice
+nevoa-fetida: a sickening green cloud of noxious gas
+padrao-hipnotico: a mesmerizing pattern of colors enthralling enemies
+palavra-de-cura-em-massa: a priest's word healing a group of allies
+pequeno-refugio-de-leomund: a magical dome shelter in a snowstorm
+piscar: a wizard blinking between the material and ethereal planes
+protecao-contra-balistica: a shield of force stopping projectiles
+protecao-contra-elementos: an elemental ward glowing around a warrior
+punicao-cegante: a sword strike exploding with blinding light
+relampago: a bolt of lightning blasting through a line of enemies
+remover-maldicao: a cursed amulet shattering under holy light
+respirar-na-agua: an adventurer breathing underwater with bubbles
+reviver: a cleric reviving a fallen hero, light returning to their eyes
+rogar-maldicao: a dark curse sigil branded on a victim
+simbolo-de-protecao: a magical glyph etched on a floor
+toque-vampirico: a necromancer draining life from a victim
+velocidade: a warrior moving with superhuman speed, time-warped streaks
+voo: a wizard soaring through the sky
+
+## 4º círculo
+adivinhacao: a seer consulting a glowing crystal ball
+arca-secreta-de-leomund: an ornate chest hidden in the ethereal plane
+assassino-fantasmagorico: a nightmare creature emerging from a victim's own fear
+aura-de-pureza: a paladin's aura repelling poison and disease
+aura-de-vida: a paladin radiating life-protecting light
+banimento: a demon being banished through a swirling portal
+cao-fiel-de-mordenkainen: a spectral guard hound watching a camp
+compulsao: soldiers forced to march in one direction by magic
+confusao: enemies clutching heads in chaotic confusion
+conjurar-agente-virtual: a ghostly digital agent appearing from a screen
+conjurar-barlgura: an ape-like demon emerging from a fiery rift
+conjurar-demonio-das-sombras: a shadow demon emerging from darkness
+conjurar-elementais-menores: small fire and water elementals summoned
+conjurar-seres-da-floresta: dryads and pixies emerging from trees
+controlar-agua: a lake parting under a druid's command
+destruicao-elemental: a weapon exploding with elemental fury
+deteriorar: a plant withering into dust under necrotic touch
+dominar-besta: a beast's eyes glowing under mental control
+escudo-de-fogo: a caster wreathed in a protective shield of flames
+esfera-aquosa: a giant sphere of water trapping creatures
+esfera-caustica: a sphere of bubbling acid splashing enemies
+esfera-resiliente-de-otiluke: a person sealed inside a shimmering sphere
+esfera-tempestuosa: a storm sphere crackling with lightning
+fabricar: raw materials transforming into a crafted object
+guardiao-da-fe: a giant spectral guardian with a sword
+inseto-gigante: giant spiders and centipedes summoned
+invadir-o-sistema: arcane energy invading a magical machine
+invisibilidade-maior: an invisible warrior attacking, only outline visible
+localizar-criatura: a glowing trail leading to a hidden creature
+metamorfose: a man transforming into a toad in a swirl of magic
+moldar-rochas: stone reshaping into a doorway
+movimentacao-livre: a warrior breaking free from chains and webs
+muralha-de-fogo: a towering wall of fire
+olho-arcano: a floating invisible arcane eye scouting a dungeon
+pele-rochosa: skin turning into stone armor
+porta-dimensional: a portal opening between two locations
+protecao-contra-morte: a warrior protected by a death ward glow
+punicao-estonteante: a sword strike stunning a foe with psychic force
+santuario-particular-de-mordenkainen: a warded room sealed by arcane barriers
+sincronicidade: a caster bending time and fate
+tempestade-de-gelo: hailstones of ice pummeling an area
+tentaculos-negros-de-evard: black tentacles erupting from the ground
+terreno-alucinogeno: a landscape shifting into an illusory terrain
+vinha-sufocante: vines strangling and grasping enemies
+
+## 5º círculo
+aljava-veloz: a quiver magically refilling with arrows
+ancora-planar: a demon bound to a summoning circle
+animar-objetos: furniture and weapons coming to life
+circulo-de-teleporte: a glowing teleportation circle on a stone floor
+circulo-do-poder: a paladin radiating protective power
+coluna-de-chamas: a pillar of holy fire descending from the sky
+comunhao: a cleric communing with their deity, golden light from above
+comunhao-com-a-natureza: a druid connecting with the forest spirit
+comunhao-com-cidade: a caster connected to a city's magical network
+cone-de-frio: a blast of freezing cold spreading outward
+conjurar-elemental: a towering fire elemental rising from flames
+conjurar-saraivada: a hail of arrows raining down
+conjurar-vrock: a vulture-like demon emerging from a portal
+contagio: a necromancer spreading a plague
+contato-extraplanar: a mind touching a cosmic entity
+controlar-os-ventos: a druid commanding whirling winds
+criacao: a wizard shaping matter from shadow
+criar-passagem: a passage opening through a solid wall
+cupula-antivida: a dome repelling creatures
+curar-ferimentos-em-massa: waves of healing light washing over a group
+despertar: a tree awakening with a face and eyes
+despistar: illusory doubles misleading pursuers
+dissipar-bem-e-mal: a paladin banishing a demon with holy light
+dominar-pessoa: a person's eyes glazed under mind control
+elo-telepatico-de-rary: a party linked by glowing mental threads
+encerrar: a being sealed in a magical prison
+imobilizar-monstro: a monster frozen in place by binding chains of light
+imolacao: a creature engulfed in raging flames
+lendas-e-historias: a wizard surrounded by visions of history
+mao-de-bigby: a giant spectral hand crushing an enemy
+missao: a glowing geas mark binding a person to a task
+modificar-memoria: a caster altering a person's memories
+muralha-de-energia: an invisible wall of force blocking a corridor
+muralha-de-pedra: a wall of stone rising from the earth
+nevoa-mortal: a deadly green fog spreading through a forest
+observacao: a seer watching a distant place through a magical mirror
+onda-destrutiva: a wave of holy and thunderous force radiating outward
+passo-entre-arvores: a druid stepping into one tree and out another
+praga-de-insetos: a swarm of locusts filling the sky
+punicao-banidora: a paladin's strike sending a foe to another plane
+redemoinho: a whirlwind of dust and debris
+reencarnacao: a body reforming into a new form
+restauracao-maior: a cleric lifting a heavy curse
+reviver-os-mortos: a corpse rising back to life in holy light
+santificar: a holy ground glowing with protection
+similaridade: a group disguised as other people
+sonho: a dream messenger appearing in someone's sleep
+telecinesia: objects floating under telekinetic control
+transmutar-pedra: stone turning into mud
+
+## 6º círculo
+aliado-extraplanar: an angel answering a call
+andar-no-vento: a group transforming into clouds
+banquete-de-herois: a magical feast for heroes
+barreira-de-laminas: a wall of whirling spectral blades
+carne-para-pedra: a warrior slowly turning to stone
+circulo-da-morte: a sphere of negative energy killing all within
+conjurar-feerico: a fey creature summoned from a glowing portal
+contingencia: a dormant spell waiting to trigger
+convocacao-instantanea-de-drawmij: an object teleporting into a wizard's hand
+corrente-de-relampagos: lightning arcing between multiple enemies
+criar-mortos-vivos: ghouls rising under a necromancer's command
+cura-completa: a dying hero restored to full health
+danca-irresistivel-de-otto: a knight forced into a frantic dance
+desintegrar: a green ray turning a creature to dust
+doenca-plena: a victim afflicted by a terrible disease
+encontrar-o-caminho: a glowing trail guiding through a labyrinth
+esfera-congelante-de-otiluke: a frigid sphere exploding into ice
+globo-de-invulnerabilidade: a shimmering globe blocking spells
+ilusao-programada: an illusion triggering when a door opens
+manto-de-chamas: a caster wrapped in a cloak of fire
+manto-de-gelo: a caster wrapped in a cloak of ice
+manto-de-pedra: a caster wrapped in stone armor
+manto-de-vento: a caster wrapped in whirling wind
+mover-terra: terrain shifting and reshaping
+muralha-de-espinhos: a dense wall of thorny vines
+muralha-de-gelo: a wall of ice blocking a passage
+olhar-voraz: a warlock's eyes radiating dread
+ossos-da-terra: stone pillars erupting from the ground
+palavra-de-recordacao: a cleric and allies teleporting to a temple
+portal-arcano: two linked glowing portals
+proibicao: a sanctuary sealed against teleportation
+protecao-primordial: a druid with primal elemental protection
+proteger-fortaleza: a fortress protected by magical wards
+raio-solar: a beam of brilliant sunlight
+recipiente-arcano: a wizard's soul trapped in a gem
+sugestao-em-massa: a group bent to a caster's suggestion
+teleporte-por-plantas: a druid stepping between two great trees
+visao-da-verdade: eyes seeing through illusions
+
+## 7º círculo
+bola-de-fogo-controlavel: a delayed fireball bead growing in power
+conjurar-celestial: a celestial being descending from the heavens
+conjurar-hezrou: a toad-like demon emerging from a pit
+dedo-da-morte: a necromancer pointing, killing a foe with dark energy
+espada-de-mordenkainen: a floating sword of pure force
+forma-eterea: a figure fading into the ethereal plane
+isolamento: a wizard surrounded by a protective barrier
+mansao-magnifica-de-mordenkainen: an extradimensional mansion door
+miragem-arcana: a desert transformed into an illusory city
+palavra-divina: a divine word striking enemies dead
+prisao-de-energia: a cage of force trapping a creature
+projetar-imagem: an illusory double projected far away
+rajada-prismatica: a spray of rainbow rays striking enemies
+regeneracao: lost limbs regrowing in healing light
+ressurreicao: a cleric resurrecting a hero
+reverter-a-gravidade: objects and people falling upward
+simbolo: a powerful magical glyph glowing on the floor
+simulacro: a wizard creating a duplicate of themselves from snow
+teleporte: a wizard vanishing in a flash of light
+tempestade-de-fogo: a storm of fire engulfing a battlefield
+vendaval: a powerful whirlwind tearing apart trees
+viagem-planar: a group passing through a planar gateway
+
+## 8º círculo
+antipatia-simpatia: creatures repelled from or drawn to a glowing object
+aura-sagrada: a cleric radiating holy aura over allies
+campo-antimagia: a sphere nullifying all magic
+clone: a wizard creating a clone in a vat
+controlar-o-clima: a druid changing the weather
+dominar-monstro: a monster under mental domination
+enfraquecer-intelecto: a wizard's mind shattered by psychic attack
+evaporacao-de-abi-dalzim: a victim drained of all moisture
+explosao-solar: a brilliant explosion of sunlight
+formas-animais: allies transforming into animals
+labirinto: a creature banished to a magical labyrinth
+limpar-a-mente: a wizard protected from mental intrusion
+loquacidade: a silver-tongued bard persuading a crowd
+nuvem-incendiaria: a cloud of burning embers drifting forward
+palavra-de-poder-atordoar: a caster stunning a foe with a single word
+semiplano: a door opening into a demiplane
+telepatia: two minds linked across vast distance
+terremoto: a massive earthquake splitting the ground
+tsunami: a colossal wall of water crashing over a city
+
+## 9º círculo
+alterar-forma: a wizard transforming into a monstrous creature
+aprisionamento: a being sealed in a gem prison
+chuva-de-meteoros: meteors falling from the sky onto a battlefield
+cura-completa-em-massa: a group restored to full health in radiant light
+desejo: a wizard making a wish, reality bending
+encarnacao-fantasmagorica: illusory nightmares tormenting multiple foes
+metamorfose-verdadeira: a creature transforming into a dragon
+muralha-prismatica: a wall of shimmering prismatic light
+palavra-de-poder-curar: a word of power fully healing a warrior
+palavra-de-poder-matar: a caster uttering a word that slays a foe
+parar-o-tempo: a wizard freezing time, raindrops suspended
+portal: a giant portal to another plane
+projecao-astral: astral forms drifting into the astral sea
+ressurreicao-verdadeira: a long-dead hero returned to life
+sexto-sentido: a warrior with foresight, seeing future movements
+tempestade-da-vinganca: a vengeful storm of lightning and hail

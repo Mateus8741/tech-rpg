@@ -1,10 +1,11 @@
 {
   "meta": {
     "version": 1,
-    "nodeCount": 810,
-    "edgeCount": 1979,
+    "nodeCount": 844,
+    "edgeCount": 2055,
     "languages": [
       "javascript",
+      "python",
       "tsx",
       "typescript"
     ],
@@ -1029,12 +1030,12 @@
       "name": "SpellBrowser.tsx",
       "kind": "file",
       "path": "apps/web/app/(app)/magias/SpellBrowser.tsx",
-      "span": "L1-L311",
+      "span": "L1-L317",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "b777897252543d0b1061824318c73229ee96aa39acebe7ba0edda7d4c27fb4ab",
-      "chars": 14079,
+      "body_hash": "31d3905c83b953e21ee0523c59dc10d39db3423d668f34b4fdbb641348450613",
+      "chars": 14455,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -1044,7 +1045,7 @@
       "name": "Chip",
       "kind": "function",
       "path": "apps/web/app/(app)/magias/SpellBrowser.tsx",
-      "span": "L27-L47",
+      "span": "L28-L48",
       "signature": "function Chip({ active, onClick, children, color, }: { active: boolean; onClick: () => void; children: React.ReactNode; color?: string })",
       "exported": false,
       "origin": "ast",
@@ -1058,7 +1059,7 @@
       "name": "FilterGroup",
       "kind": "function",
       "path": "apps/web/app/(app)/magias/SpellBrowser.tsx",
-      "span": "L49-L56",
+      "span": "L50-L57",
       "signature": "function FilterGroup({ label, children }: { label: string; children: React.ReactNode })",
       "exported": false,
       "origin": "ast",
@@ -1072,7 +1073,7 @@
       "name": "SortKey",
       "kind": "type",
       "path": "apps/web/app/(app)/magias/SpellBrowser.tsx",
-      "span": "L15-L15",
+      "span": "L16-L16",
       "signature": "type SortKey = \"nome\" | \"nivel\" | \"escola\";",
       "exported": false,
       "origin": "ast",
@@ -1086,11 +1087,11 @@
       "name": "SpellBrowser",
       "kind": "function",
       "path": "apps/web/app/(app)/magias/SpellBrowser.tsx",
-      "span": "L58-L310",
+      "span": "L59-L316",
       "signature": "function SpellBrowser()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "b753d6d9c301e295b04ab6d8306d84b3971c2226a99e2077f22aa66b95c82555",
+      "body_hash": "0f72044268294964003d2102e2e6aad187848a96dbb8cb902a009b7aede8d99d",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -1100,7 +1101,7 @@
       "name": "byName",
       "kind": "function",
       "path": "apps/web/app/(app)/magias/SpellBrowser.tsx",
-      "span": "L111-L111",
+      "span": "L115-L115",
       "signature": "byName = (a: string, b: string)",
       "exported": true,
       "origin": "ast",
@@ -1114,7 +1115,7 @@
       "name": "clearAll",
       "kind": "function",
       "path": "apps/web/app/(app)/magias/SpellBrowser.tsx",
-      "span": "L147-L150",
+      "span": "L153-L156",
       "signature": "clearAll = ()",
       "exported": true,
       "origin": "ast",
@@ -1128,7 +1129,7 @@
       "name": "h",
       "kind": "function",
       "path": "apps/web/app/(app)/magias/SpellBrowser.tsx",
-      "span": "L137-L137",
+      "span": "L143-L143",
       "signature": "h = (e: KeyboardEvent)",
       "exported": true,
       "origin": "ast",
@@ -1142,7 +1143,7 @@
       "name": "toggle",
       "kind": "function",
       "path": "apps/web/app/(app)/magias/SpellBrowser.tsx",
-      "span": "L20-L25",
+      "span": "L21-L26",
       "signature": "function toggle<T>(set: Set<T>, v: T): Set<T>",
       "exported": false,
       "origin": "ast",
@@ -3205,12 +3206,12 @@
       "name": "action-cards.ts",
       "kind": "file",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L1-L211",
+      "span": "L1-L221",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "39f4b5d6bc38482d7a9d7952f829415e18e9b203fe5de4bbb57dd58017b69d49",
-      "chars": 9482,
+      "body_hash": "92103fcd6b9547754774d3e0bced9a970fd3ca9c1b6f2ce3c45e1efe5a1c4661",
+      "chars": 10037,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -3220,7 +3221,7 @@
       "name": "ActionCard",
       "kind": "interface",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L27-L40",
+      "span": "L28-L41",
       "signature": "interface ActionCard",
       "exported": true,
       "origin": "ast",
@@ -3234,7 +3235,7 @@
       "name": "asSlot",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L42-L42",
+      "span": "L43-L43",
       "signature": "asSlot = (cost: ActionCost): TurnSlot | null",
       "exported": false,
       "origin": "ast",
@@ -3248,7 +3249,7 @@
       "name": "attackDisadvantage",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L195-L201",
+      "span": "L205-L211",
       "signature": "function attackDisadvantage(sheet: SheetData): string[]",
       "exported": true,
       "origin": "ast",
@@ -3262,7 +3263,7 @@
       "name": "buildActionCards",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L140-L189",
+      "span": "L141-L190",
       "signature": "function buildActionCards(c: Character): ActionCard[]",
       "exported": true,
       "origin": "ast",
@@ -3276,7 +3277,7 @@
       "name": "pushTrait",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L150-L157",
+      "span": "L151-L158",
       "signature": "pushTrait = (key: string, name: string, description: string, source: string, entry: EntryRef)",
       "exported": true,
       "origin": "ast",
@@ -3290,7 +3291,7 @@
       "name": "cantripTier",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L100-L100",
+      "span": "L101-L101",
       "signature": "cantripTier = (level: number)",
       "exported": false,
       "origin": "ast",
@@ -3300,15 +3301,15 @@
       "crux": null
     },
     {
-      "id": "apps/web/components/sheet/action-cards.ts#cardMatches",
-      "name": "cardMatches",
+      "id": "apps/web/components/sheet/action-cards.ts#cardScore",
+      "name": "cardScore",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L191-L192",
-      "signature": "cardMatches = (card: ActionCard, q: string)",
+      "span": "L196-L202",
+      "signature": "function cardScore(card: ActionCard, pq: ParsedQuery): number",
       "exported": true,
       "origin": "ast",
-      "body_hash": "7d10c4bb1d4ec68015a92693e43103da63c143afdc4eea97d017e95250a4e436",
+      "body_hash": "6b05f7537c562420c79ba31bcd67901c216b8a4a578bfbaa64654c9f4501e3cb",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -3318,7 +3319,7 @@
       "name": "CardSection",
       "kind": "type",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L13-L13",
+      "span": "L14-L14",
       "signature": "type CardSection = 'acao' | 'bonus' | 'reacao' | 'truque' | 'outro';",
       "exported": true,
       "origin": "ast",
@@ -3332,7 +3333,7 @@
       "name": "DamageRoll",
       "kind": "interface",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L25-L25",
+      "span": "L26-L26",
       "signature": "interface DamageRoll",
       "exported": true,
       "origin": "ast",
@@ -3346,7 +3347,7 @@
       "name": "firstSentence",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L48-L53",
+      "span": "L49-L54",
       "signature": "function firstSentence(text: string, max = 120): string",
       "exported": false,
       "origin": "ast",
@@ -3360,7 +3361,7 @@
       "name": "fmtMod",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L60-L60",
+      "span": "L61-L61",
       "signature": "fmtMod = (n: number)",
       "exported": false,
       "origin": "ast",
@@ -3374,7 +3375,7 @@
       "name": "lowestSlot",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L204-L210",
+      "span": "L214-L220",
       "signature": "function lowestSlot(spellLevel: number, slots: number[], used: number[]): number | null",
       "exported": true,
       "origin": "ast",
@@ -3388,7 +3389,7 @@
       "name": "sectionOf",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L45-L45",
+      "span": "L46-L46",
       "signature": "sectionOf = (cost: ActionCost): CardSection",
       "exported": false,
       "origin": "ast",
@@ -3402,7 +3403,7 @@
       "name": "spellCard",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L111-L136",
+      "span": "L112-L137",
       "signature": "function spellCard(c: Character, s: Spell): ActionCard",
       "exported": false,
       "origin": "ast",
@@ -3416,7 +3417,7 @@
       "name": "spellDamage",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L102-L109",
+      "span": "L103-L110",
       "signature": "function spellDamage(s: Spell, level: number): DamageRoll | null",
       "exported": false,
       "origin": "ast",
@@ -3430,7 +3431,7 @@
       "name": "turnSlot",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L43-L43",
+      "span": "L44-L44",
       "signature": "turnSlot = (card: ActionCard)",
       "exported": true,
       "origin": "ast",
@@ -3444,7 +3445,7 @@
       "name": "TurnSlot",
       "kind": "type",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L15-L15",
+      "span": "L16-L16",
       "signature": "type TurnSlot = 'acao' | 'bonus' | 'reacao';",
       "exported": true,
       "origin": "ast",
@@ -3458,7 +3459,7 @@
       "name": "weaponCard",
       "kind": "function",
       "path": "apps/web/components/sheet/action-cards.ts",
-      "span": "L64-L91",
+      "span": "L65-L92",
       "signature": "function weaponCard(c: Character, sheet: SheetData, w: Weapon, attackBonus: number, key: string): ActionCard",
       "exported": false,
       "origin": "ast",
@@ -3468,16 +3469,88 @@
       "crux": null
     },
     {
+      "id": "apps/web/components/sheet/action-icon-paths.ts",
+      "name": "action-icon-paths.ts",
+      "kind": "file",
+      "path": "apps/web/components/sheet/action-icon-paths.ts",
+      "span": "L1-L56",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "54e08e5f35814d7aba0dfaa09627e7411f3153aa9dede32645e15428ffc2e2fe",
+      "chars": 65751,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/action-icon-paths.ts#IconId",
+      "name": "IconId",
+      "kind": "type",
+      "path": "apps/web/components/sheet/action-icon-paths.ts",
+      "span": "L55-L55",
+      "signature": "type IconId = keyof typeof ICON_PATHS;",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "01e33b023178de68b036daac40aac2c2d6abdc846d96683b26ad1e775ffa1456",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/ActionIcon.tsx",
+      "name": "ActionIcon.tsx",
+      "kind": "file",
+      "path": "apps/web/components/sheet/ActionIcon.tsx",
+      "span": "L1-L90",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "a3470a1836e6564ac773d79d053fce296a84e35b55eb0722cf9a41d1dcf7a3d0",
+      "chars": 3482,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/ActionIcon.tsx#ActionGlyph",
+      "name": "ActionGlyph",
+      "kind": "function",
+      "path": "apps/web/components/sheet/ActionIcon.tsx",
+      "span": "L75-L89",
+      "signature": "function ActionGlyph({ card, icon, color, className }: { card?: ActionCard; icon?: IconId; color: string; className?: string })",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "483b2bf43a742ee24f36a40fe2e977eb54bf408611659d3cd5faabae72f071ad",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/ActionIcon.tsx#iconFor",
+      "name": "iconFor",
+      "kind": "function",
+      "path": "apps/web/components/sheet/ActionIcon.tsx",
+      "span": "L59-L72",
+      "signature": "function iconFor(card: ActionCard): IconId",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "ec46f45cb6f673e7e1d207089cc0cd1b7f141d58cf89f6904a2aee165618e416",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
       "id": "apps/web/components/sheet/ActionsTab.tsx",
       "name": "ActionsTab.tsx",
       "kind": "file",
       "path": "apps/web/components/sheet/ActionsTab.tsx",
-      "span": "L1-L200",
+      "span": "L1-L177",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "ce8ff491f6dad2aac0f92cfaa7e94f24596a3ef4829e3c9d5fbf0489c7d606a6",
-      "chars": 9975,
+      "body_hash": "4124d882fcc62acc0659e66d39776dfa69e788d94a19f9c1568f232bab87fc76",
+      "chars": 8436,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -3487,11 +3560,11 @@
       "name": "ActionsTab",
       "kind": "function",
       "path": "apps/web/components/sheet/ActionsTab.tsx",
-      "span": "L29-L199",
+      "span": "L30-L176",
       "signature": "function ActionsTab({ api }: { api: CharacterApi })",
       "exported": true,
       "origin": "ast",
-      "body_hash": "04835fdeea3091836149f733b5ee48d6577a601e820eba28bc305ddd8d0c35a6",
+      "body_hash": "012ccd0562fd20053690db8ac3b985cdb0a2d3b8faf4ccead917b307eb773168",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -3501,7 +3574,7 @@
       "name": "cast",
       "kind": "function",
       "path": "apps/web/components/sheet/ActionsTab.tsx",
-      "span": "L68-L85",
+      "span": "L74-L91",
       "signature": "cast = (card: ActionCard, s: Spell)",
       "exported": true,
       "origin": "ast",
@@ -3515,7 +3588,7 @@
       "name": "markUsed",
       "kind": "function",
       "path": "apps/web/components/sheet/ActionsTab.tsx",
-      "span": "L47-L50",
+      "span": "L53-L56",
       "signature": "markUsed = (card: ActionCard)",
       "exported": true,
       "origin": "ast",
@@ -3529,7 +3602,7 @@
       "name": "rollAttack",
       "kind": "function",
       "path": "apps/web/components/sheet/ActionsTab.tsx",
-      "span": "L52-L60",
+      "span": "L58-L66",
       "signature": "rollAttack = (card: ActionCard, ev: Ev)",
       "exported": true,
       "origin": "ast",
@@ -3543,7 +3616,7 @@
       "name": "rollDamage",
       "kind": "function",
       "path": "apps/web/components/sheet/ActionsTab.tsx",
-      "span": "L62-L65",
+      "span": "L68-L71",
       "signature": "rollDamage = (card: ActionCard, dmg: DamageRoll)",
       "exported": true,
       "origin": "ast",
@@ -3557,11 +3630,26 @@
       "name": "Ev",
       "kind": "type",
       "path": "apps/web/components/sheet/ActionsTab.tsx",
-      "span": "L27-L27",
+      "span": "L28-L28",
       "signature": "type Ev = { shiftKey: boolean; altKey: boolean };",
       "exported": false,
       "origin": "ast",
       "body_hash": "8142b47445394edefbab897b93499c99ef72d73ed327796cfa9e9947a5d902e3",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/card-art-map.ts",
+      "name": "card-art-map.ts",
+      "kind": "file",
+      "path": "apps/web/components/sheet/card-art-map.ts",
+      "span": "L1-L472",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "4cd402e0b9f4db1625572e5ae1b02a619108ad4f44282647fa3d29e306171b68",
+      "chars": 18215,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -4523,6 +4611,133 @@
       "exported": false,
       "origin": "ast",
       "body_hash": "68022190fdeefc7102445cf6617169587b69ef4e93a062ef5178d08990ce964e",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/GameCard.tsx",
+      "name": "GameCard.tsx",
+      "kind": "file",
+      "path": "apps/web/components/sheet/GameCard.tsx",
+      "span": "L1-L237",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "3b409f64636c6d9c3271f31510977aa457e512163ba13dd3a869692c0f862d11",
+      "chars": 12648,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/GameCard.tsx#artKey",
+      "name": "artKey",
+      "kind": "function",
+      "path": "apps/web/components/sheet/GameCard.tsx",
+      "span": "L45-L49",
+      "signature": "function artKey(card: ActionCard): string",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "b1ef1122839d7c53f3c0fcad6475182f365c2e0a986e412a5deaf03a9e55e585",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/GameCard.tsx#artSources",
+      "name": "artSources",
+      "kind": "function",
+      "path": "apps/web/components/sheet/GameCard.tsx",
+      "span": "L34-L38",
+      "signature": "function artSources(key: string): string[]",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "0a08ac0dd1de4a552b28abde25fcdb92830c07224a6350541f25e4618316027d",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/GameCard.tsx#CardArt",
+      "name": "CardArt",
+      "kind": "function",
+      "path": "apps/web/components/sheet/GameCard.tsx",
+      "span": "L51-L85",
+      "signature": "function CardArt({ card, color, emblem }: { card: ActionCard; color: string; emblem?: IconId })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "e317efe410af922876617a681f3637243e29a05754e1375af436d551131f60c8",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/GameCard.tsx#Corner",
+      "name": "Corner",
+      "kind": "function",
+      "path": "apps/web/components/sheet/GameCard.tsx",
+      "span": "L90-L98",
+      "signature": "function Corner({ color, className }: { color: string; className: string })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "d2eab7d68ec5e8f9e07de8135f994b1bb6855d8886a774ce4d6e330456d9c3b2",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/GameCard.tsx#Fact",
+      "name": "Fact",
+      "kind": "interface",
+      "path": "apps/web/components/sheet/GameCard.tsx",
+      "span": "L105-L105",
+      "signature": "interface Fact",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "6eae7796a1913a98c4ab1a08d1af5911542573394a99b752f9fd8b87f85254c9",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/GameCard.tsx#factsOf",
+      "name": "factsOf",
+      "kind": "function",
+      "path": "apps/web/components/sheet/GameCard.tsx",
+      "span": "L107-L127",
+      "signature": "function factsOf(card: ActionCard): { facts: Fact[]; chips: string[] }",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "af73d70fb1d8c87056abba0588396a7873ed19b670f0de9d184dd7bf631e236f",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/GameCard.tsx#GameCard",
+      "name": "GameCard",
+      "kind": "function",
+      "path": "apps/web/components/sheet/GameCard.tsx",
+      "span": "L129-L236",
+      "signature": "function GameCard({ card, color: sectionColor, used, reduce, onOpen, children, }: { card: ActionCard; color: string; used: boolean; reduce: boolean | null; onOpen: () => void; children: ReactNode; })",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "e9ac33db9654430e5f905ef34d8e2e3da293e7c8ee74823816de0d4042c0478f",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/GameCard.tsx#slug",
+      "name": "slug",
+      "kind": "function",
+      "path": "apps/web/components/sheet/GameCard.tsx",
+      "span": "L42-L42",
+      "signature": "slug = (s: string)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "f6c52505a7a115d70f04563394b0d845a5c0b34ab06b69b52dc697cfec7334a0",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -6442,8 +6657,8 @@
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "00c406267d440e19e59afe97b57983a4e69c471f4ef9e8fce8ff9391b57913e0",
-      "chars": 2635,
+      "body_hash": "49b4577aeaab216d93cbd43ef0eea58c3b5190b40ee85bcfd7c60fd973d39abe",
+      "chars": 2628,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -6485,7 +6700,7 @@
       "signature": "function matchesFilters(s: Spell, f: SpellFilterState, favorites: readonly string[]): boolean",
       "exported": true,
       "origin": "ast",
-      "body_hash": "671d2180e7a35c9f15ba4a0d797dbb4274fa5304977793c38e0862b9727fcc71",
+      "body_hash": "bc7bbe74fc37268ea7161ea9a9ed6c2ae61eeebd58cad1e76b0d15983d1bf528",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -6571,6 +6786,161 @@
       "origin": "ast",
       "body_hash": "c1c2d09eb1a59ae6e4263e11e1a4b79f5d86bb5b448634fc6b80f3c80c4f9f6b",
       "chars": 311,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/spells/smart-search.ts",
+      "name": "smart-search.ts",
+      "kind": "file",
+      "path": "apps/web/components/spells/smart-search.ts",
+      "span": "L1-L158",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "7093b853794e77b66d683e46b9d20ff2705de29bce849ad7b64b5ff3d170b1ba",
+      "chars": 8375,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/spells/smart-search.ts#CostFacet",
+      "name": "CostFacet",
+      "kind": "type",
+      "path": "apps/web/components/spells/smart-search.ts",
+      "span": "L57-L57",
+      "signature": "type CostFacet = 'acao' | 'bonus' | 'reacao';",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "38a2755f3b8f630cb5c98d786e2f8435e43cb4aca53980332214d4ecc97d5cb4",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/spells/smart-search.ts#hasWord",
+      "name": "hasWord",
+      "kind": "function",
+      "path": "apps/web/components/spells/smart-search.ts",
+      "span": "L103-L108",
+      "signature": "function hasWord(hay: string, needle: string): boolean",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "da5fd68e1b2ec9f055e3579c405e4743de4ec84c0fa7bd39f69c2aa7da6f88bd",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/spells/smart-search.ts#indexOf",
+      "name": "indexOf",
+      "kind": "function",
+      "path": "apps/web/components/spells/smart-search.ts",
+      "span": "L134-L145",
+      "signature": "function indexOf(s: Spell)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "e928d5c1990fd2c0e9e0c664eb4236fc05d21137433c4dc5d34fed5f87f9b2f2",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/spells/smart-search.ts#ParsedQuery",
+      "name": "ParsedQuery",
+      "kind": "interface",
+      "path": "apps/web/components/spells/smart-search.ts",
+      "span": "L59-L70",
+      "signature": "interface ParsedQuery",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "f70b63182e2bee013725190033a6b5212c3e046d51e99216042f9f61fc4f2766",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/spells/smart-search.ts#parseQuery",
+      "name": "parseQuery",
+      "kind": "function",
+      "path": "apps/web/components/spells/smart-search.ts",
+      "span": "L72-L92",
+      "signature": "function parseQuery(raw: string): ParsedQuery",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "3e992156a503a88f68252f207109c211d65ec3dcc8fe16f66c2f0e9eff3bda3b",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/spells/smart-search.ts#queryEmpty",
+      "name": "queryEmpty",
+      "kind": "function",
+      "path": "apps/web/components/spells/smart-search.ts",
+      "span": "L95-L96",
+      "signature": "queryEmpty = (pq: ParsedQuery)",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "07b8347a74722a0adc14041b6e5ef1a4a3bc03f633c39d6da643695abfe4504c",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/spells/smart-search.ts#scoreSpell",
+      "name": "scoreSpell",
+      "kind": "function",
+      "path": "apps/web/components/spells/smart-search.ts",
+      "span": "L148-L157",
+      "signature": "function scoreSpell(s: Spell, pq: ParsedQuery): number",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "db9bf4e502226fe9992b0b526f723d160175af6f9ab14df4ee5d919803fe5698",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/spells/smart-search.ts#scoreText",
+      "name": "scoreText",
+      "kind": "function",
+      "path": "apps/web/components/spells/smart-search.ts",
+      "span": "L110-L123",
+      "signature": "function scoreText(name: string, text: string, pq: ParsedQuery): number",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "4a9e1eadf165d4008623ee79d9502fe8a1ff09eeb42a96d729850f5a5e8ce602",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/spells/smart-search.ts#spellCost",
+      "name": "spellCost",
+      "kind": "function",
+      "path": "apps/web/components/spells/smart-search.ts",
+      "span": "L125-L131",
+      "signature": "spellCost = (s: Pick<Spell, 'castingTime'>): CostFacet | undefined",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "ee9beae713f24cf835f6869889fcd3919ad247c34b9a5bfd3dd8a91da83b3b4a",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/spells/smart-search.ts#syn",
+      "name": "syn",
+      "kind": "function",
+      "path": "apps/web/components/spells/smart-search.ts",
+      "span": "L9-L9",
+      "signature": "syn = (keys: string[], hits: string[])",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "1bb523b52e990983aead139f4bf95d64bced22c978ce8bf454ffb4a40f4df923",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -10532,6 +10902,120 @@
       "crux": null
     },
     {
+      "id": "docs/card-art/build-prompts.mjs",
+      "name": "build-prompts.mjs",
+      "kind": "file",
+      "path": "docs/card-art/build-prompts.mjs",
+      "span": "L1-L67",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "a436472b0d231bc9c6f6c57f5598d8195ec06e6db9c4ca2ac2aac7d0db9ee6bc",
+      "chars": 3483,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "docs/card-art/build-prompts.mjs#q",
+      "name": "q",
+      "kind": "function",
+      "path": "docs/card-art/build-prompts.mjs",
+      "span": "L64-L64",
+      "signature": "q = (s)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "bf631191097fd154acc87653e1424b824ac71aa0d5183c709ded40d47486236c",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "docs/card-art/map_painterly.py",
+      "name": "map_painterly.py",
+      "kind": "file",
+      "path": "docs/card-art/map_painterly.py",
+      "span": "L1-L317",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "e5f79a2e04b728644426d83287b3727a1871e85402aaf1c5458d82c150b4939d",
+      "chars": 15599,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "docs/card-art/map_painterly.py#main",
+      "name": "main",
+      "kind": "function",
+      "path": "docs/card-art/map_painterly.py",
+      "span": "L277-L313",
+      "signature": "def main()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "ddd638aca6e9e359ee7e506fd1ec1491360f91f45b5def57ad1791cfb4ea1628",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "docs/card-art/map_painterly.py#norm",
+      "name": "norm",
+      "kind": "function",
+      "path": "docs/card-art/map_painterly.py",
+      "span": "L19-L20",
+      "signature": "def norm(s)",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "db588b7ef231afd4a75867b8a31bc1421f253089cb1488e29a9b90ceeb4baaa8",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "docs/card-art/map_painterly.py#pick",
+      "name": "pick",
+      "kind": "function",
+      "path": "docs/card-art/map_painterly.py",
+      "span": "L253-L266",
+      "signature": "def pick(v, design, colors, level)",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "af1efcdd41aaea33a21ca7925d0cce7de14bf6ecc7e2a50d9a7b5ba026c93bb1",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "docs/card-art/map_painterly.py#spells",
+      "name": "spells",
+      "kind": "function",
+      "path": "docs/card-art/map_painterly.py",
+      "span": "L268-L275",
+      "signature": "def spells()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "e1b26d9c8365b383f5ca55095d354832f92786513261d9ab2de0e90cb6daf356",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "docs/card-art/map_painterly.py#variants",
+      "name": "variants",
+      "kind": "function",
+      "path": "docs/card-art/map_painterly.py",
+      "span": "L242-L251",
+      "signature": "def variants(src)",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "45a3d17904f93f51439c4a4f5100cc15cca4ed7395610ffce5228cc82cecd20f",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
       "id": "packages/eslint-config/base.js",
       "name": "base.js",
       "kind": "file",
@@ -12516,6 +13000,12 @@
     },
     {
       "source": "apps/web/app/(app)/magias/SpellBrowser.tsx",
+      "target": "@/components/spells/smart-search",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/(app)/magias/SpellBrowser.tsx",
       "target": "@/components/spells/useSpellFavorites",
       "relation": "imports",
       "confidence": "extracted"
@@ -12582,7 +13072,7 @@
     },
     {
       "source": "apps/web/app/(app)/magias/SpellBrowser.tsx#SpellBrowser",
-      "target": "apps/web/components/spells/spell-utils.ts#normalizeText",
+      "target": "apps/web/components/spells/smart-search.ts#scoreSpell",
       "relation": "calls",
       "confidence": "inferred"
     },
@@ -14376,7 +14866,7 @@
     },
     {
       "source": "apps/web/components/sheet/action-cards.ts",
-      "target": "apps/web/components/sheet/action-cards.ts#cardMatches",
+      "target": "apps/web/components/sheet/action-cards.ts#cardScore",
       "relation": "contains",
       "confidence": "extracted"
     },
@@ -14455,6 +14945,12 @@
     {
       "source": "apps/web/components/sheet/action-cards.ts",
       "target": "@/components/spells/filters",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/action-cards.ts",
+      "target": "@/components/spells/smart-search",
       "relation": "imports",
       "confidence": "extracted"
     },
@@ -14579,7 +15075,25 @@
       "confidence": "inferred"
     },
     {
-      "source": "apps/web/components/sheet/action-cards.ts#cardMatches",
+      "source": "apps/web/components/sheet/action-cards.ts#cardScore",
+      "target": "apps/web/components/spells/smart-search.ts#queryEmpty",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/action-cards.ts#cardScore",
+      "target": "apps/web/components/spells/smart-search.ts#scoreSpell",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/action-cards.ts#cardScore",
+      "target": "apps/web/components/spells/smart-search.ts#scoreText",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/action-cards.ts#cardScore",
       "target": "apps/web/components/spells/spell-utils.ts#normalizeText",
       "relation": "calls",
       "confidence": "inferred"
@@ -14687,6 +15201,60 @@
       "confidence": "inferred"
     },
     {
+      "source": "apps/web/components/sheet/action-icon-paths.ts",
+      "target": "apps/web/components/sheet/action-icon-paths.ts#IconId",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/ActionIcon.tsx",
+      "target": "apps/web/components/sheet/ActionIcon.tsx#ActionGlyph",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/ActionIcon.tsx",
+      "target": "apps/web/components/sheet/ActionIcon.tsx#iconFor",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/ActionIcon.tsx",
+      "target": "@/components/spells/spell-utils",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/ActionIcon.tsx",
+      "target": "apps/web/components/sheet/action-cards.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/ActionIcon.tsx",
+      "target": "apps/web/components/sheet/action-icon-paths.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/ActionIcon.tsx",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/ActionIcon.tsx#ActionGlyph",
+      "target": "apps/web/components/sheet/ActionIcon.tsx#iconFor",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/ActionIcon.tsx#iconFor",
+      "target": "apps/web/components/spells/spell-utils.ts#normalizeText",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
       "source": "apps/web/components/sheet/ActionsTab.tsx",
       "target": "apps/web/components/sheet/ActionsTab.tsx#ActionsTab",
       "relation": "contains",
@@ -14712,7 +15280,7 @@
     },
     {
       "source": "apps/web/components/sheet/ActionsTab.tsx",
-      "target": "@/components/spells/spell-utils",
+      "target": "@/components/spells/smart-search",
       "relation": "imports",
       "confidence": "extracted"
     },
@@ -14743,6 +15311,12 @@
     {
       "source": "apps/web/components/sheet/ActionsTab.tsx",
       "target": "apps/web/components/sheet/class-style.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/ActionsTab.tsx",
+      "target": "apps/web/components/sheet/GameCard.tsx",
       "relation": "imports",
       "confidence": "extracted"
     },
@@ -14814,7 +15388,7 @@
     },
     {
       "source": "apps/web/components/sheet/ActionsTab.tsx#ActionsTab",
-      "target": "apps/web/components/sheet/action-cards.ts#cardMatches",
+      "target": "apps/web/components/sheet/action-cards.ts#cardScore",
       "relation": "calls",
       "confidence": "inferred"
     },
@@ -14869,12 +15443,6 @@
     {
       "source": "apps/web/components/sheet/ActionsTab.tsx#ActionsTab",
       "target": "apps/web/components/sheet/useSheetRoll.ts#useSheetRoll",
-      "relation": "calls",
-      "confidence": "inferred"
-    },
-    {
-      "source": "apps/web/components/sheet/ActionsTab.tsx#ActionsTab",
-      "target": "apps/web/components/spells/spell-utils.ts#normalizeText",
       "relation": "calls",
       "confidence": "inferred"
     },
@@ -16225,6 +16793,168 @@
     {
       "source": "apps/web/components/sheet/FeaturesTab.tsx#FeaturesTab",
       "target": "packages/rules/src/data/races.ts#getRace",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "apps/web/components/sheet/GameCard.tsx#artKey",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "apps/web/components/sheet/GameCard.tsx#artSources",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "apps/web/components/sheet/GameCard.tsx#CardArt",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "apps/web/components/sheet/GameCard.tsx#Corner",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "apps/web/components/sheet/GameCard.tsx#Fact",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "apps/web/components/sheet/GameCard.tsx#factsOf",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "apps/web/components/sheet/GameCard.tsx#GameCard",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "apps/web/components/sheet/GameCard.tsx#slug",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "@/components/spells/spell-utils",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "@/lib/utils",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "@repo/rules",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "apps/web/components/sheet/action-cards.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "apps/web/components/sheet/action-icon-paths.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "apps/web/components/sheet/ActionIcon.tsx",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "apps/web/components/sheet/card-art-map.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "framer-motion",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "lucide-react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx#artKey",
+      "target": "apps/web/components/sheet/GameCard.tsx#slug",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx#CardArt",
+      "target": "apps/web/components/sheet/GameCard.tsx#artKey",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx#CardArt",
+      "target": "apps/web/components/sheet/GameCard.tsx#artSources",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx#CardArt",
+      "target": "apps/web/lib/utils.ts#cn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx#Corner",
+      "target": "apps/web/lib/utils.ts#cn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx#GameCard",
+      "target": "apps/web/components/sheet/GameCard.tsx#factsOf",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx#GameCard",
+      "target": "apps/web/lib/utils.ts#cn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx#GameCard",
+      "target": "packages/rules/src/data/classes.ts#getClass",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/GameCard.tsx#slug",
+      "target": "apps/web/components/spells/spell-utils.ts#normalizeText",
       "relation": "calls",
       "confidence": "inferred"
     },
@@ -18822,12 +19552,138 @@
     },
     {
       "source": "apps/web/components/spells/filters.ts",
-      "target": "apps/web/components/spells/spell-utils.ts",
+      "target": "apps/web/components/spells/smart-search.ts",
       "relation": "imports",
       "confidence": "extracted"
     },
     {
       "source": "apps/web/components/spells/filters.ts#matchesFilters",
+      "target": "apps/web/components/spells/smart-search.ts#scoreSpell",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/smart-search.ts#syn",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/spell-utils.ts#normalizeText",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/smart-search.ts#CostFacet",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/smart-search.ts#hasWord",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/smart-search.ts#indexOf",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/smart-search.ts#ParsedQuery",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/smart-search.ts#parseQuery",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/smart-search.ts#queryEmpty",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/smart-search.ts#scoreSpell",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/smart-search.ts#scoreText",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/smart-search.ts#spellCost",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/smart-search.ts#syn",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "@repo/rules",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts",
+      "target": "apps/web/components/spells/spell-utils.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts#indexOf",
+      "target": "apps/web/components/spells/spell-utils.ts#normalizeText",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts#parseQuery",
+      "target": "apps/web/components/spells/spell-utils.ts#normalizeText",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts#scoreSpell",
+      "target": "apps/web/components/spells/smart-search.ts#indexOf",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts#scoreSpell",
+      "target": "apps/web/components/spells/smart-search.ts#scoreText",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts#scoreSpell",
+      "target": "apps/web/components/spells/smart-search.ts#spellCost",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts#scoreText",
+      "target": "apps/web/components/spells/smart-search.ts#hasWord",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/spells/smart-search.ts#spellCost",
       "target": "apps/web/components/spells/spell-utils.ts#normalizeText",
       "relation": "calls",
       "confidence": "inferred"
@@ -21984,12 +22840,6 @@
     },
     {
       "source": "apps/web/lib/search/engine.check.ts",
-      "target": "apps/web/lib/search/engine.ts#parseQuery",
-      "relation": "calls",
-      "confidence": "inferred"
-    },
-    {
-      "source": "apps/web/lib/search/engine.check.ts",
       "target": "apps/web/lib/search/engine.ts#removeFilterTokens",
       "relation": "calls",
       "confidence": "inferred"
@@ -22826,6 +23676,96 @@
       "source": "apps/web/lib/utils.ts",
       "target": "tailwind-merge",
       "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/build-prompts.mjs",
+      "target": "docs/card-art/build-prompts.mjs#q",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/build-prompts.mjs",
+      "target": "node:fs",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/build-prompts.mjs",
+      "target": "node:path",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/build-prompts.mjs",
+      "target": "node:url",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/map_painterly.py",
+      "target": "docs/card-art/map_painterly.py#main",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/map_painterly.py",
+      "target": "docs/card-art/map_painterly.py#main",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/map_painterly.py",
+      "target": "docs/card-art/map_painterly.py#norm",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/map_painterly.py",
+      "target": "docs/card-art/map_painterly.py#pick",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/map_painterly.py",
+      "target": "docs/card-art/map_painterly.py#spells",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/map_painterly.py",
+      "target": "docs/card-art/map_painterly.py#variants",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/map_painterly.py",
+      "target": "os",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/map_painterly.py#main",
+      "target": "docs/card-art/map_painterly.py#norm",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/map_painterly.py#main",
+      "target": "docs/card-art/map_painterly.py#pick",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/map_painterly.py#main",
+      "target": "docs/card-art/map_painterly.py#spells",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "docs/card-art/map_painterly.py#main",
+      "target": "docs/card-art/map_painterly.py#variants",
+      "relation": "calls",
       "confidence": "extracted"
     },
     {

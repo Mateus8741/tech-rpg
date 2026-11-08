@@ -8,6 +8,7 @@ import { activeSpellcasting, derivedStats, getSheet, type SheetData } from '@/li
 import type { EntryRef } from '@/components/entries';
 import { spellRollFor } from '@/components/spells/filters';
 import { normalizeText } from '@/components/spells/spell-utils';
+import { queryEmpty, scoreSpell, scoreText, type ParsedQuery } from '@/components/spells/smart-search';
 import { lookupItem, weaponProficient } from './equipment-logic';
 
 export type CardSection = 'acao' | 'bonus' | 'reacao' | 'truque' | 'outro';
@@ -188,8 +189,17 @@ export function buildActionCards(c: Character): ActionCard[] {
   return cards;
 }
 
-export const cardMatches = (card: ActionCard, q: string) =>
-  !q || normalizeText(`${card.name} ${card.source} ${card.summary} ${card.costLabel} ${card.stats.join(' ')}`).includes(q);
+/**
+ * Pontua a carta para a busca inteligente; -1 = fora. Magias usam o índice completo;
+ * as demais cartas, nome + texto da carta. Atalhos de magia (círculo, concentração...) excluem não-magias.
+ */
+export function cardScore(card: ActionCard, pq: ParsedQuery): number {
+  if (queryEmpty(pq)) return 0;
+  if (card.spell) return scoreSpell(card.spell, pq);
+  if (pq.level !== undefined || pq.concentration || pq.ritual || pq.school || pq.classId) return -1;
+  if (pq.cost && card.cost !== pq.cost) return -1;
+  return scoreText(normalizeText(card.name), normalizeText(`${card.source} ${card.summary} ${card.stats.join(' ')}`), pq);
+}
 
 /** Condições que dão desvantagem em ataques (diferente de testes de habilidade). */
 export function attackDisadvantage(sheet: SheetData): string[] {

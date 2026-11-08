@@ -7,7 +7,7 @@ import { Dices, RotateCcw, Search, Sparkles, Target } from 'lucide-react';
 import { formatModifier, getSpell, type Spell } from '@repo/rules';
 import { useEntry } from '@/components/entries';
 import { useDiceRoller } from '@/components/dice';
-import { normalizeText } from '@/components/spells/spell-utils';
+import { parseQuery } from '@/components/spells/smart-search';
 import { activeSpellcasting, derivedStats, getSheet } from '@/lib/sheet';
 import { cn } from '@/lib/utils';
 import type { CharacterApi } from './useCharacter';
@@ -15,8 +15,9 @@ import { GhostButton, Panel, inputCls } from './ui';
 import { pactSlots } from './logic';
 import { useSheetRoll } from './useSheetRoll';
 import { accentText } from './class-style';
+import GameCard from './GameCard';
 import {
-  SECTIONS, attackDisadvantage, buildActionCards, cardMatches, lowestSlot, turnSlot,
+  SECTIONS, attackDisadvantage, buildActionCards, cardScore, lowestSlot, turnSlot,
   type ActionCard, type DamageRoll, type TurnSlot,
 } from './action-cards';
 
@@ -39,8 +40,13 @@ export default function ActionsTab({ api }: { api: CharacterApi }) {
   const [query, setQuery] = useState('');
 
   const cards = useMemo(() => buildActionCards(c), [c]);
-  const q = normalizeText(query.trim());
-  const visible = cards.filter((card) => cardMatches(card, q));
+  const pq = parseQuery(query);
+  // Com palavras na busca, as cartas mais relevantes vêm primeiro dentro de cada seção.
+  const visible = cards
+    .map((card) => ({ card, score: cardScore(card, pq) }))
+    .filter((x) => x.score >= 0)
+    .sort((a, b) => (pq.terms.length ? b.score - a.score : 0))
+    .map((x) => x.card);
   const slots = sc?.kind === 'pact' ? pactSlots(c.level) : d.spell?.slots ?? [];
   const concSpell = sheet.concentratingOn ? getSpell(sheet.concentratingOn) : undefined;
 
@@ -114,7 +120,7 @@ export default function ActionsTab({ api }: { api: CharacterApi }) {
           <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-ink-muted" aria-hidden />
           <input
             value={query} onChange={(e) => setQuery(e.target.value)} aria-label="Filtrar cartas"
-            placeholder="Filtrar: furtivo, veneno, concentração..." className={cn(inputCls, 'pl-8')}
+            placeholder="Filtrar: fogo, cura bônus, controle, reação..." className={cn(inputCls, 'pl-8')}
           />
         </div>
       </Panel>
@@ -131,44 +137,16 @@ export default function ActionsTab({ api }: { api: CharacterApi }) {
               {section.title}
               <span className="font-normal text-ink-faint">{list.length}</span>
             </h3>
-            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="grid grid-cols-1 gap-3 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
               {list.map((card) => {
                 const slot = turnSlot(card);
                 const spell = card.spell;
                 const noSlot = !!spell && spell.level > 0 && lowestSlot(spell.level, slots, sheet.spellSlotsUsed) === null;
                 return (
-                  <motion.article
-                    key={card.key}
-                    initial={reduce ? false : { opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: reduce ? 0 : 0.16 }}
-                    style={{ borderTopColor: section.color }}
-                    className={cn(
-                      'relative flex flex-col rounded-xl border border-t-2 border-line bg-canvas p-3 transition-colors hover:bg-base focus-within:ring-2 focus-within:ring-indigo/70',
-                      slot && turn[slot] && 'opacity-60',
-                    )}
+                  <GameCard
+                    key={card.key} card={card} color={section.color} reduce={reduce}
+                    used={!!slot && turn[slot]} onOpen={() => openEntry(card.entry)}
                   >
-                    {/* O botão do título cobre a carta inteira; os botões de ação ficam acima dele. */}
-                    <button
-                      type="button" onClick={() => openEntry(card.entry)}
-                      aria-label={`Ver detalhes de ${card.name}`}
-                      className="text-left text-sm font-semibold text-ink outline-none after:absolute after:inset-0 after:rounded-xl after:content-['']"
-                    >
-                      {card.name}
-                    </button>
-                    <p className="mt-0.5 text-[11px] text-ink-muted">
-                      {card.source}
-                      {section.id === 'truque' && <span style={{ color: accentText(section.color) }}> · {card.costLabel}</span>}
-                      {section.id === 'outro' && <span> · {card.costLabel}</span>}
-                    </p>
-                    <p className="mt-2 flex-1 text-[13px] leading-snug text-ink-soft">{card.summary}</p>
-                    {card.stats.length > 0 && (
-                      <ul className="mt-2 flex flex-wrap gap-1">
-                        {card.stats.map((st) => (
-                          <li key={st} className="rounded border border-line bg-base px-1.5 py-0.5 text-[11px] text-ink-body">{st}</li>
-                        ))}
-                      </ul>
-                    )}
-                    <div className="relative z-10 mt-3 flex flex-wrap gap-1.5">
                       {card.attack && (
                         <GhostButton onClick={(e) => rollAttack(card, e)} title="Shift: vantagem, Alt: desvantagem">
                           <Target className="h-3 w-3" />Acerto {formatModifier(card.attack.bonus)}
@@ -186,8 +164,7 @@ export default function ActionsTab({ api }: { api: CharacterApi }) {
                       ) : !card.attack && slot && (
                         <GhostButton onClick={() => markUsed(card)}>Usar</GhostButton>
                       )}
-                    </div>
-                  </motion.article>
+                  </GameCard>
                 );
               })}
             </div>

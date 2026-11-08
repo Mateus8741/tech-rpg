@@ -5,10 +5,11 @@ import { useSearchParams } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Search, X, BookOpen, Star } from "lucide-react";
 import { CLASSES, SPELLS } from "@repo/rules";
+import { parseQuery, scoreSpell } from "@/components/spells/smart-search";
 import { cn } from "@/lib/utils";
 import { accentText } from "@/components/sheet/class-style";
 import {
-  SPELL_SCHOOLS, SPELL_SCHOOL_COLORS, SpellDetail, SpellRow, normalizeText, spellLevelLabel,
+  SPELL_SCHOOLS, SPELL_SCHOOL_COLORS, SpellDetail, SpellRow, spellLevelLabel,
 } from "@/components/spells";
 import { useSpellFavorites } from "@/components/spells/useSpellFavorites";
 
@@ -95,9 +96,12 @@ export function SpellBrowser() {
   }, [q, classes, levels, schools, concentration, ritual, comps, onlyFav, source, sort, selectedId]);
 
   const filtered = useMemo(() => {
-    const nq = normalizeText(q.trim());
+    const pq = parseQuery(q);
+    const scores = new Map<string, number>();
     const list = SPELLS.filter((s) => {
-      if (nq && !normalizeText(s.name).includes(nq)) return false;
+      const score = scoreSpell(s, pq);
+      if (score < 0) return false;
+      scores.set(s.id, score);
       if (classes.size && !s.classes.some((c) => classes.has(c))) return false;
       if (levels.size && !levels.has(s.level)) return false;
       if (schools.size && !schools.has(s.school)) return false;
@@ -110,6 +114,8 @@ export function SpellBrowser() {
     });
     const byName = (a: string, b: string) => a.localeCompare(b, "pt-BR");
     list.sort((a, b) => {
+      // Com palavras na busca, a ordem por nome vira ordem por relevância.
+      if (sort === "nome" && pq.terms.length) return (scores.get(b.id) ?? 0) - (scores.get(a.id) ?? 0) || byName(a.name, b.name);
       if (sort === "nivel") return a.level - b.level || byName(a.name, b.name);
       if (sort === "escola") return byName(a.school, b.school) || a.level - b.level || byName(a.name, b.name);
       return byName(a.name, b.name);
@@ -170,7 +176,7 @@ export function SpellBrowser() {
             aria-label="Buscar magia pelo nome"
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Buscar magia pelo nome…"
+            placeholder="Buscar: fogo em área, cura bônus, controle 2º, mago ritual…"
             className="h-10 w-full rounded-lg border border-line bg-canvas pl-9 pr-9 text-sm text-ink placeholder:text-ink-muted focus:border-[#6366f1] focus:outline-none"
           />
           {q && (
