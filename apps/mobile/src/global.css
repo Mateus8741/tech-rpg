@@ -1,0 +1,67 @@
+@import 'tailwindcss';
+@import 'uniwind';
+
+/* Mesmos tokens do apps/web (globals.css), em versão clara e escura. */
+@theme {
+  --color-indigo: #6366f1;
+  --color-violet: #8b5cf6;
+  --color-gold: #f5c451;
+  --color-gold-deep: #b8892a;
+
+  --font-display: 'Cinzel_700Bold';
+  --font-display-medium: 'Cinzel_500Medium';
+}
+
+@layer theme {
+  :root {
+    @variant light {
+      --color-void: #e9ecf4;
+      --color-base: #f3f4f9;
+      --color-canvas: #f7f8fc;
+      --color-surface: #ffffff;
+      --color-surface-2: #f0f2f8;
+      --color-surface-3: #e5e8f1;
+      --color-line: #dde1ec;
+      --color-line-strong: #bfc6d6;
+      --color-ink: #0f172a;
+      --color-ink-body: #1e293b;
+      --color-ink-soft: #334155;
+      --color-ink-muted: #4a5870;
+      --color-ink-faint: #576680;
+      --color-indigo-ink: #4338ca;
+      --color-indigo-ink-soft: #3730a3;
+      --color-violet-ink: #6d28d9;
+      --color-violet-ink-soft: #5b21b6;
+      --color-gold-ink: #8a5d00;
+      --color-gold-soft: #7a5200;
+      --color-danger: #dc2626;
+      --color-danger-soft: #b91c1c;
+      --color-success: #15803d;
+    }
+
+    @variant dark {
+      --color-void: #07080f;
+      --color-base: #0a0c14;
+      --color-canvas: #0f1117;
+      --color-surface: #13151f;
+      --color-surface-2: #181b29;
+      --color-surface-3: #1e2035;
+      --color-line: #1e2035;
+      --color-line-strong: #2d2f45;
+      --color-ink: #e2e8f0;
+      --color-ink-body: #cbd5e1;
+      --color-ink-soft: #a3b1c6;
+      --color-ink-muted: #8493a8;
+      --color-ink-faint: #7a899f;
+      --color-indigo-ink: #a5b4fc;
+      --color-indigo-ink-soft: #c7d2fe;
+      --color-violet-ink: #a78bfa;
+      --color-violet-ink-soft: #c4b5fd;
+      --color-gold-ink: #f5c451;
+      --color-gold-soft: #fbe3a1;
+      --color-danger: #f87171;
+      --color-danger-soft: #fca5a5;
+      --color-success: #4ade80;
+    }
+  }
+}

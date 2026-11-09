@@ -75,6 +75,7 @@ pnpm dev
 Isso iniciará:
 - Frontend (web): http://localhost:3000
 - Backend (API): http://localhost:3001
+- App mobile (Expo): QR code no terminal — veja [apps/mobile/README.md](apps/mobile/README.md)
 
 ### Primeiro Acesso
 
