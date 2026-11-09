@@ -13,8 +13,11 @@ import {
   type TextProps,
   type ViewProps,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useCSSVariable } from 'uniwind';
+import { SafeAreaView as RNSafeAreaView } from 'react-native-safe-area-context';
+import { useCSSVariable, withUniwind } from 'uniwind';
+
+// Componentes de terceiros só aceitam className via withUniwind.
+const SafeAreaView = withUniwind(RNSafeAreaView);
 
 /*
  * Kit de UI compartilhado do app mobile. Tudo estilizado com classes Tailwind (Uniwind)

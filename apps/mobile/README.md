@@ -32,4 +32,6 @@ src/
 
 Use `className` com os tokens do `global.css` (`bg-surface`, `text-ink`, `text-gold-ink`, `border-line`, `font-display`…). As variantes `dark:` não são necessárias: os tokens já mudam com o tema. Para cores em props que não aceitam `className` (ícones, navegação), use `useThemeColor('--color-…')`.
 
+O Uniwind só aplica `className` nos componentes do próprio React Native. Componentes de terceiros (como o `SafeAreaView` de `react-native-safe-area-context`) precisam de `withUniwind(Componente)`, senão a classe é ignorada no iOS/Android, e no web parece funcionar. Teste mudanças de layout no simulador, não só no navegador.
+
 `pnpm check-types` gera os tipos do Uniwind (`src/uniwind-types.d.ts`) antes de rodar o `tsc`.
