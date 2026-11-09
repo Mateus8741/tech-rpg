@@ -216,7 +216,7 @@ export function Loading({ label }: { label?: string }) {
   return (
     <View className="flex-1 items-center justify-center gap-3 bg-canvas p-8">
       <ActivityIndicator color={color} />
-      {label && <Muted>{label}</Muted>}
+      {!!label && <Muted>{label}</Muted>}
     </View>
   );
 }
@@ -227,7 +227,7 @@ export function EmptyState({ icon = 'sparkles-outline', title, message, action }
     <View className="items-center justify-center gap-2 px-8 py-16">
       <Icon name={icon} size={40} color={faint} />
       <Heading className="text-center">{title}</Heading>
-      {message && <Muted className="text-center text-sm">{message}</Muted>}
+      {!!message && <Muted className="text-center text-sm">{message}</Muted>}
       {action && <View className="mt-3">{action}</View>}
     </View>
   );

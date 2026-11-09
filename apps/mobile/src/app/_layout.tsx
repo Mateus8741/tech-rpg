@@ -7,10 +7,12 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { useUniwind } from 'uniwind';
 
+import { restoreThemePreference } from '@/features/perfil/theme';
 import { SessionProvider, useSession } from '@/lib/session';
 import { useNavTheme } from '@/lib/nav-theme';
 
 SplashScreen.preventAutoHideAsync();
+restoreThemePreference();
 
 function RootNavigator() {
   const { session, loading } = useSession();
@@ -29,6 +31,7 @@ function RootNavigator() {
     <ThemeProvider value={navTheme}>
       <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
       <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
         <Stack.Protected guard={!!session}>
           <Stack.Screen name="(tabs)" />
         </Stack.Protected>

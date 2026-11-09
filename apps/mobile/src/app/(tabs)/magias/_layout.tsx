@@ -7,6 +7,7 @@ export default function MagiasLayout() {
   return (
     <Stack screenOptions={screenOptions}>
       <Stack.Screen name="index" options={{ title: 'Magias' }} />
+      <Stack.Screen name="[id]" options={{ title: 'Magia' }} />
     </Stack>
   );
 }

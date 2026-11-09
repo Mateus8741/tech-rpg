@@ -1,56 +1,35 @@
-# Welcome to your Expo app 👋
+# Fichas RPG — app mobile
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+App Expo (SDK 58) do monorepo, com expo-router, navegação por abas inferiores e Tailwind v4 via [Uniwind](https://uniwind.dev).
 
-## Get started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Rodando
 
 ```bash
-npm run reset-project
+pnpm install          # na raiz do monorepo
+pnpm --filter mobile dev
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+Abra no Expo Go (QR code), no simulador iOS (`i`) ou no emulador Android (`a`).
 
-### Other setup steps
+A API (`apps/api`) precisa estar rodando. Sem `EXPO_PUBLIC_API_URL`, o app usa o IP da máquina do Metro na porta 3001, então funciona em aparelho físico na mesma rede. Para apontar para outra API, copie `.env.example` para `.env.local`.
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## Estrutura
 
-## Learn more
+```
+src/
+  app/                    rotas (expo-router)
+    _layout.tsx           fontes, sessão, tema; login ↔ abas via Stack.Protected
+    login.tsx
+    (tabs)/               abas inferiores: personagens, magias, compendio, dados, perfil
+      <aba>/_layout.tsx   Stack de cada aba (a tab bar continua visível nos detalhes)
+  features/<aba>/         componentes e lógica de cada aba
+  components/ui/          kit de UI compartilhado (Card, Button, Badge, SearchBar…)
+  lib/                    api.ts (mesmo contrato do web), session.tsx, nav-theme.ts
+  global.css              tokens de cor (claro/escuro), os mesmos do apps/web
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Estilo
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Use `className` com os tokens do `global.css` (`bg-surface`, `text-ink`, `text-gold-ink`, `border-line`, `font-display`…). As variantes `dark:` não são necessárias: os tokens já mudam com o tema. Para cores em props que não aceitam `className` (ícones, navegação), use `useThemeColor('--color-…')`.
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+`pnpm check-types` gera os tipos do Uniwind (`src/uniwind-types.d.ts`) antes de rodar o `tsc`.
