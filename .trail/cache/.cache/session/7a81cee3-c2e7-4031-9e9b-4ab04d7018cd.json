@@ -12,5 +12,6 @@
   "turnUsedGraft": false,
   "graftTurns": 2,
   "reportedTurns": 1,
-  "lastTallyUuid": "5319f18e-a422-4d55-9587-0acc57c69210"
+  "lastTallyUuid": "5319f18e-a422-4d55-9587-0acc57c69210",
+  "summarized": true
 }
