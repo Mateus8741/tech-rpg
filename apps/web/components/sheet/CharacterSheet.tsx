@@ -4,7 +4,7 @@ import { tablistKeyDown } from '@/lib/a11y';
 import { useState } from 'react';
 import Link from 'next/link';
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from 'framer-motion';
-import { ArrowLeft, BookOpen, Backpack, ScrollText, Swords, User, Wand2, Zap } from 'lucide-react';
+import { ArrowLeft, BookOpen, Backpack, FileText, Pencil, Printer, ScrollText, Swords, User, Wand2, Zap } from 'lucide-react';
 import { getSheet } from '@/lib/sheet';
 import CombatTracker from '@/components/CombatTracker';
 import { useCharacter } from './useCharacter';
@@ -17,11 +17,14 @@ import FeaturesTab from './FeaturesTab';
 import SpellsTab from './SpellsTab';
 import EquipmentTab from './EquipmentTab';
 import NotesTab from './NotesTab';
+import PaperSheet from './PaperSheet';
+import PaperEditor, { type PaperZone } from './PaperEditor';
 import LegacyBanner from './LegacyBanner';
 import { cn } from '@/lib/utils';
 
 const TABS = [
   { id: 'ficha', label: 'Ficha', icon: User },
+  { id: 'papel', label: 'Ficha de papel', icon: FileText },
   { id: 'acoes', label: 'Ações', icon: Zap },
   { id: 'caracteristicas', label: 'Características', icon: ScrollText },
   { id: 'magias', label: 'Magias', icon: Wand2 },
@@ -34,6 +37,8 @@ type TabId = (typeof TABS)[number]['id'];
 export default function CharacterSheet({ id }: { id: string }) {
   const api = useCharacter(id);
   const [tab, setTab] = useState<TabId>('ficha');
+  const [paperEdit, setPaperEdit] = useState(false);
+  const [zone, setZone] = useState<PaperZone>('equipamentos');
   const reduce = useReducedMotion();
 
   if (api.loading) return <div className="flex h-full items-center justify-center text-ink-muted">Carregando...</div>;
@@ -103,6 +108,19 @@ export default function CharacterSheet({ id }: { id: string }) {
                 transition={{ duration: reduce ? 0 : 0.18 }}
               >
                 {tab === 'ficha' && <SheetTab api={api} />}
+                {tab === 'papel' && (
+                  <div className="mx-auto max-w-3xl space-y-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-ink-muted">
+                      <span>{paperEdit ? 'Toque numa caixa da ficha (ou escolha abaixo) para editar.' : 'Mesma ficha do papel, preenchida com os dados do personagem.'}</span>
+                      <div className="flex gap-2">
+                        <button type="button" aria-pressed={paperEdit} onClick={() => setPaperEdit((v) => !v)} className={cn('inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-[13px]', paperEdit ? 'border-[#6366f1]/60 bg-[#6366f1]/15 text-ink' : 'border-line-strong text-ink-soft hover:bg-ink/5 hover:text-ink')}><Pencil className="h-4 w-4" />{paperEdit ? 'Concluir edição' : 'Editar'}</button>
+                        <Link href={`/characters/${c.id}/print`} className="inline-flex items-center gap-1.5 rounded-lg border border-line-strong px-3 py-1.5 text-[13px] text-ink-soft hover:bg-ink/5 hover:text-ink"><Printer className="h-4 w-4" />Imprimir / PDF</Link>
+                      </div>
+                    </div>
+                    {paperEdit && <PaperEditor api={api} zone={zone} onZone={setZone} />}
+                    <div className="overflow-hidden rounded-lg shadow-lg"><PaperSheet character={c} editing={paperEdit} zone={zone} onZone={setZone} /></div>
+                  </div>
+                )}
                 {tab === 'acoes' && <ActionsTab api={api} />}
                 {tab === 'caracteristicas' && <FeaturesTab api={api} />}
                 {tab === 'magias' && <SpellsTab api={api} />}

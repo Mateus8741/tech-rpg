@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { ABILITIES, WEAPONS, getBackground, getClass, getRace, getSpell } from '@repo/rules';
 import { getCharacter, type Character } from '@/lib/api';
 import { derivedStats, getSheet, scoreOf } from '@/lib/sheet';
+import PaperSheet from '@/components/sheet/PaperSheet';
 import './print.css';
 
 const sign = (n: number) => (n >= 0 ? `+${n}` : `${n}`);
@@ -16,6 +17,7 @@ export default function PrintPage() {
   const router = useRouter();
   const [c, setC] = useState<Character | null>(null);
   const [error, setError] = useState('');
+  const [layout, setLayout] = useState<'papel' | 'resumo'>('papel');
 
   // Marca o body para o CSS de impressão (esconde sidebar/DiceTray)
   useEffect(() => {
@@ -36,9 +38,14 @@ export default function PrintPage() {
     <div className="ps-root">
       <div className="ps-toolbar">
         <Link href={`/characters/${c.id}`}>← Voltar à ficha</Link>
+        <button type="button" onClick={() => setLayout((l) => (l === 'papel' ? 'resumo' : 'papel'))}>
+          Layout: {layout === 'papel' ? 'Ficha de papel' : 'Resumo'}
+        </button>
         <button type="button" className="primary" onClick={() => window.print()}>Imprimir / Salvar PDF</button>
       </div>
-      <Sheet c={c} />
+      {layout === 'papel' ? (
+        <div className="ps-paper"><PaperSheet character={c} /></div>
+      ) : <Sheet c={c} />}
     </div>
   );
 }

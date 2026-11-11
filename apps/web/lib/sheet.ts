@@ -45,6 +45,7 @@ export interface SheetData {
   resources: ResourceDef[];                     // fúria, ki, usos por descanso...
   coins: Coins;
   spellsFavorite: string[];                     // ids de magia favoritas
+  cm?: number[];                                // C.M da ficha de papel: parcelas da soma (ex.: [10, 1, 3, 1])
 }
 
 export const emptySheet = (): SheetData => ({

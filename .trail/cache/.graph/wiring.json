@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": 1,
-    "nodeCount": 1115,
-    "edgeCount": 2571,
+    "nodeCount": 1149,
+    "edgeCount": 2644,
     "languages": [
       "javascript",
       "python",
@@ -4218,12 +4218,12 @@
       "name": "page.tsx",
       "kind": "file",
       "path": "apps/web/app/(app)/characters/[id]/print/page.tsx",
-      "span": "L1-L212",
+      "span": "L1-L219",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "ce7f461a4d61d04b909d822f4e87476ee6c0096601c4489e77c979a4914d3e24",
-      "chars": 9985,
+      "body_hash": "712363d48a131184eeee1f6ed7c32cfa65c1b701c961c0595c480c6cf1b6f817",
+      "chars": 10403,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -4233,11 +4233,11 @@
       "name": "PrintPage",
       "kind": "function",
       "path": "apps/web/app/(app)/characters/[id]/print/page.tsx",
-      "span": "L14-L44",
+      "span": "L15-L51",
       "signature": "function PrintPage()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "56de928b8454091debe37113d58380a5d99aba86ee1b3ddf7dc7ecd4ed699e84",
+      "body_hash": "e549fcbd78d567ca19324ec72cea861886e5574fe990a50899fd63a10b678eff",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -4247,7 +4247,7 @@
       "name": "Sheet",
       "kind": "function",
       "path": "apps/web/app/(app)/characters/[id]/print/page.tsx",
-      "span": "L46-L204",
+      "span": "L53-L211",
       "signature": "function Sheet({ c }: { c: Character })",
       "exported": false,
       "origin": "ast",
@@ -4261,7 +4261,7 @@
       "name": "sign",
       "kind": "function",
       "path": "apps/web/app/(app)/characters/[id]/print/page.tsx",
-      "span": "L11-L11",
+      "span": "L12-L12",
       "signature": "sign = (n: number)",
       "exported": false,
       "origin": "ast",
@@ -4275,7 +4275,7 @@
       "name": "Stat",
       "kind": "function",
       "path": "apps/web/app/(app)/characters/[id]/print/page.tsx",
-      "span": "L206-L208",
+      "span": "L213-L215",
       "signature": "Stat = ({ label, v }: { label: string; v: string | number })",
       "exported": false,
       "origin": "ast",
@@ -4289,7 +4289,7 @@
       "name": "Text",
       "kind": "function",
       "path": "apps/web/app/(app)/characters/[id]/print/page.tsx",
-      "span": "L209-L211",
+      "span": "L216-L218",
       "signature": "Text = ({ title, t }: { title: string; t?: string })",
       "exported": false,
       "origin": "ast",
@@ -7508,12 +7508,12 @@
       "name": "CharacterSheet.tsx",
       "kind": "file",
       "path": "apps/web/components/sheet/CharacterSheet.tsx",
-      "span": "L1-L122",
+      "span": "L1-L140",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "87de6575ee28e8d29a99a6c8aa62d1d5766ceb84358edcad7979db0e67104d6d",
-      "chars": 5791,
+      "body_hash": "b3f4bc82b1bdd5ab99d36dd2291a9a1edd694855e18a784ed7da2c15e0a50d97",
+      "chars": 7562,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -7523,11 +7523,11 @@
       "name": "CharacterSheet",
       "kind": "function",
       "path": "apps/web/components/sheet/CharacterSheet.tsx",
-      "span": "L34-L121",
+      "span": "L37-L139",
       "signature": "function CharacterSheet({ id }: { id: string })",
       "exported": true,
       "origin": "ast",
-      "body_hash": "8eef9322e3fb478ff60a41ecc9d9e553502ba509520533a248eb3faf59cd0153",
+      "body_hash": "37b7cc608952676bd5fe6a9deec2ddaa1a8c16c2bbd054f51c5af0481b1fa8d0",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -7537,7 +7537,7 @@
       "name": "TabId",
       "kind": "type",
       "path": "apps/web/components/sheet/CharacterSheet.tsx",
-      "span": "L32-L32",
+      "span": "L35-L35",
       "signature": "type TabId = (typeof TABS)[number]['id'];",
       "exported": false,
       "origin": "ast",
@@ -9278,6 +9278,484 @@
       "exported": true,
       "origin": "ast",
       "body_hash": "1f14ecc482870715df4b52f4426014312f2e1ccd93f47fa1a3309c924a291b79",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx",
+      "name": "PaperEditor.tsx",
+      "kind": "file",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L1-L243",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "b505ce844a34c82ad18390ce953e2f8deeb0f5e1bceb43f83341b62104f3b6f4",
+      "chars": 15441,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor",
+      "name": "AttacksEditor",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L47-L101",
+      "signature": "function AttacksEditor({ api }: { api: CharacterApi })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "d6cd04a471e7b093d406d7059cf8ecff180fc0c8ccad8be46dafa54fdb37a39d",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.add",
+      "name": "add",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L69-L73",
+      "signature": "add = ()",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "ab935942d99d2fcd95daade4d958c84c8788711d962aa1f9b8720ed975277026",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.dmg",
+      "name": "dmg",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L52-L52",
+      "signature": "dmg = (name: string)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "19750bb06deefafba7ff539456fd97ece831c98bd0bf4ef78f42590cfae46bee",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.remove",
+      "name": "remove",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L65-L68",
+      "signature": "remove = (i: number)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "9aa4ff57898701d404edefddca63d2dabf2951cc072352df5963fd17e79e6e5c",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.setDamage",
+      "name": "setDamage",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L54-L58",
+      "signature": "setDamage = (name: string, damage: string, oldName = name)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "6f616b2a2499928bb6fb5dd037bcece1f47d76c97f1570173b0019926e01e0b3",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.update",
+      "name": "update",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L59-L64",
+      "signature": "update = (i: number, p: { name?: string; attack?: number; damage?: string })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "27d23b554d93ca891d749cf36380419c0e834cd2a7438fa2415d89a20809b7e6",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#Del",
+      "name": "Del",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L27-L29",
+      "signature": "Del = ({ onClick, label }: { onClick: () => void; label: string })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "bbead66639617ed43754ca4b17172702ff0a76d4ae56388e2aee27b73d90c915",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor",
+      "name": "ItemsEditor",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L103-L130",
+      "signature": "function ItemsEditor({ api }: { api: CharacterApi })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "7281fef25588afa8eec5acccba9d095b5cf313da37f7255ab232b6288b07718b",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor.updEq",
+      "name": "updEq",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L107-L107",
+      "signature": "updEq = (i: number, p: Partial<Equipment>)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "36790cf797b163ccc7670977da5cd3c1ccd9fbbedf971a66f6771c7948992b5c",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor.updInv",
+      "name": "updInv",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L108-L108",
+      "signature": "updInv = (i: number, p: Partial<InventoryItem>)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "6d90cecc03bbaaab0906ae56e80c10c004c6640666461bf3f1ec8bfdbb92a81c",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#numOr",
+      "name": "numOr",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L25-L25",
+      "signature": "numOr = (v: string, d = 0)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "23acb11b963bd8efa5ba3d7a74cac3b1bdf6c1fe74358b6485cf94a11dae2e17",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#PaperEditor",
+      "name": "PaperEditor",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L189-L242",
+      "signature": "function PaperEditor({ api, zone, onZone }: { api: CharacterApi; zone: PaperZone; onZone: (z: PaperZone) => void })",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "ea4046de75fd04aaa0c139966f4e1a42ee3f9b89313274e75e15b951e3169b2d",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#PaperEditor.setCm",
+      "name": "setCm",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L192-L192",
+      "signature": "setCm = (next: number[])",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "c1eda276f3cc50d007029133a39489b1ed91736143320728eb09ca45290af24d",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#PaperZone",
+      "name": "PaperZone",
+      "kind": "type",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L13-L13",
+      "signature": "type PaperZone = 'ataques' | 'equipamentos' | 'idiomas' | 'caracteristicas' | 'magias' | 'moedas' | 'cm';",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "b09f684a695d2d22af7c66ae46bcbf0c60866ea1e4baab455ff100ac210af63e",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#Row",
+      "name": "Row",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L26-L26",
+      "signature": "Row = ({ children }: { children: React.ReactNode })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "d774f1c2e5ef94b4064a17f532f59b679108fd2d43267a1f8d75b1af660e5885",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor",
+      "name": "SpellsEditor",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L132-L187",
+      "signature": "function SpellsEditor({ api }: { api: CharacterApi })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "a194bd71cee22af3165a8c6bc6f46c7af3e3be4dc596029bf333cd8598301d67",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor.add",
+      "name": "add",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L141-L141",
+      "signature": "add = (id: string)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "d3b1854dddd7719d4499a1c7d346bcbad4a63b8edc9240166bd05b8e63cace1b",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor.remove",
+      "name": "remove",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L140-L140",
+      "signature": "remove = (id: string)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "9c052d410cc2eec538888874e7a9b6acd24bd854d38812358ab5a56231d6c6f9",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor.setUsed",
+      "name": "setUsed",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L143-L143",
+      "signature": "setUsed = (level: number, v: number)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "753f41bcff8f8a4355a4f2850252bc451e8b64a3850ea90d3ac5857db5f12414",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor.togglePrepared",
+      "name": "togglePrepared",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L142-L142",
+      "signature": "togglePrepared = (id: string)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "f36fd1c8f3de1f08eff5e516c7dccf8922032439784058cc94f465ddd23fdf4d",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperEditor.tsx#StringList",
+      "name": "StringList",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperEditor.tsx",
+      "span": "L32-L45",
+      "signature": "function StringList({ items, onChange, placeholder, addLabel }: { items: string[]; onChange: (next: string[]) => void; placeholder: string; addLabel: string })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "d936ab1d7da08008696189732e42c7804cc6b7313cc651377e390254c06a40ac",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperSheet.tsx",
+      "name": "PaperSheet.tsx",
+      "kind": "file",
+      "path": "apps/web/components/sheet/PaperSheet.tsx",
+      "span": "L1-L269",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "c44acbd1a598cf86b183a4c776124f535255a08e7718aaf7485b2ab8405ed550",
+      "chars": 13222,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperSheet.tsx#Align",
+      "name": "Align",
+      "kind": "type",
+      "path": "apps/web/components/sheet/PaperSheet.tsx",
+      "span": "L17-L17",
+      "signature": "type Align = 'l' | 'c';",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "b75f9587f2e98715fcad47fea615585be3ffe78cc62bb53931f7cb4502cf3ad2",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperSheet.tsx#DivStyle",
+      "name": "DivStyle",
+      "kind": "type",
+      "path": "apps/web/components/sheet/PaperSheet.tsx",
+      "span": "L7-L7",
+      "signature": "type DivStyle = Record<string, string | number>;",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "3b59599dbc09f5c9bc7497f35230a1ca4484d8139846341f1875322db27652f3",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperSheet.tsx#Dot",
+      "name": "Dot",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperSheet.tsx",
+      "span": "L36-L44",
+      "signature": "function Dot({ x, y, expert }: { x: number; y: number; expert?: boolean })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "d986513a96504b8a94a9d15548e7950b21bc5ec657740fe311f7715a257a8e84",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperSheet.tsx#mid",
+      "name": "mid",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperSheet.tsx",
+      "span": "L72-L72",
+      "signature": "mid = (y: number, size: number)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "8e1a85bb649fd27cc45cafdfb7071fe16a875fdae43708def242b0c3914486e2",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperSheet.tsx#Page",
+      "name": "Page",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperSheet.tsx",
+      "span": "L94-L104",
+      "signature": "function Page({ n, children }: { n: 1 | 2; children: ReactNode })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "e94ddb6dd7febc907dfc53bab6df17f2b68cefd31f5a5066dfcb4a754f915e14",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperSheet.tsx#PaperSheet",
+      "name": "PaperSheet",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperSheet.tsx",
+      "span": "L106-L268",
+      "signature": "function PaperSheet({ character: c, editing = false, zone, onZone }: { character: Character; editing?: boolean; zone?: PaperZone | null; onZone?: (z: PaperZone) => void })",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "9e07e7595a7e7ced1947a6cea34a86c0d2f936819c30b8604d219dff71cccda0",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperSheet.tsx#pt",
+      "name": "pt",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperSheet.tsx",
+      "span": "L15-L15",
+      "signature": "pt = (n: number)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "99559bbb4247396e5f4b8d90734aeac659f1021fcd597d80a7588b81d418b36a",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperSheet.tsx#Rect",
+      "name": "Rect",
+      "kind": "type",
+      "path": "apps/web/components/sheet/PaperSheet.tsx",
+      "span": "L46-L46",
+      "signature": "type Rect = { x: number; y: number; w: number; h: number };",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "673c44ed685563b54be9979005991f917d6b5b5a1014e35533aa90ee85d68f45",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperSheet.tsx#sign",
+      "name": "sign",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperSheet.tsx",
+      "span": "L14-L14",
+      "signature": "sign = (n: number)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "f934f2386e7ae363ae0d880bdf9f6881c37da2f9578c5fdbba70b45e5b7f0225",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperSheet.tsx#T",
+      "name": "T",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperSheet.tsx",
+      "span": "L20-L33",
+      "signature": "function T({ x, y, size = 9, align = 'l', w, h, children, style }: { x: number; y: number; size?: number; align?: Align; w?: number; h?: number; children: ReactNode; style?: DivStyle; })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "72be38ae32ed9c011ba465ddd946ec223d3b88251fdccfd3ccc06ae79678b35c",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/sheet/PaperSheet.tsx#Zones",
+      "name": "Zones",
+      "kind": "function",
+      "path": "apps/web/components/sheet/PaperSheet.tsx",
+      "span": "L58-L70",
+      "signature": "function Zones({ page, active, onZone }: { page: 1 | 2; active?: PaperZone | null; onZone: (z: PaperZone) => void })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "89e7e9dc40c173287527c89020ea2753159c7774b56765bf3b515922c56a5b3b",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -14541,12 +15019,12 @@
       "name": "sheet.ts",
       "kind": "file",
       "path": "apps/web/lib/sheet.ts",
-      "span": "L1-L112",
+      "span": "L1-L113",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "9cde8025216f87c503352ae7ec2561c91fabf3a02aeca567abf59b6f014aaf0e",
-      "chars": 5362,
+      "body_hash": "310473e69d62fdc2cc32c8a715fa7db77894364850c733e45fa5daccbacaf4dd",
+      "chars": 5474,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -14556,7 +15034,7 @@
       "name": "activeSpellcasting",
       "kind": "function",
       "path": "apps/web/lib/sheet.ts",
-      "span": "L76-L81",
+      "span": "L77-L82",
       "signature": "function activeSpellcasting(sheet: Pick<SheetData, \"classId\" | \"subclassId\">, level: number): SpellcastingInfo | undefined",
       "exported": true,
       "origin": "ast",
@@ -14584,7 +15062,7 @@
       "name": "derivedStats",
       "kind": "function",
       "path": "apps/web/lib/sheet.ts",
-      "span": "L87-L111",
+      "span": "L88-L112",
       "signature": "function derivedStats(c: Character)",
       "exported": true,
       "origin": "ast",
@@ -14598,7 +15076,7 @@
       "name": "mod",
       "kind": "function",
       "path": "apps/web/lib/sheet.ts",
-      "span": "L90-L90",
+      "span": "L91-L91",
       "signature": "mod = (k: AbilityKey)",
       "exported": true,
       "origin": "ast",
@@ -14612,7 +15090,7 @@
       "name": "emptySheet",
       "kind": "function",
       "path": "apps/web/lib/sheet.ts",
-      "span": "L50-L61",
+      "span": "L51-L62",
       "signature": "emptySheet = (): SheetData",
       "exported": true,
       "origin": "ast",
@@ -14626,7 +15104,7 @@
       "name": "getSheet",
       "kind": "function",
       "path": "apps/web/lib/sheet.ts",
-      "span": "L63-L64",
+      "span": "L64-L65",
       "signature": "getSheet = (c: Pick<Character, \"customData\">): SheetData",
       "exported": true,
       "origin": "ast",
@@ -14654,7 +15132,7 @@
       "name": "scoreOf",
       "kind": "function",
       "path": "apps/web/lib/sheet.ts",
-      "span": "L69-L69",
+      "span": "L70-L70",
       "signature": "scoreOf = (c: Character, k: AbilityKey)",
       "exported": true,
       "origin": "ast",
@@ -14668,11 +15146,11 @@
       "name": "SheetData",
       "kind": "interface",
       "path": "apps/web/lib/sheet.ts",
-      "span": "L20-L48",
+      "span": "L20-L49",
       "signature": "interface SheetData",
       "exported": true,
       "origin": "ast",
-      "body_hash": "cbf7691d8d7c04c8ee71fe54ca5c5d28e203f2d1af3f6afb85d0c1c30be73fd8",
+      "body_hash": "aef12c4ad5970753e4ce8dfc38b6abbf9cdbcfedc6a1977a17f1e066fdcf569f",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -14682,7 +15160,7 @@
       "name": "spellListClassId",
       "kind": "function",
       "path": "apps/web/lib/sheet.ts",
-      "span": "L84-L85",
+      "span": "L85-L86",
       "signature": "spellListClassId = (sheet: Pick<SheetData, \"classId\">)",
       "exported": true,
       "origin": "ast",
@@ -19831,6 +20309,12 @@
     },
     {
       "source": "apps/web/app/(app)/characters/[id]/print/page.tsx",
+      "target": "@/components/sheet/PaperSheet",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/(app)/characters/[id]/print/page.tsx",
       "target": "@/lib/api",
       "relation": "imports",
       "confidence": "extracted"
@@ -20671,6 +21155,12 @@
     },
     {
       "source": "apps/web/components/CombatTracker.tsx#CombatTracker",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.setDamage",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/CombatTracker.tsx#CombatTracker",
       "target": "apps/web/lib/utils.ts#cn",
       "relation": "calls",
       "confidence": "inferred"
@@ -20716,6 +21206,30 @@
       "target": "apps/web/components/CombatTracker.tsx#CombatTracker.passTurn",
       "relation": "contains",
       "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/CombatTracker.tsx#CombatTracker.applyDamageWithDebuff",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.setDamage",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/CombatTracker.tsx#CombatTracker.applyDefensiveDamage",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.setDamage",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/CombatTracker.tsx#CombatTracker.applyDirectDamage",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.setDamage",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/CombatTracker.tsx#CombatTracker.clearCombat",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.setDamage",
+      "relation": "calls",
+      "confidence": "inferred"
     },
     {
       "source": "apps/web/components/compendio/BackgroundDetail.tsx",
@@ -22849,6 +23363,18 @@
     },
     {
       "source": "apps/web/components/sheet/CharacterSheet.tsx",
+      "target": "apps/web/components/sheet/PaperEditor.tsx",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/CharacterSheet.tsx",
+      "target": "apps/web/components/sheet/PaperSheet.tsx",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/CharacterSheet.tsx",
       "target": "apps/web/components/sheet/SheetTab.tsx",
       "relation": "imports",
       "confidence": "extracted"
@@ -24922,6 +25448,450 @@
       "target": "apps/web/lib/utils.ts#cn",
       "relation": "calls",
       "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#Del",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#numOr",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#PaperEditor",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#PaperZone",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#Row",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#StringList",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "@/lib/api",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "@/lib/sheet",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "@/lib/utils",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "@repo/rules",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "apps/web/components/sheet/ui.tsx",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "apps/web/components/sheet/useCharacter.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "lucide-react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.dmg",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.update",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#numOr",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor",
+      "target": "apps/web/lib/utils.ts#cn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.add",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.dmg",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.remove",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.setDamage",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.update",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.update",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.dmg",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.update",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#AttacksEditor.setDamage",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor.updEq",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor.updInv",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#numOr",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor.updEq",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#ItemsEditor.updInv",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#PaperEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#numOr",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#PaperEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#PaperEditor.setCm",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#PaperEditor",
+      "target": "apps/web/lib/utils.ts#cn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#PaperEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#PaperEditor.setCm",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#numOr",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor.setUsed",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor.togglePrepared",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor",
+      "target": "apps/web/lib/sheet.ts#spellListClassId",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor",
+      "target": "apps/web/lib/utils.ts#cn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor",
+      "target": "packages/rules/src/data/spells.ts#getSpell",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor.add",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor.remove",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor.setUsed",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor",
+      "target": "apps/web/components/sheet/PaperEditor.tsx#SpellsEditor.togglePrepared",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#Align",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#DivStyle",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#Dot",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#mid",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#Page",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#PaperSheet",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#pt",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#Rect",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#sign",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#T",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#Zones",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "@/lib/api",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "@/lib/sheet",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "@repo/rules",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "apps/web/components/sheet/PaperEditor.tsx",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx#Dot",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#pt",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx#PaperSheet",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#mid",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx#PaperSheet",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#pt",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx#PaperSheet",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#sign",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx#PaperSheet",
+      "target": "packages/rules/src/core.ts#abilityModifier",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx#PaperSheet",
+      "target": "packages/rules/src/data/backgrounds.ts#getBackground",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx#PaperSheet",
+      "target": "packages/rules/src/data/classes.ts#getClass",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx#PaperSheet",
+      "target": "packages/rules/src/data/races.ts#getRace",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx#PaperSheet",
+      "target": "packages/rules/src/data/spells.ts#getSpell",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx#T",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#pt",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/sheet/PaperSheet.tsx#Zones",
+      "target": "apps/web/components/sheet/PaperSheet.tsx#pt",
+      "relation": "calls",
+      "confidence": "extracted"
     },
     {
       "source": "apps/web/components/sheet/resources.ts",
@@ -27595,12 +28565,6 @@
     },
     {
       "source": "apps/web/components/wizard/AbilitiesStep.tsx#AbilitiesStep",
-      "target": "apps/web/components/sheet/ResourcesPanel.tsx#ResourcesPanel.update",
-      "relation": "calls",
-      "confidence": "inferred"
-    },
-    {
-      "source": "apps/web/components/wizard/AbilitiesStep.tsx#AbilitiesStep",
       "target": "apps/web/components/wizard/build.ts#baseScores",
       "relation": "calls",
       "confidence": "inferred"
@@ -27666,12 +28630,6 @@
       "confidence": "extracted"
     },
     {
-      "source": "apps/web/components/wizard/AbilitiesStep.tsx#AbilitiesStep.rollAll.done",
-      "target": "apps/web/components/sheet/ResourcesPanel.tsx#ResourcesPanel.update",
-      "relation": "calls",
-      "confidence": "inferred"
-    },
-    {
       "source": "apps/web/components/wizard/BackgroundStep.tsx",
       "target": "apps/web/components/wizard/BackgroundStep.tsx#BackgroundStep",
       "relation": "contains",
@@ -27727,12 +28685,6 @@
     },
     {
       "source": "apps/web/components/wizard/BackgroundStep.tsx#BackgroundStep",
-      "target": "apps/web/components/sheet/ResourcesPanel.tsx#ResourcesPanel.update",
-      "relation": "calls",
-      "confidence": "inferred"
-    },
-    {
-      "source": "apps/web/components/wizard/BackgroundStep.tsx#BackgroundStep",
       "target": "apps/web/components/wizard/BackgroundStep.tsx#BackgroundStep.roll",
       "relation": "calls",
       "confidence": "extracted"
@@ -27769,21 +28721,9 @@
     },
     {
       "source": "apps/web/components/wizard/BackgroundStep.tsx#BackgroundStep.roll",
-      "target": "apps/web/components/sheet/ResourcesPanel.tsx#ResourcesPanel.update",
-      "relation": "calls",
-      "confidence": "inferred"
-    },
-    {
-      "source": "apps/web/components/wizard/BackgroundStep.tsx#BackgroundStep.roll",
       "target": "apps/web/components/wizard/BackgroundStep.tsx#pick",
       "relation": "calls",
       "confidence": "extracted"
-    },
-    {
-      "source": "apps/web/components/wizard/BackgroundStep.tsx#BackgroundStep.rollAll",
-      "target": "apps/web/components/sheet/ResourcesPanel.tsx#ResourcesPanel.update",
-      "relation": "calls",
-      "confidence": "inferred"
     },
     {
       "source": "apps/web/components/wizard/BackgroundStep.tsx#BackgroundStep.rollAll",
@@ -28831,12 +29771,6 @@
     },
     {
       "source": "apps/web/components/wizard/ClassStep.tsx#ClassStep",
-      "target": "apps/web/components/sheet/ResourcesPanel.tsx#ResourcesPanel.update",
-      "relation": "calls",
-      "confidence": "inferred"
-    },
-    {
-      "source": "apps/web/components/wizard/ClassStep.tsx#ClassStep",
       "target": "apps/web/components/wizard/build.ts#classEquipmentLines",
       "relation": "calls",
       "confidence": "inferred"
@@ -28936,12 +29870,6 @@
       "target": "apps/web/components/wizard/ui.tsx",
       "relation": "imports",
       "confidence": "extracted"
-    },
-    {
-      "source": "apps/web/components/wizard/DetailsStep.tsx#DetailsStep",
-      "target": "apps/web/components/sheet/ResourcesPanel.tsx#ResourcesPanel.update",
-      "relation": "calls",
-      "confidence": "inferred"
     },
     {
       "source": "apps/web/components/wizard/DetailsStep.tsx#DetailsStep",
@@ -29131,12 +30059,6 @@
     },
     {
       "source": "apps/web/components/wizard/RaceStep.tsx#RaceStep",
-      "target": "apps/web/components/sheet/ResourcesPanel.tsx#ResourcesPanel.update",
-      "relation": "calls",
-      "confidence": "inferred"
-    },
-    {
-      "source": "apps/web/components/wizard/RaceStep.tsx#RaceStep",
       "target": "apps/web/components/wizard/build.ts#bonusText",
       "relation": "calls",
       "confidence": "inferred"
@@ -29300,12 +30222,6 @@
     {
       "source": "apps/web/components/wizard/SpellsStep.tsx#Picker",
       "target": "apps/web/components/wizard/ui.tsx#toggleIn",
-      "relation": "calls",
-      "confidence": "inferred"
-    },
-    {
-      "source": "apps/web/components/wizard/SpellsStep.tsx#SpellsStep",
-      "target": "apps/web/components/sheet/ResourcesPanel.tsx#ResourcesPanel.update",
       "relation": "calls",
       "confidence": "inferred"
     },
