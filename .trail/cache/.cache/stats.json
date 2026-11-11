@@ -1,17 +1,17 @@
 {
-  "nodeCount": 844,
-  "edgeCount": 2055,
+  "nodeCount": 1115,
+  "edgeCount": 2571,
   "languages": [
     "javascript",
     "python",
     "tsx",
     "typescript"
   ],
-  "totalCount": 844,
+  "totalCount": 1115,
   "readyCount": 0,
   "staleCount": 0,
   "dirty": false,
   "syncing": false,
-  "syncedAt": "2026-11-08T23:42:11.219Z",
-  "lastFile": "smart-search.ts"
+  "syncedAt": "2026-11-09T01:04:00.193Z",
+  "lastFile": "eas.json"
 }

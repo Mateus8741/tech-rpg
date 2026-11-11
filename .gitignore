@@ -19,7 +19,7 @@ coverage
 .turbo
 
 # Trail
-.trail/
+.trail
 
 # Vercel
 .vercel
@@ -42,3 +42,6 @@ yarn-error.log*
 
 # graft's local graph cache — regenerable, not committed (run `graft build`).
 /graft/
+
+# Builds locais do app mobile (eas build --local)
+builds/
