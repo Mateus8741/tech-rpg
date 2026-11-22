@@ -10,7 +10,7 @@ export default function NewCharacterPage() {
 
   useEffect(() => {
     const saved = localStorage.getItem('rpg_username');
-    if (!saved) { router.push('/'); return; }
+    if (!saved) { router.push('/entrar'); return; }
     setUsername(saved);
   }, [router]);
 

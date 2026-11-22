@@ -34,3 +34,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# binários de download (hospedar fora do git)
+/public/downloads/*.apk
+/public/downloads/*.ipa

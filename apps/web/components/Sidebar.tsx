@@ -106,7 +106,7 @@ export default function Sidebar() {
       <ThemeToggle tooltip={(label) => <Tooltip>{label}</Tooltip>} />
 
       <Link
-        href="/"
+        href="/entrar"
         aria-label="Sair"
         className="group relative mb-2 flex h-9 w-9 items-center justify-center rounded-xl text-ink-muted outline-none transition-colors hover:bg-ink/5 hover:text-ink focus-visible:ring-2 focus-visible:ring-indigo/60"
       >

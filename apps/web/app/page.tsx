@@ -1,27 +1,20 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { motion, useReducedMotion } from 'framer-motion';
-import { login } from '@/lib/api';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Download, Smartphone, TriangleAlert, Globe, ExternalLink } from 'lucide-react';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+  APK_URL,
+  IPA_URL,
+  APK_SIZE,
+  IPA_SIZE,
+  SIDELOADLY_URL,
+  ALTSTORE_URL,
+} from '@/lib/downloads';
+import { ContinueCta } from './ContinueCta';
 
-// Partículas determinísticas (evita divergência de hidratação)
-const PARTICLES = Array.from({ length: 22 }, (_, i) => ({
-  left: (i * 37 + 11) % 100,
-  top: (i * 53 + 7) % 100,
-  size: 2 + (i % 3),
-  delay: (i % 7) * 0.7,
-  duration: 6 + (i % 5) * 1.5,
-}));
+export const metadata: Metadata = {
+  title: 'Baixar o app',
+  description: 'Baixe o app de Fichas RPG para Android ou iPhone, ou continue pelo navegador.',
+};
 
 function D20({ className }: { className?: string }) {
   return (
@@ -32,133 +25,134 @@ function D20({ className }: { className?: string }) {
   );
 }
 
-export default function Home() {
-  const reduce = useReducedMotion();
-  const [username, setUsername] = useState('');
-  const [role, setRole] = useState<'PLAYER' | 'MASTER'>('PLAYER');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const router = useRouter();
-
-  useEffect(() => {
-    const saved = localStorage.getItem('rpg_username');
-    if (saved) setUsername(saved);
-  }, []);
-
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!username.trim()) {
-      setError('Por favor, insira um nome de usuário');
-      return;
-    }
-    setLoading(true);
-    setError('');
-    try {
-      await login(username.trim(), role);
-      localStorage.setItem('rpg_username', username.trim());
-      localStorage.setItem('rpg_role', role);
-      router.push('/characters');
-    } catch {
-      setError('Erro ao fazer login. Tente novamente.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
+function Steps({ items }: { items: React.ReactNode[] }) {
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-canvas p-4">
-      {/* Fundo: gradientes à deriva, grade e partículas */}
+    <ol className="mt-4 space-y-3">
+      {items.map((item, i) => (
+        <li key={i} className="flex gap-3 text-sm leading-relaxed text-ink-body">
+          <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-indigo/15 text-xs font-bold text-indigo-ink">
+            {i + 1}
+          </span>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function DownloadButton({ href, label, size }: { href: string; label: string; size: string }) {
+  return (
+    <a
+      href={href}
+      download
+      className="bg-brand-gradient mt-5 inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgb(99_102_241/0.7)] outline-none transition hover:brightness-110 focus-visible:ring-2 focus-visible:ring-indigo focus-visible:ring-offset-2 focus-visible:ring-offset-canvas"
+    >
+      <Download className="h-4 w-4" aria-hidden />
+      {label}
+      <span className="font-normal opacity-80">({size})</span>
+    </a>
+  );
+}
+
+const linkClass = 'font-medium text-indigo-ink underline underline-offset-2 hover:text-indigo-ink-soft';
+
+export default function DownloadLanding() {
+  return (
+    <div className="relative min-h-screen overflow-hidden bg-canvas px-4 py-10 sm:py-16">
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="bg-grid absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
-        <div className="animate-drift absolute -left-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-indigo/20 blur-[110px]" />
-        <div className="animate-drift absolute -bottom-40 -right-24 h-[30rem] w-[30rem] rounded-full bg-violet/20 blur-[120px] [animation-delay:-6s]" />
-        <div className="animate-drift absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-gold/10 blur-[110px] [animation-delay:-11s]" />
-        {!reduce &&
-          PARTICLES.map((p, i) => (
-            <motion.span
-              key={i}
-              className="absolute rounded-full bg-gold/70"
-              style={{ left: `${p.left}%`, top: `${p.top}%`, width: p.size, height: p.size }}
-              animate={{ y: [0, -40, 0], opacity: [0, 0.8, 0] }}
-              transition={{ duration: p.duration, delay: p.delay, repeat: Infinity, ease: 'easeInOut' }}
-            />
-          ))}
+        <div className="bg-grid absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+        <div className="animate-drift absolute -left-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-indigo/20 blur-[110px] motion-reduce:animate-none" />
+        <div className="animate-drift absolute -right-24 top-1/3 h-[26rem] w-[26rem] rounded-full bg-violet/20 blur-[120px] [animation-delay:-6s] motion-reduce:animate-none" />
       </div>
 
-      <motion.div
-        initial={reduce ? false : { opacity: 0, y: 20, scale: 0.98 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="rune-border relative w-full max-w-sm p-8 shadow-2xl shadow-black/50"
-      >
-        {/* Logo */}
-        <div className="mb-8 flex flex-col items-center">
-          <div className="animate-float relative mb-4">
+      <main className="relative mx-auto w-full max-w-4xl">
+        {/* Cabeçalho */}
+        <header className="flex flex-col items-center text-center">
+          <div className="animate-float relative mb-4 motion-reduce:animate-none">
             <div aria-hidden className="absolute inset-0 rounded-full bg-gold/30 blur-xl" />
             <D20 className="relative h-16 w-16 text-gold" />
           </div>
-          <h1 className="font-display text-gold-gradient glow-text text-center text-2xl font-bold">
+          <h1 className="font-display text-gold-gradient glow-text text-3xl font-bold sm:text-4xl">
             Sistema de Fichas RPG
           </h1>
-          <p className="mt-1.5 text-sm text-ink-muted">Gerenciamento de Personagens D&amp;D</p>
-        </div>
+          <p className="mt-3 max-w-xl text-base text-ink-muted">
+            Leve suas fichas de D&amp;D no bolso. Baixe o app no seu celular ou, se preferir, use direto no navegador.
+          </p>
+        </header>
 
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div className="space-y-1.5">
-            <label htmlFor="username" className="text-xs font-medium uppercase tracking-wide text-ink-soft">
-              Nome de Usuário
-            </label>
-            <Input
-              id="username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Digite seu nome"
-              disabled={loading}
-              className="border-line-strong bg-canvas text-ink placeholder:text-ink-faint focus-visible:ring-indigo"
+        {/* Entrar pelo navegador */}
+        <section className="rune-border mt-8 flex flex-col items-center gap-4 p-5 sm:flex-row sm:justify-between sm:p-6">
+          <div className="flex items-start gap-3">
+            <Globe className="mt-0.5 h-5 w-5 shrink-0 text-gold" aria-hidden />
+            <div>
+              <h2 className="font-semibold text-ink">Não quer instalar nada?</h2>
+              <p className="text-sm text-ink-muted">Use o sistema direto pelo navegador, no celular ou no computador.</p>
+            </div>
+          </div>
+          <ContinueCta />
+        </section>
+
+        {/* Downloads */}
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          {/* Android */}
+          <section className="rune-border p-5 sm:p-6" aria-labelledby="android-title">
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-success/15 text-success">
+                <Smartphone className="h-5 w-5" aria-hidden />
+              </span>
+              <div>
+                <h2 id="android-title" className="font-display text-lg font-bold text-ink">Android</h2>
+                <p className="text-xs text-ink-muted">Instalação simples, direto no celular</p>
+              </div>
+            </div>
+            <DownloadButton href={APK_URL} label="Baixar para Android" size={APK_SIZE} />
+            <Steps
+              items={[
+                <>Toque no botão acima para baixar o arquivo <strong>FichasRPG.apk</strong>.</>,
+                <>Abra o arquivo baixado. Se o celular avisar sobre <strong>&ldquo;instalar de fontes desconhecidas&rdquo;</strong>, toque em <strong>Configurações</strong> e ative <strong>Permitir desta fonte</strong>.</>,
+                <>Volte e toque em <strong>Instalar</strong>. Se aparecer um aviso do Play Protect, escolha <strong>Instalar mesmo assim</strong>.</>,
+                <>Pronto! Abra o app <strong>Fichas RPG</strong> e entre com seu nome.</>,
+              ]}
             />
-          </div>
+          </section>
 
-          <div className="space-y-1.5">
-            <label htmlFor="role" className="text-xs font-medium uppercase tracking-wide text-ink-soft">
-              Tipo de Usuário
-            </label>
-            <Select value={role} onValueChange={(v) => setRole(v as 'PLAYER' | 'MASTER')} disabled={loading}>
-              <SelectTrigger id="role" className="border-line-strong bg-canvas text-ink focus:ring-indigo">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="border-line-strong bg-surface">
-                <SelectItem value="PLAYER" className="text-ink focus:bg-indigo/20">Jogador</SelectItem>
-                <SelectItem value="MASTER" className="text-ink focus:bg-indigo/20">Mestre</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          {error && (
-            <p role="alert" className="rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-2 text-sm text-red-400">
-              {error}
-            </p>
-          )}
-
-          <Button
-            type="submit"
-            disabled={loading || !username.trim()}
-            className="bg-brand-gradient mt-2 w-full border-0 font-semibold text-white shadow-[0_8px_24px_-8px_rgb(99_102_241/0.7)] hover:brightness-110"
-          >
-            {loading ? 'Entrando...' : 'Entrar'}
-          </Button>
-        </form>
-
-        <div className="rune-divider mt-6 text-[10px]" aria-hidden>◆</div>
-        <div className="mt-4 space-y-1.5">
-          <p className="text-xs text-ink-faint">
-            <span className="font-medium text-ink-soft">Jogador</span> — acessa apenas suas próprias fichas
-          </p>
-          <p className="text-xs text-ink-faint">
-            <span className="font-medium text-ink-soft">Mestre</span> — acessa todas as fichas dos jogadores
-          </p>
+          {/* iPhone */}
+          <section className="rune-border p-5 sm:p-6" aria-labelledby="ios-title">
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo/15 text-indigo-ink">
+                <Smartphone className="h-5 w-5" aria-hidden />
+              </span>
+              <div>
+                <h2 id="ios-title" className="font-display text-lg font-bold text-ink">iPhone</h2>
+                <p className="text-xs text-ink-muted">Precisa de um computador para instalar</p>
+              </div>
+            </div>
+            <DownloadButton href={IPA_URL} label="Baixar para iPhone" size={IPA_SIZE} />
+            <Steps
+              items={[
+                <>No <strong>computador</strong>, instale o <a className={linkClass} href={SIDELOADLY_URL} target="_blank" rel="noopener noreferrer">Sideloadly<ExternalLink className="ml-0.5 inline h-3 w-3" aria-hidden /></a> (grátis, em sideloadly.io) e baixe o arquivo <strong>FichasRPG.ipa</strong> acima.</>,
+                <>Conecte o iPhone ao computador com o cabo, desbloqueie a tela e toque em <strong>Confiar</strong>.</>,
+                <>Abra o Sideloadly, arraste o arquivo <strong>.ipa</strong> para dentro dele, digite o <strong>seu Apple ID</strong> e clique em <strong>Start</strong>.</>,
+                <>No iPhone, vá em <strong>Ajustes &gt; Privacidade e Segurança</strong>, role até o fim e ligue o <strong>Modo Desenvolvedor</strong> (o iPhone vai reiniciar).</>,
+                <>Depois vá em <strong>Ajustes &gt; Geral &gt; VPN e Gerenciamento de Dispositivo</strong>, toque no seu Apple ID e em <strong>Confiar</strong>.</>,
+                <>Abra o app <strong>Fichas RPG</strong> na tela inicial.</>,
+              ]}
+            />
+            <div role="note" className="mt-5 flex gap-3 rounded-lg border border-gold/30 bg-gold/10 p-3 text-sm text-ink-body">
+              <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0 text-gold-ink" aria-hidden />
+              <p>
+                <strong>Atenção:</strong> com Apple ID gratuito, o app <strong>expira em 7 dias</strong>. Quando parar de abrir, é só repetir a instalação no Sideloadly. Para renovar sozinho pelo Wi-Fi, use o{' '}
+                <a className={linkClass} href={ALTSTORE_URL} target="_blank" rel="noopener noreferrer">AltStore</a>.
+              </p>
+            </div>
+          </section>
         </div>
-      </motion.div>
+
+        <p className="mt-8 text-center text-xs text-ink-faint">
+          Dúvidas? Fale com quem te enviou este link. Já tem o app?{' '}
+          <Link href="/entrar" className={linkClass}>Entrar com meu personagem</Link>
+        </p>
+      </main>
     </div>
   );
 }

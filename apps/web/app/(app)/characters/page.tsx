@@ -46,7 +46,7 @@ export default function CharactersPage() {
   useEffect(() => {
     const u = localStorage.getItem('rpg_username');
     const r = localStorage.getItem('rpg_role') as 'PLAYER' | 'MASTER' | null;
-    if (!u) { router.push('/'); return; }
+    if (!u) { router.push('/entrar'); return; }
     setUsername(u);
     setUserRole(r || 'PLAYER');
     load(u);
@@ -94,7 +94,7 @@ export default function CharactersPage() {
   const logout = () => {
     localStorage.removeItem('rpg_username');
     localStorage.removeItem('rpg_role');
-    router.push('/');
+    router.push('/entrar');
   };
 
   const classIdOf = (c: Character) => {

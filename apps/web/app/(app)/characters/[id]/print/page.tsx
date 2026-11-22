@@ -27,7 +27,7 @@ export default function PrintPage() {
 
   useEffect(() => {
     const u = localStorage.getItem('rpg_username');
-    if (!u) { router.push('/'); return; }
+    if (!u) { router.push('/entrar'); return; }
     getCharacter(id, u).then(setC).catch(() => setError('Não foi possível carregar a ficha.'));
   }, [id, router]);
 
