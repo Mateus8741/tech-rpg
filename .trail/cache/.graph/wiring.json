@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": 1,
-    "nodeCount": 1324,
-    "edgeCount": 3059,
+    "nodeCount": 1332,
+    "edgeCount": 3074,
     "languages": [
       "javascript",
       "python",
@@ -343,6 +343,21 @@
       "crux": null
     },
     {
+      "id": "apps/mobile/eslint.config.js",
+      "name": "eslint.config.js",
+      "kind": "file",
+      "path": "apps/mobile/eslint.config.js",
+      "span": "L1-L11",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "3b0c823fd936f964905db962e66e92e24773b7085c0c82750a4d4f0b1808c41c",
+      "chars": 237,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
       "id": "apps/mobile/metro.config.js",
       "name": "metro.config.js",
       "kind": "file",
@@ -362,12 +377,12 @@
       "name": "_layout.tsx",
       "kind": "file",
       "path": "apps/mobile/src/app/_layout.tsx",
-      "span": "L1-L53",
+      "span": "L1-L58",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "844fa4474b64fa94e37e86b3b2a932e3a93dc3a47d130adc014afd69ae6a1da2",
-      "chars": 1572,
+      "body_hash": "b261fdb9e872df32a9e8ef689e4afb3596adb359b984230d5e4c1315d1b9f753",
+      "chars": 1923,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -377,7 +392,7 @@
       "name": "RootLayout",
       "kind": "function",
       "path": "apps/mobile/src/app/_layout.tsx",
-      "span": "L46-L52",
+      "span": "L51-L57",
       "signature": "function RootLayout()",
       "exported": true,
       "origin": "ast",
@@ -391,11 +406,11 @@
       "name": "RootNavigator",
       "kind": "function",
       "path": "apps/mobile/src/app/_layout.tsx",
-      "span": "L17-L44",
+      "span": "L18-L49",
       "signature": "function RootNavigator()",
       "exported": false,
       "origin": "ast",
-      "body_hash": "07b789428945bc7d025beed19961e55e136ba45041fda72727bfc5bd477706c9",
+      "body_hash": "118bacf9fc36c3c2bfbdc629eb073bc1c6ad3d32a2571b30cf2b1c1c2113993b",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -1907,6 +1922,105 @@
       "exported": true,
       "origin": "ast",
       "body_hash": "07ab3557e4b3df38a8ae74d4af6f8342a4cf204eac4a4309394d515d97aed0d9",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "name": "AnimatedSplash.tsx",
+      "kind": "file",
+      "path": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "span": "L1-L246",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "e542a349fcb571e88cc91aebd567ac9219aef68bf5d14f0546c648a207ec2571",
+      "chars": 10866,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/mobile/src/components/splash/AnimatedSplash.tsx#AnimatedSplash",
+      "name": "AnimatedSplash",
+      "kind": "function",
+      "path": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "span": "L97-L225",
+      "signature": "function AnimatedSplash({ onDone }: { onDone: () => void })",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "ab4299c25b822b13543dbb48afca7d871d1bbc520aa187ef547451c8f2da8cac",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/mobile/src/components/splash/AnimatedSplash.tsx#AnimatedSplash.at",
+      "name": "at",
+      "kind": "function",
+      "path": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "span": "L163-L163",
+      "signature": "at = (ms: number)",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "c2f39941ee46ee52c25fe7069abff3300c111080b04b9e8bb90c665e5c9a575b",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/mobile/src/components/splash/AnimatedSplash.tsx#AnimatedSplash.later",
+      "name": "later",
+      "kind": "function",
+      "path": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "span": "L121-L121",
+      "signature": "later = (fn: () => void, ms: number)",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "3408733bab55c95ced44fcdd5210587c8f7ad8735e9457360cb964dfdfae4ef0",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/mobile/src/components/splash/AnimatedSplash.tsx#MagicRing",
+      "name": "MagicRing",
+      "kind": "function",
+      "path": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "span": "L55-L82",
+      "signature": "function MagicRing({ size, count, long, color, dots }: { size: number; count: number; long: number; color: string; dots?: boolean })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "474f9ac12153e1915fd28abee2ba70f4ec3cf472e9f00151f5d26bfcfca1bdb4",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/mobile/src/components/splash/AnimatedSplash.tsx#RadialGlow",
+      "name": "RadialGlow",
+      "kind": "function",
+      "path": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "span": "L43-L52",
+      "signature": "function RadialGlow({ size, color, steps, alpha }: { size: number; color: string; steps: number; alpha: number })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "5069870d92b38f26843aec261f48ed0e71bf150e6a4febfa04c8639d7503a833",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/mobile/src/components/splash/AnimatedSplash.tsx#Shock",
+      "name": "Shock",
+      "kind": "function",
+      "path": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "span": "L85-L95",
+      "signature": "function Shock({ delay, size }: { delay: number; size: number })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "6751acca828700e99310dfd0f8a2b61320a18f6ad7ce388e13dad31188c91588",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -4074,12 +4188,12 @@
       "name": "components.tsx",
       "kind": "file",
       "path": "apps/mobile/src/features/personagens/components.tsx",
-      "span": "L1-L256",
+      "span": "L1-L252",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "507588a5e740a6ff706c1fb457e2e9525deb14c74311ae09014669bb272b3c6e",
-      "chars": 11583,
+      "body_hash": "fdcd14f8801f32e97a0b2f882cf4377b0d60e7c2fbfc8fef344bff2b8bfb3eed",
+      "chars": 11419,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -4173,7 +4287,7 @@
       "name": "ProfDot",
       "kind": "function",
       "path": "apps/mobile/src/features/personagens/components.tsx",
-      "span": "L246-L255",
+      "span": "L242-L251",
       "signature": "function ProfDot({ proficient, expertise }: { proficient: boolean; expertise?: boolean })",
       "exported": true,
       "origin": "ast",
@@ -4215,7 +4329,7 @@
       "name": "SegmentedChips",
       "kind": "function",
       "path": "apps/mobile/src/features/personagens/components.tsx",
-      "span": "L190-L243",
+      "span": "L186-L239",
       "signature": "function SegmentedChips<T extends string>({ options, value, onChange, scroll = true, fill = false, }: { options: { id: T; label: string }[]; value: T; onChange: (v: T) => void; scroll?: boolean; fill?: boolean })",
       "exported": true,
       "origin": "ast",
@@ -4229,7 +4343,7 @@
       "name": "onLayout",
       "kind": "function",
       "path": "apps/mobile/src/features/personagens/components.tsx",
-      "span": "L213-L216",
+      "span": "L209-L212",
       "signature": "onLayout = (id: string)",
       "exported": true,
       "origin": "ast",
@@ -4243,11 +4357,11 @@
       "name": "StatTile",
       "kind": "function",
       "path": "apps/mobile/src/features/personagens/components.tsx",
-      "span": "L172-L187",
-      "signature": "function StatTile({ label, value, icon, className, delay = 0 }: { label: string; value: ReactNode; icon?: IconName; className?: string; delay?: number })",
+      "span": "L172-L183",
+      "signature": "function StatTile({ label, value, icon, className }: { label: string; value: ReactNode; icon?: IconName; className?: string; delay?: number })",
       "exported": true,
       "origin": "ast",
-      "body_hash": "c3579fe78de18e02baae603c242519e3347c2304b7191bb8746f61186cc57f8e",
+      "body_hash": "55b0765cd7ba7d63f936a4b180451bb0028670a307c88f52892507da53bdac86",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -4764,12 +4878,12 @@
       "name": "ZoneSheet.tsx",
       "kind": "file",
       "path": "apps/mobile/src/features/personagens/paper/ZoneSheet.tsx",
-      "span": "L1-L122",
+      "span": "L1-L123",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "884cbc41b5ec142d0e4ca11018ec5367d8b5dc7d02c2694663a24267f0309dc9",
-      "chars": 5455,
+      "body_hash": "47c6e6a6ba9d965854c54c58363d1a58c68fc32abb530699e9718ffbd06ef185",
+      "chars": 5417,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -4779,11 +4893,11 @@
       "name": "ZoneSheet",
       "kind": "function",
       "path": "apps/mobile/src/features/personagens/paper/ZoneSheet.tsx",
-      "span": "L12-L121",
+      "span": "L12-L122",
       "signature": "function ZoneSheet({ detail, onClose }: { detail: Detail | null; onClose: () => void })",
       "exported": true,
       "origin": "ast",
-      "body_hash": "7791b27202dbf0048a6b1e36c45d2528a02353eaac4243036b48a20e759092e0",
+      "body_hash": "03d76318a27bd40c4e8f1c35b9052275f6e2690ad1440dc95b8a7737fbd091b9",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -19157,6 +19271,12 @@
     },
     {
       "source": "apps/mobile/src/app/_layout.tsx",
+      "target": "@/components/splash/AnimatedSplash",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/_layout.tsx",
       "target": "@/features/perfil/theme",
       "relation": "imports",
       "confidence": "extracted"
@@ -21157,6 +21277,90 @@
       "source": "apps/mobile/src/components/motion/index.tsx#RevealItem",
       "target": "apps/mobile/src/components/motion/index.tsx#stagger",
       "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "target": "apps/mobile/src/components/splash/AnimatedSplash.tsx#AnimatedSplash",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "target": "apps/mobile/src/components/splash/AnimatedSplash.tsx#MagicRing",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "target": "apps/mobile/src/components/splash/AnimatedSplash.tsx#RadialGlow",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "target": "apps/mobile/src/components/splash/AnimatedSplash.tsx#Shock",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "target": "@/components/motion",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "target": "expo-haptics",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "target": "expo-splash-screen",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "target": "react-native",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx",
+      "target": "react-native-reanimated",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx#AnimatedSplash",
+      "target": "apps/mobile/src/components/splash/AnimatedSplash.tsx#AnimatedSplash.at",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx#AnimatedSplash",
+      "target": "apps/mobile/src/components/splash/AnimatedSplash.tsx#AnimatedSplash.later",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx#AnimatedSplash",
+      "target": "apps/mobile/src/components/splash/AnimatedSplash.tsx#AnimatedSplash.at",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/components/splash/AnimatedSplash.tsx#AnimatedSplash",
+      "target": "apps/mobile/src/components/splash/AnimatedSplash.tsx#AnimatedSplash.later",
+      "relation": "contains",
       "confidence": "extracted"
     },
     {

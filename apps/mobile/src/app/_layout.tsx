@@ -4,9 +4,10 @@ import { Cinzel_500Medium, Cinzel_700Bold, useFonts } from '@expo-google-fonts/c
 import { Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useUniwind } from 'uniwind';
 
+import { AnimatedSplash } from '@/components/splash/AnimatedSplash';
 import { restoreThemePreference } from '@/features/perfil/theme';
 import { SessionProvider, useSession } from '@/lib/session';
 import { useNavTheme } from '@/lib/nav-theme';
@@ -21,14 +22,18 @@ function RootNavigator() {
   const [fontsLoaded] = useFonts({ Cinzel_500Medium, Cinzel_700Bold });
   const ready = fontsLoaded && !loading;
 
+  const [splashDone, setSplashDone] = useState(false);
+
+  // Com splash animada, ela mesma esconde a nativa (no 1º layout). Aqui só o caso de segurança.
   useEffect(() => {
-    if (ready) SplashScreen.hideAsync();
-  }, [ready]);
+    if (ready && splashDone) SplashScreen.hideAsync().catch(() => {});
+  }, [ready, splashDone]);
 
   if (!ready) return null;
 
   return (
     <ThemeProvider value={navTheme}>
+      {!splashDone && <AnimatedSplash onDone={() => setSplashDone(true)} />}
       <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
       <Stack screenOptions={{ headerShown: false, animation: 'fade', animationDuration: 320 }}>
         <Stack.Screen name="index" />
