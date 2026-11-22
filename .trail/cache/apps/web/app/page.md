@@ -1,5 +1,6 @@
 # apps/web/app/page.tsx
 
-- D20 · function · L26-L33 — function D20({ className }: { className?: string })
-- Home · function · L35-L164 — function Home()
-- handleLogin · function · L48-L66 — handleLogin = async (e: React.FormEvent)
+- D20 · function · L19-L26 — function D20({ className }: { className?: string })
+- Steps · function · L28-L41 — function Steps({ items }: { items: React.ReactNode[] })
+- DownloadButton · function · L43-L55 — function DownloadButton({ href, label, size }: { href: string; label: string; size: string })
+- DownloadLanding · function · L59-L158 — function DownloadLanding()

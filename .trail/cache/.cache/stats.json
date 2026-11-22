@@ -1,17 +1,17 @@
 {
-  "nodeCount": 1332,
-  "edgeCount": 3074,
+  "nodeCount": 1340,
+  "edgeCount": 3087,
   "languages": [
     "javascript",
     "python",
     "tsx",
     "typescript"
   ],
-  "totalCount": 1332,
+  "totalCount": 1340,
   "readyCount": 0,
   "staleCount": 0,
   "dirty": false,
   "syncing": false,
-  "syncedAt": "2026-11-22T20:04:46.477Z",
-  "lastFile": "AnimatedSplash.tsx"
+  "syncedAt": "2026-11-22T21:58:31.369Z",
+  "lastFile": "ContinueCta.tsx"
 }

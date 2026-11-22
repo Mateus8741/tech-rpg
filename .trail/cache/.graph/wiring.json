@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": 1,
-    "nodeCount": 1332,
-    "edgeCount": 3074,
+    "nodeCount": 1340,
+    "edgeCount": 3087,
     "languages": [
       "javascript",
       "python",
@@ -5759,8 +5759,8 @@
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "712363d48a131184eeee1f6ed7c32cfa65c1b701c961c0595c480c6cf1b6f817",
-      "chars": 10403,
+      "body_hash": "9de86784673207f6389f0d4ca777f2a7742035ba73a4452e2e64cb9c502ed8c5",
+      "chars": 10409,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -5774,7 +5774,7 @@
       "signature": "function PrintPage()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "e549fcbd78d567ca19324ec72cea861886e5574fe990a50899fd63a10b678eff",
+      "body_hash": "aaca3bc7c780ff68fef010bb3ccc66857f082cb110ef33a09c5335ed1c5d18b6",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -5902,8 +5902,8 @@
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "d13b1714e42947cf09ff28761ae50e0a9b1b411ff653099815eb94812488f714",
-      "chars": 543,
+      "body_hash": "ff9723f1a5ed4ce3098308e09a27505a58a562be3dfd86f2f1ca8a3f65e0eef9",
+      "chars": 549,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -5917,7 +5917,7 @@
       "signature": "function NewCharacterPage()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "f9eaba6dff6af3ed06671c8035619a27b0f192f32750112b1c8514ba70f48319",
+      "body_hash": "a33e1207173258598904399e0e0b9be4e34b4a5490eb0256a08b2387774bd246",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -5931,8 +5931,8 @@
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "e35d8b280b313b105fe552f66da901d3fee80060851996703b3f72600e272365",
-      "chars": 14245,
+      "body_hash": "6f6d25fb9a105a22a01b40c1eab14e03f97d6a98248b5364269352adcb7b8fd1",
+      "chars": 14257,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -5960,7 +5960,7 @@
       "signature": "function CharactersPage()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "c94025118bc3a76ad56933df9db8885717ae691e61fcf4012a5c1afe7989fcd1",
+      "body_hash": "4c9337b58386de8612918f7b21229e45e56f0c4c9078b5dfae2e7dfaf2ebcd53",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -6016,7 +6016,7 @@
       "signature": "logout = ()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "12023d759f6c5013dfc569ea5eef8aeb015b6da1183f7a8933439b0c73f1be59",
+      "body_hash": "5077df1081ccb2b648b475bb4698888fe074c94f019a15cadd4cf2b36ba7245a",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -6669,6 +6669,92 @@
       "crux": null
     },
     {
+      "id": "apps/web/app/ContinueCta.tsx",
+      "name": "ContinueCta.tsx",
+      "kind": "file",
+      "path": "apps/web/app/ContinueCta.tsx",
+      "span": "L1-L25",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "eb75c409d04dcfa72bf49b45f653ac64bb286223903cc1f82ace3f2731871209",
+      "chars": 903,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/app/ContinueCta.tsx#ContinueCta",
+      "name": "ContinueCta",
+      "kind": "function",
+      "path": "apps/web/app/ContinueCta.tsx",
+      "span": "L8-L24",
+      "signature": "function ContinueCta()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "c8f1426547c1ce788a7a8749aa5852321ff8f15cf29f7a764debfa59977f4014",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/app/entrar/page.tsx",
+      "name": "page.tsx",
+      "kind": "file",
+      "path": "apps/web/app/entrar/page.tsx",
+      "span": "L1-L165",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "30f20ff0805bffe384802add7694a1b037880068de653014ac62439ec894a5e2",
+      "chars": 6725,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/app/entrar/page.tsx#D20",
+      "name": "D20",
+      "kind": "function",
+      "path": "apps/web/app/entrar/page.tsx",
+      "span": "L26-L33",
+      "signature": "function D20({ className }: { className?: string })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "2b259c1ae6f898e455d8cdb74044c9937e7c5fa7a0e2aba7b4cefc7dbc0d4f4b",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/app/entrar/page.tsx#Home",
+      "name": "Home",
+      "kind": "function",
+      "path": "apps/web/app/entrar/page.tsx",
+      "span": "L35-L164",
+      "signature": "function Home()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "087a616bb6e045724c607c170bd8544944c6b921ff64a0e89a30a6a55944c7e0",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/app/entrar/page.tsx#Home.handleLogin",
+      "name": "handleLogin",
+      "kind": "function",
+      "path": "apps/web/app/entrar/page.tsx",
+      "span": "L48-L66",
+      "signature": "handleLogin = async (e: React.FormEvent)",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "ea624245758dc0181e492b372682c352476201f01bed674db7f017b3fe87cc99",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
       "id": "apps/web/app/layout.tsx",
       "name": "layout.tsx",
       "kind": "file",
@@ -6702,12 +6788,12 @@
       "name": "page.tsx",
       "kind": "file",
       "path": "apps/web/app/page.tsx",
-      "span": "L1-L165",
+      "span": "L1-L159",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "30f20ff0805bffe384802add7694a1b037880068de653014ac62439ec894a5e2",
-      "chars": 6725,
+      "body_hash": "0fc7ff848949cecdcec0aa83d700168b3e079ccbac4467da35ae63ef9e8785f3",
+      "chars": 8371,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -6717,7 +6803,7 @@
       "name": "D20",
       "kind": "function",
       "path": "apps/web/app/page.tsx",
-      "span": "L26-L33",
+      "span": "L19-L26",
       "signature": "function D20({ className }: { className?: string })",
       "exported": false,
       "origin": "ast",
@@ -6727,29 +6813,43 @@
       "crux": null
     },
     {
-      "id": "apps/web/app/page.tsx#Home",
-      "name": "Home",
+      "id": "apps/web/app/page.tsx#DownloadButton",
+      "name": "DownloadButton",
       "kind": "function",
       "path": "apps/web/app/page.tsx",
-      "span": "L35-L164",
-      "signature": "function Home()",
-      "exported": true,
+      "span": "L43-L55",
+      "signature": "function DownloadButton({ href, label, size }: { href: string; label: string; size: string })",
+      "exported": false,
       "origin": "ast",
-      "body_hash": "087a616bb6e045724c607c170bd8544944c6b921ff64a0e89a30a6a55944c7e0",
+      "body_hash": "70265d7bab943d9f64fcda3130d25d3e26b600aa1d71015a5ba4e7d8ec996646",
       "summary_state": "pending",
       "summary": null,
       "crux": null
     },
     {
-      "id": "apps/web/app/page.tsx#Home.handleLogin",
-      "name": "handleLogin",
+      "id": "apps/web/app/page.tsx#DownloadLanding",
+      "name": "DownloadLanding",
       "kind": "function",
       "path": "apps/web/app/page.tsx",
-      "span": "L48-L66",
-      "signature": "handleLogin = async (e: React.FormEvent)",
+      "span": "L59-L158",
+      "signature": "function DownloadLanding()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "ea624245758dc0181e492b372682c352476201f01bed674db7f017b3fe87cc99",
+      "body_hash": "233a2e948716816914aa5d979b1c4fc8b847795121f35bdfc719d17ab7ae816a",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/app/page.tsx#Steps",
+      "name": "Steps",
+      "kind": "function",
+      "path": "apps/web/app/page.tsx",
+      "span": "L28-L41",
+      "signature": "function Steps({ items }: { items: React.ReactNode[] })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "6ad81311482972d3d99375b0dfecbcf89a356e09b01d436334d4a9cd381c340f",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -12650,8 +12750,8 @@
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "195c3a9a8b74b10dd43bd6a4c28fefdf3a577c585607ea76eb4bc1cac8da0840",
-      "chars": 4910,
+      "body_hash": "3bb06ebd426ee660ab3089275be02faa9529e8b4c7282db72d3512e0c6b3d0b6",
+      "chars": 4916,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -12665,7 +12765,7 @@
       "signature": "function Sidebar()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "90522fff6d4e1a44070c8030485266ca236430a408dd770b24bf5076a497b3f4",
+      "body_hash": "b6de58fc9cc403546e7e9765d971e8e889a37b601215a1b01c6da374fbd0ef9d",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -15862,6 +15962,21 @@
       "exported": true,
       "origin": "ast",
       "body_hash": "317b9a702834c834a09d6f2ddd153906ca4326970d91d6ec7590ea423810d2de",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/lib/downloads.ts",
+      "name": "downloads.ts",
+      "kind": "file",
+      "path": "apps/web/lib/downloads.ts",
+      "span": "L1-L12",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "9f4ebe83ae8231196bff9f7eab2d22c8894f26b779836b24f16d90ef73afc29c",
+      "chars": 611,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -25288,6 +25403,90 @@
       "confidence": "extracted"
     },
     {
+      "source": "apps/web/app/ContinueCta.tsx",
+      "target": "apps/web/app/ContinueCta.tsx#ContinueCta",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/ContinueCta.tsx",
+      "target": "lucide-react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/ContinueCta.tsx",
+      "target": "next/link",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/ContinueCta.tsx",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/entrar/page.tsx",
+      "target": "apps/web/app/entrar/page.tsx#D20",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/entrar/page.tsx",
+      "target": "apps/web/app/entrar/page.tsx#Home",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/entrar/page.tsx",
+      "target": "@/components/ui/button",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/entrar/page.tsx",
+      "target": "@/components/ui/input",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/entrar/page.tsx",
+      "target": "@/components/ui/select",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/entrar/page.tsx",
+      "target": "@/lib/api",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/entrar/page.tsx",
+      "target": "framer-motion",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/entrar/page.tsx",
+      "target": "next/navigation",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/entrar/page.tsx",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/entrar/page.tsx#Home",
+      "target": "apps/web/app/entrar/page.tsx#Home.handleLogin",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
       "source": "apps/web/app/layout.tsx",
       "target": "apps/web/app/layout.tsx#RootLayout",
       "relation": "contains",
@@ -25337,56 +25536,50 @@
     },
     {
       "source": "apps/web/app/page.tsx",
-      "target": "apps/web/app/page.tsx#Home",
+      "target": "apps/web/app/page.tsx#DownloadButton",
       "relation": "contains",
       "confidence": "extracted"
     },
     {
       "source": "apps/web/app/page.tsx",
-      "target": "@/components/ui/button",
-      "relation": "imports",
-      "confidence": "extracted"
-    },
-    {
-      "source": "apps/web/app/page.tsx",
-      "target": "@/components/ui/input",
-      "relation": "imports",
-      "confidence": "extracted"
-    },
-    {
-      "source": "apps/web/app/page.tsx",
-      "target": "@/components/ui/select",
-      "relation": "imports",
-      "confidence": "extracted"
-    },
-    {
-      "source": "apps/web/app/page.tsx",
-      "target": "@/lib/api",
-      "relation": "imports",
-      "confidence": "extracted"
-    },
-    {
-      "source": "apps/web/app/page.tsx",
-      "target": "framer-motion",
-      "relation": "imports",
-      "confidence": "extracted"
-    },
-    {
-      "source": "apps/web/app/page.tsx",
-      "target": "next/navigation",
-      "relation": "imports",
-      "confidence": "extracted"
-    },
-    {
-      "source": "apps/web/app/page.tsx",
-      "target": "react",
-      "relation": "imports",
-      "confidence": "extracted"
-    },
-    {
-      "source": "apps/web/app/page.tsx#Home",
-      "target": "apps/web/app/page.tsx#Home.handleLogin",
+      "target": "apps/web/app/page.tsx#DownloadLanding",
       "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/page.tsx",
+      "target": "apps/web/app/page.tsx#Steps",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/page.tsx",
+      "target": "@/lib/downloads",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/page.tsx",
+      "target": "apps/web/app/ContinueCta.tsx",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/page.tsx",
+      "target": "lucide-react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/page.tsx",
+      "target": "next",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/page.tsx",
+      "target": "next/link",
+      "relation": "imports",
       "confidence": "extracted"
     },
     {
