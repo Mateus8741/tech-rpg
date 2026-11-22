@@ -1,4 +1,4 @@
 # packages/rules/src/data/spells.ts
 
-- getSpell · function · L6-L6 — getSpell = (id: string)
-- spellsForClass · function · L7-L8 — spellsForClass = (classId: string, maxLevel = 9)
+- getSpell · function · L27-L27 — getSpell = (id: string)
+- spellsForClass · function · L28-L29 — spellsForClass = (classId: string, maxLevel = 9)

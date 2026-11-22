@@ -1,3 +1,3 @@
 # packages/rules/src/data/classes.ts
 
-- getClass · function · L6-L6 — getClass = (id: string)
+- getClass · function · L15-L15 — getClass = (id: string)

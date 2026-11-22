@@ -1,8 +1,8 @@
 {
   "meta": {
     "version": 1,
-    "nodeCount": 1149,
-    "edgeCount": 2644,
+    "nodeCount": 1227,
+    "edgeCount": 2814,
     "languages": [
       "javascript",
       "python",
@@ -448,12 +448,12 @@
       "name": "_layout.tsx",
       "kind": "file",
       "path": "apps/mobile/src/app/(tabs)/compendio/_layout.tsx",
-      "span": "L1-L28",
+      "span": "L1-L30",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "e97bdfba552eb868250741c067593b1a48e8e219eb265f9c804bcf88fbd14e7a",
-      "chars": 1329,
+      "body_hash": "e1f9812c244e728bc4254cb1f6a76517e461d9f7828db3b54fa71d490067fa93",
+      "chars": 1561,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -463,11 +463,11 @@
       "name": "CompendioLayout",
       "kind": "function",
       "path": "apps/mobile/src/app/(tabs)/compendio/_layout.tsx",
-      "span": "L9-L27",
+      "span": "L9-L29",
       "signature": "function CompendioLayout()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "c4c923a7e96f08b7dba56d374e77c2e1a6cf33bd0e40de0fd6dd3ae4824b3f2b",
+      "body_hash": "305dd8091037e104175269c201927d2a04fd5f70abca727ccb218a25d0aaeebc",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -705,12 +705,12 @@
       "name": "equipamento.tsx",
       "kind": "file",
       "path": "apps/mobile/src/app/(tabs)/compendio/equipamento.tsx",
-      "span": "L1-L142",
+      "span": "L1-L145",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "542ec4ec893fa12e5600a7ad30890dddef17fce6d50094a7f094e3ee8eb5a074",
-      "chars": 5601,
+      "body_hash": "ce231d4636ce10e026d4d662d5ed1800c43ed20291833a1a27a66a7c97e0afed",
+      "chars": 5834,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -748,11 +748,11 @@
       "name": "Gear",
       "kind": "function",
       "path": "apps/mobile/src/app/(tabs)/compendio/equipamento.tsx",
-      "span": "L116-L141",
+      "span": "L116-L144",
       "signature": "function Gear({ q }: { q: string })",
       "exported": false,
       "origin": "ast",
-      "body_hash": "3fecc56a50cb1c02e0879d59890078701849d7445f0908eebd101f99de9d0a89",
+      "body_hash": "999662d36f13a4d6549f5e27cbc921d42fb69238e6b58be041c50b5456b6d7d3",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -804,12 +804,12 @@
       "name": "index.tsx",
       "kind": "file",
       "path": "apps/mobile/src/app/(tabs)/compendio/index.tsx",
-      "span": "L1-L42",
+      "span": "L1-L43",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "6061d53a1342bd7989b46fc19ff2834f89f628737207de8332b9e7e752488470",
-      "chars": 2595,
+      "body_hash": "699098805e31ccfd2d97e0ed5209c05f285c8cff1956456f70b3ce820870b73a",
+      "chars": 2778,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -819,7 +819,7 @@
       "name": "CompendioHub",
       "kind": "function",
       "path": "apps/mobile/src/app/(tabs)/compendio/index.tsx",
-      "span": "L15-L41",
+      "span": "L16-L42",
       "signature": "function CompendioHub()",
       "exported": true,
       "origin": "ast",
@@ -891,12 +891,12 @@
       "name": "regras.tsx",
       "kind": "file",
       "path": "apps/mobile/src/app/(tabs)/compendio/regras.tsx",
-      "span": "L1-L53",
+      "span": "L1-L65",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "4d0b67c27d94b8ed39538215d1a9dc51b39f32532129b357fd8964fe9609a665",
-      "chars": 1988,
+      "body_hash": "f338d7b332e8df21b240c7ca20ec742d33fd659fe64acb209c0f911a5ca8c8eb",
+      "chars": 2596,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -906,11 +906,69 @@
       "name": "RulesScreen",
       "kind": "function",
       "path": "apps/mobile/src/app/(tabs)/compendio/regras.tsx",
-      "span": "L9-L52",
+      "span": "L9-L64",
       "signature": "function RulesScreen()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "852159013d14b2aabdf47623fd42dd83680e898483eae2e3a2dcf0bd65dfd4e0",
+      "body_hash": "510ef07f0dcb78205336cf2561068a2b5ab3330fc4de4f6040df8c3415074c7b",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/mobile/src/app/(tabs)/compendio/talentos/[id].tsx",
+      "name": "[id].tsx",
+      "kind": "file",
+      "path": "apps/mobile/src/app/(tabs)/compendio/talentos/[id].tsx",
+      "span": "L1-L49",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "36581b1c96e941a6f5c76ba2beb949c73c9bd4992959bc3d526dfd63b3f518c1",
+      "chars": 1347,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/mobile/src/app/(tabs)/compendio/talentos/[id].tsx#FeatDetailScreen",
+      "name": "FeatDetailScreen",
+      "kind": "function",
+      "path": "apps/mobile/src/app/(tabs)/compendio/talentos/[id].tsx",
+      "span": "L7-L48",
+      "signature": "function FeatDetailScreen()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "4cbb614c78c58fb4dceeecc5716266f4675f125bdea0d0394c9e6a5b86297e2d",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx",
+      "name": "index.tsx",
+      "kind": "file",
+      "path": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx",
+      "span": "L1-L59",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "5cc90255ae62fb625d014fc660fff609fc268783b5c473a65b44c646465e04e7",
+      "chars": 2207,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx#FeatListScreen",
+      "name": "FeatListScreen",
+      "kind": "function",
+      "path": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx",
+      "span": "L14-L58",
+      "signature": "function FeatListScreen()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "45644861273b00d104e639834715b6c755eddf8119ffa1556e5137f9390c50b7",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -4788,6 +4846,78 @@
       "crux": null
     },
     {
+      "id": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx",
+      "name": "page.tsx",
+      "kind": "file",
+      "path": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx",
+      "span": "L1-L15",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "96727c7455251f783f7f61fd5e2f6bb60497939089a2b0073e69624002bc00e3",
+      "chars": 457,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx#generateStaticParams",
+      "name": "generateStaticParams",
+      "kind": "function",
+      "path": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx",
+      "span": "L5-L7",
+      "signature": "function generateStaticParams()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "8756d98e5c1c3a6075a81bc79dbd2395d891dbf0342c0dce2c163fc114d20ddf",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx#Page",
+      "name": "Page",
+      "kind": "function",
+      "path": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx",
+      "span": "L9-L14",
+      "signature": "async function Page({ params }: { params: Promise<{ id: string }> })",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "75b0827e6fdcfeb8df63a7c2095f16d0dc33a6453f8bffe4f272992ac56d6321",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/app/(app)/compendio/talentos/page.tsx",
+      "name": "page.tsx",
+      "kind": "file",
+      "path": "apps/web/app/(app)/compendio/talentos/page.tsx",
+      "span": "L1-L3",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "2e98671143c9454298027bd44257bf96d450e98ff3a2887d27f2d3600b6f7998",
+      "chars": 112,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/app/(app)/compendio/talentos/page.tsx#Page",
+      "name": "Page",
+      "kind": "function",
+      "path": "apps/web/app/(app)/compendio/talentos/page.tsx",
+      "span": "L2-L2",
+      "signature": "function Page()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "f1c7c5364bf61aba4711147abf4f6719e8fb20d6b1e7c506ece8bfe57edba49a",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
       "id": "apps/web/app/(app)/dados/page.tsx",
       "name": "page.tsx",
       "kind": "file",
@@ -5547,12 +5677,12 @@
       "name": "EquipmentView.tsx",
       "kind": "file",
       "path": "apps/web/components/compendio/EquipmentView.tsx",
-      "span": "L1-L121",
+      "span": "L1-L138",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "b540debb8b75d0ae4ef6ab30308ab1f4d4317205f0669ab760b20e9dbd062d71",
-      "chars": 5510,
+      "body_hash": "f47db7048a7d4f198f2e72565c61b0ccd605b10a1df30a1d8f0d914bb81ec3df",
+      "chars": 6437,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -5572,15 +5702,29 @@
       "crux": null
     },
     {
+      "id": "apps/web/components/compendio/EquipmentView.tsx#descOf",
+      "name": "descOf",
+      "kind": "function",
+      "path": "apps/web/components/compendio/EquipmentView.tsx",
+      "span": "L81-L81",
+      "signature": "descOf = (g: object)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "cc4cbcce061462185151b3b194d73dcdf133c1e34b644f5c6c285942b2e0939c",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
       "id": "apps/web/components/compendio/EquipmentView.tsx#EquipmentView",
       "name": "EquipmentView",
       "kind": "function",
       "path": "apps/web/components/compendio/EquipmentView.tsx",
-      "span": "L107-L120",
+      "span": "L123-L137",
       "signature": "function EquipmentView()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "d7648653f3b61e5d2c951101c74b8e396aae7d2ed3b1c4463fd7ad795087caaf",
+      "body_hash": "c59421ae0b41c79bf09c5a993947cb96a84b7f0e6efd1e8294ebdb642aea79ee",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -5590,11 +5734,25 @@
       "name": "Gear",
       "kind": "function",
       "path": "apps/web/components/compendio/EquipmentView.tsx",
-      "span": "L81-L105",
+      "span": "L83-L107",
       "signature": "function Gear({ q }: { q: string })",
       "exported": false,
       "origin": "ast",
-      "body_hash": "07e0fa4b67fc7a8927e515e4efaac3bde8e7ca9fb0a8e0edf29ae53660c30bfb",
+      "body_hash": "ee6573a9807bccf75bb7c115a1ad732e97a201ab76af309b8b0f3797566b3ca6",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/compendio/EquipmentView.tsx#Properties",
+      "name": "Properties",
+      "kind": "function",
+      "path": "apps/web/components/compendio/EquipmentView.tsx",
+      "span": "L109-L121",
+      "signature": "function Properties({ q }: { q: string })",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "6485874d7a3fd0af552972f97c2ffcc3cd4eca7f0af92316eebdc9573fa289aa",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -5642,16 +5800,88 @@
       "crux": null
     },
     {
+      "id": "apps/web/components/compendio/FeatDetail.tsx",
+      "name": "FeatDetail.tsx",
+      "kind": "file",
+      "path": "apps/web/components/compendio/FeatDetail.tsx",
+      "span": "L1-L29",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "582e08a0cbc211103977c52ed120691250eaba05e62d62afc3e76d4ef7cdc80b",
+      "chars": 1134,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/compendio/FeatDetail.tsx#FeatDetail",
+      "name": "FeatDetail",
+      "kind": "function",
+      "path": "apps/web/components/compendio/FeatDetail.tsx",
+      "span": "L6-L28",
+      "signature": "function FeatDetail({ feat: f }: { feat: Feat })",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "92f331b5aad08d4ed39ae0d4ccade8e65c546ca762a9aa2db28dfb0a22efb94c",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/compendio/FeatList.tsx",
+      "name": "FeatList.tsx",
+      "kind": "file",
+      "path": "apps/web/components/compendio/FeatList.tsx",
+      "span": "L1-L56",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "9a33e6794a993c82d1fd309f6ed12e14a2e969cf47e52ddd7ab397a71d4f2e0b",
+      "chars": 2613,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/compendio/FeatList.tsx#catLabel",
+      "name": "catLabel",
+      "kind": "function",
+      "path": "apps/web/components/compendio/FeatList.tsx",
+      "span": "L8-L8",
+      "signature": "catLabel = (c?: string)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "cf53b1c542b3f33ff3be4d0d75b8590d464eede6eb5083860cc8fe96593b5f02",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "apps/web/components/compendio/FeatList.tsx#FeatList",
+      "name": "FeatList",
+      "kind": "function",
+      "path": "apps/web/components/compendio/FeatList.tsx",
+      "span": "L10-L55",
+      "signature": "function FeatList()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "22ef32b1e07a89576804ed689975864d4637a93bf500d41ed8921cf358146411",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
       "id": "apps/web/components/compendio/Hub.tsx",
       "name": "Hub.tsx",
       "kind": "file",
       "path": "apps/web/components/compendio/Hub.tsx",
-      "span": "L1-L33",
+      "span": "L1-L34",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "07c17fe2ae80610b2fe2cc0a75da6acf24e22333f8746d80739e270b64dd52ce",
-      "chars": 1824,
+      "body_hash": "c504b93182f21a0b452504e2a3c8136b77da38d8ef785aa4c796febc022b5337",
+      "chars": 1998,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -5661,11 +5891,11 @@
       "name": "Hub",
       "kind": "function",
       "path": "apps/web/components/compendio/Hub.tsx",
-      "span": "L7-L32",
+      "span": "L7-L33",
       "signature": "function Hub()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "675b2a781851c800eaa4be247764ae2cb4d3b60faf31ea633b5a40dae1a2cbec",
+      "body_hash": "f521da49d7c2aa23242dcd2181045b505a3732afe5a42ef75e67da87cf36fde4",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -6014,12 +6244,12 @@
       "name": "RulesView.tsx",
       "kind": "file",
       "path": "apps/web/components/compendio/RulesView.tsx",
-      "span": "L1-L37",
+      "span": "L1-L48",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "38cc30ed2d999b20bc8cc2c290def33643ab04e82759cabe7f87f2eb69976723",
-      "chars": 1562,
+      "body_hash": "005e8a99663d7c8616832800c2080b6e593c8d27aaaa3f27c591795d27870ab1",
+      "chars": 2092,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -6029,11 +6259,11 @@
       "name": "RulesView",
       "kind": "function",
       "path": "apps/web/components/compendio/RulesView.tsx",
-      "span": "L7-L36",
+      "span": "L7-L47",
       "signature": "function RulesView()",
       "exported": true,
       "origin": "ast",
-      "body_hash": "e85cf2674297212f8f198e6ea5c582327a63affbcbbe93f398e4779b647096a6",
+      "body_hash": "f9b0587679f5f59236665513244254a43b044bb6f585e00de5e5fa6bbb9ef23c",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -6819,8 +7049,8 @@
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "6ac162048fd0a0afdedd059a41f4b131c6c5e5d1c838b0942e1c2819939d3d3c",
-      "chars": 16946,
+      "body_hash": "8314340bdc7ab90ac723950b65abb05fa5d0eddb52f88e75b246d1f2eb5d6b70",
+      "chars": 16956,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -15572,16 +15802,59 @@
       "crux": null
     },
     {
+      "id": "packages/rules/src/data/backgrounds-extra.ts",
+      "name": "backgrounds-extra.ts",
+      "kind": "file",
+      "path": "packages/rules/src/data/backgrounds-extra.ts",
+      "span": "L1-L653",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "69e06f0f8c7b7099628ca5ac1aa6470a88c2acc92312beb7f5dc5c1734086635",
+      "chars": 53019,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/backgrounds-extra.ts#bg",
+      "name": "bg",
+      "kind": "function",
+      "path": "packages/rules/src/data/backgrounds-extra.ts",
+      "span": "L22-L32",
+      "signature": "bg = (d: Def): Background",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "d2ff1751e7a44e974c95d763b70c0f82f46b33313a5c41edba8f3c5e7c00a2e3",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/backgrounds-extra.ts#Def",
+      "name": "Def",
+      "kind": "interface",
+      "path": "packages/rules/src/data/backgrounds-extra.ts",
+      "span": "L7-L20",
+      "signature": "interface Def",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "686f7fdb45d8d8b36d0f3a2c5aaa1bd8755435b0ad0c48515b1888f723db6421",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
       "id": "packages/rules/src/data/backgrounds.ts",
       "name": "backgrounds.ts",
       "kind": "file",
       "path": "packages/rules/src/data/backgrounds.ts",
-      "span": "L1-L795",
+      "span": "L1-L798",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "72c53d4184d12e57cce68a0e058becad0a2c1518d68baaf9e00df56e39282d4a",
-      "chars": 53646,
+      "body_hash": "fb450c8dffa5309bcd13410d16ec95a0b5e4c345c6ff8c6f29547d5013219219",
+      "chars": 53799,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -15591,7 +15864,7 @@
       "name": "getBackground",
       "kind": "function",
       "path": "packages/rules/src/data/backgrounds.ts",
-      "span": "L792-L794",
+      "span": "L795-L797",
       "signature": "function getBackground(id: string): Background | undefined",
       "exported": true,
       "origin": "ast",
@@ -15605,7 +15878,7 @@
       "name": "variante",
       "kind": "function",
       "path": "packages/rules/src/data/backgrounds.ts",
-      "span": "L747-L751",
+      "span": "L748-L752",
       "signature": "variante = (baseId: string, patch: Partial<Background> & Pick<Background, \"id\" | \"name\" | \"summary\">): Background",
       "exported": false,
       "origin": "ast",
@@ -15729,16 +16002,59 @@
       "crux": null
     },
     {
+      "id": "packages/rules/src/data/classes-extra.ts",
+      "name": "classes-extra.ts",
+      "kind": "file",
+      "path": "packages/rules/src/data/classes-extra.ts",
+      "span": "L1-L145",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "cbfd866d0fce717d6affcb02239f1199f6e8860134f561fe2be320d19d5518b5",
+      "chars": 17130,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/classes-extra.ts#asi",
+      "name": "asi",
+      "kind": "function",
+      "path": "packages/rules/src/data/classes-extra.ts",
+      "span": "L4-L9",
+      "signature": "asi = (level: number): ClassFeature",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "5aec735b0be017552c723820d43e63c85a723a21f42620df76a9b95ef68ee591",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/classes-extra.ts#f",
+      "name": "f",
+      "kind": "function",
+      "path": "packages/rules/src/data/classes-extra.ts",
+      "span": "L11-L11",
+      "signature": "f = (level: number, name: string, description: string): ClassFeature",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "27ca78c15d72f701e0a77423e31a92a1983689d76ed76393bbeddb09217dbc86",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
       "id": "packages/rules/src/data/classes.ts",
       "name": "classes.ts",
       "kind": "file",
       "path": "packages/rules/src/data/classes.ts",
-      "span": "L1-L7",
+      "span": "L1-L16",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "02be42bab27ae10eeb0dc5cfd296be02224a1f836b680e7de82de093442a0c2a",
-      "chars": 318,
+      "body_hash": "95ed4d138eca25b4ba37bc764e98ccf84ab099bc1e56e2bbdd2dc68412d6bce5",
+      "chars": 682,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -15748,7 +16064,7 @@
       "name": "getClass",
       "kind": "function",
       "path": "packages/rules/src/data/classes.ts",
-      "span": "L6-L6",
+      "span": "L15-L15",
       "signature": "getClass = (id: string)",
       "exported": true,
       "origin": "ast",
@@ -15758,16 +16074,88 @@
       "crux": null
     },
     {
+      "id": "packages/rules/src/data/conditions-extra.ts",
+      "name": "conditions-extra.ts",
+      "kind": "file",
+      "path": "packages/rules/src/data/conditions-extra.ts",
+      "span": "L1-L160",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "f6061a5a9dce07207b0e87f02b8655b2b77ef26e12f3e1e4bcc8038c8501bb26",
+      "chars": 11277,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
       "id": "packages/rules/src/data/conditions.ts",
       "name": "conditions.ts",
       "kind": "file",
       "path": "packages/rules/src/data/conditions.ts",
-      "span": "L1-L568",
+      "span": "L1-L572",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "a9df960b61c6e8d7b77070bdf1f0a61a27dffc42568bbbc64b9cefcc7c14a847",
-      "chars": 46966,
+      "body_hash": "e30ae7a97a131629b31437d65b60bc721a9fe1e6ed6fcec245ef52cd9a3dbf11",
+      "chars": 47236,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/equipment-extra.ts",
+      "name": "equipment-extra.ts",
+      "kind": "file",
+      "path": "packages/rules/src/data/equipment-extra.ts",
+      "span": "L1-L198",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "546c9ee566b18a098013eec0e78a27deb7d559254b2ebc25a24d43e45fa35830",
+      "chars": 12674,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/equipment-extra.ts#ExtraGearItem",
+      "name": "ExtraGearItem",
+      "kind": "interface",
+      "path": "packages/rules/src/data/equipment-extra.ts",
+      "span": "L6-L12",
+      "signature": "interface ExtraGearItem",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "da0804a8b727ebaac12740c92aac09d495064b0dce0a7da6306cb267248aad97",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/equipment-extra.ts#g",
+      "name": "g",
+      "kind": "function",
+      "path": "packages/rules/src/data/equipment-extra.ts",
+      "span": "L57-L59",
+      "signature": "g = (category: string, rows: [name: string, cost: string, weight: string, description?: string][])",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "f998b169b3f0311695f3a3fb380156c5acad64e1218895b0c8082fbf3254d202",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/equipment-extra.ts#w",
+      "name": "w",
+      "kind": "function",
+      "path": "packages/rules/src/data/equipment-extra.ts",
+      "span": "L14-L22",
+      "signature": "w = ( category: Weapon[\"category\"], kind: Weapon[\"kind\"], name: string, cost: string, damage: string, weight: string, properties: string[] = [], ): Weapon",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "b9db31c51b313d4cea8ae836f714a10c856d167279c33031b22d3b7d8b4e2eb0",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -15777,12 +16165,12 @@
       "name": "equipment.ts",
       "kind": "file",
       "path": "packages/rules/src/data/equipment.ts",
-      "span": "L1-L307",
+      "span": "L1-L312",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "cc3081936f0707821144f7665fbafd5b51e80483237d9409455c1ea4d61337a9",
-      "chars": 13624,
+      "body_hash": "ba492b13f278e30dacd2dbece47007b3f5b6140e77aadfbce6af6273f3fd6cfe",
+      "chars": 13809,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -15792,7 +16180,7 @@
       "name": "Cat",
       "kind": "type",
       "path": "packages/rules/src/data/equipment.ts",
-      "span": "L5-L5",
+      "span": "L6-L6",
       "signature": "type Cat = Weapon[\"category\"];",
       "exported": false,
       "origin": "ast",
@@ -15806,7 +16194,7 @@
       "name": "g",
       "kind": "function",
       "path": "packages/rules/src/data/equipment.ts",
-      "span": "L93-L95",
+      "span": "L94-L96",
       "signature": "g = (category: string, rows: [name: string, cost: string, weight: string][])",
       "exported": false,
       "origin": "ast",
@@ -15820,7 +16208,7 @@
       "name": "Kind",
       "kind": "type",
       "path": "packages/rules/src/data/equipment.ts",
-      "span": "L6-L6",
+      "span": "L7-L7",
       "signature": "type Kind = Weapon[\"kind\"];",
       "exported": false,
       "origin": "ast",
@@ -15834,7 +16222,7 @@
       "name": "w",
       "kind": "function",
       "path": "packages/rules/src/data/equipment.ts",
-      "span": "L8-L16",
+      "span": "L9-L17",
       "signature": "w = ( category: Cat, kind: Kind, name: string, cost: string, damage: string, weight: string, properties: string[] = [], ): Weapon",
       "exported": false,
       "origin": "ast",
@@ -15844,16 +16232,242 @@
       "crux": null
     },
     {
+      "id": "packages/rules/src/data/feats.ts",
+      "name": "feats.ts",
+      "kind": "file",
+      "path": "packages/rules/src/data/feats.ts",
+      "span": "L1-L493",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "2bec6a166d460488ab0e3c8d4d33f71e8e83e01a04d51e2935a6713c1e9bad8a",
+      "chars": 37743,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/feats.ts#boon",
+      "name": "boon",
+      "kind": "function",
+      "path": "packages/rules/src/data/feats.ts",
+      "span": "L409-L410",
+      "signature": "boon = (id: string, name: string, description: string, benefits: string[])",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "736c6c661cbcb80995e12403c83b9343a740a3819c0df8b0c67e0650305a643b",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/feats.ts#f",
+      "name": "f",
+      "kind": "function",
+      "path": "packages/rules/src/data/feats.ts",
+      "span": "L15-L23",
+      "signature": "f = ( id: string, name: string, source: string, description: string, benefits: string[], prerequisite?: string, category?: string, ): Feat",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "bd36428b8e1ff2a92ca3b7c73ce592333b57afdc447cdbb5511aa09385cc9402",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/feats.ts#Feat",
+      "name": "Feat",
+      "kind": "interface",
+      "path": "packages/rules/src/data/feats.ts",
+      "span": "L4-L13",
+      "signature": "interface Feat",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "2e029b8b841d2ffd0b7cefcc5b513ad43322aa0d4ebea8dac7085b7d69561c07",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/feats.ts#fs",
+      "name": "fs",
+      "kind": "function",
+      "path": "packages/rules/src/data/feats.ts",
+      "span": "L407-L408",
+      "signature": "fs = (id: string, name: string, description: string, benefits: string[])",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "4e23581d5f393ded378036c44959cfba141a7c010cb287cf54cc2968e76afd2d",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/feats.ts#gen",
+      "name": "gen",
+      "kind": "function",
+      "path": "packages/rules/src/data/feats.ts",
+      "span": "L405-L406",
+      "signature": "gen = (id: string, name: string, description: string, benefits: string[], pre = \"Nível 4 ou superior\")",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "0b3fff9c9b7dcb72e13ee1816f0d3b7ea250eb4b7074c6d6b6c9adc7d2a0c183",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/feats.ts#o",
+      "name": "o",
+      "kind": "function",
+      "path": "packages/rules/src/data/feats.ts",
+      "span": "L403-L404",
+      "signature": "o = (id: string, name: string, description: string, benefits: string[], pre?: string)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "9229e17d0b9d4d7aa352dc094d0469015c1e31d52dde062f1693800498aac806",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
       "id": "packages/rules/src/data/index.ts",
       "name": "index.ts",
       "kind": "file",
       "path": "packages/rules/src/data/index.ts",
-      "span": "L1-L8",
+      "span": "L1-L10",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "0aeea6487961b432eb1a365c16015142b68de37d29351ecc598253625daf77ed",
-      "chars": 201,
+      "body_hash": "85e3e431bfd8273a6e223eff482937195138e86000b6c1045335d66137d3b405",
+      "chars": 281,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/races-extra.ts",
+      "name": "races-extra.ts",
+      "kind": "file",
+      "path": "packages/rules/src/data/races-extra.ts",
+      "span": "L1-L748",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "3decbc2c626a12df8f39d8bc4ef91b81c019ac169d0ed65f001873cff752d1af",
+      "chars": 51166,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/races-extra.ts#desloc",
+      "name": "desloc",
+      "kind": "function",
+      "path": "packages/rules/src/data/races-extra.ts",
+      "span": "L8-L8",
+      "signature": "desloc = (n: number): Trait",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "34ef93c02b3646aca37897c845a5bd9ad70b39b17e3fd8c9a10836b006439085",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/races-extra.ts#idiomas",
+      "name": "idiomas",
+      "kind": "function",
+      "path": "packages/rules/src/data/races-extra.ts",
+      "span": "L13-L13",
+      "signature": "idiomas = (...l: string[]): Trait",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "d1e87afeaa470f1f82a2870b16fbce1d2f69d925f00a869e3f317ca4d89b895c",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/races-extra.ts#m",
+      "name": "m",
+      "kind": "function",
+      "path": "packages/rules/src/data/races-extra.ts",
+      "span": "L7-L7",
+      "signature": "m = (n: number)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "98ded68623ab1476ab11e32c7483eeb2487745feaac46454b26cfba25c3b24ca",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/races-extra.ts#R",
+      "name": "R",
+      "kind": "interface",
+      "path": "packages/rules/src/data/races-extra.ts",
+      "span": "L17-L24",
+      "signature": "interface R",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "1255572b8df62f8347e77a24e7747ce02de8da8443df79f4b1f1471270d1d722",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/races-extra.ts#race",
+      "name": "race",
+      "kind": "function",
+      "path": "packages/rules/src/data/races-extra.ts",
+      "span": "L26-L36",
+      "signature": "race = (r: R): Race",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "4cb5614debc0d567ccf61e1b2b8e73057f73b5f71ca2011c3c9e69b4aa0867f7",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/races-extra.ts#sub",
+      "name": "sub",
+      "kind": "function",
+      "path": "packages/rules/src/data/races-extra.ts",
+      "span": "L38-L38",
+      "signature": "sub = (id: string, name: string, ab: Subrace[\"abilityBonuses\"], traits: Trait[], extra?: Partial<Subrace>): Subrace",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "b1062d23b08f03f5ff99696d6b9d5727f1ca68acbff9e199daa201141cb1d0d1",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/races-extra.ts#t",
+      "name": "t",
+      "kind": "function",
+      "path": "packages/rules/src/data/races-extra.ts",
+      "span": "L14-L14",
+      "signature": "t = (name: string, description: string): Trait",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "7f58fcdc09a91c05b8a4038a697f8ddaaaea29458107aecb6286de2eb4c6c806",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/races-extra.ts#visao",
+      "name": "visao",
+      "kind": "function",
+      "path": "packages/rules/src/data/races-extra.ts",
+      "span": "L9-L12",
+      "signature": "visao = (n = 18): Trait",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "b8c4335ebceb3640de7fc76c0ff945c1c97970f944057947a4df1f8b09f2e642",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -15863,12 +16477,12 @@
       "name": "races.ts",
       "kind": "file",
       "path": "packages/rules/src/data/races.ts",
-      "span": "L1-L859",
+      "span": "L1-L880",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "ec82d5e4f4edfe377b6fde4f5dbfbe0d2ef2f6735119bec7b0f7d3932fa25bb3",
-      "chars": 47629,
+      "body_hash": "adb7e94572f2ad52d47743508d5553dc278160fea90edca026998c15252a4e87",
+      "chars": 48591,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -15878,7 +16492,7 @@
       "name": "getRace",
       "kind": "function",
       "path": "packages/rules/src/data/races.ts",
-      "span": "L858-L858",
+      "span": "L879-L879",
       "signature": "getRace = (id: string)",
       "exported": true,
       "origin": "ast",
@@ -15892,12 +16506,12 @@
       "name": "spell-aliases.ts",
       "kind": "file",
       "path": "packages/rules/src/data/spell-aliases.ts",
-      "span": "L1-L448",
+      "span": "L1-L461",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "1a61c82b66d0200f0b8da6e483a501691ea66c6bdf65207767fa7deadb78d455",
-      "chars": 20892,
+      "body_hash": "1690d0c5aa102ea619709f453e6977d07a31969ee7c9be7856210479caeca12a",
+      "chars": 21459,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -15907,12 +16521,12 @@
       "name": "spells-a.ts",
       "kind": "file",
       "path": "packages/rules/src/data/spells-a.ts",
-      "span": "L1-L3008",
+      "span": "L1-L3023",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "f299aac583863efee938253c3fd05e63fef29b211b26c488d9330d68812f7b17",
-      "chars": 203628,
+      "body_hash": "54926aca936650c283473c4b92ebc93971faa7f1690f2d9246f7c6aef24871f0",
+      "chars": 204393,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -15933,16 +16547,76 @@
       "crux": null
     },
     {
+      "id": "packages/rules/src/data/spells-c.ts",
+      "name": "spells-c.ts",
+      "kind": "file",
+      "path": "packages/rules/src/data/spells-c.ts",
+      "span": "L1-L211",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "11a984e99e92842df8ce89b3e5212e4006f7fb6a35bef4df7861800da7d5617d",
+      "chars": 15040,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/spells-d.ts",
+      "name": "spells-d.ts",
+      "kind": "file",
+      "path": "packages/rules/src/data/spells-d.ts",
+      "span": "L1-L922",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "9d89be6b89b213ab1e7cd021d22eca00f19011783f2eb85f3397d7ac8bfbe2b2",
+      "chars": 69017,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/spells-e.ts",
+      "name": "spells-e.ts",
+      "kind": "file",
+      "path": "packages/rules/src/data/spells-e.ts",
+      "span": "L1-L277",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "47b24c213b4fe25861c6b106d24375a407c9873ef067ac3dbaf42676c971ff79",
+      "chars": 18103,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/spells-f.ts",
+      "name": "spells-f.ts",
+      "kind": "file",
+      "path": "packages/rules/src/data/spells-f.ts",
+      "span": "L1-L287",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "818cce2424e9879b27f15305a8f4b116bc311d88ffd3fc661150f1f4bf913ff4",
+      "chars": 23068,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
       "id": "packages/rules/src/data/spells.ts",
       "name": "spells.ts",
       "kind": "file",
       "path": "packages/rules/src/data/spells.ts",
-      "span": "L1-L9",
+      "span": "L1-L30",
       "signature": null,
       "exported": true,
       "origin": "ast",
-      "body_hash": "d0c00d918d1d81b4d6182bb28677a9b6cc8bb9a1ea7c99e9d9479cb5f5de87f0",
-      "chars": 391,
+      "body_hash": "c1aa4759ffc070c8ffeb3278fa4594cdc68542a16302f7f51a1cec5fa12cd2d2",
+      "chars": 1408,
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -15952,7 +16626,7 @@
       "name": "getSpell",
       "kind": "function",
       "path": "packages/rules/src/data/spells.ts",
-      "span": "L6-L6",
+      "span": "L27-L27",
       "signature": "getSpell = (id: string)",
       "exported": true,
       "origin": "ast",
@@ -15966,11 +16640,40 @@
       "name": "spellsForClass",
       "kind": "function",
       "path": "packages/rules/src/data/spells.ts",
-      "span": "L7-L8",
+      "span": "L28-L29",
       "signature": "spellsForClass = (classId: string, maxLevel = 9)",
       "exported": true,
       "origin": "ast",
       "body_hash": "d7c37675b7c0da328e434d3ffa7230d5f775b1dd0fc0ae0d5cfc6b0fd61fd4f1",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/subclasses-extra.ts",
+      "name": "subclasses-extra.ts",
+      "kind": "file",
+      "path": "packages/rules/src/data/subclasses-extra.ts",
+      "span": "L1-L982",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "732dfea790370c27eeb6baff9f0de7a99f0e461e4513136aebc461dbb041e6c9",
+      "chars": 101869,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "packages/rules/src/data/subclasses-extra.ts#f",
+      "name": "f",
+      "kind": "function",
+      "path": "packages/rules/src/data/subclasses-extra.ts",
+      "span": "L6-L6",
+      "signature": "f = (level: number, name: string, description: string): ClassFeature",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "27ca78c15d72f701e0a77423e31a92a1983689d76ed76393bbeddb09217dbc86",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -16341,6 +17044,422 @@
       "exported": true,
       "origin": "ast",
       "body_hash": "2d05dcdccdd4f9f354be7a2bbd5a5eb6d4ae4bc2269f2537bb70092d1127824a",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/eslint.config.mjs",
+      "name": "eslint.config.mjs",
+      "kind": "file",
+      "path": "video/eslint.config.mjs",
+      "span": "L1-L4",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "7f2ca640409fd597965bedf929073b9a74f143643e1711150c4cac3b6ec5c80d",
+      "chars": 79,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/remotion.config.ts",
+      "name": "remotion.config.ts",
+      "kind": "file",
+      "path": "video/remotion.config.ts",
+      "span": "L1-L14",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "af5ce97f98b2c91a7891f2bef4801f7dc700843f010fd81e1566d9eebf6f5ad1",
+      "chars": 371,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/scripts/make_audio.py",
+      "name": "make_audio.py",
+      "kind": "file",
+      "path": "video/scripts/make_audio.py",
+      "span": "L1-L67",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "8838a64bf3413e58d186b0e5bfd57002ed2a1e9290749cf4b0f34c0edad2c2a7",
+      "chars": 2603,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/scripts/make_audio.py#add",
+      "name": "add",
+      "kind": "function",
+      "path": "video/scripts/make_audio.py",
+      "span": "L10-L12",
+      "signature": "def add(sig, start)",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "037fa3a8db9402646817754b1f7238ec86addbe6b5bf3f6b25d83af0bb703205",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/scripts/make_audio.py#env",
+      "name": "env",
+      "kind": "function",
+      "path": "video/scripts/make_audio.py",
+      "span": "L6-L8",
+      "signature": "def env(length, a, r)",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "d540c2c75d798f9edcd7f0a6457a4ade8b9cd684d571e356fc2d52cef94c5123",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/scripts/make_audio.py#midi",
+      "name": "midi",
+      "kind": "function",
+      "path": "video/scripts/make_audio.py",
+      "span": "L5-L5",
+      "signature": "def midi(m)",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "449c11a14fd11e0985c02374883081cce6a8c12a8cbac48646734b9d29772142",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/scripts/make_vo.py",
+      "name": "make_vo.py",
+      "kind": "file",
+      "path": "video/scripts/make_vo.py",
+      "span": "L1-L19",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "a127999a2c74dabcff08e571eb97b52f2492984ecbfc08e4f23818ad7ba4bcf7",
+      "chars": 1051,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/index.ts",
+      "name": "index.ts",
+      "kind": "file",
+      "path": "video/src/index.ts",
+      "span": "L1-L5",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "957e481dd33a29b4a55ae0e95dbf763b7e48c37c427ca4bd1275faf34bc07a74",
+      "chars": 109,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/Root.tsx",
+      "name": "Root.tsx",
+      "kind": "file",
+      "path": "video/src/Root.tsx",
+      "span": "L1-L7",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "48d6986094ae050ccb0d6a1dbfdd6cf5c5442cae9fa12e40df17e42a0858371a",
+      "chars": 250,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/Root.tsx#RemotionRoot",
+      "name": "RemotionRoot",
+      "kind": "function",
+      "path": "video/src/Root.tsx",
+      "span": "L4-L6",
+      "signature": "RemotionRoot: React.FC = ()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "2269e984e386fdf48475892bc140a69e86bd14ccb8bdd2c0b09a6098d9b083cb",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/RpgVideo.tsx",
+      "name": "RpgVideo.tsx",
+      "kind": "file",
+      "path": "video/src/RpgVideo.tsx",
+      "span": "L1-L57",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "181358b8f2e00f0fa00e1f75272dfd0dc1321744847ee7dfd899e2777b870446",
+      "chars": 1744,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/RpgVideo.tsx#RpgVideo",
+      "name": "RpgVideo",
+      "kind": "function",
+      "path": "video/src/RpgVideo.tsx",
+      "span": "L28-L56",
+      "signature": "RpgVideo: React.FC = ()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "a58e5c3d3501d56ccaac05bb50d69e5a0704e948be79dbfa531a4819a1e33fc8",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/scenes.tsx",
+      "name": "scenes.tsx",
+      "kind": "file",
+      "path": "video/src/scenes.tsx",
+      "span": "L1-L336",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "4ca2874b5d9605edc5381c6aa9c5a0360e0b41eda1ff0e5890f506eefc113017",
+      "chars": 12882,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/scenes.tsx#Compendium",
+      "name": "Compendium",
+      "kind": "function",
+      "path": "video/src/scenes.tsx",
+      "span": "L204-L233",
+      "signature": "Compendium: React.FC = ()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "fff8d10e1095069ac4c06d53b6b94eb91d45f7c65b282b202c305e9c9fa3554b",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/scenes.tsx#Dice",
+      "name": "Dice",
+      "kind": "function",
+      "path": "video/src/scenes.tsx",
+      "span": "L236-L280",
+      "signature": "Dice: React.FC = ()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "2032757d46150490712c2a95e4ceba098d6f9ff1c2d2ed2c95211bf87e736e6d",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/scenes.tsx#Intro",
+      "name": "Intro",
+      "kind": "function",
+      "path": "video/src/scenes.tsx",
+      "span": "L7-L48",
+      "signature": "Intro: React.FC = ()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "d157d6351d4546cdeb1a63de1e4c4820597eed4116857a54bfb13c7528bdfb8b",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/scenes.tsx#mod",
+      "name": "mod",
+      "kind": "function",
+      "path": "video/src/scenes.tsx",
+      "span": "L59-L59",
+      "signature": "mod = (v: number)",
+      "exported": false,
+      "origin": "ast",
+      "body_hash": "b34cf016ed5c21eac8c62a7382f2f60ebdaa4dda795bdd3ec0103576093bf15c",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/scenes.tsx#Outro",
+      "name": "Outro",
+      "kind": "function",
+      "path": "video/src/scenes.tsx",
+      "span": "L311-L335",
+      "signature": "Outro: React.FC = ()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "058fec226f52010b089d448374ce125aa0b07821bac8d81adfd9269ac23e7dff",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/scenes.tsx#Roles",
+      "name": "Roles",
+      "kind": "function",
+      "path": "video/src/scenes.tsx",
+      "span": "L283-L308",
+      "signature": "Roles: React.FC = ()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "ba1b1954e0ac82b5b3b1c5262a071bc93475fd3918a7472a71bd9a97a204a324",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/scenes.tsx#Roles.box",
+      "name": "box",
+      "kind": "function",
+      "path": "video/src/scenes.tsx",
+      "span": "L286-L296",
+      "signature": "box = (p: number, icon: string, t: string, lines: string[])",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "c8608a97bd0b0aebf7b686b3713b7ae345de8ab639b2f5ec279c6da86ed2cbb8",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/scenes.tsx#Sheet",
+      "name": "Sheet",
+      "kind": "function",
+      "path": "video/src/scenes.tsx",
+      "span": "L61-L120",
+      "signature": "Sheet: React.FC = ()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "97f3bc1337dbf21ac8337b04896fb0ed459babbc2ffe18b33352da84051c0c47",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/scenes.tsx#Wizard",
+      "name": "Wizard",
+      "kind": "function",
+      "path": "video/src/scenes.tsx",
+      "span": "L129-L191",
+      "signature": "Wizard: React.FC = ()",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "7b39cfaca7ea0da35a32bf566d2e5020d110c9e463aeb85ed78b9974c337e822",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/theme.ts",
+      "name": "theme.ts",
+      "kind": "file",
+      "path": "video/src/theme.ts",
+      "span": "L1-L20",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "6210888cdc545cf016b8465cb461a8af935bcae679a98ee557bf5e8189d0c2c7",
+      "chars": 535,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/ui.tsx",
+      "name": "ui.tsx",
+      "kind": "file",
+      "path": "video/src/ui.tsx",
+      "span": "L1-L56",
+      "signature": null,
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "f321f771675f1bbfbab5ade73fd2449834fffbce92000dd3424b380f440fc5c3",
+      "chars": 1737,
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/ui.tsx#Bg",
+      "name": "Bg",
+      "kind": "function",
+      "path": "video/src/ui.tsx",
+      "span": "L5-L19",
+      "signature": "Bg: React.FC<{ children?: React.ReactNode }> = ({ children })",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "5f8273939eceb3eb0c313659bc6e58a874cbe9db15aafc809b7bdcc1411440dd",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/ui.tsx#Card",
+      "name": "Card",
+      "kind": "function",
+      "path": "video/src/ui.tsx",
+      "span": "L39-L52",
+      "signature": "Card: React.FC<{ style?: React.CSSProperties; children: React.ReactNode }> = ({ style, children })",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "16aeb58ba202d4c745680e45fb4c7a266336f8ec0649ab88a68d049c6adb6f10",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/ui.tsx#fade",
+      "name": "fade",
+      "kind": "function",
+      "path": "video/src/ui.tsx",
+      "span": "L54-L55",
+      "signature": "fade = (f: number, a: number, b: number)",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "e05f039446c624f6baa622a826e52eb0719372fa0e0f88a489f8a0129a1573f5",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/ui.tsx#Title",
+      "name": "Title",
+      "kind": "function",
+      "path": "video/src/ui.tsx",
+      "span": "L27-L37",
+      "signature": "Title: React.FC<{ kicker: string; title: string; delay?: number }> = ({ kicker, title, delay = 0 })",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "ce7f56ea9a9cd553adee7dfeff9350a6fcb1dc35b45c55ba1d2306d03b7258dd",
+      "summary_state": "pending",
+      "summary": null,
+      "crux": null
+    },
+    {
+      "id": "video/src/ui.tsx#useIn",
+      "name": "useIn",
+      "kind": "function",
+      "path": "video/src/ui.tsx",
+      "span": "L21-L25",
+      "signature": "useIn = (delay = 0, damping = 200)",
+      "exported": true,
+      "origin": "ast",
+      "body_hash": "e3defa4f7f0319bfc7a2aaf6592a9d432357db1e28fbfd210c841430de8a1dbf",
       "summary_state": "pending",
       "summary": null,
       "crux": null
@@ -17411,6 +18530,90 @@
     },
     {
       "source": "apps/mobile/src/app/(tabs)/compendio/regras.tsx#RulesScreen",
+      "target": "apps/mobile/src/features/compendio/utils.ts#matches",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/[id].tsx",
+      "target": "apps/mobile/src/app/(tabs)/compendio/talentos/[id].tsx#FeatDetailScreen",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/[id].tsx",
+      "target": "@/components/ui",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/[id].tsx",
+      "target": "@/features/compendio/components",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/[id].tsx",
+      "target": "@repo/rules",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/[id].tsx",
+      "target": "expo-router",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx",
+      "target": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx#FeatListScreen",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx",
+      "target": "@/components/ui",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx",
+      "target": "@/features/compendio/components",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx",
+      "target": "@/features/compendio/utils",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx",
+      "target": "@repo/rules",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx",
+      "target": "expo-router",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx",
+      "target": "react-native",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/mobile/src/app/(tabs)/compendio/talentos/index.tsx#FeatListScreen",
       "target": "apps/mobile/src/features/compendio/utils.ts#matches",
       "relation": "calls",
       "confidence": "inferred"
@@ -20770,6 +21973,48 @@
       "confidence": "extracted"
     },
     {
+      "source": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx",
+      "target": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx#generateStaticParams",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx",
+      "target": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx#Page",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx",
+      "target": "@/components/compendio/FeatDetail",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx",
+      "target": "@repo/rules",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/(app)/compendio/talentos/[id]/page.tsx",
+      "target": "next/navigation",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/(app)/compendio/talentos/page.tsx",
+      "target": "apps/web/app/(app)/compendio/talentos/page.tsx#Page",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/app/(app)/compendio/talentos/page.tsx",
+      "target": "@/components/compendio/FeatList",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
       "source": "apps/web/app/(app)/dados/page.tsx",
       "target": "apps/web/app/(app)/dados/page.tsx#DadosPage",
       "relation": "contains",
@@ -21443,6 +22688,12 @@
     },
     {
       "source": "apps/web/components/compendio/EquipmentView.tsx",
+      "target": "apps/web/components/compendio/EquipmentView.tsx#descOf",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/compendio/EquipmentView.tsx",
       "target": "apps/web/components/compendio/EquipmentView.tsx#EquipmentView",
       "relation": "contains",
       "confidence": "extracted"
@@ -21450,6 +22701,12 @@
     {
       "source": "apps/web/components/compendio/EquipmentView.tsx",
       "target": "apps/web/components/compendio/EquipmentView.tsx#Gear",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/compendio/EquipmentView.tsx",
+      "target": "apps/web/components/compendio/EquipmentView.tsx#Properties",
       "relation": "contains",
       "confidence": "extracted"
     },
@@ -21487,6 +22744,66 @@
       "source": "apps/web/components/compendio/EquipmentView.tsx",
       "target": "react",
       "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/compendio/EquipmentView.tsx#Gear",
+      "target": "apps/web/components/compendio/EquipmentView.tsx#descOf",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/compendio/FeatDetail.tsx",
+      "target": "apps/web/components/compendio/FeatDetail.tsx#FeatDetail",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/compendio/FeatDetail.tsx",
+      "target": "@repo/rules",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/compendio/FeatDetail.tsx",
+      "target": "apps/web/components/compendio/kit.tsx",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/compendio/FeatList.tsx",
+      "target": "apps/web/components/compendio/FeatList.tsx#catLabel",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/compendio/FeatList.tsx",
+      "target": "apps/web/components/compendio/FeatList.tsx#FeatList",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/compendio/FeatList.tsx",
+      "target": "@repo/rules",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/compendio/FeatList.tsx",
+      "target": "apps/web/components/compendio/kit.tsx",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/compendio/FeatList.tsx",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "apps/web/components/compendio/FeatList.tsx#FeatList",
+      "target": "apps/web/components/compendio/FeatList.tsx#catLabel",
+      "relation": "calls",
       "confidence": "extracted"
     },
     {
@@ -31846,6 +33163,30 @@
       "confidence": "extracted"
     },
     {
+      "source": "packages/rules/src/data/backgrounds-extra.ts",
+      "target": "packages/rules/src/data/backgrounds-extra.ts#bg",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/backgrounds-extra.ts",
+      "target": "packages/rules/src/data/backgrounds-extra.ts#bg",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/backgrounds-extra.ts",
+      "target": "packages/rules/src/data/backgrounds-extra.ts#Def",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/backgrounds-extra.ts",
+      "target": "packages/rules/src/types.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
       "source": "packages/rules/src/data/backgrounds.ts",
       "target": "packages/rules/src/data/backgrounds.ts#variante",
       "relation": "calls",
@@ -31861,6 +33202,12 @@
       "source": "packages/rules/src/data/backgrounds.ts",
       "target": "packages/rules/src/data/backgrounds.ts#variante",
       "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/backgrounds.ts",
+      "target": "packages/rules/src/data/backgrounds-extra.ts",
+      "relation": "imports",
       "confidence": "extracted"
     },
     {
@@ -31942,6 +33289,36 @@
       "confidence": "extracted"
     },
     {
+      "source": "packages/rules/src/data/classes-extra.ts",
+      "target": "packages/rules/src/data/classes-extra.ts#asi",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/classes-extra.ts",
+      "target": "packages/rules/src/data/classes-extra.ts#f",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/classes-extra.ts",
+      "target": "packages/rules/src/data/classes-extra.ts#asi",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/classes-extra.ts",
+      "target": "packages/rules/src/data/classes-extra.ts#f",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/classes-extra.ts",
+      "target": "packages/rules/src/types.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
       "source": "packages/rules/src/data/classes.ts",
       "target": "packages/rules/src/data/classes.ts#getClass",
       "relation": "contains",
@@ -31961,12 +33338,72 @@
     },
     {
       "source": "packages/rules/src/data/classes.ts",
+      "target": "packages/rules/src/data/classes-extra.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/classes.ts",
+      "target": "packages/rules/src/data/subclasses-extra.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/classes.ts",
+      "target": "packages/rules/src/types.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/conditions-extra.ts",
       "target": "packages/rules/src/types.ts",
       "relation": "imports",
       "confidence": "extracted"
     },
     {
       "source": "packages/rules/src/data/conditions.ts",
+      "target": "packages/rules/src/data/conditions-extra.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/conditions.ts",
+      "target": "packages/rules/src/types.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/equipment-extra.ts",
+      "target": "packages/rules/src/data/equipment-extra.ts#g",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/equipment-extra.ts",
+      "target": "packages/rules/src/data/equipment-extra.ts#w",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/equipment-extra.ts",
+      "target": "packages/rules/src/data/equipment-extra.ts#ExtraGearItem",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/equipment-extra.ts",
+      "target": "packages/rules/src/data/equipment-extra.ts#g",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/equipment-extra.ts",
+      "target": "packages/rules/src/data/equipment-extra.ts#w",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/equipment-extra.ts",
       "target": "packages/rules/src/types.ts",
       "relation": "imports",
       "confidence": "extracted"
@@ -32009,8 +33446,200 @@
     },
     {
       "source": "packages/rules/src/data/equipment.ts",
+      "target": "packages/rules/src/data/equipment-extra.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/equipment.ts",
       "target": "packages/rules/src/types.ts",
       "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts",
+      "target": "packages/rules/src/data/feats.ts#boon",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts",
+      "target": "packages/rules/src/data/feats.ts#f",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts",
+      "target": "packages/rules/src/data/feats.ts#fs",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts",
+      "target": "packages/rules/src/data/feats.ts#gen",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts",
+      "target": "packages/rules/src/data/feats.ts#o",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts",
+      "target": "packages/rules/src/data/feats.ts#boon",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts",
+      "target": "packages/rules/src/data/feats.ts#f",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts",
+      "target": "packages/rules/src/data/feats.ts#Feat",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts",
+      "target": "packages/rules/src/data/feats.ts#fs",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts",
+      "target": "packages/rules/src/data/feats.ts#gen",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts",
+      "target": "packages/rules/src/data/feats.ts#o",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts#boon",
+      "target": "packages/rules/src/data/feats.ts#f",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts#fs",
+      "target": "packages/rules/src/data/feats.ts#f",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts#gen",
+      "target": "packages/rules/src/data/feats.ts#f",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/feats.ts#o",
+      "target": "packages/rules/src/data/feats.ts#f",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#desloc",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#idiomas",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#race",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#sub",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#t",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#visao",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#desloc",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#idiomas",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#m",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#R",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#race",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#sub",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#t",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/data/races-extra.ts#visao",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts",
+      "target": "packages/rules/src/types.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races-extra.ts#desloc",
+      "target": "packages/rules/src/data/races-extra.ts#m",
+      "relation": "calls",
       "confidence": "extracted"
     },
     {
@@ -32021,7 +33650,37 @@
     },
     {
       "source": "packages/rules/src/data/races.ts",
+      "target": "packages/rules/src/data/races-extra.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/races.ts",
       "target": "packages/rules/src/types.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/spell-aliases.ts",
+      "target": "packages/rules/src/data/spells-c.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/spell-aliases.ts",
+      "target": "packages/rules/src/data/spells-d.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/spell-aliases.ts",
+      "target": "packages/rules/src/data/spells-e.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/spell-aliases.ts",
+      "target": "packages/rules/src/data/spells-f.ts",
       "relation": "imports",
       "confidence": "extracted"
     },
@@ -32033,6 +33692,30 @@
     },
     {
       "source": "packages/rules/src/data/spells-b.ts",
+      "target": "packages/rules/src/types.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/spells-c.ts",
+      "target": "packages/rules/src/types.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/spells-d.ts",
+      "target": "packages/rules/src/types.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/spells-e.ts",
+      "target": "packages/rules/src/types.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/spells-f.ts",
       "target": "packages/rules/src/types.ts",
       "relation": "imports",
       "confidence": "extracted"
@@ -32063,6 +33746,48 @@
     },
     {
       "source": "packages/rules/src/data/spells.ts",
+      "target": "packages/rules/src/data/spells-c.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/spells.ts",
+      "target": "packages/rules/src/data/spells-d.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/spells.ts",
+      "target": "packages/rules/src/data/spells-e.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/spells.ts",
+      "target": "packages/rules/src/data/spells-f.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/spells.ts",
+      "target": "packages/rules/src/types.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/subclasses-extra.ts",
+      "target": "packages/rules/src/data/subclasses-extra.ts#f",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/subclasses-extra.ts",
+      "target": "packages/rules/src/data/subclasses-extra.ts#f",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "packages/rules/src/data/subclasses-extra.ts",
       "target": "packages/rules/src/types.ts",
       "relation": "imports",
       "confidence": "extracted"
@@ -32209,6 +33934,420 @@
       "source": "packages/ui/src/code.tsx",
       "target": "react",
       "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/eslint.config.mjs",
+      "target": "@remotion/eslint-config-flat",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/remotion.config.ts",
+      "target": "@remotion/cli/config",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/scripts/make_audio.py",
+      "target": "video/scripts/make_audio.py#add",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/scripts/make_audio.py",
+      "target": "video/scripts/make_audio.py#env",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/scripts/make_audio.py",
+      "target": "video/scripts/make_audio.py#midi",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/scripts/make_audio.py",
+      "target": "video/scripts/make_audio.py#add",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/scripts/make_audio.py",
+      "target": "video/scripts/make_audio.py#env",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/scripts/make_audio.py",
+      "target": "video/scripts/make_audio.py#midi",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/scripts/make_audio.py",
+      "target": "wave",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/scripts/make_vo.py",
+      "target": "os",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/index.ts",
+      "target": "remotion",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/index.ts",
+      "target": "video/src/Root.tsx",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/index.ts",
+      "target": "video/src/Root.tsx#RemotionRoot",
+      "relation": "references",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/Root.tsx",
+      "target": "video/src/Root.tsx#RemotionRoot",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/Root.tsx",
+      "target": "remotion",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/Root.tsx",
+      "target": "video/src/RpgVideo.tsx",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/Root.tsx#RemotionRoot",
+      "target": "video/src/RpgVideo.tsx#RpgVideo",
+      "relation": "references",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "video/src/RpgVideo.tsx#RpgVideo",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "@remotion/transitions",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "@remotion/transitions/fade",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "@remotion/transitions/slide",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "remotion",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "video/src/scenes.tsx",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "video/src/scenes.tsx#Compendium",
+      "relation": "references",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "video/src/scenes.tsx#Dice",
+      "relation": "references",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "video/src/scenes.tsx#Intro",
+      "relation": "references",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "video/src/scenes.tsx#Outro",
+      "relation": "references",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "video/src/scenes.tsx#Roles",
+      "relation": "references",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "video/src/scenes.tsx#Sheet",
+      "relation": "references",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx",
+      "target": "video/src/scenes.tsx#Wizard",
+      "relation": "references",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/RpgVideo.tsx#RpgVideo",
+      "target": "video/src/ui.tsx#fade",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "video/src/scenes.tsx",
+      "target": "video/src/scenes.tsx#Compendium",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx",
+      "target": "video/src/scenes.tsx#Dice",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx",
+      "target": "video/src/scenes.tsx#Intro",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx",
+      "target": "video/src/scenes.tsx#mod",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx",
+      "target": "video/src/scenes.tsx#Outro",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx",
+      "target": "video/src/scenes.tsx#Roles",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx",
+      "target": "video/src/scenes.tsx#Sheet",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx",
+      "target": "video/src/scenes.tsx#Wizard",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx",
+      "target": "remotion",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx",
+      "target": "video/src/theme.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx",
+      "target": "video/src/ui.tsx",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx#Compendium",
+      "target": "video/src/ui.tsx#fade",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "video/src/scenes.tsx#Compendium",
+      "target": "video/src/ui.tsx#useIn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "video/src/scenes.tsx#Dice",
+      "target": "video/src/ui.tsx#fade",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "video/src/scenes.tsx#Dice",
+      "target": "video/src/ui.tsx#useIn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "video/src/scenes.tsx#Intro",
+      "target": "video/src/ui.tsx#useIn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "video/src/scenes.tsx#Outro",
+      "target": "video/src/ui.tsx#fade",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "video/src/scenes.tsx#Outro",
+      "target": "video/src/ui.tsx#useIn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "video/src/scenes.tsx#Roles",
+      "target": "video/src/scenes.tsx#Roles.box",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx#Roles",
+      "target": "video/src/ui.tsx#useIn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "video/src/scenes.tsx#Roles",
+      "target": "video/src/scenes.tsx#Roles.box",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx#Sheet",
+      "target": "video/src/scenes.tsx#mod",
+      "relation": "calls",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/scenes.tsx#Sheet",
+      "target": "video/src/ui.tsx#fade",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "video/src/scenes.tsx#Sheet",
+      "target": "video/src/ui.tsx#useIn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "video/src/scenes.tsx#Wizard",
+      "target": "video/src/ui.tsx#useIn",
+      "relation": "calls",
+      "confidence": "inferred"
+    },
+    {
+      "source": "video/src/theme.ts",
+      "target": "@remotion/google-fonts/Cinzel",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/theme.ts",
+      "target": "@remotion/google-fonts/Inter",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/ui.tsx",
+      "target": "video/src/ui.tsx#Bg",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/ui.tsx",
+      "target": "video/src/ui.tsx#Card",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/ui.tsx",
+      "target": "video/src/ui.tsx#fade",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/ui.tsx",
+      "target": "video/src/ui.tsx#Title",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/ui.tsx",
+      "target": "video/src/ui.tsx#useIn",
+      "relation": "contains",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/ui.tsx",
+      "target": "react",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/ui.tsx",
+      "target": "remotion",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/ui.tsx",
+      "target": "video/src/theme.ts",
+      "relation": "imports",
+      "confidence": "extracted"
+    },
+    {
+      "source": "video/src/ui.tsx#Title",
+      "target": "video/src/ui.tsx#useIn",
+      "relation": "calls",
       "confidence": "extracted"
     }
   ]

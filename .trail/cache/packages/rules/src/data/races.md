@@ -1,3 +1,3 @@
 # packages/rules/src/data/races.ts
 
-- getRace · function · L858-L858 — getRace = (id: string)
+- getRace · function · L879-L879 — getRace = (id: string)
