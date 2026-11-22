@@ -1,7 +1,7 @@
 "use client";
 
-import { Backpack, BookOpen, Scroll, Shield, Users } from "lucide-react";
-import { BACKGROUNDS, CLASSES, RACES, WEAPONS, ARMOR, GEAR } from "@repo/rules";
+import { Backpack, BookOpen, Scroll, Shield, Sparkles, Users } from "lucide-react";
+import { BACKGROUNDS, CLASSES, RACES, WEAPONS, ARMOR, GEAR, FEATS } from "@repo/rules";
 import { CardGrid, Header, LiftCard, Page } from "./kit";
 
 export default function Hub() {
@@ -9,12 +9,13 @@ export default function Hub() {
     { href: "/compendio/racas", title: "Raças", desc: "Povos de Faerûn, seus traços e sub-raças.", n: RACES.length, Icon: Users },
     { href: "/compendio/classes", title: "Classes", desc: "Progressão, características e subclasses.", n: CLASSES.length, Icon: Shield },
     { href: "/compendio/antecedentes", title: "Antecedentes", desc: "Origens, perícias e traços de personalidade.", n: BACKGROUNDS.length, Icon: Scroll },
+    { href: "/compendio/talentos", title: "Talentos", desc: "Talentos opcionais, pré-requisitos e benefícios.", n: FEATS.length, Icon: Sparkles },
     { href: "/compendio/equipamento", title: "Equipamento", desc: "Armas, armaduras e itens de aventura.", n: WEAPONS.length + ARMOR.length + GEAR.length, Icon: Backpack },
     { href: "/regras", title: "Regras e Condições", desc: "Regras-chave e condições do jogo.", n: null, Icon: BookOpen },
   ];
   return (
     <Page>
-      <Header eyebrow="Compêndio" title="Livro de Referência" subtitle="Consulte raças, classes, antecedentes e equipamento de D&D 5e em português." />
+      <Header eyebrow="Compêndio" title="Livro de Referência" subtitle="Consulte raças, classes, antecedentes, talentos e equipamento de D&D 5e em português." />
       <CardGrid>
         {items.map(({ href, title, desc, n, Icon }) => (
           <LiftCard key={href} href={href}>

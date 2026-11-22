@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 import { ARMOR, GEAR, WEAPONS } from '@repo/rules';
 
-import { Badge, Card, Heading, Muted, ScrollScreen, SearchBar } from '@/components/ui';
+import { Badge, Body, Card, Heading, Muted, ScrollScreen, SearchBar } from '@/components/ui';
 import { NoResults, Segmented } from '@/features/compendio/components';
 import { matches } from '@/features/compendio/utils';
 
@@ -116,7 +116,7 @@ function Armors({ q }: { q: string }) {
 function Gear({ q }: { q: string }) {
   const cats = useMemo(() => ['Todas', ...Array.from(new Set(GEAR.map((g) => g.category)))], []);
   const [cat, setCat] = useState('Todas');
-  const list = useMemo(() => GEAR.filter((g) => (cat === 'Todas' || g.category === cat) && matches(q, g.name, g.category)), [q, cat]);
+  const list = useMemo(() => GEAR.filter((g) => (cat === 'Todas' || g.category === cat) && matches(q, g.name, g.category, (g as { description?: string }).description)), [q, cat]);
   return (
     <View className="gap-3">
       {cats.length > 2 && <Segmented options={cats} value={cat} onChange={setCat} />}
@@ -133,6 +133,9 @@ function Gear({ q }: { q: string }) {
               <Stat label="Custo" value={g.cost} />
               <Stat label="Peso" value={g.weight} />
             </View>
+            {(g as { description?: string }).description ? (
+              <Body className="text-ink-body">{(g as { description?: string }).description}</Body>
+            ) : null}
           </Card>
         ))
       )}

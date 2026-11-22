@@ -1,7 +1,12 @@
 // Nomes alternativos das magias: variantes de tradução PT-BR (Livro do Jogador, Lista de Magias) e nomes em inglês.
+import { SPELL_ALIASES_C } from "./spells-c";
+import { SPELL_ALIASES_D } from "./spells-d";
+import { SPELL_ALIASES_E } from "./spells-e";
+import { SPELL_ALIASES_F } from "./spells-f";
+
 // Chave = id da magia em SPELLS. Dados puros, usados para busca.
 
-export const SPELL_ALIASES: Record<string, string[]> = {
+const SPELL_ALIASES_BASE: Record<string, string[]> = {
   "abraco-terrestre-de-maximilian": ["Maximilian's Earthen Grasp"],
   "absorver-elementos": ["Absorb Elements"],
   "acalmar-emocoes": ["Calm Emotions"],
@@ -202,6 +207,7 @@ export const SPELL_ALIASES: Record<string, string[]> = {
   "forma-gasosa": ["Gaseous Form"],
   "formas-animais": ["Forma Animal", "Animal Shapes"],
   "globo-de-invulnerabilidade": ["Globe of Invulnerability"],
+  "fiapo-estelar": ["Starry Wisp", "Fio Estelar", "Fagulha Estelar"],
   "globos-de-luz": ["Dancing Lights"],
   "guardiao-da-fe": ["Guardian of Faith"],
   "guardioes-espirituais": ["Espíritos Guardiões", "Spirit Guardians"],
@@ -445,3 +451,10 @@ export const SPELL_ALIASES: Record<string, string[]> = {
   "zombaria-malevola": ["Zombaria Viciosa", "Vicious Mockery"],
   "zona-da-verdade": ["Zone of Truth"],
 };
+
+export const SPELL_ALIASES: Record<string, string[]> = { ...SPELL_ALIASES_BASE };
+for (const extra of [SPELL_ALIASES_C, SPELL_ALIASES_D, SPELL_ALIASES_E, SPELL_ALIASES_F]) {
+  for (const [id, names] of Object.entries(extra)) {
+    SPELL_ALIASES[id] = [...new Set([...(SPELL_ALIASES[id] ?? []), ...names])];
+  }
+}

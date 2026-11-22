@@ -46,7 +46,7 @@ function writeRecent(q: string): void {
 
 const PAGES: SearchDoc[] = [
   { key: 'page:characters', title: 'Personagens', sub: 'Suas fichas', href: '/characters' },
-  { key: 'page:compendio', title: 'Compêndio', sub: 'Raças, classes e antecedentes', href: '/compendio' },
+  { key: 'page:compendio', title: 'Compêndio', sub: 'Raças, classes, antecedentes e talentos', href: '/compendio' },
   { key: 'page:magias', title: 'Magias', sub: 'Navegador de magias', href: '/magias' },
   { key: 'page:regras', title: 'Regras', sub: 'Condições e regras', href: '/regras' },
   { key: 'page:dados', title: 'Dados', sub: 'Rolador de dados', href: '/dados' },

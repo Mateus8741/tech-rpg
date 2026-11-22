@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ARMOR, GEAR, WEAPONS } from "@repo/rules";
+import { ARMOR, GEAR, WEAPONS, WEAPON_PROPERTIES } from "@repo/rules";
 import { AnimatedTabs, Chip, Empty, FilterChips, Header, norm, Page, SearchBox } from "./kit";
 
 function Th({ children }: { children?: React.ReactNode }) {
@@ -78,10 +78,12 @@ function Armors({ q }: { q: string }) {
   );
 }
 
+const descOf = (g: object) => (g as { description?: string }).description ?? "";
+
 function Gear({ q }: { q: string }) {
   const cats = useMemo(() => ["Todas", ...Array.from(new Set(GEAR.map((g) => g.category)))], []);
   const [cat, setCat] = useState("Todas");
-  const list = useMemo(() => GEAR.filter((g) => (cat === "Todas" || g.category === cat) && norm(g.name).includes(norm(q))), [q, cat]);
+  const list = useMemo(() => GEAR.filter((g) => (cat === "Todas" || g.category === cat) && norm(g.name + " " + descOf(g)).includes(norm(q))), [q, cat]);
   return (
     <div className="space-y-4">
       {cats.length > 2 && <FilterChips options={cats} value={cat} onChange={setCat} />}
@@ -91,7 +93,7 @@ function Gear({ q }: { q: string }) {
           <tbody>
             {list.map((g) => (
               <tr key={g.name} className={tr}>
-                <td className="px-3 py-2 font-medium text-ink">{g.name}</td>
+                <td className="px-3 py-2 font-medium text-ink">{g.name}{descOf(g) && <p className="mt-0.5 max-w-md whitespace-pre-line text-xs font-normal leading-relaxed text-ink-muted">{descOf(g)}</p>}</td>
                 <td className="px-3 py-2 text-ink-soft">{g.category}</td>
                 <td className="px-3 py-2 text-ink-body">{g.cost}</td>
                 <td className="px-3 py-2 text-ink-body">{g.weight}</td>
@@ -100,6 +102,20 @@ function Gear({ q }: { q: string }) {
           </tbody>
         </Wrap>
       )}
+    </div>
+  );
+}
+
+function Properties({ q }: { q: string }) {
+  const list = WEAPON_PROPERTIES.filter((p) => norm(p.name + " " + p.description).includes(norm(q)));
+  return list.length === 0 ? <Empty text="Nenhuma propriedade encontrada." /> : (
+    <div className="space-y-2">
+      {list.map((p) => (
+        <div key={p.name} className="rounded-xl border border-line bg-canvas p-4">
+          <h3 className="text-sm font-semibold text-ink">{p.name}</h3>
+          <p className="mt-1 text-sm leading-relaxed text-ink-body">{p.description}</p>
+        </div>
+      ))}
     </div>
   );
 }
@@ -114,6 +130,7 @@ export default function EquipmentView() {
         { label: `Armas (${WEAPONS.length})`, content: <Weapons q={q} /> },
         { label: `Armaduras (${ARMOR.length})`, content: <Armors q={q} /> },
         { label: `Equipamento (${GEAR.length})`, content: <Gear q={q} /> },
+        { label: `Propriedades de Armas (${WEAPON_PROPERTIES.length})`, content: <Properties q={q} /> },
       ]} />
     </Page>
   );

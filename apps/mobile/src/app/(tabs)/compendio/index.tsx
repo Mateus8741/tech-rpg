@@ -1,6 +1,6 @@
 import { router, type Href } from 'expo-router';
 import { Text, View } from 'react-native';
-import { ARMOR, BACKGROUNDS, CLASSES, CONDITIONS, GEAR, RACES, RULE_SECTIONS, WEAPONS } from '@repo/rules';
+import { ARMOR, BACKGROUNDS, CLASSES, CONDITIONS, FEATS, GEAR, RACES, RULE_SECTIONS, WEAPONS } from '@repo/rules';
 
 import { Body, Icon, Muted, PressableCard, ScrollScreen, useThemeColor, type IconName } from '@/components/ui';
 
@@ -8,6 +8,7 @@ const ITEMS: { href: Href; title: string; desc: string; n: number; unit: string;
   { href: '/compendio/classes', title: 'Classes', desc: 'Progressão, características e subclasses.', n: CLASSES.length, unit: 'entradas', icon: 'shield-outline' },
   { href: '/compendio/racas', title: 'Raças', desc: 'Povos de Faerûn, seus traços e sub-raças.', n: RACES.length, unit: 'entradas', icon: 'people-outline' },
   { href: '/compendio/antecedentes', title: 'Antecedentes', desc: 'Origens, perícias e traços de personalidade.', n: BACKGROUNDS.length, unit: 'entradas', icon: 'reader-outline' },
+  { href: '/compendio/talentos', title: 'Talentos', desc: 'Talentos de origem, gerais, estilos de luta e dádivas.', n: FEATS.length, unit: 'entradas', icon: 'flash-outline' },
   { href: '/compendio/equipamento', title: 'Equipamento', desc: 'Armas, armaduras e itens de aventura.', n: WEAPONS.length + ARMOR.length + GEAR.length, unit: 'entradas', icon: 'bag-handle-outline' },
   { href: '/compendio/regras', title: 'Regras e Condições', desc: 'Regras-chave e condições do jogo.', n: RULE_SECTIONS.length + CONDITIONS.length, unit: 'tópicos', icon: 'book-outline' },
 ];

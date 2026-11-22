@@ -1,6 +1,7 @@
 // Equipamento de D&D 5e (PT-BR) — Livro do Jogador, capítulo 5.
 // Preços em po/pp/pc; pesos em kg, exatamente como nas tabelas do livro.
 import type { ArmorItem, Weapon } from "../types";
+import { ARMOR_EXTRA, GEAR_EXTRA, WEAPONS_EXTRA } from "./equipment-extra";
 
 type Cat = Weapon["category"];
 type Kind = Weapon["kind"];
@@ -88,7 +89,7 @@ export const ARMOR: ArmorItem[] = [
   { name: "Escudo", category: "Escudo", ac: "+2", stealthDisadvantage: false, cost: "10 po", weight: "3 kg" },
 ];
 
-export const GEAR: { name: string; cost: string; weight: string; category: string }[] = [];
+export const GEAR: { name: string; cost: string; weight: string; category: string; description?: string }[] = [];
 
 const g = (category: string, rows: [name: string, cost: string, weight: string][]) => {
   for (const [name, cost, weight] of rows) GEAR.push({ name, cost, weight, category });
@@ -304,3 +305,7 @@ g("Veículo aquático (velocidade)", [
   ["Navio de guerra", "25.000 po", "4 km/h"],
   ["Veleiro", "10.000 po", "3 km/h"],
 ]);
+
+WEAPONS.push(...WEAPONS_EXTRA);
+ARMOR.push(...ARMOR_EXTRA);
+GEAR.push(...GEAR_EXTRA);

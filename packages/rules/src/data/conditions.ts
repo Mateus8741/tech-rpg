@@ -1,3 +1,4 @@
+import { CONDITIONS_EXTRA, RULE_SECTIONS_EXTRA } from "./conditions-extra";
 // Condições (Livro do Jogador, apêndice A) e regras-chave de jogo (capítulos 7-9), em PT-BR.
 import type { Condition } from "../types";
 
@@ -565,3 +566,6 @@ export const RULE_SECTIONS: { id: string; title: string; body: string[] }[] = [
     ],
   },
 ];
+
+CONDITIONS.push(...CONDITIONS_EXTRA.filter((c) => !CONDITIONS.some((x) => x.id === c.id)));
+RULE_SECTIONS.push(...RULE_SECTIONS_EXTRA.filter((r) => !RULE_SECTIONS.some((x) => x.id === r.id)));

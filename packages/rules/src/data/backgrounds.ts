@@ -1,4 +1,5 @@
 import type { Background } from "../types";
+import { BACKGROUNDS_EXTRA } from "./backgrounds-extra";
 
 // Antecedentes de D&D 5e (PT-BR). Fonte: "Antecedentes" (Biblioteca Élfica) e Livro do Jogador.
 // Tabelas d8 (traços) e d6 (ideais, vínculos, defeitos) mantêm a ordem do livro (índice 0 = resultado 1).
@@ -788,6 +789,8 @@ BACKGROUNDS.push(
     },
   }),
 );
+
+BACKGROUNDS.push(...BACKGROUNDS_EXTRA.filter((e) => !BACKGROUNDS.some((b) => b.id === e.id)));
 
 export function getBackground(id: string): Background | undefined {
   return BACKGROUNDS.find((b) => b.id === id);

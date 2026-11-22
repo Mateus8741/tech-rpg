@@ -1,5 +1,5 @@
 import { Stack } from 'expo-router';
-import { getBackground, getClass, getRace } from '@repo/rules';
+import { FEATS, getBackground, getClass, getRace } from '@repo/rules';
 
 import { useStackScreenOptions } from '@/lib/nav-theme';
 
@@ -20,6 +20,8 @@ export default function CompendioLayout() {
         name="antecedentes/[id]"
         options={({ route }) => ({ title: getBackground(idOf(route.params))?.name ?? 'Antecedente' })}
       />
+      <Stack.Screen name="talentos/index" options={{ title: 'Talentos' }} />
+      <Stack.Screen name="talentos/[id]" options={({ route }) => ({ title: FEATS.find((f) => f.id === idOf(route.params))?.name ?? 'Talento' })} />
       <Stack.Screen name="equipamento" options={{ title: 'Equipamento' }} />
       <Stack.Screen name="regras" options={{ title: 'Regras e Condições' }} />
     </Stack>

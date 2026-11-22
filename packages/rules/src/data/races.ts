@@ -3,6 +3,7 @@
 // e Resumo das Raças (Biblioteca Élfica). Deslocamentos em metros.
 
 import type { Race } from "../types";
+import { RACES_EXTRA } from "./races-extra";
 
 const VISAO_NO_ESCURO =
   "Acostumado à vida subterrânea, você tem uma visão superior no escuro e na penumbra. Você enxerga na penumbra a até 18 metros como se fosse luz plena, e no escuro como se fosse na penumbra. Você não pode discernir cores no escuro, apenas tons de cinza.";
@@ -854,5 +855,25 @@ export const RACES: Race[] = [
     subraces: [],
   },
 ];
+
+// Entradas "linhagens" de races-extra são agrupadores: suas sub-raças entram nas raças base.
+const SUBRACE_GROUPS: Record<string, string> = {
+  "elfo-linhagens-extra": "elfo",
+  "draconato-linhagens-extra": "draconato",
+  "halfling-linhagens-extra": "halfling",
+  "tiefling-linhagens": "tiefling",
+};
+const groups = RACES_EXTRA.filter((r) => r.id in SUBRACE_GROUPS);
+const standalone = RACES_EXTRA.filter((r) => !(r.id in SUBRACE_GROUPS));
+
+const merged: Race[] = RACES.map((r) => {
+  const add = groups.filter((g) => SUBRACE_GROUPS[g.id] === r.id).flatMap((g) => g.subraces);
+  if (!add.length) return r;
+  const have = new Set(r.subraces.map((x) => x.id));
+  return { ...r, subraces: [...r.subraces, ...add.filter((x) => !have.has(x.id))] };
+});
+RACES.length = 0;
+RACES.push(...merged, ...standalone.filter((r) => !merged.some((m) => m.id === r.id)));
+RACES.sort((a, b) => a.name.localeCompare(b.name, "pt-BR"));
 
 export const getRace = (id: string) => RACES.find((r) => r.id === id);

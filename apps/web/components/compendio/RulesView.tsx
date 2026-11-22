@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CONDITIONS, RULE_SECTIONS } from "@repo/rules";
+import { CONDITIONS, RULE_SECTIONS, WEAPON_PROPERTIES } from "@repo/rules";
 import { Accordion, Empty, Header, norm, Page, RuleText, SearchBox } from "./kit";
 
 export default function RulesView() {
@@ -17,6 +17,17 @@ export default function RulesView() {
             {s.body.map((p, i) => <RuleText key={i} text={p} />)}
           </Accordion>
         ))}
+      </div>
+      <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-gold-ink">Propriedades de Armas ({WEAPON_PROPERTIES.length})</h2>
+      <div className="mb-10 space-y-2">
+        <Accordion title="Glossário de propriedades de armas">
+          {WEAPON_PROPERTIES.map((p) => (
+            <div key={p.name}>
+              <p className="text-sm font-semibold text-ink">{p.name}</p>
+              <RuleText text={p.description} />
+            </div>
+          ))}
+        </Accordion>
       </div>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-gold-ink">Condições ({CONDITIONS.length})</h2>
