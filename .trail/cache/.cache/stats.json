@@ -1,17 +1,17 @@
 {
-  "nodeCount": 1227,
-  "edgeCount": 2814,
+  "nodeCount": 1324,
+  "edgeCount": 3059,
   "languages": [
     "javascript",
     "python",
     "tsx",
     "typescript"
   ],
-  "totalCount": 1227,
+  "totalCount": 1324,
   "readyCount": 0,
   "staleCount": 0,
   "dirty": false,
   "syncing": false,
-  "syncedAt": "2026-11-21T01:34:55.979Z",
-  "lastFile": "spells-f.ts"
+  "syncedAt": "2026-11-22T19:15:56.529Z",
+  "lastFile": "ZoneSheet.tsx"
 }

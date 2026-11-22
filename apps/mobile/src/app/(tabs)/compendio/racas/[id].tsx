@@ -19,7 +19,7 @@ export default function RaceDetailScreen() {
   const p = r.proficiencies;
   return (
     <ScrollScreen>
-      <DetailHeader eyebrow="Raça" title={r.name} summary={r.summary}>
+      <DetailHeader icon="people-outline" eyebrow="Raça" title={r.name} summary={r.summary}>
         <BadgeRow
           items={[
             ...bonusLabels(r.abilityBonuses).map((label) => ({ label, tone: 'indigo' as const })),

@@ -4,21 +4,26 @@ import { View } from 'react-native';
 import { RACES } from '@repo/rules';
 
 import { ScrollScreen, SearchBar } from '@/components/ui';
-import { BadgeRow, ListItemCard, NoResults } from '@/features/compendio/components';
+import { BadgeRow, ListItemCard, ListSkeleton, NoResults, useBootSkeleton } from '@/features/compendio/components';
 import { bonusLabels, matches } from '@/features/compendio/utils';
 
 export default function RaceListScreen() {
   const [q, setQ] = useState('');
+  const booting = useBootSkeleton();
   const list = useMemo(() => RACES.filter((r) => matches(q, r.name, r.summary, ...r.subraces.map((s) => s.name))), [q]);
   return (
     <ScrollScreen>
       <SearchBar value={q} onChangeText={setQ} placeholder="Buscar raça…" />
-      {list.length === 0 ? (
+      {booting ? (
+        <ListSkeleton />
+      ) : list.length === 0 ? (
         <NoResults text="Nenhuma raça encontrada." />
       ) : (
         <View className="gap-3">
-          {list.map((r) => (
+          {list.map((r, i) => (
             <ListItemCard
+              index={i}
+              icon="people-outline"
               key={r.id}
               title={r.name}
               subtitle={r.summary}

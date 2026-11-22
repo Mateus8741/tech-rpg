@@ -30,7 +30,7 @@ function RootNavigator() {
   return (
     <ThemeProvider value={navTheme}>
       <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
-      <Stack screenOptions={{ headerShown: false }}>
+      <Stack screenOptions={{ headerShown: false, animation: 'fade', animationDuration: 320 }}>
         <Stack.Screen name="index" />
         <Stack.Protected guard={!!session}>
           <Stack.Screen name="(tabs)" />

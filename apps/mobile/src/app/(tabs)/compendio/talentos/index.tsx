@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { FEATS } from '@repo/rules';
 
 import { Badge, ScrollScreen, SearchBar } from '@/components/ui';
-import { BadgeRow, ListItemCard, NoResults, Segmented } from '@/features/compendio/components';
+import { BadgeRow, ListItemCard, ListSkeleton, NoResults, useBootSkeleton, Segmented } from '@/features/compendio/components';
 import { matches } from '@/features/compendio/utils';
 
 const ALL = 'Todas';
@@ -15,6 +15,7 @@ export default function FeatListScreen() {
   const [q, setQ] = useState('');
   const [source, setSource] = useState(ALL);
   const [category, setCategory] = useState(ALL);
+  const booting = useBootSkeleton();
   const list = useMemo(
     () =>
       FEATS.filter(
@@ -30,12 +31,16 @@ export default function FeatListScreen() {
       <SearchBar value={q} onChangeText={setQ} placeholder="Buscar talento…" />
       <Segmented options={SOURCES} value={source} onChange={setSource} />
       {CATEGORIES.length > 1 && <Segmented options={CATEGORIES} value={category} onChange={setCategory} />}
-      {list.length === 0 ? (
+      {booting ? (
+        <ListSkeleton />
+      ) : list.length === 0 ? (
         <NoResults text="Nenhum talento encontrado." />
       ) : (
         <View className="gap-3">
-          {list.map((f) => (
+          {list.map((f, i) => (
             <ListItemCard
+              index={i}
+              icon="flash-outline"
               key={f.id}
               title={f.name}
               subtitle={f.description}

@@ -4,21 +4,26 @@ import { View } from 'react-native';
 import { CLASSES } from '@repo/rules';
 
 import { Badge, ScrollScreen, SearchBar } from '@/components/ui';
-import { BadgeRow, ListItemCard, NoResults } from '@/features/compendio/components';
+import { BadgeRow, ListItemCard, ListSkeleton, NoResults, useBootSkeleton } from '@/features/compendio/components';
 import { abilityAbbr, matches } from '@/features/compendio/utils';
 
 export default function ClassListScreen() {
   const [q, setQ] = useState('');
+  const booting = useBootSkeleton();
   const list = useMemo(() => CLASSES.filter((c) => matches(q, c.name, c.summary)), [q]);
   return (
     <ScrollScreen>
       <SearchBar value={q} onChangeText={setQ} placeholder="Buscar classe…" />
-      {list.length === 0 ? (
+      {booting ? (
+        <ListSkeleton />
+      ) : list.length === 0 ? (
         <NoResults text="Nenhuma classe encontrada." />
       ) : (
         <View className="gap-3">
-          {list.map((c) => (
+          {list.map((c, i) => (
             <ListItemCard
+              index={i}
+              icon="shield-half-outline"
               key={c.id}
               title={c.name}
               subtitle={c.summary}

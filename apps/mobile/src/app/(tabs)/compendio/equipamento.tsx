@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { ARMOR, GEAR, WEAPONS } from '@repo/rules';
 
 import { Badge, Body, Card, Heading, Muted, ScrollScreen, SearchBar } from '@/components/ui';
+import { Reveal, RevealItem } from '@/components/motion';
 import { NoResults, Segmented } from '@/features/compendio/components';
 import { matches } from '@/features/compendio/utils';
 
@@ -19,6 +20,10 @@ export default function EquipmentScreen() {
   };
   return (
     <ScrollScreen>
+      <Reveal>
+        <Text className="font-display text-[30px] leading-9 text-gold-ink">Arsenal</Text>
+        <Muted>Armas, armaduras e itens de aventura.</Muted>
+      </Reveal>
       <SearchBar value={q} onChangeText={setQ} placeholder="Buscar equipamento…" />
       <Segmented options={tabs} value={tab} onChange={setTab} labels={labels} />
       {tab === 'armas' && <Weapons q={q} />}
@@ -32,7 +37,7 @@ function Stat({ label, value, accent }: { label: string; value: string; accent?:
   return (
     <View className="min-w-[64px] gap-0.5">
       <Muted className="text-[11px]">{label}</Muted>
-      <Text className={accent ? 'text-sm font-semibold text-gold-ink' : 'text-sm text-ink-body'}>{value}</Text>
+      <Text className={accent ? 'font-display text-lg text-gold-ink' : 'text-sm text-ink-body'}>{value}</Text>
     </View>
   );
 }
@@ -57,8 +62,9 @@ function Weapons({ q }: { q: string }) {
       {list.length === 0 ? (
         <NoResults text="Nenhuma arma encontrada." />
       ) : (
-        list.map((w) => (
-          <Card key={w.name} className="gap-3">
+        list.map((w, i) => (
+          <RevealItem key={w.name} index={i}>
+          <Card className="gap-3 rounded-3xl">
             <View className="flex-row items-start justify-between gap-2">
               <Heading className="flex-1">{w.name}</Heading>
               <Badge tone={w.category === 'Marcial' ? 'violet' : 'neutral'}>{`${w.category} · ${w.kind}`}</Badge>
@@ -76,6 +82,7 @@ function Weapons({ q }: { q: string }) {
               </View>
             )}
           </Card>
+          </RevealItem>
         ))
       )}
     </View>
@@ -93,8 +100,9 @@ function Armors({ q }: { q: string }) {
       {list.length === 0 ? (
         <NoResults text="Nenhuma armadura encontrada." />
       ) : (
-        list.map((a) => (
-          <Card key={a.name} className="gap-3">
+        list.map((a, i) => (
+          <RevealItem key={a.name} index={i}>
+          <Card className="gap-3 rounded-3xl">
             <View className="flex-row items-start justify-between gap-2">
               <Heading className="flex-1">{a.name}</Heading>
               <Badge tone="indigo">{a.category}</Badge>
@@ -107,6 +115,7 @@ function Armors({ q }: { q: string }) {
               <Stat label="Peso" value={a.weight} />
             </View>
           </Card>
+          </RevealItem>
         ))
       )}
     </View>
@@ -123,8 +132,9 @@ function Gear({ q }: { q: string }) {
       {list.length === 0 ? (
         <NoResults text="Nenhum item encontrado." />
       ) : (
-        list.map((g) => (
-          <Card key={g.name} className="gap-2">
+        list.map((g, i) => (
+          <RevealItem key={g.name} index={i}>
+          <Card className="gap-2 rounded-3xl">
             <View className="flex-row items-start justify-between gap-2">
               <Heading className="flex-1">{g.name}</Heading>
               <Badge>{g.category}</Badge>
@@ -137,6 +147,7 @@ function Gear({ q }: { q: string }) {
               <Body className="text-ink-body">{(g as { description?: string }).description}</Body>
             ) : null}
           </Card>
+          </RevealItem>
         ))
       )}
     </View>

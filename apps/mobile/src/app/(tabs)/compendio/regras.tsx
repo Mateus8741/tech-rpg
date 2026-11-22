@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import { CONDITIONS, RULE_SECTIONS, WEAPON_PROPERTIES } from '@repo/rules';
 
+import { Reveal, RevealItem } from '@/components/motion';
 import { ScrollScreen, SearchBar, Section } from '@/components/ui';
 import { Accordion, NoResults, RuleText } from '@/features/compendio/components';
 import { matches } from '@/features/compendio/utils';
@@ -15,6 +16,9 @@ export default function RulesScreen() {
 
   return (
     <ScrollScreen>
+      <Reveal>
+        <Text className="font-display text-[30px] leading-9 text-gold-ink">Regras</Text>
+      </Reveal>
       <SearchBar value={q} onChangeText={setQ} placeholder="Buscar regra ou condição…" />
       {rules.length === 0 && conds.length === 0 && props.length === 0 ? (
         <NoResults text="Nada encontrado." />

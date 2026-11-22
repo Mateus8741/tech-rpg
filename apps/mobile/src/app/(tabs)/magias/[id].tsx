@@ -24,9 +24,10 @@ export default function SpellDetailScreen() {
     <ScrollScreen>
       <Stack.Screen options={{ title: spell.name }} />
 
-      <View className="gap-2">
-        <Title>{spell.name}</Title>
-        <Text className="text-sm italic text-ink-soft">{spellLevelSchool(spell)}</Text>
+      <View className="gap-2 rounded-2xl border border-gold/30 bg-gold/5 p-4">
+        <Text className="text-[11px] font-semibold uppercase tracking-[2px] text-gold-ink">Magia</Text>
+        <Title className="text-3xl">{spell.name}</Title>
+        <Text className="text-[15px] italic text-ink-soft">{spellLevelSchool(spell)}</Text>
         {(spell.concentration || spell.ritual) && (
           <View className="flex-row flex-wrap gap-1.5">
             {spell.concentration && <Badge tone="violet">Concentração</Badge>}
@@ -61,7 +62,7 @@ export default function SpellDetailScreen() {
       <Section title="Descrição">
         <View className="gap-3">
           {paragraphs.map((p, i) => (
-            <Body key={i}>{p}</Body>
+            <Body key={i} className="text-[15px] leading-6">{p}</Body>
           ))}
         </View>
       </Section>

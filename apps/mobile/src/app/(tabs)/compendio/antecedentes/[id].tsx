@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { getBackground } from '@repo/rules';
 
 import { Button, cx, Muted, ScrollScreen, Screen, Section } from '@/components/ui';
+import { Pop } from '@/components/motion';
 import { BadgeRow, BulletList, DetailHeader, NotFound, Panel, RuleText } from '@/features/compendio/components';
 import { skillName } from '@/features/compendio/utils';
 
@@ -15,6 +16,7 @@ export default function BackgroundDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const b = getBackground(String(id));
   const [roll, setRoll] = useState<Record<Kind, number> | null>(null);
+  const [rollKey, setRollKey] = useState(0);
   if (!b) {
     return (
       <Screen>
@@ -30,11 +32,12 @@ export default function BackgroundDetailScreen() {
       r[k] = Math.floor(Math.random() * Math.max(lists[k].length, 1));
     });
     setRoll(r);
+    setRollKey((k) => k + 1);
   };
 
   return (
     <ScrollScreen>
-      <DetailHeader eyebrow="Antecedente" title={b.name} summary={b.summary} />
+      <DetailHeader icon="reader-outline" eyebrow="Antecedente" title={b.name} summary={b.summary} />
 
       <Panel title="Proficiências e Equipamento">
         <Muted>Perícias</Muted>
@@ -66,7 +69,7 @@ export default function BackgroundDetailScreen() {
       <Section title="Personalidade">
         <Button title="Rolar personalidade" icon="dice-outline" onPress={doRoll} />
         {roll && (
-          <View className="gap-3 rounded-2xl border border-gold/40 bg-gold/10 p-4">
+          <Pop key={rollKey} style={{ gap: 12, borderRadius: 24, borderWidth: 1, borderColor: '#e0b04c66', backgroundColor: '#e0b04c1a', padding: 16 }}>
             {KINDS.map((k) => (
               <View key={k} className="gap-0.5">
                 <Text className="text-[11px] font-semibold uppercase tracking-wider text-gold-ink">
@@ -75,7 +78,7 @@ export default function BackgroundDetailScreen() {
                 <Text className="text-sm leading-5 text-ink">{lists[k][roll[k]] ?? '—'}</Text>
               </View>
             ))}
-          </View>
+          </Pop>
         )}
       </Section>
 

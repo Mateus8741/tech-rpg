@@ -23,11 +23,16 @@ export function useStackScreenOptions() {
   const surface = useThemeColor('--color-surface');
   const ink = useThemeColor('--color-ink');
   const gold = useThemeColor('--color-gold-ink');
+  const canvas = useThemeColor('--color-canvas');
   return {
     headerStyle: { backgroundColor: surface },
+    headerLargeTitleShadowVisible: false,
     headerTintColor: gold,
-    headerTitleStyle: { color: ink, fontFamily: 'Cinzel_700Bold' },
+    headerTitleStyle: { color: ink, fontFamily: 'Cinzel_700Bold', fontSize: 18 },
     headerShadowVisible: false,
     headerBackButtonDisplayMode: 'minimal' as const,
+    animation: 'slide_from_right' as const,
+    animationDuration: 260,
+    contentStyle: { backgroundColor: canvas },
   };
 }

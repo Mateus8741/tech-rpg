@@ -5,63 +5,74 @@
 @theme {
   --color-indigo: #6366f1;
   --color-violet: #8b5cf6;
-  --color-gold: #f5c451;
+  --color-gold: #e0b04c;
+  --color-on-gold: #1c1407;
+  --color-crimson: #b4232c;
   --color-gold-deep: #b8892a;
 
   --font-display: 'Cinzel_700Bold';
   --font-display-medium: 'Cinzel_500Medium';
+
+  /* Raios e sombras (escala do tema) */
+  --radius-card: 18px;
+  --radius-control: 14px;
 }
 
 @layer theme {
   :root {
     @variant light {
-      --color-void: #e9ecf4;
-      --color-base: #f3f4f9;
-      --color-canvas: #f7f8fc;
-      --color-surface: #ffffff;
-      --color-surface-2: #f0f2f8;
-      --color-surface-3: #e5e8f1;
-      --color-line: #dde1ec;
-      --color-line-strong: #bfc6d6;
-      --color-ink: #0f172a;
-      --color-ink-body: #1e293b;
-      --color-ink-soft: #334155;
-      --color-ink-muted: #4a5870;
-      --color-ink-faint: #576680;
+      --color-void: #ece3d0;
+      --color-base: #f1e9d8;
+      --color-canvas: #f6f0e4;
+      --color-surface: #fffaf0;
+      --color-surface-2: #f1e9d9;
+      --color-surface-3: #e6dcc6;
+      --color-line: #e2d7bf;
+      --color-line-strong: #c4b595;
+      --color-ink: #2a1f14;
+      --color-ink-body: #3d3022;
+      --color-ink-soft: #55463a;
+      --color-ink-muted: #65564a;
+      --color-ink-faint: #6f604f;
       --color-indigo-ink: #4338ca;
       --color-indigo-ink-soft: #3730a3;
       --color-violet-ink: #6d28d9;
       --color-violet-ink-soft: #5b21b6;
       --color-gold-ink: #8a5d00;
       --color-gold-soft: #7a5200;
-      --color-danger: #dc2626;
-      --color-danger-soft: #b91c1c;
+      --color-danger: #b91c1c;
+      --color-danger-soft: #991b1b;
       --color-success: #15803d;
     }
 
     @variant dark {
-      --color-void: #07080f;
-      --color-base: #0a0c14;
-      --color-canvas: #0f1117;
-      --color-surface: #13151f;
-      --color-surface-2: #181b29;
-      --color-surface-3: #1e2035;
-      --color-line: #1e2035;
-      --color-line-strong: #2d2f45;
-      --color-ink: #e2e8f0;
-      --color-ink-body: #cbd5e1;
-      --color-ink-soft: #a3b1c6;
-      --color-ink-muted: #8493a8;
-      --color-ink-faint: #7a899f;
-      --color-indigo-ink: #a5b4fc;
+      --color-void: #070605;
+      --color-base: #0b0908;
+      --color-canvas: #0e0c0b;
+      --color-surface: #181513;
+      --color-surface-2: #211d19;
+      --color-surface-3: #2b2621;
+      --color-line: #2e2823;
+      --color-line-strong: #463d35;
+      --color-ink: #f5efe6;
+      --color-ink-body: #ddd4c7;
+      --color-ink-soft: #bdb2a3;
+      --color-ink-muted: #a2978a;
+      --color-ink-faint: #918677;
+      --color-indigo-ink: #b4bdfc;
       --color-indigo-ink-soft: #c7d2fe;
-      --color-violet-ink: #a78bfa;
+      --color-violet-ink: #b79dfb;
       --color-violet-ink-soft: #c4b5fd;
-      --color-gold-ink: #f5c451;
-      --color-gold-soft: #fbe3a1;
+      --color-gold-ink: #e8bd5c;
+      --color-gold-soft: #f3d994;
       --color-danger: #f87171;
       --color-danger-soft: #fca5a5;
       --color-success: #4ade80;
     }
   }
+}
+
+/* Sombras/ritmos extras do redesign */
+@theme {
+  --shadow-glow: 0 0 24px rgba(224, 176, 76, 0.35);
 }

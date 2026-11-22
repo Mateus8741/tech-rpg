@@ -16,7 +16,7 @@ export default function FeatDetailScreen() {
   }
   return (
     <ScrollScreen>
-      <DetailHeader eyebrow="Talento" title={f.name}>
+      <DetailHeader icon="flash-outline" eyebrow="Talento" title={f.name}>
         <BadgeRow
           items={[
             ...(f.category ? [{ label: f.category, tone: 'gold' as const }] : []),

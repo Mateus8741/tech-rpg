@@ -2,7 +2,8 @@ import { Stack, router, useFocusEffect } from 'expo-router';
 import { useCallback, useMemo, useState } from 'react';
 import { FlatList, Pressable, RefreshControl, View } from 'react-native';
 
-import { Button, EmptyState, ErrorState, Icon, Loading, Muted, Screen, SearchBar, useThemeColor } from '@/components/ui';
+import { Reveal, PressScale } from '@/components/motion';
+import { Button, EmptyState, ErrorState, Heading, Icon, Loading, Muted, Screen, SearchBar, useThemeColor } from '@/components/ui';
 import { CharacterCard, raceClassLabel } from '@/features/personagens/components';
 import { norm } from '@/features/personagens/sheet';
 import { getCharacters, type Character } from '@/lib/api';
@@ -15,6 +16,7 @@ export default function PersonagensScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [query, setQuery] = useState('');
   const gold = useThemeColor('--color-gold-ink');
+  const onGold = useThemeColor('--color-on-gold');
 
   const load = useCallback(async () => {
     try {
@@ -52,7 +54,7 @@ export default function PersonagensScreen() {
     <Stack.Screen
       options={{
         headerRight: () => (
-          <Pressable accessibilityRole="button" accessibilityLabel="Novo personagem" hitSlop={8} onPress={() => router.push('/personagens/novo')}>
+          <Pressable accessibilityRole="button" accessibilityLabel="Novo personagem" className="h-11 w-11 items-center justify-center" hitSlop={8} onPress={() => router.push('/personagens/novo')}>
             <Icon name="add" size={26} color={gold} />
           </Pressable>
         ),
@@ -86,18 +88,29 @@ export default function PersonagensScreen() {
         keyExtractor={(c) => c.id}
         contentInsetAdjustmentBehavior="automatic"
         keyboardShouldPersistTaps="handled"
-        contentContainerClassName="gap-3 p-4 pb-10"
+        contentContainerClassName="gap-3.5 p-4 pb-10"
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor={gold} />}
         ListHeaderComponent={
           characters.length > 0 ? (
-            <View className="gap-2">
+            <Reveal from="up" style={{ gap: 10 }}>
+              <View className="flex-row items-center gap-3 rounded-[22px] border border-gold/30 bg-surface p-4">
+                <View className="h-12 w-12 items-center justify-center rounded-2xl bg-gold/15">
+                  <Icon name="people" size={24} color={gold} />
+                </View>
+                <View className="flex-1">
+                  <Heading>{role === 'MASTER' ? 'Mesa do mestre' : 'Seus heróis'}</Heading>
+                  <Muted>
+                    {characters.length} {characters.length === 1 ? 'personagem' : 'personagens'}
+                    {role === 'MASTER' ? ' · visão do mestre' : ''}
+                  </Muted>
+                </View>
+                <PressScale accessibilityRole="button" accessibilityLabel="Novo personagem" scaleTo={0.88} onPress={() => router.push('/personagens/novo')} className="h-11 w-11 items-center justify-center rounded-full bg-gold">
+                  <Icon name="add" size={24} color={onGold} />
+                </PressScale>
+              </View>
               <SearchBar value={query} onChangeText={setQuery} placeholder="Buscar por nome, raça ou classe…" />
-              <Muted>
-                {characters.length} {characters.length === 1 ? 'personagem' : 'personagens'}
-                {role === 'MASTER' ? ' · visão do mestre' : ''}
-              </Muted>
               {error && <Muted className="text-danger">{error}</Muted>}
-            </View>
+            </Reveal>
           ) : undefined
         }
         ListEmptyComponent={
@@ -112,8 +125,8 @@ export default function PersonagensScreen() {
             <EmptyState icon="search-outline" title="Nada encontrado" message="Nenhum personagem corresponde à busca." />
           )
         }
-        renderItem={({ item }) => (
-          <CharacterCard character={item} showOwner={role === 'MASTER'} onPress={() => router.push(`/personagens/${item.id}`)} />
+        renderItem={({ item, index }) => (
+          <CharacterCard index={index} character={item} showOwner={role === 'MASTER'} onPress={() => router.push(`/personagens/${item.id}`)} />
         )}
       />
     </Screen>

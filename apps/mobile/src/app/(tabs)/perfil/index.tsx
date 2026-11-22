@@ -1,9 +1,11 @@
 import Constants from 'expo-constants';
 import { useState } from 'react';
-import { ActivityIndicator, Alert, Pressable, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, Text, View } from 'react-native';
 
-import { Badge, Button, Card, Heading, Icon, InfoRow, Muted, ScrollScreen, Section, cx, useThemeColor } from '@/components/ui';
-import { THEME_OPTIONS, useThemePreference } from '@/features/perfil/theme';
+import { Badge, Button, Card, Heading, InfoRow, Muted, ScrollScreen, Section, useThemeColor } from '@/components/ui';
+import { Bump, Pop, Reveal } from '@/components/motion';
+import { AvatarHero, StatTile, ThemeSelector, useCountUp } from '@/features/perfil/components';
+import { useThemePreference } from '@/features/perfil/theme';
 import { useCharacterCount } from '@/features/perfil/useCharacterCount';
 import { API_URL } from '@/lib/api';
 import { useSession } from '@/lib/session';
@@ -15,10 +17,8 @@ export default function PerfilScreen() {
   const { state: characters, reload } = useCharacterCount(session?.username);
   const { preference, resolvedTheme, setPreference } = useThemePreference();
   const [leaving, setLeaving] = useState(false);
-  const white = '#ffffff';
+  const shownCount = useCountUp(characters.status === 'ok' ? characters.count : 0);
   const gold = useThemeColor('--color-gold');
-  const soft = useThemeColor('--color-ink-soft');
-  const indigoInk = useThemeColor('--color-indigo-ink');
 
   if (!session) return null;
 
@@ -45,69 +45,49 @@ export default function PerfilScreen() {
 
   return (
     <ScrollScreen>
-      <Card className="flex-row items-center gap-4">
-        <View className={cx('h-16 w-16 items-center justify-center rounded-2xl', isMaster ? 'bg-violet' : 'bg-indigo')}>
-          <Text className="font-display text-2xl" style={{ color: white }}>
-            {initial}
-          </Text>
-        </View>
-        <View className="flex-1 gap-1.5">
-          <Heading className="text-lg" numberOfLines={1}>
+      <Reveal>
+        <View className="items-center gap-3 rounded-[22px] border border-gold/30 bg-surface px-5 pb-6 pt-7">
+          <AvatarHero initial={initial} master={isMaster} />
+          <Heading className="text-xl" numberOfLines={1}>
             {session.username}
           </Heading>
-          <Badge tone={isMaster ? 'violet' : 'indigo'}>{isMaster ? 'Mestre' : 'Jogador'}</Badge>
+          <Pop delay={250}>
+            <Badge tone={isMaster ? 'violet' : 'indigo'}>{isMaster ? 'Mestre' : 'Jogador'}</Badge>
+          </Pop>
         </View>
-        <Icon name={isMaster ? 'shield-half' : 'person'} size={22} color={isMaster ? gold : soft} />
-      </Card>
+      </Reveal>
 
-      <Pressable
-        accessibilityRole="button"
-        accessibilityHint="Toque para atualizar"
-        onPress={reload}
-        className="flex-row items-center gap-3 rounded-2xl border border-line bg-surface p-4 active:opacity-70"
-      >
-        <View className="h-10 w-10 items-center justify-center rounded-xl bg-gold/15">
-          <Icon name="people" size={20} color={gold} />
+      <Reveal delay={90}>
+        <View className="flex-row gap-3">
+          <StatTile icon="people" label="Personagens" onPress={reload} hint="Toque para atualizar">
+            {characters.status === 'loading' ? (
+              <ActivityIndicator color={gold} style={{ alignSelf: 'flex-start' }} />
+            ) : characters.status === 'ok' ? (
+              <Bump trigger={characters.count}>
+                <Text className="font-display text-3xl text-gold-ink" style={{ fontVariant: ['tabular-nums'] }}>
+                  {shownCount}
+                </Text>
+              </Bump>
+            ) : (
+              <Text className="text-xs text-danger">Falhou. Toque para tentar de novo.</Text>
+            )}
+          </StatTile>
+          <StatTile icon={isMaster ? 'shield-half' : 'person'} label="Função">
+            <Text className="font-display text-xl text-ink">{isMaster ? 'Mestre' : 'Jogador'}</Text>
+          </StatTile>
         </View>
-        <View className="flex-1">
-          <Muted className="text-sm">Personagens</Muted>
-          {characters.status === 'error' && <Text className="text-xs text-danger">Não foi possível carregar. Toque para tentar de novo.</Text>}
-        </View>
-        {characters.status === 'loading' ? (
-          <ActivityIndicator color={gold} />
-        ) : characters.status === 'ok' ? (
-          <Text className="font-display text-2xl text-gold-ink">{characters.count}</Text>
-        ) : (
-          <Icon name="refresh" size={20} color={soft} />
-        )}
-      </Pressable>
+      </Reveal>
 
-      <Section title="Aparência">
-        <View className="flex-row gap-2">
-          {THEME_OPTIONS.map((opt) => {
-            const on = preference === opt.id;
-            return (
-              <Pressable
-                key={opt.id}
-                accessibilityRole="button"
-                accessibilityState={{ selected: on }}
-                onPress={() => setPreference(opt.id)}
-                className={cx(
-                  'flex-1 items-center gap-1.5 rounded-xl border py-3 active:opacity-70',
-                  on ? 'border-indigo bg-indigo/15' : 'border-line bg-surface',
-                )}
-              >
-                <Icon name={opt.icon} size={22} color={on ? indigoInk : soft} />
-                <Text className={cx('text-xs font-semibold', on ? 'text-indigo-ink' : 'text-ink-soft')}>{opt.label}</Text>
-              </Pressable>
-            );
-          })}
-        </View>
-        {preference === 'system' && (
-          <Muted>Seguindo o sistema (atualmente {resolvedTheme === 'dark' ? 'escuro' : 'claro'}).</Muted>
-        )}
-      </Section>
+      <Reveal delay={170}>
+        <Section title="Aparência">
+          <ThemeSelector preference={preference} onChange={setPreference} />
+          {preference === 'system' && (
+            <Muted>Seguindo o sistema (atualmente {resolvedTheme === 'dark' ? 'escuro' : 'claro'}).</Muted>
+          )}
+        </Section>
+      </Reveal>
 
+      <Reveal delay={250}>
       <Section title="Sobre">
         <Card className="py-2">
           <InfoRow label="Versão do app" value={appVersion} />
@@ -122,7 +102,11 @@ export default function PerfilScreen() {
         </Card>
       </Section>
 
-      <Button title="Sair" icon="log-out-outline" variant="danger" loading={leaving} onPress={confirmSignOut} />
+      </Reveal>
+
+      <Reveal delay={320}>
+        <Button title="Sair" icon="log-out-outline" variant="danger" loading={leaving} onPress={confirmSignOut} />
+      </Reveal>
     </ScrollScreen>
   );
 }

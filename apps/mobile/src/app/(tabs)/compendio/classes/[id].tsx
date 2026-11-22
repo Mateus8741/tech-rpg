@@ -31,7 +31,7 @@ export default function ClassDetailScreen() {
 
   return (
     <ScrollScreen>
-      <DetailHeader eyebrow="Classe" title={c.name} summary={c.summary}>
+      <DetailHeader icon="shield-half-outline" eyebrow="Classe" title={c.name} summary={c.summary}>
         <View className="flex-row flex-wrap gap-1.5">
           <Badge tone="gold">{`Dado de vida d${c.hitDie}`}</Badge>
           {sc && <Badge tone="violet">Conjurador</Badge>}
