@@ -295,7 +295,7 @@ function CharacterCard({ character: c, index, showOwner, onDelete }: {
       </Link>
       <button
         type="button" onClick={onDelete} aria-label={`Excluir ${c.name}`}
-        className="absolute bottom-3 right-3 rounded-md p-1.5 text-ink-faint opacity-0 transition hover:bg-red-500/10 hover:text-red-400 focus:opacity-100 group-hover:opacity-100"
+        className="absolute bottom-3 right-3 rounded-md p-1.5 text-ink-faint transition hover:bg-red-500/10 hover:text-red-400 focus:opacity-100 group-hover:opacity-100 [@media(hover:hover)]:opacity-0"
       >
         <Trash2 className="h-4 w-4" />
       </button>
